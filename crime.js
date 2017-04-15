@@ -14,7 +14,7 @@ function generateResponse (sessionAttributes, speechletResponse) {
     return {
         version:"1.0",
         sessionAttributes: sessionAttributes,
-        reponse: speechletResponse
+        response: speechletResponse
     };
 }
 
