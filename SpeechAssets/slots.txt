@@ -1,0 +1,51 @@
+Paste these lists when adding slots in developer portal.
+
+(format on portal)
+Enter type:
+Enter values:
+
+LIST_OF_COUNTRIES
+Egypt 
+Iran 
+Algeria
+Tunisia 
+Morocco 
+Syria 
+Iraq
+Saudi Arabia
+Lebanon
+Jordan
+Japan
+China
+Mongolia
+Nepal
+Taiwan
+Philippines
+Cambodia
+Vietnam
+North Korea
+Malaysia
+South Africa
+Uganda
+Kenya
+Somalia
+Sudan
+Nigeria
+Cameroon
+Sénégal
+Ghana
+Côte d'ivoire 
+Brazil
+Argentina
+Venezuela
+Colombia
+Peru
+Ecuador
+Uruguay
+Paraguay
+Chile
+Columbia
+
+LIST_OF_CRIMINALS
+
+... names to be added ...

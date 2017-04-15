@@ -1,30 +1,30 @@
-AMAZON.HelpIntent  How do I play?
-AMAZON.HelpIntent  How do I win?
-AMAZON.HelpIntent  What is the concept of the game?
-AMAZON.HelpIntent  What am I supposed to do?
+AMAZON.HelpIntent  How do I play
+AMAZON.HelpIntent  How do I win
+AMAZON.HelpIntent  What is the concept of the game
+AMAZON.HelpIntent  What am I supposed to do
 
 AMAZON.StopIntent  I don't want to play anymore.
 AMAZON.StopIntent  Quit the game.
 AMAZON.StopIntent  Exit the game.
 
-RulesIntent What are the rules?
-RulesIntent Are there rules to the game?
-RulesIntent How do I win?
-RulesIntent What's the rules?
+RulesIntent What are the rules
+RulesIntent Are there rules to the game
+RulesIntent How do I win
+RulesIntent What's the rules
 RulesIntent What is the point of the game.
-RulesIntent What is the end game?
+RulesIntent What is the end game
 
-WhoIntent who am I playing as?
-WhoIntent who am I?
-WhoIntent what is my title?
-WhoIntent what character am I?
-WhoIntent who is my character?
+WhoIntent who am I playing as
+WhoIntent who am I
+WhoIntent what is my title
+WhoIntent what character am I
+WhoIntent who is my character
 
-SleuthIntent What is a sleuth-hound?
-SleuthIntent What is a sleuth?
-SleuthIntent Why am I a sleuth?
-SleuthIntent Who is a sleuth?
-SleuthIntent Why am I called a sleuth?
+SleuthIntent What is a sleuth-hound
+SleuthIntent What is a sleuth
+SleuthIntent Why am I a sleuth
+SleuthIntent Who is a sleuth
+SleuthIntent Why am I called a sleuth
 
 JokeIntent Tell me a joke.
 JokeIntent Say a joke.
@@ -32,11 +32,11 @@ JokeIntent Give me a joke.
 JokeIntent Lighten the mood with a joke.
 JokeIntent Make me laugh.
 JokeIntent Make us laugh.
-JokeIntent Are you funny?
-JokeIntent Do you have any jokes?
+JokeIntent Are you funny
+JokeIntent Do you have any jokes
 
 SassyIntent I hate this game.
-SassyIntent Why should I play this game?
+SassyIntent Why should I play this game
 SassyIntent This game is terrible.
 SassyIntent Why do people play this game.
 SassyIntent I don't like this game.
@@ -100,67 +100,67 @@ TarryStopIntent Hi guys
 TarryStopIntent Excuse me ladies
 TarryStopIntent I have a question
 
-CrimeBackgroundQuestionIntent Did you hear about {criminal_name}?
-CrimeBackgroundQuestionIntent Have you heard about {criminal_name}?
-CrimeBackgroundQuestionIntent Do you know {criminal_name}?
-CrimeBackgroundQuestionIntent Who is {criminal_name}?
-CrimeBackgroundQuestionIntent Did you see the crime?
-CrimeBackgroundQuestionIntent Do you know about the crime?
-CrimeBackgroundQuestionIntent Have you heard about {criminal_name}?
-CrimeBackgroundQuestionIntent Have you heard about the crime that took place?
-CrimeBackgroundQuestionIntent Do you know about the crime that took place?
-CrimeBackgroundQuestionIntent Do you know any information about the crime?
-CrimeBackgroundQuestionIntent Do you know any information about {criminal_name}?
-CrimeBackgroundQuestionIntent I'm looking for {criminal_name}?
-CrimeBackgroundQuestionIntent Have you seen {criminal_name}?
-CrimeBackgroundQuestionIntent Do you know anything about {criminal_name}?
-CrimeBackgroundQuestionIntent Do you know anything about the criminal?
-CrimeBackgroundQuestionIntent Do you know anything about the crime?
-CrimeBackgroundQuestionIntent Anyone talk about the crime?
-CrimeBackgroundQuestionIntent Anyone say something about the crime?
-CrimeBackgroundQuestionIntent Do you know what happened?
+CrimeBackgroundQuestionIntent Did you hear about {criminal_name}
+CrimeBackgroundQuestionIntent Have you heard about {criminal_name}
+CrimeBackgroundQuestionIntent Do you know {criminal_name}
+CrimeBackgroundQuestionIntent Who is {criminal_name}
+CrimeBackgroundQuestionIntent Did you see the crime
+CrimeBackgroundQuestionIntent Do you know about the crime
+CrimeBackgroundQuestionIntent Have you heard about {criminal_name}
+CrimeBackgroundQuestionIntent Have you heard about the crime that took place
+CrimeBackgroundQuestionIntent Do you know about the crime that took place
+CrimeBackgroundQuestionIntent Do you know any information about the crime
+CrimeBackgroundQuestionIntent Do you know any information about {criminal_name}
+CrimeBackgroundQuestionIntent I'm looking for {criminal_name}
+CrimeBackgroundQuestionIntent Have you seen {criminal_name}
+CrimeBackgroundQuestionIntent Do you know anything about {criminal_name}
+CrimeBackgroundQuestionIntent Do you know anything about the criminal
+CrimeBackgroundQuestionIntent Do you know anything about the crime
+CrimeBackgroundQuestionIntent Anyone talk about the crime
+CrimeBackgroundQuestionIntent Anyone say something about the crime
+CrimeBackgroundQuestionIntent Do you know what happened
 
-CriminalLooksQuestionIntent Do you know what {criminal_name} looks like?
-CriminalLooksQuestionIntent Do you know what he looks like?
-CriminalLooksQuestionIntent Do you know what she looks like?
-CriminalLooksQuestionIntent Did you get a glimpse on what the criminal looks like?
-CriminalLooksQuestionIntent Did you see what the criminal looks like?
-CriminalLooksQuestionIntent Did you see what {criminal_name} looks like?
-CriminalLooksQuestionIntent Have you heard what {criminal_name} looks like?
-CriminalLooksQuestionIntent Have you heard what the criminal looks like?
-CriminalLooksQuestionIntent What did the criminal look like?
-CriminalLooksQuestionIntent What did {criminal_name} look like?
-CriminalLooksQuestionIntent Is the criminal a male or female?
-CriminalLooksQuestionIntent What does he look like?
-CriminalLooksQuestionIntent What does {criminal_name} look like?
-CriminalLooksQuestionIntent How does he look?
-CriminalLooksQuestionIntent How does {criminal_name} look?
-CriminalLooksQuestionIntent How does she look?
+CriminalLooksQuestionIntent Do you know what {criminal_name} looks like
+CriminalLooksQuestionIntent Do you know what he looks like
+CriminalLooksQuestionIntent Do you know what she looks like
+CriminalLooksQuestionIntent Did you get a glimpse on what the criminal looks like
+CriminalLooksQuestionIntent Did you see what the criminal looks like
+CriminalLooksQuestionIntent Did you see what {criminal_name} looks like
+CriminalLooksQuestionIntent Have you heard what {criminal_name} looks like
+CriminalLooksQuestionIntent Have you heard what the criminal looks like
+CriminalLooksQuestionIntent What did the criminal look like
+CriminalLooksQuestionIntent What did {criminal_name} look like
+CriminalLooksQuestionIntent Is the criminal a male or female
+CriminalLooksQuestionIntent What does he look like
+CriminalLooksQuestionIntent What does {criminal_name} look like
+CriminalLooksQuestionIntent How does he look
+CriminalLooksQuestionIntent How does {criminal_name} look
+CriminalLooksQuestionIntent How does she look
 
-CriminalLocationQuestionIntent Where did he go?
-CriminalLocationQuestionIntent Where did {criminal_name} go?
-CriminalLocationQuestionIntent Do you know where {criminal_name} was headed?
-CriminalLocationQuestionIntent Do you know where {criminal_name} went next?
-CriminalLocationQuestionIntent Do you know where {criminal_name} went?
-CriminalLocationQuestionIntent Have you heard where {criminal_name} went?
-CriminalLocationQuestionIntent Do you know where the criminal is at?
-CriminalLocationQuestionIntent Do you know where {criminal_name} is at?
-CriminalLocationQuestionIntent Did you hear where {criminal_name} went?
-CriminalLocationQuestionIntent Did you see where {criminal_name} went?
-CriminalLocationQuestionIntent Did you see where the criminal went?
-CriminalLocationQuestionIntent Did you hear where the criminal is at?
-CriminalLocationQuestionIntent Did you hear where the criminal went?
-CriminalLocationQuestionIntent Where is he now?
-CriminalLocationQuestionIntent Where is {criminal_name} now?
-CriminalLocationQuestionIntent Where is {criminal_name} at?
-CriminalLocationQuestionIntent Anyone mention where {criminal_name} went to?
-CriminalLocationQuestionIntent Anyone say where the criminal went off to?
-CriminalLocationQuestionIntent Have you heard where the criminal fled to?
-CriminalLocationQuestionIntent Do you know where the criminal is hiding?
-CriminalLocationQuestionIntent Do you know where {criminal_name} fled to?
-CriminalLocationQuestionIntent You know where he went?
-CriminalLocationQuestionIntent You know where she went?
-CriminalLocationQuestionIntent You know where {criminal_name} went?
+CriminalLocationQuestionIntent Where did he go
+CriminalLocationQuestionIntent Where did {criminal_name} go
+CriminalLocationQuestionIntent Do you know where {criminal_name} was headed
+CriminalLocationQuestionIntent Do you know where {criminal_name} went next
+CriminalLocationQuestionIntent Do you know where {criminal_name} went
+CriminalLocationQuestionIntent Have you heard where {criminal_name} went
+CriminalLocationQuestionIntent Do you know where the criminal is at
+CriminalLocationQuestionIntent Do you know where {criminal_name} is at
+CriminalLocationQuestionIntent Did you hear where {criminal_name} went
+CriminalLocationQuestionIntent Did you see where {criminal_name} went
+CriminalLocationQuestionIntent Did you see where the criminal went
+CriminalLocationQuestionIntent Did you hear where the criminal is at
+CriminalLocationQuestionIntent Did you hear where the criminal went
+CriminalLocationQuestionIntent Where is he now
+CriminalLocationQuestionIntent Where is {criminal_name} now
+CriminalLocationQuestionIntent Where is {criminal_name} at
+CriminalLocationQuestionIntent Anyone mention where {criminal_name} went to
+CriminalLocationQuestionIntent Anyone say where the criminal went off to
+CriminalLocationQuestionIntent Have you heard where the criminal fled to
+CriminalLocationQuestionIntent Do you know where the criminal is hiding
+CriminalLocationQuestionIntent Do you know where {criminal_name} fled to
+CriminalLocationQuestionIntent You know where he went
+CriminalLocationQuestionIntent You know where she went
+CriminalLocationQuestionIntent You know where {criminal_name} went
 
 NabThiefIntent Gotcha {criminal_name}
 NabThiefIntent Stop there {criminal_name}
