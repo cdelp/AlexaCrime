@@ -2,11 +2,12 @@
   "intents": [
 	{"intent": "RulesIntent"},
 	{"intent": "WhoIntent"},
-	{"intent": "SleuthIntent”},
+	{"intent": "SleuthIntent"},
 	{"intent": "JokeIntent"},
 	{"intent": "SassyIntent"},
 	{"intent": "CussIntent"},
 	{"intent": "PersonalIntent"},
+	{"intent": "GameStart"},
 	{
 		"intent": "CountryIntent",
 		"slots": [
@@ -64,4 +65,3 @@
 	{"intent": "AMAZON.CancelIntent"}
   ]
 }
-

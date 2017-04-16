@@ -1,7 +1,5 @@
-
-
 //helper
-buildSpeechletResponse = (outputText, shouldEndSession) => {
+function buildSpeechletResponse (outputText, shouldEndSession) {
 
     return {
         outputSpeech: {
@@ -9,15 +7,15 @@ buildSpeechletResponse = (outputText, shouldEndSession) => {
             text: outputText
         },
         shouldEndSession: shouldEndSession
-    }
+    };
 }
 
-generateResponse = (sessionAttributes, speechletResponse) => {
+function generateResponse (sessionAttributes, speechletResponse) {
     return {
         version:"1.0",
         sessionAttributes: sessionAttributes,
-        reponse: speechletReponse
-    }
+        response: speechletResponse
+    };
 }
 
 function rand(min, max) {
@@ -204,8 +202,7 @@ function talkedTo()
         {
             generateResponse
             (
-                buildSpeechletResponse(greetings[rand(0, greetings.length - 1)], false),
-                {}
+                {},buildSpeechletResponse(greetings[rand(0, greetings.length - 1)], false)
             )
             //not sure if this is how to capture subsequent questioning intents so this will just be here for concept sake
             switch (event.request.type.name) {
@@ -249,15 +246,8 @@ exports.handler = (event, context) => {
         switch (event.request.type)
         {
             case "LaunchRequest":
-                console.log('LAUNCH REQUEST')
-                context.succeed
-                (
-                    generateResponse
-                    (
-                        buildSpeechletResponse("Welcome to Sleuth Hound", false),
-                        {}
-                    )
-                )
+                //var output = "Welcome to sleuth hound"
+                context.succeed(generateResponse({}, buildSpeechletResponse("Welcome to sleuth hound", false)));
                 break;
 
             case "IntentRequest":
@@ -292,23 +282,20 @@ exports.handler = (event, context) => {
                     //case "CrimeBackgroundQuestionIntent":
                     //    break;
                     default:
-                        break;
-
+						console.log("default")
                 }
                 console.log("INTENT REQUEST")
                 break;
 
             case "SessionEndedRequest":
-                console.log('SESSION ENDEDD REQUEST')
+                console.log('SESSION ENDED REQUEST')
                 break;
 
             default:
                 context.fail('INVALID REQUEST TYPE: ${event.request.type}')
         }
 
-    } catch(error) {context.fail('Exception: ${error}')}
-
-
-
+    } catch(error) {context.fail("Exception: " + error);}
 
 }
+
