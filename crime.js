@@ -203,7 +203,6 @@ function talkedTo()
             generateResponse
             (
                 {},buildSpeechletResponse(greetings[rand(0, greetings.length - 1)], false)
-                
             )
             //not sure if this is how to capture subsequent questioning intents so this will just be here for concept sake
             switch (event.request.type.name) {
