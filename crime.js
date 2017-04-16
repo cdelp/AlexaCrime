@@ -62,40 +62,299 @@ var p_special = ['headphones', 'bathing suit', 'naked'];
 var greetings = ['hey', "what's up'", 'hi'];
 
 //countries
+//Middle East
 var Egypt  = {
     countryName: 'Egypt',
     facts:  ['egypt fact 1', 'egypt fact 2', 'egypt fact 3'],
     m_names: ['Aaheru', 'Abuskhau', 'Acheri', 'Aches', 'Am', 'Akhekh', 'Amenamen'],
-    f_names: ['Cleopatra', 'Amisi', 'Bast', 'Ebio', 'Emu', 'Isis']
+    f_names: ['Cleopatra', 'Amisi', 'Bast', 'Ebio', 'Emu', 'Isis'],
+    region: 'Middle East'
 }
 var Iran = {
     countryName: 'Iran',
     facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
     m_names: ['Mohammad', 'Amir', 'Yosef', 'Mehran', 'Faraz', 'Hooman'],
-    f_names: ['Ada', 'Saye', 'Nooshin', 'Sajedeh', 'Niyusha', 'Fatima']
+    f_names: ['Ada', 'Saye', 'Nooshin', 'Sajedeh', 'Niyusha', 'Fatima'],
+    region: 'Middle East'
 }
 var Algeria = {
     countryName: 'Algeria',
     facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
     m_names: ['Mohammad', 'Amine', 'Anis', 'Brahim', 'Zaki', 'Mounir'],
-    f_names: ['Meriem', 'Sabrina', 'Safia', 'Yasmine', 'Chiraz', 'Aya']
+    f_names: ['Meriem', 'Sabrina', 'Safia', 'Yasmine', 'Chiraz', 'Aya'],
+    region: 'Middle East'
 }
 var Tunisia = {
     countryName: 'Tunisia',
     facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
     m_names: ['Ahmed', 'Hazim', 'Slim', 'Aziz', 'Mehdi', 'Raouf'],
-    f_names: ['Fatma', 'Eya', 'Hiba', 'Sarah', 'Farah', 'Rim']
+    f_names: ['Fatma', 'Eya', 'Hiba', 'Sarah', 'Farah', 'Rim'],
+    region: 'Middle East'
 }
 var Oman = {
     countryName: 'Oman',
     facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi']
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'Middle East'
+}
+//countries below this line aren't filled with real data
+var Morocco = {
+    countryName: 'Morocco',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'Middle East'
+}
+var Syria = {
+    countryName: 'Syria',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'Middle East'
+}
+var Iraq = {
+    countryName: 'Iraq',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'Middle East'
+}
+var SaudiArabia = {
+    countryName: 'Saudi Arabia',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'Middle East'
+}
+var Lebanon = {
+    countryName: 'Lebanon',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'Middle East'
 }
 
-var Countries = [Egypt, Iran];
-var MiddleEast = [Egypt, Iran];
+//East Asia
+var Japan = {
+    countryName: 'Japan',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'East Asia'
+}
+var China = {
+    countryName: 'China',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'East Asia'
+}
+var Mongolia = {
+    countryName: 'Mongolia',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'East Asia'
+}
+var Nepal = {
+    countryName: 'Nepal',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'East Asia'
+}
+var Taiwan = {
+    countryName: 'Taiwan',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'East Asia'
+}
+var Philippines = {
+    countryName: 'Philippines',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'East Asia'
+}
+var Cambodia = {
+    countryName: 'Cambodia',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'East Asia'
+}
+var Vietnam = {
+    countryName: 'Vietnam',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'East Asia'
+}
+var NorthKorea = {
+    countryName: 'North Korea',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'East Asia'
+}
+var Malaysia = {
+    countryName: 'Malaysia',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'East Asia'
+}
+//Africa
+var SouthAfrica = {
+    countryName: 'South Africa',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'Africa'
+}
+var Uganda = {
+    countryName: 'Uganda',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'Africa'
+}
+var Kenya = {
+    countryName: 'Kenya',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'Africa'
+}
+var Somalia = {
+    countryName: 'Somalia',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'Africa'
+}
+var Sudan = {
+    countryName: 'Sudan',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'Africa'
+}
+var Nigeria = {
+    countryName: 'Nigeria',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'Africa'
+}
+var Cameroon = {
+    countryName: 'Cameroon',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'Africa'
+}
+var Senegal = {
+    countryName: 'Senegal',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'Africa'
+}
+var Ghana = {
+    countryName: 'Ghana',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'Africa'
+}
+//SouthAmerica
+var Brazil = {
+    countryName: 'brazil',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'South America'
+}
+var Argentina = {
+    countryName: 'Argentina',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'South America'
+}
+var Venezuela = {
+    countryName: 'Venezuela',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'South America'
+}
+var Colombia = {
+    countryName: 'Colombia',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'South America'
+}
+var Peru = {
+    countryName: 'Peru',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'South America'
+}
+var Ecuador = {
+    countryName: 'Ecuador',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'South America'
+}
+var Uruguay = {
+    countryName: 'Uruguay',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'South America'
+}
+var Paraguay = {
+    countryName: 'Paraguay',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'South America'
+}
+var Aruba = {
+    countryName: 'Aruba',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'South America'
+}
+var Chile = {
+    countryName: 'Chile',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'South America'
+}
+var Columbia = {
+    countryName: 'Columbia',
+    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    region: 'South America'
+}
 
+
+var MiddleEast = [Egypt, Iran, Algeria, Tunisia, Oman, Morocco, Syria, Iraq, SaudiArabia, Lebanon];
+var EastAsia = [Japan, China, Mongolia, Nepal, Taiwan, Philippines, Cambodia, Vietnam, NorthKorea, Malaysia];
+var Africa = [SouthAfrica, Uganda, Kenya, Somalia, Sudan, Nigeria, Cameroon, Senegal, Ghana];
+var SouthAmerica = [Brazil, Argentina, Venezuela, Colombia, Peru, Ecuador, Uruguay, Paraguay, Aruba, Chile, Columbia];
+var Region = [MiddleEast, EastAsia, Africa, SouthAmerica];
 //criminal and people methods
 
 function name(country, gender)
@@ -112,7 +371,8 @@ function name(country, gender)
 
 function PopulateCriminal()  {
     this.gender =  gender[rand(0, gender.length -1)];
-    this.country = Countries[rand(0, Countries.length -1)];
+    this.region = Region[rand(0, Region.length -1)];
+    this.country = this.region[rand(0, this.region.length -1)];
     this.nextCountry = Countries[rand(0, Countries.length -1)]; //should exempt current country, write a new method for this.
     this.crime = Countries[rand(0, Countries.length -1)]; //need to fill with actual crimes.
     this.hairLength = hairLength[rand(0, hairLength.length -1)];
@@ -144,38 +404,120 @@ var criminal = null;
 var r_person = null;
 var talkedToCount = 0;
 var stage = 0;
-var countryVisited = 0;
+var countryVisited = 0; //count of times tried
+var crimCountryVisitedArr = null; //array of countries criminal has been to, used to match against
 var countryChoice = null;
 function checkCountry(country)
 {
     //assign choice of country and count for validation checking in other methods
     countryVisited++;
-    for(i = 0; i < Countries.length; i++)
+    switch(stage)
     {
-        if(Countries[i].countryName == country)
+        case 0:
         {
-            countryChoice = Countries[i];
+            for (i = 0; i < Region.length; i++)
+            {
+                for(j = 0; j < Region[i].length; j++)
+                {
+                    if (Region[i][j].countryName == country)
+                    {
+                        countryChoice = criminal.region[i];
+                    }
+                }
+            }
+
+            try {
+                //if country chosen doesn't exist
+                if (countryChoice.countryName != country) {
+                    //error response, prompt for a valid country choice.
+
+                    //fix counter
+                    countryVisited--;
+                }
+
+                //if correct country chosen then reset count, go to next stage
+                if (criminal.country.countryName == country) {
+                    countryVisited = 0;
+                    stage++;
+                    //shouldn't need below code as first country gets pushed already for stage 0 in assignNextCounty()
+                    //crimCountryVisitedArr.push(countryChoice);
+                    assignNextCountry();
+                }
+                else if (criminal.country.countryName != country && countryVisited >= 2) {
+                    //you lose.
+                }
+            } catch (error) {
+                context.fail("CountryChoice incorrect handling");
+            }
+        }
+        default:
+        {
+            for(i = 0; i < criminal.region.length; i++)
+            {
+                if(criminal.region[i].countryName == country)
+                {
+                    countryChoice = criminal.region[i];
+                }
+            }
+
+            try {
+                //if country chosen doesn't exist
+                if (countryChoice.countryName != country) {
+                    //error response, prompt for a valid country choice.
+
+                    //fix counter
+                    countryVisited--;
+                }
+
+                //if correct country chosen then reset count, go to next stage
+                if (criminal.country.countryName == country) {
+                    countryVisited = 0;
+                    stage++;
+                    crimCountryVisitedArr.push(countryChoice);
+                    assignNextCountry();
+                }
+                else if (criminal.country.countryName != country && countryVisited >= 1) {
+                    //you lose.
+                }
+            }catch(error) {context.fail("CountryChoice incorrect handling");}
         }
     }
 
-    //if country chosen doesn't exist
-    if(countryChoice.countryName != country)
-    {
-        //error response, prompt for a valid country choice.
+}
 
-        //fix counter
-        countryVisited--;
+//assign next country
+function assignNextCountry()
+{
+    if(stage == 0)
+    {
+        crimCountryVisitedArr.push(criminal.country);
+        var found = 0;
+        while(found == 0)
+        {
+            var temp = criminal.region[rand(0, criminal.region.length -1)];
+            if(crimCountryVisitedArr.indexOf(temp) == -1)
+            {
+                criminal.nextCountry = temp;
+                //exit loop
+                found++;
+            }
+        }
     }
+    else
+    {
+        var found = 0;
+        while(found == 0)
+        {
+            var temp = criminal.region[rand(0, criminal.region.length -1)];
+            if(crimCountryVisitedArr.indexOf(temp) == -1)
+            {
 
-    //if correct country chosen then reset count
-    if(criminal.country.countryName == country)
-    {
-        countryVisited = 0;
-        stage++;
-    }
-    else if (criminal.country.countryName != country && countryVisited >= 2)
-    {
-        //you lose.
+                criminal.country = criminal.nextCountry;
+                criminal.nextCountry = temp;
+                //exit loop
+                found++;
+            }
+        }
     }
 }
 
