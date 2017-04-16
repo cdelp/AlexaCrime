@@ -36,6 +36,18 @@ function pronoun( gender )
     }
 }
 
+function pronounOwnership( gender )
+{
+    if(gender == 'male')
+    {
+        return "his";
+    }
+    else
+    {
+        return "her";
+    }
+}
+
 
 //People attributes
 var gender = ['male', 'female'];
@@ -82,6 +94,7 @@ var Oman = {
 }
 
 var Countries = [Egypt, Iran];
+var MiddleEast = [Egypt, Iran];
 
 //criminal and people methods
 
@@ -101,6 +114,7 @@ function PopulateCriminal()  {
     this.gender =  gender[rand(0, gender.length -1)];
     this.country = Countries[rand(0, Countries.length -1)];
     this.nextCountry = Countries[rand(0, Countries.length -1)]; //should exempt current country, write a new method for this.
+    this.crime = Countries[rand(0, Countries.length -1)]; //need to fill with actual crimes.
     this.hairLength = hairLength[rand(0, hairLength.length -1)];
     this.hairColor = hairColor[rand(0, hairLength.length -1)];
     this.eyeSize = eyeSize[rand(0, eyeSize.length -1)];
@@ -126,7 +140,7 @@ function PopulateResponsePerson() {
 }
 
 //flags and methods to handle number of people talked to and countries visited
-var criminal = null;//new populateCriminal();
+var criminal = null;
 var r_person = null;
 var talkedToCount = 0;
 var stage = 0;
@@ -180,7 +194,7 @@ function talkedTo()
         talkedToCount += 3;
         buildSpeechletResponse("They keep walking by", false),
             {}
-        //exit form country on 2nd talk in wrong country
+        //exit from country on 2nd talk in wrong country
         if(talkedToCount >= 6) //2nd time should evaluate to 7
         {
             //response that you're in the wrong country
@@ -205,14 +219,32 @@ function talkedTo()
                 {},buildSpeechletResponse(greetings[rand(0, greetings.length - 1)], false)
             )
             //not sure if this is how to capture subsequent questioning intents so this will just be here for concept sake
+            //Chad TODO
+            //Could you help me check to see if this actually listens for next prompt? I'm hoping it does haha.
+            //it SHOULD allow the user to ask questions about the crime, looks, where criminal is heading, etc.
+            //Alan TODO
+            //set flags to indicatte you're in questioning state so no other intents except stop, help, restart should register.
+            //May need to include similar state checks on all intents.
             switch (event.request.type.name) {
                 case "CrimeBackgroundQuestionIntent":
+                    generateResponse
+                    (
+                        {},buildSpeechletResponse("You're in crime background question intent", false)
+                    )
                     //random info about criminal given --still thinking about how to randomize this atm
                     break;
                 case "CriminalLooksQuestionIntent":
+                    generateResponse
+                    (
+                        {},buildSpeechletResponse("You're in criminal look question intent", false)
+                    )
                     //random info about criminal looks given -- also still thinking about how to for this.
                     break;
                 case "FinishTalkingIntent":
+                    generateResponse
+                    (
+                        {},buildSpeechletResponse("You're in finished talking intent", false)
+                    )
                     //break convo
                     break;
             }
@@ -234,6 +266,20 @@ function talkedTo()
     }
 }
 
+
+//Chad TODO
+//Methods to create a complete sentence that we can return for Alexa output. Structure is from Anees and pathing will usually reference Criminal.
+//Example:
+function introReponse()
+{
+    return "We are on the hunt for "+criminal.name+". "+pronoun(criminal.gender)+" is wanted in connection with a recent string of "+criminal.crime+" crimes resulting in " +
+        "$"+rand(50, 800)+" million in damages. We must help bring  the criminal responsible for these crimes to justice before "+criminal.name+" goes into hiding. " +
+        "It will not be an easy task to catch "+criminal.name+" so pay close attention to clues on "+pronounOwnership(criminal.gender)+" looks and whereabouts. " +
+        ""+criminal.name+" was last seen {country_clue}. Enough talking, we need to go. Where should we start our search"
+}
+
+//Chad TODO
+//fill intents with whatever repsonses just to test if we are triggering them.
 exports.handler = (event, context) => {
     // New session
     try{
@@ -264,6 +310,8 @@ exports.handler = (event, context) => {
                         //build a response using criminal.country.facts, criminal.name, criminal.gender
                     case "CountryIntent":
                         //false country pick check. If TalkedToCount < 5 then tell the user they haven't finished talking to all NPC yet.
+                        //Chad TODO
+                        //Figure out how to grab the country slot value when this Country intent is triggered so it can be used in checkCountry(country)
                         //grab country from intent first then call checkCountry(country) method
                         checkCountry(country);
                         //arrival jingle response
