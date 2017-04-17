@@ -1,23 +1,3 @@
-//helper
-function buildSpeechletResponse (outputText, shouldEndSession) {
-
-    return {
-        outputSpeech: {
-            type: "PlainText",
-            text: outputText
-        },
-        shouldEndSession: shouldEndSession
-    };
-}
-
-function generateResponse (sessionAttributes, speechletResponse) {
-    return {
-        version:"1.0",
-        sessionAttributes: sessionAttributes,
-        response: speechletResponse
-    };
-}
-
 function rand(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -374,7 +354,6 @@ function PopulateCriminal()  {
     this.region = Region[rand(0, Region.length -1)];
     this.country = this.region[rand(0, this.region.length -1)];
     this.nextCountry = null; //should exempt current country, write a new method for this.
-    this.crime = Countries[rand(0, Countries.length -1)]; //need to fill with actual crimes.
     this.hairLength = hairLength[rand(0, hairLength.length -1)];
     this.hairColor = hairColor[rand(0, hairLength.length -1)];
     this.eyeSize = eyeSize[rand(0, eyeSize.length -1)];
@@ -414,6 +393,7 @@ function checkCountry(country)
 
     if(stage == 0)
     {
+        console.log("in stage 0 for checkCountry");
         for (i = 0; i < Region.length; i++)
         {
             for(j = 0; j < Region[i].length; j++)
@@ -421,35 +401,38 @@ function checkCountry(country)
                 if (Region[i][j].countryName == country)
                 {
                     //assign countryChoice if said country is a valid choice
-                    countryChoice = criminal.region[i];
+                    countryChoice = Region[i][j];
                 }
             }
         }
 
         try {
-            //if country doesn't register then they gave a country naem we don't have, error output
+            //if country doesn't register then they gave a country name we don't have, error output
             if (countryChoice.countryName != country) {
                 //error response, prompt for a valid country choice.
-
+                console.log("given country string did not match");
                 //fix counter
                 countryVisited--;
             }
 
             //if correct country chosen then reset count, go to next stage, assign next country
             if (criminal.country.countryName == country) {
+                console.log("correct country given");
                 countryVisited = 0;
                 stage++;
-                assignNextCountry();
+                //assignNextCountry();
             }
             else if (criminal.country.countryName != country && countryVisited >= 2) {
                 //you lose.
+                console.log("you lose");
             }
         } catch (error) {
-            context.fail("CountryChoice incorrect handling");
+            console.log("CountryChoice incorrect handling");
         }
     }
     else
     {
+        console.log("in else stage for checkCountry");
         for(i = 0; i < criminal.region.length; i++)
         {
             if(criminal.region[i].countryName == country)
@@ -462,22 +445,24 @@ function checkCountry(country)
             //if country chosen doesn't exist
             if (countryChoice.countryName != country) {
                 //error response, prompt for a valid country choice.
-
+                console.log("given country string did not match");
                 //fix counter
                 countryVisited--;
             }
 
             //if correct country chosen then reset count, go to next stage, assign next country
             if (criminal.country.countryName == country) {
+                console.log("correct country given");
                 countryVisited = 0;
                 stage++;
                 crimCountryVisitedArr.push(countryChoice);
-                assignNextCountry();
+                //assignNextCountry();
             }
             else if (criminal.country.countryName != country && countryVisited >= 1) {
                 //you lose.
+                console.log("you lose");
             }
-        }catch(error) {context.fail("CountryChoice incorrect handling");}
+        }catch(error) {console.log("error in countryChecked()");}
     }
 
 
@@ -488,6 +473,8 @@ function assignNextCountry()
 {
     if(stage == 0)
     {
+        console.log("in stage 0 of assign trying to push "+ criminal.country);
+        console.log(criminal.country);
         crimCountryVisitedArr.push(criminal.country);
         var found = 0;
         while(found == 0)
@@ -495,7 +482,12 @@ function assignNextCountry()
             var temp = criminal.region[rand(0, criminal.region.length -1)];
             if(crimCountryVisitedArr.indexOf(temp) == -1)
             {
+                console.log("next countries before assigned:");
+                console.log(criminal.nextCountry);
                 criminal.nextCountry = temp;
+                console.log("next countries after assigned:");
+                console.log(criminal.nextCountry);
+
                 //exit loop
                 found++;
             }
@@ -503,15 +495,21 @@ function assignNextCountry()
     }
     else
     {
+        console.log("in stage else of assign");
         var found = 0;
         while(found == 0)
         {
             var temp = criminal.region[rand(0, criminal.region.length -1)];
             if(crimCountryVisitedArr.indexOf(temp) == -1)
             {
-
+                console.log("next countries before assigned country:next:");
+                console.log(criminal.country);
                 criminal.country = criminal.nextCountry;
+                console.log(temp);
                 criminal.nextCountry = temp;
+                console.log("next countries after assigned:");
+                console.log(criminal.nextCountry);
+
                 //exit loop
                 found++;
             }
@@ -526,69 +524,34 @@ function talkedTo()
     if(stage >= 3)
     {
         //stuff for populating possible criminals for player to stop.
+        console.log("third stage people walk by");
     }
     //non-final stages
     talkedToCount++;
     if(countryChoice != criminal.country)
     {
         talkedToCount += 3;
-        buildSpeechletResponse("They keep walking by", false),
-            {}
         //exit from country on 2nd talk in wrong country
         if(talkedToCount >= 6) //2nd time should evaluate to 7
         {
             //response that you're in the wrong country
+            console.log("wrong country reponse");
         }
     }
     else {
         if (r_person.seenValue == 0) {
-            generateResponse
-            (
-                buildSpeechletResponse("They keep walking by", false),
-                {}
-            )
+            console.log("r_person seen value = 0 reponses");
             if (talkedToCount >= 5) {
-                //closing response for countryChoice then choice for next countries
+                console.log("reached final person to talk to in 0 response");
             }
 
         }
         else
         {
-            generateResponse
-            (
-                {},buildSpeechletResponse(greetings[rand(0, greetings.length - 1)], false)
-            )
-            //not sure if this is how to capture subsequent questioning intents so this will just be here for concept sake
-            //Chad TODO
-            //Could you help me check to see if this actually listens for next prompt? I'm hoping it does haha.
-            //it SHOULD allow the user to ask questions about the crime, looks, where criminal is heading, etc.
-            //Alan TODO
-            //set flags to indicatte you're in questioning state so no other intents except stop, help, restart should register.
-            //May need to include similar state checks on all intents.
-            switch (event.request.type.name) {
-                case "CrimeBackgroundQuestionIntent":
-                    generateResponse
-                    (
-                        {},buildSpeechletResponse("You're in crime background question intent", false)
-                    )
-                    //random info about criminal given --still thinking about how to randomize this atm
-                    break;
-                case "CriminalLooksQuestionIntent":
-                    generateResponse
-                    (
-                        {},buildSpeechletResponse("You're in criminal look question intent", false)
-                    )
-                    //random info about criminal looks given -- also still thinking about how to for this.
-                    break;
-                case "FinishTalkingIntent":
-                    generateResponse
-                    (
-                        {},buildSpeechletResponse("You're in finished talking intent", false)
-                    )
-                    //break convo
-                    break;
-            }
+            console.log("r_person seen value NOT 0 reponses");
+            //not sure if this is how to capture subsequent questioning
             if (talkedToCount >= 5) {
+                console.log("reached final person to talk to in NOT 0");
                 //closing response for the country and request next country intent
             }
         }
@@ -596,106 +559,100 @@ function talkedTo()
     //reset counter after 5 people
     if(talkedToCount >= 5)
     {
+        console.log("resetting counter, 5 people talked to, time to choose a country");
         talkedToCount = 0;
+        if(countryChoice == criminal.country)
+        {
+            assignNextCountry();
+        }
         //reassign criminal country values, create a new method for that.
     }
     else
     {
+        console.log("poulating new r_person form talkedto()");
         r_person = new PopulateResponsePerson();
         //build response for next person walking by.
     }
 }
 
 
-//Chad TODO
-//Methods to create a complete sentence that we can return for Alexa output. Structure is from Anees and pathing will usually reference Criminal.
-//Example:
-function introReponse()
-{
-    return "We are on the hunt for "+criminal.name+". "+pronoun(criminal.gender)+" is wanted in connection with a recent string of "+criminal.crime+" crimes resulting in " +
-        "$"+rand(50, 800)+" million in damages. We must help bring  the criminal responsible for these crimes to justice before "+criminal.name+" goes into hiding. " +
-        "It will not be an easy task to catch "+criminal.name+" so pay close attention to clues on "+pronounOwnership(criminal.gender)+" looks and whereabouts. " +
-        ""+criminal.name+" was last seen {country_clue}. Enough talking, we need to go. Where should we start our search"
-}
-
-//Chad TODO
-//fill intents with whatever repsonses just to test if we are triggering them.
-exports.handler = (event, context) => {
-    // New session
-    try{
-        if(event.session.new)
-        {
-            console.log("NEW SESSION")
-
-        }
-
-        switch (event.request.type)
-        {
-            case "LaunchRequest":
-                //var output = "Welcome to sleuth hound"
-                context.succeed(generateResponse({}, buildSpeechletResponse("Welcome to sleuth hound", false)));
-                break;
-
-            case "IntentRequest":
-                //intent request
-                //main stuff here
-                switch(event.request.intent.name)
-                {
-                    case "GameStart":
-                        //false start check. If games already in place ask if they want to start a new one.
-                        //populate criminal
-                        criminal = new PopulateCriminal();
-                        assignNextCountry();
-                        r_person = new PopulateResponsePerson();
-
-                        //build a response using criminal.country.facts, criminal.name, criminal.gender
-                    case "CountryIntent":
-                        //false country pick check. If TalkedToCount < 5 then tell the user they haven't finished talking to all NPC yet.
-                        //Chad TODO
-                        //Figure out how to grab the country slot value when this Country intent is triggered so it can be used in checkCountry(country)
-                        //grab country from intent first then call checkCountry(country) method
-                        checkCountry(country);
-                        //arrival jingle response
-
-                        //response from countryChoice.facts[rand(0, countryChoice.facts.length -1]
-
-                        //build-person walking-by response using r_person.gender, r_person.p_special
-
-                        break;
-
-                    case "TarryStopIntent":
-                        //false stop check. If not currently
-                        talkedTo();
-                        break;
-
-                    //case "CrimeBackgroundQuestionIntent":
-                    //    break;
-                    default:
-						console.log("default")
-                }
-                console.log("INTENT REQUEST")
-                break;
-
-            case "SessionEndedRequest":
-                console.log('SESSION ENDED REQUEST')
-                break;
-
-            default:
-                context.fail('INVALID REQUEST TYPE: ${event.request.type}')
-        }
-
-    } catch(error) {context.fail("Exception: " + error);}
-
-}
-
 function printStuff()
 {
-    console.log(criminal)
-    console.log(r_person)
+    console.log("criminal: ");
+    console.log(criminal);
+    console.log("person: ");
+    console.log(r_person);
+    console.log("Talked to Count: ");
     console.log(talkedToCount);
+    console.log("stage: ");
     console.log(stage);
-    console.log(countryVisited);//count of times tried
-    console.log(crimCountryVisitedArr);//array of countries criminal has been to, used to match against
+    console.log("Country Visited: ");
+    console.log(countryVisited);
+    console.log("crimCountryVisited Array: ");
+    console.log(crimCountryVisitedArr);
+    console.log("Country Choice: ");
     console.log(countryChoice);
 }
 
+//winning scenario
+criminal = new PopulateCriminal();
+assignNextCountry();
+r_person = new PopulateResponsePerson();
+//visit correct country move to stage 1
+checkCountry(criminal.country.countryName);
+talkedTo();
+talkedTo();
+talkedTo();
+talkedTo();
+printStuff();
+talkedTo();
+//visit correct country move to stage 2
+checkCountry(criminal.country.countryName);
+talkedTo();
+talkedTo();
+talkedTo();
+talkedTo();
+printStuff();
+talkedTo();
+//pick th correct guy
+
+//losing scenario
+criminal = new PopulateCriminal();
+assignNextCountry();
+r_person = new PopulateResponsePerson();
+var temp1 = criminal.region[rand(0, criminal.region.length - 1)].countryName;
+console.log("testing temp");
+console.log(temp1);
+//visit 1st wrong country
+checkCountry(temp1);
+talkedTo();
+talkedTo();
+//printStuff();
+//visit 2nd wrong country
+checkCountry(criminal.region[rand(0, criminal.region.length - 1)].countryName);
+talkedTo();
+talkedTo();
+//printStuff();
+/**
+criminal = new PopulateCriminal();
+assignNextCountry();
+r_person = new PopulateResponsePerson();
+printStuff();
+//stage 0 pick wrong country (very likely)
+checkCountry("Uganda");
+printStuff();
+//talking to 2 new people in wrong country
+talkedTo();
+talkedTo();
+printStuff();
+//stage 0, will pick correct country on try 2
+checkCountry(criminal.country.countryName);
+printStuff();
+//talked to 5 correct people
+talkedTo();
+talkedTo();
+talkedTo();
+talkedTo();
+talkedTo();
+printStuff();
+ **/
