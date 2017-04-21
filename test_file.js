@@ -62,6 +62,15 @@ var special = ['missing hand', 'limp', 'eye patch'];
 var p_special = ['headphones', 'bathing suit', 'naked'];
 var greetings = ['hey', "what's up'", 'hi'];
 
+//temp vars that can be spliced in case game gets restarted
+var t_height = height;
+var t_body = body;
+var t_eyeSize = eyeSize;
+var t_eyeColor = eyeColor;
+var t_hairLength = hairLength;
+var t_hairColor = hairColor;
+var t_special = special;
+
 //countries
 //Middle East
 var Egypt  = {
@@ -542,14 +551,14 @@ function lastStage()
     shuffleArray(criminalArr);
     var crimVar = criminalArr.pop();
     //removing criminal traits from attribute arrays so randomizer doesn't pick them
-    height.splice(height.indexOf(criminal.height), 1);
-    height.splice(height.indexOf(criminal.body), 1);
-    height.splice(height.indexOf(criminal.eyeSize), 1);
-    height.splice(height.indexOf(criminal.eyeColor), 1);
-    height.splice(height.indexOf(criminal.hairLength), 1);
-    height.splice(height.indexOf(criminal.hairColor), 1);
+    height.splice(t_height.indexOf(criminal.height), 1);
+    height.splice(t_body.indexOf(criminal.body), 1);
+    height.splice(t_eyeSize.indexOf(criminal.eyeSize), 1);
+    height.splice(t_eyeColor.indexOf(criminal.eyeColor), 1);
+    height.splice(t_hairLength.indexOf(criminal.hairLength), 1);
+    height.splice(t_hairColor.indexOf(criminal.hairColor), 1);
     //might keep special, idk.
-    height.splice(height.indexOf(criminal.special), 1);
+    height.splice(t_special.indexOf(criminal.special), 1);
 
     if(crimVar == 2)
     {
@@ -560,6 +569,7 @@ function lastStage()
     }
     else
     {
+        //randomly picks 1 or 2 attributes to change
         var criminalAtt = [criminal.height, criminal.body, criminal.eyeSize, criminal.eyeColor, criminal.hairLength,
                             criminal.hairColor, criminal.special];
         var attributeInd = [0 , 1, 2, 3, 4, 5, 6];
@@ -571,26 +581,26 @@ function lastStage()
             switch(attributeInd[r])
             {
                 case 0:
-                    criminalAtt[attributeInd[r]] = height[rand(0, height.length) - 1];
+                    criminalAtt[attributeInd[r]] = t_height[rand(0, t_height.length) - 1];
                     break;
                 case 1:
-                    criminalAtt[attributeInd[r]] = body[rand(0, body.length) -1];
+                    criminalAtt[attributeInd[r]] = t_body[rand(0, t_body.length) -1];
                     break;
                 case 2:
-                    criminalAtt[attributeInd[r]] = eyeSize[rand(0, eyeSize.length -1)];
+                    criminalAtt[attributeInd[r]] = t_eyeSize[rand(0, t_eyeSize.length -1)];
                     break;
                 case 3:
-                    criminalAtt[attributeInd[r]] = eyeColor[rand(0, eyeColor.length -1)];
+                    criminalAtt[attributeInd[r]] = t_eyeColor[rand(0, t_eyeColor.length -1)];
                     break;
                 case 4:
-                    criminalAtt[attributeInd[r]] = hairLength[rand(0, hairLength.length -1)];
+                    criminalAtt[attributeInd[r]] = t_hairLength[rand(0, t_hairLength.length -1)];
                     break;
                 case 5:
-                    criminalAtt[attributeInd[r]] = hairColor[rand(0, hairLength.length -1)];
+                    criminalAtt[attributeInd[r]] = t_hairColor[rand(0, t_hairLength.length -1)];
                     break;
                 case 6:
                     //might remove case 6 as specials might be too easy
-                    criminalAtt[attributeInd[r]] = special[rand(0, special.length) -1];
+                    criminalAtt[attributeInd[r]] = t_special[rand(0, t_special.length) -1];
                     break;
                 default:
                     console.log("error populating final stage random person");
