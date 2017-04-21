@@ -4,6 +4,16 @@ function rand(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+}
+
 function pronoun( gender )
 {
     if(gender == 'male')
@@ -28,6 +38,17 @@ function pronounOwnership( gender )
     }
 }
 
+function pronounThird( gender )
+{
+    if(gender == 'male')
+    {
+        return "man";
+    }
+    else
+    {
+        return "woman";
+    }
+}
 
 //People attributes
 var gender = ['male', 'female'];
@@ -363,8 +384,6 @@ function PopulateCriminal()  {
     this.special = special[rand(0, special.length) -1];
     this.name = name(this.country, this.gender);
 }
-//will use below assignment if above one doesn't work, getting element not exported error
-//criminal.name = name(criminal.country, criminal.gender);
 
 function PopulateResponsePerson() {
     //may not need all these attributes, can pick what we want to output
@@ -386,6 +405,7 @@ var stage = 0;
 var countryVisited = 0; //count of times tried
 var crimCountryVisitedArr = []; //array of countries criminal has been to, used to match against
 var countryChoice = null;
+var criminalArr = [0, 1, 2];
 function checkCountry(country)
 {
     //assign choice of country and count for validation checking in other methods
@@ -517,6 +537,76 @@ function assignNextCountry()
     }
 }
 
+function lastStage()
+{
+    shuffleArray(criminalArr);
+    var crimVar = criminalArr.pop();
+    //removing criminal traits from attribute arrays so randomizer doesn't pick them
+    height.splice(height.indexOf(criminal.height), 1);
+    height.splice(height.indexOf(criminal.body), 1);
+    height.splice(height.indexOf(criminal.eyeSize), 1);
+    height.splice(height.indexOf(criminal.eyeColor), 1);
+    height.splice(height.indexOf(criminal.hairLength), 1);
+    height.splice(height.indexOf(criminal.hairColor), 1);
+    //might keep special, idk.
+    height.splice(height.indexOf(criminal.special), 1);
+
+    if(crimVar == 2)
+    {
+        console.log( "A " +criminal.height + " " +criminal.body+ " " +pronounThird(criminal.gender)+" with "
+                                + criminal.eyeSize +" " +criminal.eyeColor + " eyes, "
+                                + criminal.hairLength+ " " + criminal.hairColor + " hair, and a"
+                                + criminal.special+" walks by");
+    }
+    else
+    {
+        var criminalAtt = [criminal.height, criminal.body, criminal.eyeSize, criminal.eyeColor, criminal.hairLength,
+                            criminal.hairColor, criminal.special];
+        var attributeInd = [0 , 1, 2, 3, 4, 5, 6];
+        var randNum = rand(1, 2);
+        shuffleArray(attributeInd);
+
+        for(r = 1; r <= randNum; r++)
+        {
+            switch(attributeInd[r])
+            {
+                case 0:
+                    criminalAtt[attributeInd[r]] = height[rand(0, height.length) - 1];
+                    break;
+                case 1:
+                    criminalAtt[attributeInd[r]] = body[rand(0, body.length) -1];
+                    break;
+                case 2:
+                    criminalAtt[attributeInd[r]] = eyeSize[rand(0, eyeSize.length -1)];
+                    break;
+                case 3:
+                    criminalAtt[attributeInd[r]] = eyeColor[rand(0, eyeColor.length -1)];
+                    break;
+                case 4:
+                    criminalAtt[attributeInd[r]] = hairLength[rand(0, hairLength.length -1)];
+                    break;
+                case 5:
+                    criminalAtt[attributeInd[r]] = hairColor[rand(0, hairLength.length -1)];
+                    break;
+                case 6:
+                    //might remove case 6 as specials might be too easy
+                    criminalAtt[attributeInd[r]] = special[rand(0, special.length) -1];
+                    break;
+                default:
+                    console.log("error populating final stage random person");
+                    break;
+            }
+        }
+        console.log( "A " +criminalAtt[0] + " " +criminalAtt[1]+ " " +pronounThird(criminal.gender)+" with "
+            + criminalAtt[2] +" " +criminalAtt[3] + " eyes, "
+            + criminalAtt[4]+ " " + criminalAtt[5] + " hair, and a"
+            + criminalAtt[6]+" walks by");
+
+    }
+
+
+}
+
 //called when 'TarryStopIntent is called. checks for number of people talked to is <= 5. If less,  then generates next person to talk to.
 function talkedTo()
 {
@@ -524,54 +614,52 @@ function talkedTo()
     if(stage >= 3)
     {
         //stuff for populating possible criminals for player to stop.
-        console.log("third stage people walk by");
-    }
-    //non-final stages
-    talkedToCount++;
-    if(countryChoice != criminal.country)
-    {
-        talkedToCount += 3;
-        //exit from country on 2nd talk in wrong country
-        if(talkedToCount >= 6) //2nd time should evaluate to 7
-        {
-            //response that you're in the wrong country
-            console.log("wrong country reponse");
-        }
+        lastStage();
+        //console.log("third stage people walk by");
     }
     else {
-        if (r_person.seenValue == 0) {
-            console.log("r_person seen value = 0 reponses");
-            if (talkedToCount >= 5) {
-                console.log("reached final person to talk to in 0 response");
+        //non-final stages
+        talkedToCount++;
+        if (countryChoice != criminal.country) {
+            talkedToCount += 3;
+            //exit from country on 2nd talk in wrong country
+            if (talkedToCount >= 6) //2nd time should evaluate to 7
+            {
+                //response that you're in the wrong country
+                console.log("wrong country reponse");
             }
+        }
+        else {
+            if (r_person.seenValue == 0) {
+                console.log("r_person seen value = 0 reponses");
+                if (talkedToCount >= 5) {
+                    console.log("reached final person to talk to in 0 response");
+                }
 
-        }
-        else
-        {
-            console.log("r_person seen value NOT 0 reponses");
-            //not sure if this is how to capture subsequent questioning
-            if (talkedToCount >= 5) {
-                console.log("reached final person to talk to in NOT 0");
-                //closing response for the country and request next country intent
+            }
+            else {
+                console.log("r_person seen value NOT 0 reponses");
+                //not sure if this is how to capture subsequent questioning
+                if (talkedToCount >= 5) {
+                    console.log("reached final person to talk to in NOT 0");
+                    //closing response for the country and request next country intent
+                }
             }
         }
-    }
-    //reset counter after 5 people
-    if(talkedToCount >= 5)
-    {
-        console.log("resetting counter, 5 people talked to, time to choose a country");
-        talkedToCount = 0;
-        if(countryChoice == criminal.country)
-        {
-            assignNextCountry();
+        //reset counter after 5 people
+        if (talkedToCount >= 5) {
+            console.log("resetting counter, 5 people talked to, time to choose a country");
+            talkedToCount = 0;
+            if (countryChoice == criminal.country) {
+                assignNextCountry();
+            }
+            //reassign criminal country values, create a new method for that.
         }
-        //reassign criminal country values, create a new method for that.
-    }
-    else
-    {
-        console.log("poulating new r_person form talkedto()");
-        r_person = new PopulateResponsePerson();
-        //build response for next person walking by.
+        else {
+            console.log("poulating new r_person form talkedto()");
+            r_person = new PopulateResponsePerson();
+            //build response for next person walking by.
+        }
     }
 }
 

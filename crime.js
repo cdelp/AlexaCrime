@@ -647,6 +647,7 @@ exports.handler = (event, context) => {
                         criminal = new PopulateCriminal();
                         assignNextCountry();
                         r_person = new PopulateResponsePerson();
+                        break;
 
                         //build a response using criminal.country.facts, criminal.name, criminal.gender
                     case "CountryIntent":
