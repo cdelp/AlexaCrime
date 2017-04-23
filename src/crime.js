@@ -879,8 +879,8 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
 	"TarryStopIntent": function () {      
 		//r_person = new PopulateResponsePerson();
 		talkedTo();
-		var speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender));
-		this.emit(":ask", speechOutput);		
+		//var speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender));
+		//this.emit(":ask", speechOutput);
     },
     "AMAZON.StartOverIntent": function () {
         this.handler.state = GAME_STATES.START;
