@@ -71,6 +71,12 @@ PersonalIntent you are a dirty whore.
 PersonalIntent you are nothing
 PersonalIntent you are lower that a show salesman
 
+GameStart Yes
+GameStart Yep
+GameStart OK
+GameStart Alright
+GameStart lets do this
+
 CountryIntent let's go to {country_item}
 CountryIntent {country_item}
 CountryIntent Go to {country_item}
