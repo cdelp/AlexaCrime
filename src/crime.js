@@ -1,27 +1,17 @@
-//helper
-function buildSpeechletResponse (outputText, shouldEndSession) {
-
-    return {
-        outputSpeech: {
-            type: "PlainText",
-            text: outputText
-        },
-        shouldEndSession: shouldEndSession
-    };
-}
-
-function generateResponse (sessionAttributes, speechletResponse) {
-    return {
-        version:"1.0",
-        sessionAttributes: sessionAttributes,
-        response: speechletResponse
-    };
-}
-
 function rand(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
 }
 
 function pronoun( gender )
@@ -48,6 +38,17 @@ function pronounOwnership( gender )
     }
 }
 
+function pronounThird( gender )
+{
+    if(gender == 'male')
+    {
+        return "man";
+    }
+    else
+    {
+        return "woman";
+    }
+}
 
 //People attributes
 var gender = ['male', 'female'];
@@ -61,6 +62,15 @@ var special = ['missing hand', 'limp', 'eye patch'];
 var p_special = ['headphones', 'bathing suit', 'naked'];
 var greetings = ['hey', "what's up'", 'hi'];
 
+//temp vars that can be spliced in case game gets restarted
+var t_height = height;
+var t_body = body;
+var t_eyeSize = eyeSize;
+var t_eyeColor = eyeColor;
+var t_hairLength = hairLength;
+var t_hairColor = hairColor;
+var t_special = special;
+
 //countries
 //Middle East
 var Egypt  = {
@@ -69,285 +79,285 @@ var Egypt  = {
     m_names: ['Aaheru', 'Abuskhau', 'Acheri', 'Aches', 'Am', 'Akhekh', 'Amenamen'],
     f_names: ['Cleopatra', 'Amisi', 'Bast', 'Ebio', 'Emu', 'Isis'],
     region: 'Middle East'
-}
+};
 var Iran = {
     countryName: 'Iran',
     facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
     m_names: ['Mohammad', 'Amir', 'Yosef', 'Mehran', 'Faraz', 'Hooman'],
     f_names: ['Ada', 'Saye', 'Nooshin', 'Sajedeh', 'Niyusha', 'Fatima'],
     region: 'Middle East'
-}
+};
 var Algeria = {
     countryName: 'Algeria',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Algeria fact 1', 'Algeria fact 2', 'Algeria fact 3'],
     m_names: ['Mohammad', 'Amine', 'Anis', 'Brahim', 'Zaki', 'Mounir'],
     f_names: ['Meriem', 'Sabrina', 'Safia', 'Yasmine', 'Chiraz', 'Aya'],
     region: 'Middle East'
-}
+};
 var Tunisia = {
     countryName: 'Tunisia',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Tunisia fact 1', 'Tunisia fact 2', 'Tunisia fact 3'],
     m_names: ['Ahmed', 'Hazim', 'Slim', 'Aziz', 'Mehdi', 'Raouf'],
     f_names: ['Fatma', 'Eya', 'Hiba', 'Sarah', 'Farah', 'Rim'],
     region: 'Middle East'
-}
+};
 var Oman = {
     countryName: 'Oman',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Oman fact 1', 'Oman fact 2', 'Oman fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Middle East'
-}
+};
 //countries below this line aren't filled with real data
 var Morocco = {
     countryName: 'Morocco',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    facts: ['Morocco fact 1', 'Morocco fact 2', 'Morocco fact 3'],
+    m_names: ['Abdo', 'Ahmen', 'Karim', 'Ali', 'Rachid', 'Brahim'],
+    f_names: ['Zineb', 'Ghita', 'Marwa', 'Aya', 'Lina', 'Rania'],
     region: 'Middle East'
-}
+};
 var Syria = {
     countryName: 'Syria',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    facts: ['Syria fact 1', 'Syria fact 2', 'Syria fact 3'],
+    m_names: ['Adnan', 'Elias', 'Nizar', 'Sayid', 'Yaman', 'Rifat'],
+    f_names: ['Zeinah', 'Uri', 'Amena', 'Shayma', 'Nooda', 'Aisl'],
     region: 'Middle East'
-}
+};
 var Iraq = {
     countryName: 'Iraq',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    facts: ['Iraq fact 1', 'Iraq fact 2', 'Iraq fact 3'],
+    m_names: ['Zamanlabib', 'Mustafa', 'Barhoomee', 'Baravan', 'Jahmir', 'Fadhil'],
+    f_names: ['Zainab', 'Noora', 'Sham', 'Telenaz', 'Rukia', 'Kayoosh'],
     region: 'Middle East'
-}
+};
 var SaudiArabia = {
     countryName: 'Saudi Arabia',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    facts: ['Saudi Arabia fact 1', 'Saudi Arabia fact 2', 'Saudi Arabia fact 3'],
+    m_names: ['Kahaled', 'Mahamat', 'Inam', 'Taha', 'Hossien', 'Zishan'],
+    f_names: ['Faten', 'Habiba', 'Reema', 'Nadia', 'Bushra', 'Salsabyl'],
     region: 'Middle East'
-}
+};
 var Lebanon = {
     countryName: 'Lebanon',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    facts: ['Lebanon fact 1', 'Lebanon fact 2', 'Lebanon fact 3'],
+    m_names: ['Mahmous', 'Nader', 'Ayman', 'Wehbe', 'Rami', 'Moukhtar'],
+    f_names: ['Nour', 'Alaa', 'Souad', 'Sousou', 'Yasmine', 'Fatme'],
     region: 'Middle East'
-}
+};
 
 //East Asia
 var Japan = {
     countryName: 'Japan',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    facts: ['Japan fact 1', 'Japan fact 2', 'Japan fact 3'],
+    m_names: ['Dorobo', 'Naruto', 'Ren', 'Tatsuya', 'Daisuke', 'Kazuki'],
+    f_names: ['Yuri', 'Ayumi', 'Minami', 'Nana', 'Risa', 'Hana'],
     region: 'East Asia'
-}
+};
 var China = {
     countryName: 'China',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    facts: ['China fact 1', 'China fact 2', 'China fact 3'],
+    m_names: ['Ching', 'Chong', 'Ting', 'Chow', 'Yang', 'Ming'],
+    f_names: ['Ming Ming', 'Chi CHi', 'Jade', 'Ying', 'Fei Fei', 'Fai Di La'],
     region: 'East Asia'
-}
+};
 var Mongolia = {
     countryName: 'Mongolia',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    facts: ['Mongolia fact 1', 'Mongolia fact 2', 'Mongolia fact 3'],
+    m_names: ['Dana', 'Ankhbaatar', 'Davaa', 'Zev'],
+    f_names: ['Zaya', 'Sondor', 'Oyundelger', 'Aigerim', 'Delgermaa', 'Jabek'],
     region: 'East Asia'
-}
+};
 var Nepal = {
     countryName: 'Nepal',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    facts: ['Nepal fact 1', 'Nepal fact 2', 'Nepal fact 3'],
+    m_names: ['Krishna', 'Bishal', 'Bibek', 'Kiran', 'Bikash', 'Yash'],
+    f_names: ['Shirisha', 'Shristi', 'Swornima', 'Tsamchou', 'Simixya', 'Palisha'],
     region: 'East Asia'
-}
+};
 var Taiwan = {
     countryName: 'Taiwan',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Taiwan fact 1', 'Taiwan fact 2', 'Taiwan fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
-}
+};
 var Philippines = {
     countryName: 'Philippines',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Philippines fact 1', 'Philippines fact 2', 'Philippines fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
-}
+};
 var Cambodia = {
     countryName: 'Cambodia',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Cambodia fact 1', 'Cambodia fact 2', 'Cambodia fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
-}
+};
 var Vietnam = {
     countryName: 'Vietnam',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Vietnam fact 1', 'Vietnam fact 2', 'Vietnam fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
-}
+};
 var NorthKorea = {
     countryName: 'North Korea',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['North Korea fact 1', 'North Korea fact 2', 'North Korea fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
-}
+};
 var Malaysia = {
     countryName: 'Malaysia',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Malaysia fact 1', 'Malaysia fact 2', 'Malaysia fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
-}
+};
 //Africa
 var SouthAfrica = {
     countryName: 'South Africa',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['South Africa fact 1', 'South Africa fact 2', 'South Africa fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
-}
+};
 var Uganda = {
     countryName: 'Uganda',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Uganda fact 1', 'Uganda fact 2', 'Uganda fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
-}
+};
 var Kenya = {
     countryName: 'Kenya',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Kenya fact 1', 'Kenya fact 2', 'Kenya fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
-}
+};
 var Somalia = {
     countryName: 'Somalia',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Somalia fact 1', 'Somalia fact 2', 'Somalia fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
-}
+};
 var Sudan = {
     countryName: 'Sudan',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Sudan fact 1', 'Sudan fact 2', 'Sudan fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
-}
+};
 var Nigeria = {
     countryName: 'Nigeria',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Nigeria fact 1', 'Nigeria fact 2', 'Nigeria fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
-}
+};
 var Cameroon = {
     countryName: 'Cameroon',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Cameroon fact 1', 'Cameroon fact 2', 'Cameroon fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
-}
+};
 var Senegal = {
     countryName: 'Senegal',
     facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
-}
+};
 var Ghana = {
     countryName: 'Ghana',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Ghana fact 1', 'Ghana fact 2', 'Ghana fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
-}
+};
 //SouthAmerica
 var Brazil = {
     countryName: 'brazil',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Brazil fact 1', 'Brazil fact 2', 'Brazil fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
-}
+};
 var Argentina = {
     countryName: 'Argentina',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Argentina fact 1', 'Argentina fact 2', 'Argentina fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
-}
+};
 var Venezuela = {
     countryName: 'Venezuela',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Venezuela fact 1', 'Venezuela fact 2', 'Venezuela fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
-}
+};
 var Colombia = {
     countryName: 'Colombia',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Colombia fact 1', 'Colombia fact 2', 'Colombia fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
-}
+};
 var Peru = {
     countryName: 'Peru',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Peru fact 1', 'Peru fact 2', 'Peru fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
-}
+};
 var Ecuador = {
     countryName: 'Ecuador',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Ecuador fact 1', 'Ecuador fact 2', 'Ecuador fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
-}
+};
 var Uruguay = {
     countryName: 'Uruguay',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Uruguay fact 1', 'Uruguay fact 2', 'Uruguay fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
-}
+};
 var Paraguay = {
     countryName: 'Paraguay',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Paraguay fact 1', 'Paraguay fact 2', 'Paraguay fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
-}
+};
 var Aruba = {
     countryName: 'Aruba',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Aruba fact 1', 'Aruba fact 2', 'Aruba fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
-}
+};
 var Chile = {
     countryName: 'Chile',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Chile fact 1', 'Chile fact 2', 'Chile fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
-}
+};
 var Columbia = {
     countryName: 'Columbia',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Columbia fact 1', 'Columbia fact 2', 'Columbia fact 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
-}
+};
 
 
 var MiddleEast = [Egypt, Iran, Algeria, Tunisia, Oman, Morocco, Syria, Iraq, SaudiArabia, Lebanon];
@@ -374,7 +384,6 @@ function PopulateCriminal()  {
     this.region = Region[rand(0, Region.length -1)];
     this.country = this.region[rand(0, this.region.length -1)];
     this.nextCountry = null; //should exempt current country, write a new method for this.
-    this.crime = Countries[rand(0, Countries.length -1)]; //need to fill with actual crimes.
     this.hairLength = hairLength[rand(0, hairLength.length -1)];
     this.hairColor = hairColor[rand(0, hairLength.length -1)];
     this.eyeSize = eyeSize[rand(0, eyeSize.length -1)];
@@ -383,13 +392,12 @@ function PopulateCriminal()  {
     this.height = height[rand(0, height.length) -1];
     this.special = special[rand(0, special.length) -1];
     this.name = name(this.country, this.gender);
+    this.crime = "default test crime";
 }
-//will use below assignment if above one doesn't work, getting element not exported error
-//criminal.name = name(criminal.country, criminal.gender);
 
 function PopulateResponsePerson() {
     //may not need all these attributes, can pick what we want to output
-    this.seenValue = rand(0, 2);
+    this.seenValue = rand(0, 4);
     this.gender =  gender[rand(0, gender.length -1)];
     this.hairLength = hairLength[rand(0, hairLength.length -1)];
     this.hairColor = hairColor[rand(0, hairLength.length -1)];
@@ -406,7 +414,10 @@ var talkedToCount = 0;
 var stage = 0;
 var countryVisited = 0; //count of times tried
 var crimCountryVisitedArr = []; //array of countries criminal has been to, used to match against
+var CountryOutputList = []; //TODO Need to fill with 1 correct country and rest random. Splice the wrong country chosen when picked in checkCountry
 var countryChoice = null;
+var criminalArr = [0, 1, 2];
+var talkingFlag = 0;
 function checkCountry(country)
 {
     //assign choice of country and count for validation checking in other methods
@@ -414,6 +425,7 @@ function checkCountry(country)
 
     if(stage == 0)
     {
+        console.log("in stage 0 for checkCountry");
         for (i = 0; i < Region.length; i++)
         {
             for(j = 0; j < Region[i].length; j++)
@@ -421,35 +433,51 @@ function checkCountry(country)
                 if (Region[i][j].countryName == country)
                 {
                     //assign countryChoice if said country is a valid choice
-                    countryChoice = criminal.region[i];
+                    countryChoice = Region[i][j];
                 }
             }
         }
 
         try {
-            //if country doesn't register then they gave a country naem we don't have, error output
+            //if country doesn't register then they gave a country name we don't have, error output
             if (countryChoice.countryName != country) {
                 //error response, prompt for a valid country choice.
-
+                console.log("given country string did not match");
                 //fix counter
                 countryVisited--;
             }
 
             //if correct country chosen then reset count, go to next stage, assign next country
             if (criminal.country.countryName == country) {
+                console.log("correct country given");
                 countryVisited = 0;
                 stage++;
-                assignNextCountry();
+                //TODO will need to add countryChoice.intro as a parameter to output when we add the intro to countries.
+                var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.countryName, criminal.name) + this.t("PERSON_APPROACHING", r_person.gender, r_person.hairColor, r_person.body);
+                this.emit(":ask", speechOutput);
+
             }
             else if (criminal.country.countryName != country && countryVisited >= 2) {
                 //you lose.
+                console.log("you lose");
+                //TODO ask if they want to play again
+                var speechOutput = this.t("LOSE");
+                this.emit(":ask", speechOutput);
+            }
+            else
+            {
+                //picked wrong country but only on first try
+                //TODO will need to add countryChoice.intro as a parameter to output when we add the intro to countries.
+                var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.countryName, criminal.name) + this.t("PERSON_APPROACHING", r_person.gender, r_person.hairColor, r_person.body);
+                this.emit(":ask", speechOutput);
             }
         } catch (error) {
-            context.fail("CountryChoice incorrect handling");
+            console.log("CountryChoice incorrect handling");
         }
     }
     else
     {
+        console.log("in else stage for checkCountry");
         for(i = 0; i < criminal.region.length; i++)
         {
             if(criminal.region[i].countryName == country)
@@ -462,22 +490,37 @@ function checkCountry(country)
             //if country chosen doesn't exist
             if (countryChoice.countryName != country) {
                 //error response, prompt for a valid country choice.
-
+                console.log("given country string did not match");
                 //fix counter
                 countryVisited--;
             }
 
             //if correct country chosen then reset count, go to next stage, assign next country
             if (criminal.country.countryName == country) {
+                console.log("correct country given");
                 countryVisited = 0;
                 stage++;
                 crimCountryVisitedArr.push(countryChoice);
-                assignNextCountry();
+                //assignNextCountry();
+                //TODO will need to add countryChoice.intro as a parameter to output when we add the intro to countries.
+                var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.countryName, criminal.name) + this.t("PERSON_APPROACHING", r_person.gender, r_person.hairColor, r_person.body);
+                this.emit(":ask", speechOutput);
             }
             else if (criminal.country.countryName != country && countryVisited >= 1) {
                 //you lose.
+                console.log("you lose");
+                //TODO ask if they want to play again
+                var speechOutput = this.t("LOSE");
+                this.emit(":ask", speechOutput);
             }
-        }catch(error) {context.fail("CountryChoice incorrect handling");}
+            else
+            {
+                //picked wrong country
+                //TODO will need to add countryChoice.intro as a parameter to output when we add the intro to countries.
+                var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.countryName, criminal.name) + this.t("PERSON_APPROACHING", r_person.gender, r_person.hairColor, r_person.body);
+                this.emit(":ask", speechOutput);
+            }
+        }catch(error) {console.log("error in countryChecked()");}
     }
 
 
@@ -486,16 +529,25 @@ function checkCountry(country)
 //assign next country
 function assignNextCountry()
 {
+    var found = 0;
+    var temp = undefined;
     if(stage == 0)
     {
+        console.log("in stage 0 of assign trying to push "+ criminal.country);
+        console.log(criminal.country);
         crimCountryVisitedArr.push(criminal.country);
-        var found = 0;
+        found = 0;
         while(found == 0)
         {
-            var temp = criminal.region[rand(0, criminal.region.length -1)];
+            temp = criminal.region[rand(0, criminal.region.length -1)];
             if(crimCountryVisitedArr.indexOf(temp) == -1)
             {
+                console.log("next countries before assigned:");
+                console.log(criminal.nextCountry);
                 criminal.nextCountry = temp;
+                console.log("next countries after assigned:");
+                console.log(criminal.nextCountry);
+
                 //exit loop
                 found++;
             }
@@ -503,15 +555,21 @@ function assignNextCountry()
     }
     else
     {
-        var found = 0;
+        console.log("in stage else of assign");
+        found = 0;
         while(found == 0)
         {
-            var temp = criminal.region[rand(0, criminal.region.length -1)];
+            temp = criminal.region[rand(0, criminal.region.length -1)];
             if(crimCountryVisitedArr.indexOf(temp) == -1)
             {
-
+                console.log("next countries before assigned country:next:");
+                console.log(criminal.country);
                 criminal.country = criminal.nextCountry;
+                console.log(temp);
                 criminal.nextCountry = temp;
+                console.log("next countries after assigned:");
+                console.log(criminal.nextCountry);
+
                 //exit loop
                 found++;
             }
@@ -519,90 +577,171 @@ function assignNextCountry()
     }
 }
 
+function lastStage()
+{
+    var speechOutput;
+    shuffleArray(criminalArr);
+    var crimVar = criminalArr.pop();
+    //removing criminal traits from attribute arrays so randomizer doesn't pick them
+    height.splice(t_height.indexOf(criminal.height), 1);
+    height.splice(t_body.indexOf(criminal.body), 1);
+    height.splice(t_eyeSize.indexOf(criminal.eyeSize), 1);
+    height.splice(t_eyeColor.indexOf(criminal.eyeColor), 1);
+    height.splice(t_hairLength.indexOf(criminal.hairLength), 1);
+    height.splice(t_hairColor.indexOf(criminal.hairColor), 1);
+    //might keep special, idk.
+    height.splice(t_special.indexOf(criminal.special), 1);
+
+    if(crimVar == 2)
+    {
+        console.log( "A " +criminal.height + " " +criminal.body+ " " +pronounThird(criminal.gender)+" with "
+            + criminal.eyeSize +" " +criminal.eyeColor + " eyes, "
+            + criminal.hairLength+ " " + criminal.hairColor + " hair, and a"
+            + criminal.special+" walks by. This is the Criminal.");
+
+        //can we use emit like this?
+        speechOutput = "A " +criminal.height + " " +criminal.body+ " " +pronounThird(criminal.gender)+" with "
+            + criminal.eyeSize +" " +criminal.eyeColor + " eyes, "
+            + criminal.hairLength+ " " + criminal.hairColor + " hair, and a"
+            + criminal.special+" walks by. This is the Criminal.";
+        this.emit(":tell", speechOutput);
+
+        speechOutput = this.t("ACCUSE");
+        this.emit(":ask", speechOutput);
+
+
+
+    }
+    else
+    {
+        //randomly picks 1 or 2 attributes to change
+        var criminalAtt = [criminal.height, criminal.body, criminal.eyeSize, criminal.eyeColor, criminal.hairLength,
+            criminal.hairColor, criminal.special];
+        var attributeInd = [0 , 1, 2, 3, 4, 5, 6];
+        var randNum = rand(1, 2);
+        shuffleArray(attributeInd);
+
+        for(r = 1; r <= randNum; r++)
+        {
+            switch(attributeInd[r])
+            {
+                case 0:
+                    criminalAtt[attributeInd[r]] = t_height[rand(0, t_height.length) - 1];
+                    break;
+                case 1:
+                    criminalAtt[attributeInd[r]] = t_body[rand(0, t_body.length) -1];
+                    break;
+                case 2:
+                    criminalAtt[attributeInd[r]] = t_eyeSize[rand(0, t_eyeSize.length -1)];
+                    break;
+                case 3:
+                    criminalAtt[attributeInd[r]] = t_eyeColor[rand(0, t_eyeColor.length -1)];
+                    break;
+                case 4:
+                    criminalAtt[attributeInd[r]] = t_hairLength[rand(0, t_hairLength.length -1)];
+                    break;
+                case 5:
+                    criminalAtt[attributeInd[r]] = t_hairColor[rand(0, t_hairLength.length -1)];
+                    break;
+                case 6:
+                    //might remove case 6 as specials might be too easy
+                    criminalAtt[attributeInd[r]] = t_special[rand(0, t_special.length) -1];
+                    break;
+                default:
+                    console.log("error populating final stage random person");
+                    break;
+            }
+        }
+        console.log( "A " +criminalAtt[0] + " " +criminalAtt[1]+ " " +pronounThird(criminal.gender)+" with "
+            + criminalAtt[2] +" " +criminalAtt[3] + " eyes, "
+            + criminalAtt[4]+ " " + criminalAtt[5] + " hair, and a"
+            + criminalAtt[6]+" walks by. This is not the Criminal.");
+
+        speechOutput = "A " +criminalAtt[0] + " " +criminalAtt[1]+ " " +pronounThird(criminal.gender)+" with "
+            + criminalAtt[2] +" " +criminalAtt[3] + " eyes, "
+            + criminalAtt[4]+ " " + criminalAtt[5] + " hair, and a"
+            + criminalAtt[6]+" walks by. This is not the Criminal.";
+        this.emit(":tell", speechOutput);
+
+        speechOutput = this.t("ACCUSE");
+        this.emit(":ask", speechOutput);
+
+    }
+
+
+}
+
 //called when 'TarryStopIntent is called. checks for number of people talked to is <= 5. If less,  then generates next person to talk to.
 function talkedTo()
 {
+    var speechOutput;
     //final stage prompt.
     if(stage >= 3)
     {
         //stuff for populating possible criminals for player to stop.
-    }
-    //non-final stages
-    talkedToCount++;
-    if(countryChoice != criminal.country)
-    {
-        talkedToCount += 3;
-        buildSpeechletResponse("They keep walking by", false),
-            {}
-        //exit from country on 2nd talk in wrong country
-        if(talkedToCount >= 6) //2nd time should evaluate to 7
-        {
-            //response that you're in the wrong country
-        }
+        lastStage();
+        //console.log("third stage people walk by");
     }
     else {
-        if (r_person.seenValue == 0) {
-            generateResponse
-            (
-                buildSpeechletResponse("They keep walking by", false),
-                {}
-            )
-            if (talkedToCount >= 5) {
-                //closing response for countryChoice then choice for next countries
+        //non-final stages
+        talkedToCount++;
+        //wrong country
+        if (countryChoice != criminal.country) {
+            talkedToCount += 3;
+            //persons just walk by or have nothing to say
+            speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender));
+            this.emit(":tell", speechOutput);
+            //exit from country on 2nd talk in wrong country
+            if (talkedToCount >= 6)
+            {
+                //talked to 2 people in the wrong country
+                console.log("wrong country response");
+                //TODO will need to relist the countries here
+                speechOutput = this.t("WRONG_COUNTRY");
+                this.emit(":ask", speechOutput);
+            }
+        }
+        //right country
+        else {
+            //if the person has not seen anything or doesn't want to talk to you
+            if (r_person.seenValue == 0) {
+                console.log("r_person seen value = 0 reponses");
+                //right country but person hasn't seen anything (20% chance)
+                speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender));
+                this.emit(":tell", speechOutput);
+
+            }
+            //if person has seen something
+            else {
+                console.log("r_person seen value NOT 0 responses");
+                //TODO questioning responses here, just putting obvious country facts as clues here for testing
+                //0.00032 chance you won't see clues after talking to 5 people lol. Might need to fix that.
+                speechOutput = this.t("CORRECT_PERSON_RESPONSE", criminal.country.facts);
+                this.emit(":tell", speechOutput);
+            }
+        }
+        //reset counter after 5 people
+        if (talkedToCount == 5) {
+            console.log("resetting counter, 5 people talked to, time to choose a country");
+            talkedToCount = 0;
+            //if they were in the correct country and finished talking to 5 people
+            if (countryChoice == criminal.country) {
+                assignNextCountry();
+                console.log("reached final person to talk to in 0 response");
+
+                speechOutput = this.t("LAST_PERSON");
+                this.emit(":ask", speechOutput);
             }
 
         }
-        else
-        {
-            generateResponse
-            (
-                {},buildSpeechletResponse(greetings[rand(0, greetings.length - 1)], false)
-            )
-            //not sure if this is how to capture subsequent questioning intents so this will just be here for concept sake
-            //Chad TODO
-            //Could you help me check to see if this actually listens for next prompt? I'm hoping it does haha.
-            //it SHOULD allow the user to ask questions about the crime, looks, where criminal is heading, etc.
-            //Alan TODO
-            //set flags to indicatte you're in questioning state so no other intents except stop, help, restart should register.
-            //May need to include similar state checks on all intents.
-            switch (event.request.type.name) {
-                case "CrimeBackgroundQuestionIntent":
-                    generateResponse
-                    (
-                        {},buildSpeechletResponse("You're in crime background question intent", false)
-                    )
-                    //random info about criminal given --still thinking about how to randomize this atm
-                    break;
-                case "CriminalLooksQuestionIntent":
-                    generateResponse
-                    (
-                        {},buildSpeechletResponse("You're in criminal look question intent", false)
-                    )
-                    //random info about criminal looks given -- also still thinking about how to for this.
-                    break;
-                case "FinishTalkingIntent":
-                    generateResponse
-                    (
-                        {},buildSpeechletResponse("You're in finished talking intent", false)
-                    )
-                    //break convo
-                    break;
-            }
-            if (talkedToCount >= 5) {
-                //closing response for the country and request next country intent
-            }
+        else {
+            console.log("populating new r_person form talkedto()");
+            r_person = new PopulateResponsePerson();
+            //build response for next person walking by.
+
+            speechOutput = this.t("PERSON_APPROACHING", r_person.gender, r_person.hairColor, criminal.body);
+            this.emit(":ask", speechOutput);
         }
-    }
-    //reset counter after 5 people
-    if(talkedToCount >= 5)
-    {
-        talkedToCount = 0;
-        //reassign criminal country values, create a new method for that.
-    }
-    else
-    {
-        r_person = new PopulateResponsePerson();
-        //build response for next person walking by.
     }
 }
 
@@ -623,6 +762,7 @@ function talkedTo()
 // test, added by Chad ***************************************************************************************************
 var Alexa = require("alexa-sdk");
 var APP_ID = undefined;  // TODO replace with your app ID (OPTIONAL).
+var countryString = undefined;
 
 function Countries(number){
 	return "Test Country Name";
@@ -655,6 +795,12 @@ var languageString = {
 			"ARRIVAL_MESSAGE": "Welcome to %s, also known as Insert country intro. Time to find info on %s. Get the attention of bystanders so you can ask them about the criminal, and where the criminal is going. ",
 			"PERSON_APPROACHING": "%s %s %s approaching. ",
 			"PERSON_RESPONSE": "%s said to step back sucker. ",
+            "CORRECT_PERSON_RESPONSE": "%s.",
+            "LOSE": "You loser",
+            "WIN": "You Win",
+            "WRONG_COUNTRY": "This doesn't seem to be the correct Country, try a different one",
+            "LAST_PERSON": "Looks like we've talked to everyone, it's time to pick the next country",
+            "ACCUSE": "Is this the Criminal? If so, say stop"
 		}
     },
     "en-US": {
@@ -712,7 +858,10 @@ var startStateHandlers = Alexa.CreateStateHandler(GAME_STATES.START, {
 var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
     "GameStart": function () {
         criminal = new PopulateCriminal();
-		criminal.name = name(criminal.country, criminal.gender);
+        r_person = new PopulateResponsePerson();
+        //criminal name already populated with above code.
+		//criminal.name = name(criminal.country, criminal.gender);
+        //assigns the country the criminal will be headed to next so we can give clues regarding that.
 		assignNextCountry();
 		// introduces criminal and crime, asks which country the user would like to visit, TODO prompt with country choices
 		var speechOutput = this.t("INTRO_MESSAGE", criminal.name, pronoun(criminal.gender), criminal.crime, rand(50, 800), criminal.name, criminal.name, pronounOwnership(criminal.gender), criminal.name) + this.t("CHOOSE_COUNTRY");
@@ -720,10 +869,12 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
     },
     "CountryIntent": function () {
 		// line below sets country to the one the user spoke, from the country_item slot list
-		countryChoice = this.event.request.intent.slots.country_item.value;
-		r_person = new PopulateResponsePerson();
-		var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice) + this.t("ARRIVAL_MESSAGE", countryChoice, criminal.name) + this.t("PERSON_APPROACHING", r_person.gender, r_person.hairColor, r_person.body);
-        this.emit(":ask", speechOutput);		
+        //changed variable name, countryChoice needs to store an country Object which contains name, clues, etc.
+		countryString = this.event.request.intent.slots.country_item.value;
+		checkCountry(countryString);
+		//moved this emit to checkCountry Method
+		//var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.countryName, criminal.name) + this.t("PERSON_APPROACHING", r_person.gender, r_person.hairColor, r_person.body);
+        //this.emit(":ask", speechOutput);
     },
 	"TarryStopIntent": function () {      
 		//r_person = new PopulateResponsePerson();
