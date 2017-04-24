@@ -5,35 +5,40 @@
 //Middle East
 var Egypt  = {
     countryName: 'Egypt',
-    facts:  ['egypt fact 1', 'egypt fact 2', 'egypt fact 3'],
+	intro: 'Welcome to Egypt, an ancient civilization dating back to 3200 BC. Egypt is part of the fertile crescent because of the Nile River. ',
+    facts:  ['egypt intro 1', 'egypt intro 2', 'egypt intro 3'],
     m_names: ['Aaheru', 'Abuskhau', 'Acheri', 'Aches', 'Am', 'Akhekh', 'Amenamen'],
     f_names: ['Cleopatra', 'Amisi', 'Bast', 'Ebio', 'Emu', 'Isis'],
     region: 'Middle East'
 }
 var Iran = {
     countryName: 'Iran',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Mohammad', 'Amir', 'Yosef', 'Mehran', 'Faraz', 'Hooman'],
     f_names: ['Ada', 'Saye', 'Nooshin', 'Sajedeh', 'Niyusha', 'Fatima'],
     region: 'Middle East'
 }
 var Algeria = {
     countryName: 'Algeria',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Mohammad', 'Amine', 'Anis', 'Brahim', 'Zaki', 'Mounir'],
     f_names: ['Meriem', 'Sabrina', 'Safia', 'Yasmine', 'Chiraz', 'Aya'],
     region: 'Middle East'
 }
 var Tunisia = {
     countryName: 'Tunisia',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Ahmed', 'Hazim', 'Slim', 'Aziz', 'Mehdi', 'Raouf'],
     f_names: ['Fatma', 'Eya', 'Hiba', 'Sarah', 'Farah', 'Rim'],
     region: 'Middle East'
 }
 var Oman = {
     countryName: 'Oman',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Middle East'
@@ -41,35 +46,40 @@ var Oman = {
 //countries below this line aren't filled with real data
 var Morocco = {
     countryName: 'Morocco',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Middle East'
 }
 var Syria = {
     countryName: 'Syria',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Middle East'
 }
 var Iraq = {
     countryName: 'Iraq',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Middle East'
 }
 var SaudiArabia = {
     countryName: 'Saudi Arabia',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Middle East'
 }
 var Lebanon = {
     countryName: 'Lebanon',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Middle East'
@@ -78,70 +88,80 @@ var Lebanon = {
 //East Asia
 var Japan = {
     countryName: 'Japan',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
 }
 var China = {
     countryName: 'China',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
 }
 var Mongolia = {
     countryName: 'Mongolia',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
 }
 var Nepal = {
     countryName: 'Nepal',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
 }
 var Taiwan = {
     countryName: 'Taiwan',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
 }
 var Philippines = {
     countryName: 'Philippines',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
 }
 var Cambodia = {
     countryName: 'Cambodia',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
 }
 var Vietnam = {
     countryName: 'Vietnam',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
 }
 var NorthKorea = {
     countryName: 'North Korea',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
 }
 var Malaysia = {
     countryName: 'Malaysia',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
@@ -149,63 +169,72 @@ var Malaysia = {
 //Africa
 var SouthAfrica = {
     countryName: 'South Africa',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
 var Uganda = {
     countryName: 'Uganda',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
 var Kenya = {
     countryName: 'Kenya',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
 var Somalia = {
     countryName: 'Somalia',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
 var Sudan = {
     countryName: 'Sudan',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
 var Nigeria = {
     countryName: 'Nigeria',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
 var Cameroon = {
     countryName: 'Cameroon',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
 var Senegal = {
     countryName: 'Senegal',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
 var Ghana = {
     countryName: 'Ghana',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
@@ -213,77 +242,118 @@ var Ghana = {
 //SouthAmerica
 var Brazil = {
     countryName: 'brazil',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
 var Argentina = {
     countryName: 'Argentina',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
 var Venezuela = {
     countryName: 'Venezuela',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
 var Colombia = {
     countryName: 'Colombia',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
 var Peru = {
     countryName: 'Peru',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
 var Ecuador = {
     countryName: 'Ecuador',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
 var Uruguay = {
     countryName: 'Uruguay',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
 var Paraguay = {
     countryName: 'Paraguay',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['One of the few countries in south america that still speak their native language called Guarani with Spanish as second',
+'Often referred to as the heart of south America',
+'Home to the first railway line in South America',
+'One of two landlocked countries in South America',
+'Has the largest navy of any landlocked country',
+'Home to the second largest hydroelectric-power plant called Itaipu Dam on the Parana River',
+'The capital is Asuncion referring to the ascension of mary',
+'Name means crowned river after the Guarani words for water and palm crown',
+'Home to South Americas second largest river after Amazon',
+'The national drink is mahtay often served hot'
+],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
 var Aruba = {
     countryName: 'Aruba',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
 var Chile = {
     countryName: 'Chile',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+	intro: ' ',
+    facts: ['Home to the world’s largest swimming pool and it is filled with seawater from the pacific',
+'Where you can find the driest place on earth called the Atacama Desert runnning between the Andes Mountains and the Pacific',
+'Known for the statues on Easter island called Moai',
+'The capital is Sanitago founded by a spanish explorer in 1541',
+'Derives its name meaning where the land ends',
+'The national flag is similar to the state flag of texas',
+'The longest country in the world from north to south',
+'Pisco is the national drink which is a clear liquid similar to brandy',
+'Famous for the Alerce tree with some older than 4,000 years',
+'Home to the largest reserve of cooper'
+],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
 var Columbia = {
-    countryName: 'Columbia',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    countryName: 'Bolivia',
+	intro: ' ',
+    facts: ['One of two landlocked South American Countries',
+'Named after the Venezuelan military and political leader who led 4 south american countries to independence from Spain',
+'The capital is La Paz, the highest capital city in the world',
+'Home to worlds most dangerous road the camino de las yungas',
+'Where you offer dried llama to Pachamama or mother nature in return for blessings',
+'Home to the largest mirror on Earth called Salar de Uyuni which is a large salt flat ',
+'Main languages are Spanish, Quechua, Aymara and Guarani with an additional 33 other recognized languages',
+'Has the largest butterfly sanctuary',
+'Used to be called upper peru before gaining independence in 1825 from spain',
+'Where you can find pink dolphins in the amazon'
+],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
@@ -293,7 +363,7 @@ var Countries = [Egypt, Iran];
 var MiddleEast = [Egypt, Iran, Algeria, Tunisia, Oman, Morocco, Syria, Iraq, SaudiArabia, Lebanon];
 var EastAsia = [Japan, China, Mongolia, Nepal, Taiwan, Philippines, Cambodia, Vietnam, NorthKorea, Malaysia];
 var Afria = [SouthAfrica, Uganda, Kenya, Somalia, Sudan, Nigeria, Cameroon, Senegal, Ghana];
-var SouthAmerica = [Brazil, Argentina, Venezuela, Colombia, Peru, Ecuador, Uruguay, Paraguay, Aruba, Chile, Columbia];
+var SouthAmerica = [Brazil, Argentina, Venezuela, Colombia, Peru, Ecuador, Uruguay, Paraguay, Aruba, Chile, Bolivia];
 
 /** old stuff
  //helper
@@ -363,35 +433,35 @@ var SouthAmerica = [Brazil, Argentina, Venezuela, Colombia, Peru, Ecuador, Urugu
  //Middle East
  var Egypt  = {
     countryName: 'Egypt',
-    facts:  ['egypt fact 1', 'egypt fact 2', 'egypt fact 3'],
+    facts:  ['egypt intro 1', 'egypt intro 2', 'egypt intro 3'],
     m_names: ['Aaheru', 'Abuskhau', 'Acheri', 'Aches', 'Am', 'Akhekh', 'Amenamen'],
     f_names: ['Cleopatra', 'Amisi', 'Bast', 'Ebio', 'Emu', 'Isis'],
     region: 'Middle East'
 }
  var Iran = {
     countryName: 'Iran',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Mohammad', 'Amir', 'Yosef', 'Mehran', 'Faraz', 'Hooman'],
     f_names: ['Ada', 'Saye', 'Nooshin', 'Sajedeh', 'Niyusha', 'Fatima'],
     region: 'Middle East'
 }
  var Algeria = {
     countryName: 'Algeria',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Mohammad', 'Amine', 'Anis', 'Brahim', 'Zaki', 'Mounir'],
     f_names: ['Meriem', 'Sabrina', 'Safia', 'Yasmine', 'Chiraz', 'Aya'],
     region: 'Middle East'
 }
  var Tunisia = {
     countryName: 'Tunisia',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Ahmed', 'Hazim', 'Slim', 'Aziz', 'Mehdi', 'Raouf'],
     f_names: ['Fatma', 'Eya', 'Hiba', 'Sarah', 'Farah', 'Rim'],
     region: 'Middle East'
 }
  var Oman = {
     countryName: 'Oman',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Middle East'
@@ -399,35 +469,35 @@ var SouthAmerica = [Brazil, Argentina, Venezuela, Colombia, Peru, Ecuador, Urugu
  //countries below this line aren't filled with real data
  var Morocco = {
     countryName: 'Morocco',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Middle East'
 }
  var Syria = {
     countryName: 'Syria',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Middle East'
 }
  var Iraq = {
     countryName: 'Iraq',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Middle East'
 }
  var SaudiArabia = {
     countryName: 'Saudi Arabia',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Middle East'
 }
  var Lebanon = {
     countryName: 'Lebanon',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Middle East'
@@ -436,70 +506,70 @@ var SouthAmerica = [Brazil, Argentina, Venezuela, Colombia, Peru, Ecuador, Urugu
  //East Asia
  var Japan = {
     countryName: 'Japan',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
 }
  var China = {
     countryName: 'China',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
 }
  var Mongolia = {
     countryName: 'Mongolia',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
 }
  var Nepal = {
     countryName: 'Nepal',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
 }
  var Taiwan = {
     countryName: 'Taiwan',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
 }
  var Philippines = {
     countryName: 'Philippines',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
 }
  var Cambodia = {
     countryName: 'Cambodia',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
 }
  var Vietnam = {
     countryName: 'Vietnam',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
 }
  var NorthKorea = {
     countryName: 'North Korea',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
 }
  var Malaysia = {
     countryName: 'Malaysia',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
@@ -507,63 +577,63 @@ var SouthAmerica = [Brazil, Argentina, Venezuela, Colombia, Peru, Ecuador, Urugu
  //Africa
  var SouthAfrica = {
     countryName: 'South Africa',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
  var Uganda = {
     countryName: 'Uganda',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
  var Kenya = {
     countryName: 'Kenya',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
  var Somalia = {
     countryName: 'Somalia',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
  var Sudan = {
     countryName: 'Sudan',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
  var Nigeria = {
     countryName: 'Nigeria',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
  var Cameroon = {
     countryName: 'Cameroon',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
  var Senegal = {
     countryName: 'Senegal',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
  var Ghana = {
     countryName: 'Ghana',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
@@ -571,77 +641,77 @@ var SouthAmerica = [Brazil, Argentina, Venezuela, Colombia, Peru, Ecuador, Urugu
  //SouthAmerica
  var Brazil = {
     countryName: 'brazil',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
  var Argentina = {
     countryName: 'Argentina',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
  var Venezuela = {
     countryName: 'Venezuela',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
  var Colombia = {
     countryName: 'Colombia',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
  var Peru = {
     countryName: 'Peru',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
  var Ecuador = {
     countryName: 'Ecuador',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
  var Uruguay = {
     countryName: 'Uruguay',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
  var Paraguay = {
     countryName: 'Paraguay',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
  var Aruba = {
     countryName: 'Aruba',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
  var Chile = {
     countryName: 'Chile',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
  var Columbia = {
     countryName: 'Columbia',
-    facts: ['Iran fact 1', 'Iran fact 2', 'Iran fact 3'],
+    facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
