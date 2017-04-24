@@ -173,3 +173,7 @@ NabThiefIntent Stop there {criminal_name}
 NabThiefIntent Stop thief under arrest
 NabThiefIntent I got ya {criminal_name}
 NabThiefIntent I got ya criminal
+
+DoneQuestioningIntent I'm done questioning
+DoneQuestioningIntent that's all
+DoneQuestioningIntent I'm done talking

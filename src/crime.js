@@ -379,6 +379,20 @@ function name(country, gender)
     }
 }
 
+//randomly picks 3 attributes that for the response person to describe
+function seenAttributes ()
+{
+    var crimAttArr = ["body", "height", "eye", "hair", "special", "nextCountry"];
+    var crimSeenArr = [];
+
+    for( var s = 0; s < 3; s++)
+    {
+        shuffleArray(crimAttArr);
+        crimSeenArr.push(crimAttArr.pop());
+    }
+    return crimSeenArr;
+
+}
 function PopulateCriminal()  {
     this.gender =  gender[rand(0, gender.length -1)];
     this.region = Region[rand(0, Region.length -1)];
@@ -405,6 +419,7 @@ function PopulateResponsePerson() {
     this.eyeColor = eyeColor[rand(0, eyeColor.length -1)];
     this.body = body[rand(0, body.length) -1];
     this.p_special = p_special[rand(0, p_special.length) -1];
+    this.seenArr = seenAttributes();
 }
 
 //flags and methods to handle number of people talked to and countries visited
@@ -418,6 +433,7 @@ var CountryOutputList = []; //TODO Need to fill with 1 correct country and rest 
 var countryChoice = null;
 var criminalArr = [0, 1, 2];
 var talkingFlag = 0;
+var questionedCount = 0;
 function checkCountry(country)
 {
     //assign choice of country and count for validation checking in other methods
@@ -716,32 +732,204 @@ function talkedTo()
                 console.log("r_person seen value NOT 0 responses");
                 //TODO questioning responses here, just putting obvious country facts as clues here for testing
                 //0.00032 chance you won't see clues after talking to 5 people lol. Might need to fix that.
-                speechOutput = this.t("CORRECT_PERSON_RESPONSE", criminal.country.facts);
+                speechOutput = this.t("CORRECT_PERSON_RESPONSE", pronoun(criminal.gender));
                 this.emit(":tell", speechOutput);
             }
         }
-        //reset counter after 5 people
-        if (talkedToCount == 5) {
-            console.log("resetting counter, 5 people talked to, time to choose a country");
-            talkedToCount = 0;
-            //if they were in the correct country and finished talking to 5 people
-            if (countryChoice == criminal.country) {
-                assignNextCountry();
-                console.log("reached final person to talk to in 0 response");
+        //moved this block to doneQuestioning()
 
-                speechOutput = this.t("LAST_PERSON");
-                this.emit(":ask", speechOutput);
+    }
+}
+
+function doneQuestioning ()
+{
+    var speechOutput;
+    questionedCount = 0;
+    if (talkedToCount == 5) {
+        console.log("resetting counter, 5 people talked to, time to choose a country");
+        talkedToCount = 0;
+        //if they were in the correct country and finished talking to 5 people
+        if (countryChoice == criminal.country) {
+            assignNextCountry();
+            console.log("reached final person to talk to in 0 response");
+
+            speechOutput = this.t("LAST_PERSON");
+            this.emit(":ask", speechOutput);
+        }
+
+    }
+    else {
+        console.log("populating new r_person from doneQuestioning");
+        r_person = new PopulateResponsePerson();
+        //build response for next person walking by.
+
+        speechOutput = this.t("DONE_QUESTIONING", pronoun(r_person.gender));
+        this.emit(":tell", speechOutput);
+        speechOutput = this.t("PERSON_APPROACHING", r_person.gender, r_person.hairColor, criminal.body);
+        this.emit(":ask", speechOutput);
+    }
+}
+
+//questionType:
+//1 = background
+//2 = looks
+//3 = location
+function generateQuestionResponse(questionType)
+{
+    questionedCount++;
+    var responseString = pronoun(criminal.gender) + " ";
+    if(questionedCount > 3)
+    {
+        doneQuestioning();
+    }
+    else if(questionType == 1)
+    {
+        if(r_person.seenArr.indexOf("height") != -1)
+        {
+
+            if (responseString.length < 5)
+            {
+                responseString += "has a " + criminal.height + "figure ";
+            }
+            else
+            {
+                responseString += "a " + criminal.height + " figure ";
+            }
+        }
+        if(r_person.seenArr.indexOf("body") != -1)
+        {
+
+            if (responseString.length < 5)
+            {
+                responseString += "has a " + criminal.body + " build ";
+            }
+            else
+            {
+                responseString += "a " + criminal.body + " build ";
             }
 
         }
-        else {
-            console.log("populating new r_person form talkedto()");
-            r_person = new PopulateResponsePerson();
-            //build response for next person walking by.
+        if(r_person.seenArr.indexOf("eye") != -1)
+        {
 
-            speechOutput = this.t("PERSON_APPROACHING", r_person.gender, r_person.hairColor, criminal.body);
-            this.emit(":ask", speechOutput);
+            if (responseString.length < 5)
+            {
+                responseString += "has " + criminal.eyeColor +", " +criminal.eyeSize+ " eyes ";
+            }
+            else
+            {
+                responseString += "and, " + criminal.eyeColor +", " +criminal.eyeSize+ " eyes ";
+            }
         }
+        if(r_person.seenArr.indexOf("hair") != -1)
+        {
+
+            if (responseString.length < 5)
+            {
+                responseString += "has " + criminal.hairLength +", " +criminal.hairColor+ " hair ";
+            }
+            else
+            {
+                responseString += "and, " + criminal.hairLength +", " +criminal.hairColor+ " hair";
+            }
+        }
+        if(r_person.seenArr.indexOf("special") != -1)
+        {
+
+            if (responseString.length < 5)
+            {
+                responseString += "has " + criminal.special +" ";
+            }
+            else
+            {
+                responseString += "and, " + criminal.special +" ";
+            }
+        }
+
+        //TODO Chad can I use this.emit like this? Just passing a string as responseString
+        speechOutput = this.t(responseString);
+        this.emit(":ask", speechOutput);
+    }
+    else if(questionType == 2)
+    {
+        if(r_person.seenArr.indexOf("height") != -1)
+        {
+
+            if (responseString.length < 5)
+            {
+                responseString += "has a " + criminal.height + "figure ";
+            }
+            else
+            {
+                responseString += "a " + criminal.height + " figure ";
+            }
+        }
+        if(r_person.seenArr.indexOf("body") != -1)
+        {
+
+            if (responseString.length < 5)
+            {
+                responseString += "has a " + criminal.body + " build ";
+            }
+            else
+            {
+                responseString += "a " + criminal.body + " build ";
+            }
+
+        }
+        if(r_person.seenArr.indexOf("eye") != -1)
+        {
+
+            if (responseString.length < 5)
+            {
+                responseString += "has " + criminal.eyeColor +", " +criminal.eyeSize+ " eyes ";
+            }
+            else
+            {
+                responseString += "and, " + criminal.eyeColor +", " +criminal.eyeSize+ " eyes ";
+            }
+        }
+        if(r_person.seenArr.indexOf("hair") != -1)
+        {
+
+            if (responseString.length < 5)
+            {
+                responseString += "has " + criminal.hairLength +", " +criminal.hairColor+ " hair ";
+            }
+            else
+            {
+                responseString += "and, " + criminal.hairLength +", " +criminal.hairColor+ " hair";
+            }
+        }
+        if(r_person.seenArr.indexOf("special") != -1)
+        {
+
+            if (responseString.length < 5)
+            {
+                responseString += "has " + criminal.special +" ";
+            }
+            else
+            {
+                responseString += "and, " + criminal.special +" ";
+            }
+        }
+
+        //TODO Chad can I use this.emit like this? Just passing a string as responseString
+        speechOutput = this.t(responseString);
+        this.emit(":ask", speechOutput);
+    }
+    else if(questionType == 3)
+    {
+        //TODO can change this to >= 0 if you want to always have person give clues on next country.
+        if(r_person.seenValue > 0)
+        {
+
+            speechOutput = this.t("COUNTRY_FACT", pronoun(criminal.gender), criminal.country.facts )
+        }
+    }
+    else
+    {
+        console.log("error question type was incorrect, expecting 1, 2, or 3");
     }
 }
 
@@ -795,11 +983,13 @@ var languageString = {
 			"ARRIVAL_MESSAGE": "Welcome to %s, also known as Insert country intro. Time to find info on %s. Get the attention of bystanders so you can ask them about the criminal, and where the criminal is going. ",
 			"PERSON_APPROACHING": "%s %s %s approaching. ",
 			"PERSON_RESPONSE": "%s said to step back sucker. ",
-            "CORRECT_PERSON_RESPONSE": "%s.",
+            "CORRECT_PERSON_RESPONSE": "Looks like this person might know something, maybe ask about the criminals looks, where he's going, or who %s is",
             "LOSE": "You loser",
             "WIN": "You Win",
             "WRONG_COUNTRY": "This doesn't seem to be the correct Country, try a different one",
             "LAST_PERSON": "Looks like we've talked to everyone, it's time to pick the next country",
+            "DONE_QUESTIONING": "Seems like that's all %s has to say, let's look for someone else.",
+            "COUNTRY_FACTS": "I heard %s is going to %s",
             "ACCUSE": "Is this the Criminal? If so, say stop"
 		}
     },
@@ -881,6 +1071,22 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
 		talkedTo();
 		//var speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender));
 		//this.emit(":ask", speechOutput);
+    },
+    "CrimeBackgroundQuestionIntent": function () {
+        generateQuestionResponse(1);
+    },
+    "CriminalLooksQuestionIntent": function () {
+        generateQuestionResponse(2);
+    },
+    "CriminalLocationQuestionIntent": function () {
+        generateQuestionResponse(3);
+    },
+    "DoneQuestioningIntent": function () {
+        doneQuestioning();
+
+    },
+    "NabThiefIntent": function () {
+
     },
     "AMAZON.StartOverIntent": function () {
         this.handler.state = GAME_STATES.START;
