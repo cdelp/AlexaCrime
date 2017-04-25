@@ -429,11 +429,56 @@ var talkedToCount = 0;
 var stage = 0;
 var countryVisited = 0; //count of times tried
 var crimCountryVisitedArr = []; //array of countries criminal has been to, used to match against
-var CountryOutputList = []; //TODO Need to fill with 1 correct country and rest random. Splice the wrong country chosen when picked in checkCountry
+var countryOutputList = []; //TODO Need to fill with 1 correct country and rest random. Splice the wrong country chosen when picked in checkCountry
 var countryChoice = null;
 var criminalArr = [0, 1, 2];
 var talkingFlag = 0;
 var questionedCount = 0;
+
+function generateCountryList()
+{
+    var tempArr = [];
+    var tempCountryArr = [];
+    //empty the output list
+    countryOutputList = [];
+    var i = 0;
+    if(stage == 0)
+    {
+        //push correct country
+        countryOutputList.push(criminal.country);
+        tempArr = Region;
+        //remove the region where country is
+        tempArr.splice(tempArr.indexOf(criminal.region));
+        //add 3 random country from ANY region (except criminal's region) since this is first stage. right?
+        //if we're just sticking to it having to be in the same region then just remove this if block.
+        for(i = 0; i < 3; i++)
+        {
+            //random region assigned to temp
+            tempCountryArr = tempArr[rand(0, tempArr.length - 1)];
+            //random country assigned to output
+            countryOutputList.push(tempCountryArr[rand(0, tempCountryArr.length - 1)]);
+        }
+
+    }
+    else
+    {
+        //one correct country
+        countryOutputList.push(criminal.country);
+        //Assigning all countries in region to tempArr
+        tempArr = criminal.region;
+        //removing criminal.country from that list
+        tempArr.splice(tempArr.indexOf(criminal.country));
+        //add 3 random country objects from criminal's region
+        for(i = 0; i < 3; i++)
+        {
+            shuffleArray(tempArr);
+            countryOutputList.push(tempArr.pop());
+        }
+    }
+    //shuffles the array.
+    shuffleArray(countryOutputList);
+}
+
 function checkCountry(country)
 {
     //assign choice of country and count for validation checking in other methods
@@ -591,6 +636,7 @@ function assignNextCountry()
             }
         }
     }
+    generateCountryList();
 }
 
 function lastStage()
@@ -599,14 +645,14 @@ function lastStage()
     shuffleArray(criminalArr);
     var crimVar = criminalArr.pop();
     //removing criminal traits from attribute arrays so randomizer doesn't pick them
-    height.splice(t_height.indexOf(criminal.height), 1);
-    height.splice(t_body.indexOf(criminal.body), 1);
-    height.splice(t_eyeSize.indexOf(criminal.eyeSize), 1);
-    height.splice(t_eyeColor.indexOf(criminal.eyeColor), 1);
-    height.splice(t_hairLength.indexOf(criminal.hairLength), 1);
-    height.splice(t_hairColor.indexOf(criminal.hairColor), 1);
+    t_height.splice(t_height.indexOf(criminal.height), 1);
+    t_body.splice(t_body.indexOf(criminal.body), 1);
+    t_eyeSize.splice(t_eyeSize.indexOf(criminal.eyeSize), 1);
+    t_eyeColor.splice(t_eyeColor.indexOf(criminal.eyeColor), 1);
+    t_hairLength.splice(t_hairLength.indexOf(criminal.hairLength), 1);
+    t_hairColor.splice(t_hairColor.indexOf(criminal.hairColor), 1);
     //might keep special, idk.
-    height.splice(t_special.indexOf(criminal.special), 1);
+    t_special.splice(t_special.indexOf(criminal.special), 1);
 
     if(crimVar == 2)
     {
@@ -1053,7 +1099,10 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
 		//criminal.name = name(criminal.country, criminal.gender);
         //assigns the country the criminal will be headed to next so we can give clues regarding that.
 		assignNextCountry();
+
 		// introduces criminal and crime, asks which country the user would like to visit, TODO prompt with country choices
+        //Grab country name like this: countryOutputList[i].countryName, where i = 0 to 3.
+        //countryOutputList is already shuffled so you can use any order of index you like.
 		var speechOutput = this.t("INTRO_MESSAGE", criminal.name, pronoun(criminal.gender), criminal.crime, rand(50, 800), criminal.name, criminal.name, pronounOwnership(criminal.gender), criminal.name) + this.t("CHOOSE_COUNTRY");
 		this.emit(":ask", speechOutput);
     },
