@@ -54,6 +54,7 @@
 				}
 		]
 	},
+	  {"intent": "DoneQuestioningIntent"},
     {"intent": "AMAZON.StartOverIntent"},
 	{"intent": "AMAZON.RepeatIntent"},
 	{"intent": "AMAZON.PauseIntent"},
