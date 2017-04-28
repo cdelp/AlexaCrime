@@ -48,40 +48,40 @@ var Morocco = {
     countryName: 'Morocco',
 	intro: ' ',
     facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Abdo', 'Ahmen', 'Karim', 'Ali', 'Rachid', 'Brahim'],
+    f_names: ['Zineb', 'Ghita', 'Marwa', 'Aya', 'Lina', 'Rania'],
     region: 'Middle East'
 }
 var Syria = {
     countryName: 'Syria',
 	intro: ' ',
     facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Adnan', 'Elias', 'Nizar', 'Sayid', 'Yaman', 'Rifat'],
+    f_names: ['Zeinah', 'Uri', 'Amena', 'Shayma', 'Nooda', 'Aisl'],
     region: 'Middle East'
 }
 var Iraq = {
     countryName: 'Iraq',
 	intro: ' ',
     facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Zamanlabib', 'Mustafa', 'Barhoomee', 'Baravan', 'Jahmir', 'Fadhil'],
+    f_names: ['Zainab', 'Noora', 'Sham', 'Telenaz', 'Rukia', 'Kayoosh'],
     region: 'Middle East'
 }
 var SaudiArabia = {
     countryName: 'Saudi Arabia',
 	intro: ' ',
     facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Kahaled', 'Mahamat', 'Inam', 'Taha', 'Hossien', 'Zishan'],
+    f_names: ['Faten', 'Habiba', 'Reema', 'Nadia', 'Bushra', 'Salsabyl'],
     region: 'Middle East'
 }
 var Lebanon = {
     countryName: 'Lebanon',
 	intro: ' ',
     facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Mahmous', 'Nader', 'Ayman', 'Wehbe', 'Rami', 'Moukhtar'],
+    f_names: ['Nour', 'Alaa', 'Souad', 'Sousou', 'Yasmine', 'Fatme'],
     region: 'Middle East'
 }
 
@@ -90,32 +90,32 @@ var Japan = {
     countryName: 'Japan',
 	intro: ' ',
     facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Dorobo', 'Naruto', 'Ren', 'Tatsuya', 'Daisuke', 'Kazuki'],
+    f_names: ['Yuri', 'Ayumi', 'Minami', 'Nana', 'Risa', 'Hana'],
     region: 'East Asia'
 }
 var China = {
     countryName: 'China',
 	intro: ' ',
     facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Ching', 'Chong', 'Ting', 'Chow', 'Yang', 'Ming'],
+    f_names: ['Ming Ming', 'Chi CHi', 'Jade', 'Ying', 'Fei Fei', 'Fai Di La'],
     region: 'East Asia'
 }
 var Mongolia = {
     countryName: 'Mongolia',
 	intro: ' ',
     facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Dana', 'Ankhbaatar', 'Davaa', 'Zev'],
+    f_names: ['Zaya', 'Sondor', 'Oyundelger', 'Aigerim', 'Delgermaa', 'Jabek'],
     region: 'East Asia'
 }
 var Nepal = {
     countryName: 'Nepal',
 	intro: ' ',
     facts: ['Iran intro 1', 'Iran intro 2', 'Iran intro 3'],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Krishna', 'Bishal', 'Bibek', 'Kiran', 'Bikash', 'Yash'],
+    f_names: ['Shirisha', 'Shristi', 'Swornima', 'Tsamchou', 'Simixya', 'Palisha'],
     region: 'East Asia'
 }
 var Taiwan = {

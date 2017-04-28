@@ -978,7 +978,8 @@ var languageString = {
             "NEW_GAME_MESSAGE": "Welcome to %s. ",
 			"GAME_START_MESSAGE": "Are you ready for a mission? ",
             "INTRO_MESSAGE": "We are on the hunt for %s.  %s is wanted in connection with a recent string of %s crimes resulting in %s million in damages. We must help bring the criminal responsible for these crimes to justice before %s goes into hiding. It will not be an easy task to catch %s , so pay close attention to clues on %s looks and whereabouts. %s was last seen in insert counrty clue. Enough talking, we need to go ",
-			"CHOOSE_COUNTRY": "  Where should we start our search. ",
+			"LOCATION_TEST": "%s is in %s, %s. ", // testing only
+			"CHOOSE_COUNTRY": "  Where should we start our search? ",
 			"DEPARTURE_MESSAGE": "%s it is. Talk to you when you land. Get going sleuth! Insert Sound clip airplane taking off. ",
 			"ARRIVAL_MESSAGE": "Welcome to %s, also known as Insert country intro. Time to find info on %s. Get the attention of bystanders so you can ask them about the criminal, and where the criminal is going. ",
 			"PERSON_APPROACHING": "%s %s %s approaching. ",
