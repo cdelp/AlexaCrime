@@ -961,8 +961,8 @@ function checkCountry()
                 this.emit(":ask", speechOutput);
 
             }
-            else if (criminal.country.countryName != country && countryVisited >= 2) {
-                //you lose.
+            else if ((criminal.country.countryName != country) && countryVisited >= 2) {
+				//you lose.
                 console.log("you lose");
                 //TODO ask if they want to play again
                 var speechOutput = this.t("LOSE");
@@ -1467,7 +1467,7 @@ var languageString = {
             //"QUESTIONS" : questions["QUESTIONS"],
             "GAME_NAME" : "Seuth Hound", 
             "HELP_MESSAGE": "Need to add help message ", // add if needed
-            "REPEAT_MESSAGE": "To repeat the last question, say, repeat. ", // use if needed
+            "REPEAT_MESSAGE": "Please repeat your choice. ", 
             "HELP_REPROMPT": "Need to add help reprompt", // add if needed
             "STOP_MESSAGE": "Would you like to keep playing?",
             "CANCEL_MESSAGE": "Ok, let\'s play again soon.", // if needed
@@ -1475,6 +1475,7 @@ var languageString = {
             "HELP_UNHANDLED": "Say yes to continue, or no to end the game.",
             "START_UNHANDLED": "Say start to start a new game.",
 			"GAME_UNHANDLED": "game unhandled error.",
+			"QUESTION_UNHANDLED": "unhandled error in questioning mode. ",
 			"PAUSE": " . . .",
             "NEW_GAME_MESSAGE": "Welcome to %s. ",
 			"GAME_START_MESSAGE": "Are you ready for a mission? ",
@@ -1491,11 +1492,11 @@ var languageString = {
 			"CONTINUE_PROMPT": "Would you like to continue your search for clues? ",
             "LOSE": "You loser",
             "WIN": "You Win",
-            "WRONG_COUNTRY": "This doesn't seem to be the correct Country, try a different one",
-            "LAST_PERSON": "Looks like we've talked to everyone, it's time to pick the next country",
-            "DONE_QUESTIONING": "Seems like that's all %s has to say, let's look for someone else.",
-            "COUNTRY_FACTS": "I heard %s is going to %s",
-            "ACCUSE": "Is this the Criminal? If so, say stop"
+            "WRONG_COUNTRY": "This doesn't seem to be the correct Country, try a different one. ",
+            "LAST_PERSON": "Looks like we've talked to everyone, it's time to pick the next country. ",
+            "DONE_QUESTIONING": "Seems like that's all %s has to say, let's look for someone else. ",
+            "COUNTRY_FACTS": "I heard %s is going to %s. ",
+            "ACCUSE": "Is this the Criminal? If so, say stop. "
 		}
     },
     "en-US": {
@@ -1507,8 +1508,9 @@ var languageString = {
 };
 
 var GAME_STATES = {
-    PLAY: "_PLAYMODE", // Playing the game.
+    PLAY: "_PLAYMODE", // Playing the game.	
     START: "_STARTMODE", // Entry point, start the game.
+	QUESTIONING: "_QUESTIONINGMODE", // Used when conducting in-country questioning of bystanders
     HELP: "_HELPMODE" // The user is asking for help.
 };
 
@@ -1517,7 +1519,7 @@ exports.handler = function(event, context, callback) {
     alexa.appId = APP_ID;
     // To enable string internationalization (i18n) features, set a resources object.
     alexa.resources = languageString;
-    alexa.registerHandlers(newSessionHandlers, startStateHandlers, gameStateHandlers, helpStateHandlers);
+    alexa.registerHandlers(newSessionHandlers, startStateHandlers, gameStateHandlers, questioningStateHandlers, helpStateHandlers);
     alexa.execute();
 };
 
@@ -1544,9 +1546,10 @@ var startStateHandlers = Alexa.CreateStateHandler(GAME_STATES.START, {
     "StartGame": function (newGame) {
 		// welcomes play and asks if they want to play
 		var speechOutput = newGame ? this.t("NEW_GAME_MESSAGE", this.t("GAME_NAME")) + this.t("GAME_START_MESSAGE") : "";
+		var repromptOutput = this.t("REPEAT_MESSAGE");
         // Set the current state to play mode. The skill will now use handlers defined in gameStateHandlers
         this.handler.state = GAME_STATES.PLAY;
-        this.emit(":askWithCard", speechOutput);
+        this.emit(":askWithCard", speechOutput, repromptOutput);
     }
 });
 
@@ -1565,7 +1568,8 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
 		var speechOutput = this.t("INTRO_MESSAGE", criminal.name, pronoun(criminal.gender), criminal.crime, rand(50, 800), criminal.name, criminal.name, pronounOwnership(criminal.gender), criminal.name, criminal.country.facts[0]) + 
 		this.t("CHOOSE_COUNTRY") + 
 		this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
-		this.emit(":ask", speechOutput);
+		var repromptOutput = this.t("REPEAT_MESSAGE");
+		this.emit(":ask", speechOutput, repromptOutput);
     },
     "CountryIntent": function () {
 		// line below sets country to the one the user spoke, from the country_item slot list
@@ -1573,6 +1577,7 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
 		//countryString = this.event.request.intent.slots.country_item.value;
 		//this.emit(":ask", countryString);
 		//checkCountry(countryString);
+		//this.handler.state = GAME_STATES.QUESTIONING;
 		checkCountry.call(this);
 		//moved this emit to checkCountry Method
 		//var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.countryName, criminal.name) + this.t("PERSON_APPROACHING", r_person.gender, r_person.hairColor, r_person.body);
@@ -1580,6 +1585,7 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
     },
 	"TarryStopIntent": function () {      
 		//r_person = new PopulateResponsePerson();
+		this.handler.state = GAME_STATES.QUESTIONING;
 		talkedTo.call(this);
 		//var speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender));
 		//this.emit(":ask", speechOutput);
@@ -1628,11 +1634,26 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
     }
 });
 
+var questioningStateHandlers = Alexa.CreateStateHandler(GAME_STATES.QUESTIONING, {
+	"ContinueSearchIntent": function () {
+		r_person = new PopulateResponsePerson();
+		var speechOutput = this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+		var repromptOutput = this.t("REPEAT_MESSAGE");
+		this.emit(":ask", speechOutput, repromptOutput);
+		this.handler.state = GAME_STATES.PLAY;
+		talkedTo.call(this);
+	},
+	"Unhandled": function () {
+        var speechOutput = this.t("QUESTION_UNHANDLED");
+        this.emit(":ask", speechOutput);
+    }
+});
+
 // TODO, these copied from example. Still need to be adapted
 var helpStateHandlers = Alexa.CreateStateHandler(GAME_STATES.HELP, {
     "helpTheUser": function (newGame) {
         var askMessage = newGame ? this.t("ASK_MESSAGE_START") : this.t("REPEAT_QUESTION_MESSAGE") + this.t("STOP_MESSAGE");
-        var speechOutput = this.t("HELP_MESSAGE", GAME_LENGTH) + askMessage;
+        var speechOutput = this.t("HELP_MESSAGE") + askMessage;
         var repromptText = this.t("HELP_REPROMPT") + askMessage;
         this.emit(":ask", speechOutput, repromptText);
     },
@@ -1650,13 +1671,13 @@ var helpStateHandlers = Alexa.CreateStateHandler(GAME_STATES.HELP, {
     },
     "AMAZON.YesIntent": function() {
         if (this.attributes["speechOutput"] && this.attributes["repromptText"]) {
-            this.handler.state = GAME_STATES.TRIVIA;
+            this.handler.state = GAME_STATES.PLAY;
             this.emitWithState("AMAZON.RepeatIntent");
         } else {
             this.handler.state = GAME_STATES.START;
             this.emitWithState("StartGame", false);
         }
-    },
+    }, 
     "AMAZON.NoIntent": function() {
         var speechOutput = this.t("NO_MESSAGE");
         this.emit(":tell", speechOutput);
