@@ -104,7 +104,13 @@ TarryStopIntent Hi boss
 TarryStopIntent Hey chief
 TarryStopIntent Hi guys
 TarryStopIntent Excuse me ladies
-TarryStopIntent I have a question
+TarryStopIntent Yo
+
+ContinueSearchIntent Yes
+ContinueSearchIntent OK
+ContinueSearchIntent Yep
+ContinueSearchIntent Alright
+ContinueSearchIntent lets continue
 
 CrimeBackgroundQuestionIntent Did you hear about {criminal_name}
 CrimeBackgroundQuestionIntent Have you heard about {criminal_name}

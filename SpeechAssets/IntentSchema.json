@@ -18,6 +18,7 @@
 		]
 	},
 	{"intent": "TarryStopIntent"},
+	{"intent": "ContinueSearchIntent"},
 	{
 		"intent": "CrimeBackgroundQuestionIntent",
 		"slots": [
