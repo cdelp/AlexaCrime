@@ -76,13 +76,14 @@ var p_special = ['headphones', 'bathing suit', 'naked'];
 var greetings = ['hey', "what's up'", 'hi'];
 
 //temp vars that can be spliced in case game gets restarted
-var t_height = height;
-var t_body = body;
-var t_eyeSize = eyeSize;
-var t_eyeColor = eyeColor;
-var t_hairLength = hairLength;
-var t_hairColor = hairColor;
-var t_special = special;
+//temp vars that can be spliced in case game gets restarted
+var t_height = ['short', 'medium', 'tall'];
+var t_body = ['chubby', 'skinny', 'medium'];
+var t_eyeSize = ['small', 'large'];
+var t_eyeColor = ['black', 'brown', 'blue', 'green'];
+var t_hairLength = ['long', 'short', 'medium'];
+var t_hairColor = ['black', 'brown', 'blond', 'red', 'silver', 'green', 'blue'];
+var t_special = ['headphones', 'bathing suit', 'naked'];
 
 //Middle East
 var Egypt  = {
@@ -836,11 +837,11 @@ function PopulateCriminal()  {
     this.hairColor = hairColor[rand(0, hairLength.length -1)];
     this.eyeSize = eyeSize[rand(0, eyeSize.length -1)];
     this.eyeColor = eyeColor[rand(0, eyeColor.length -1)];
-    this.body = body[rand(0, body.length) -1];
-    this.height = height[rand(0, height.length) -1];
-    this.special = special[rand(0, special.length) -1];
+    this.body = body[rand(0, body.length -1)];
+    this.height = height[rand(0, height.length -1)];
+    this.special = special[rand(0, special.length -1)];
     this.name = name(this.country, this.gender);
-    this.crime = crimes[rand(0, crimes.length) -1];
+    this.crime = crimes[rand(0, crimes.length -1)];
 }
 
 function PopulateResponsePerson() {
@@ -851,8 +852,8 @@ function PopulateResponsePerson() {
     this.hairColor = hairColor[rand(0, hairLength.length -1)];
     this.eyeSize = eyeSize[rand(0, eyeSize.length -1)];
     this.eyeColor = eyeColor[rand(0, eyeColor.length -1)];
-    this.body = body[rand(0, body.length) -1];
-    this.p_special = p_special[rand(0, p_special.length) -1];
+    this.body = body[rand(0, body.length -1)];
+    this.p_special = p_special[rand(0, p_special.length -1)];
     this.seenArr = seenAttributes();
 }
 
@@ -876,7 +877,6 @@ function generateCountryList()
     var tempCountryArr = [];
     //empty the output list
     countryOutputList = [];
-    var i = 0;
     if(stage == 0)
     {
         //push correct country
@@ -886,7 +886,7 @@ function generateCountryList()
         tempArr.splice(tempArr.indexOf(criminal.region));
         //add 3 random country from ANY region (except criminal's region) since this is first stage. right?
         //if we're just sticking to it having to be in the same region then just remove this if block.
-        for(i = 0; i < 3; i++)
+        for(var i = 0; i < 3; i++)
         {
             //random region assigned to temp
             tempCountryArr = tempArr[rand(0, tempArr.length - 1)];
@@ -900,7 +900,14 @@ function generateCountryList()
         //one correct country
         countryOutputList.push(criminal.country);
         //Assigning all countries in region to tempArr
-        tempArr = criminal.region;
+        var tempArr = [];
+        for(var i = 0; i < criminal.region.length; i++)
+        {
+            tempArr[i] = criminal.region[i];
+        }
+
+        console.log("temp array from generateCountryList else: ");
+        console.log(tempArr);
         //removing criminal.country from that list
         tempArr.splice(tempArr.indexOf(criminal.country));
         //add 3 random country objects from criminal's region
@@ -1085,6 +1092,8 @@ function lastStage()
     shuffleArray(criminalArr);
     var crimVar = criminalArr.pop();
     //removing criminal traits from attribute arrays so randomizer doesn't pick them
+    console.log("before splice t_heght size: "+t_height);
+    console.log("before splice heght size: "+height);
     t_height.splice(t_height.indexOf(criminal.height), 1);
     t_body.splice(t_body.indexOf(criminal.body), 1);
     t_eyeSize.splice(t_eyeSize.indexOf(criminal.eyeSize), 1);
@@ -1093,6 +1102,8 @@ function lastStage()
     t_hairColor.splice(t_hairColor.indexOf(criminal.hairColor), 1);
     //might keep special, idk.
     t_special.splice(t_special.indexOf(criminal.special), 1);
+    console.log("After splice t_heght size: "+t_height);
+    console.log("After splice heght size: "+height);
 
     if(crimVar == 2)
     {
