@@ -1336,9 +1336,8 @@ function generateQuestionResponse(questionType)
             }
         }
 
-        //TODO Chad can I use this.emit like this? Just passing a string as responseString
-        speechOutput = this.t(responseString);
-		//speechOutput = this.t("TEST_OUTPUT");
+        //These emits confirmed to work when .call is used, and "this" is explicitly passed
+        speechOutput = this.t(responseString) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
         this.emit(":ask", speechOutput);
     }
     else if(questionType == 2)
@@ -1405,8 +1404,7 @@ function generateQuestionResponse(questionType)
             }
         }
 
-        //TODO Chad can I use this.emit like this? Just passing a string as responseString
-        speechOutput = this.t("" + responseString);
+        speechOutput = this.t(responseString) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
         this.emit(":ask", speechOutput);
     }
     else if(questionType == 3)
@@ -1415,7 +1413,8 @@ function generateQuestionResponse(questionType)
         if(r_person.seenValue > 0)
         {
 
-            speechOutput = this.t("COUNTRY_FACT", pronoun(criminal.gender), criminal.country.facts );
+            speechOutput = this.t("COUNTRY_FACTS", pronoun(criminal.gender), criminal.country.facts ) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
+			this.emit(":ask", speechOutput);
         }
     }
     else
@@ -1572,23 +1571,12 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
 		this.emit(":ask", speechOutput, repromptOutput);
     },
     "CountryIntent": function () {
-		// line below sets country to the one the user spoke, from the country_item slot list
-        //changed variable name, countryChoice needs to store an country Object which contains name, clues, etc.
-		//countryString = this.event.request.intent.slots.country_item.value;
-		//this.emit(":ask", countryString);
-		//checkCountry(countryString);
-		//this.handler.state = GAME_STATES.QUESTIONING;
 		checkCountry.call(this);
-		//moved this emit to checkCountry Method
-		//var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.countryName, criminal.name) + this.t("PERSON_APPROACHING", r_person.gender, r_person.hairColor, r_person.body);
-        //this.emit(":ask", speechOutput);
     },
 	"TarryStopIntent": function () {      
 		//r_person = new PopulateResponsePerson();
 		this.handler.state = GAME_STATES.QUESTIONING;
 		talkedTo.call(this);
-		//var speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender));
-		//this.emit(":ask", speechOutput);
     },
     "CrimeBackgroundQuestionIntent": function () {
         generateQuestionResponse.call(this, 1);
@@ -1634,6 +1622,7 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
     }
 });
 
+// TODO trying to provide prompt to continue after user gets response from bystanders
 var questioningStateHandlers = Alexa.CreateStateHandler(GAME_STATES.QUESTIONING, {
 	"ContinueSearchIntent": function () {
 		r_person = new PopulateResponsePerson();
@@ -1641,19 +1630,19 @@ var questioningStateHandlers = Alexa.CreateStateHandler(GAME_STATES.QUESTIONING,
 		var repromptOutput = this.t("REPEAT_MESSAGE");
 		this.emit(":ask", speechOutput, repromptOutput);
 		this.handler.state = GAME_STATES.PLAY;
-		talkedTo.call(this);
+		talkedTo.call(this); 
 	},
     "CrimeBackgroundQuestionIntent": function () {
-        generateQuestionResponse.call(this, 1);
+		generateQuestionResponse.call(this, 1);
     },
     "CriminalLooksQuestionIntent": function () {
-        generateQuestionResponse.call(this, 2);
+		generateQuestionResponse.call(this, 2);
     },
     "CriminalLocationQuestionIntent": function () {
-        generateQuestionResponse.call(this, 3);
+		generateQuestionResponse.call(this, 3);
     },
     "DoneQuestioningIntent": function () {
-        doneQuestioning.call(this);
+		doneQuestioning.call(this);
 
     },
     "NabThiefIntent": function () {
