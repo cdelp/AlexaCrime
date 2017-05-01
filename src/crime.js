@@ -881,8 +881,7 @@ function generateCountryList()
     {
         //push correct country
         countryOutputList.push(criminal.country);
-        //tempArr = Region;
-		tempArr = [MiddleEast, EastAsia, Africa, SouthAmerica];
+        tempArr = [MiddleEast, EastAsia, Africa, SouthAmerica];
         //remove the region where country is
         tempArr.splice(tempArr.indexOf(criminal.region));
         //add 3 random country from ANY region (except criminal's region) since this is first stage. right?
@@ -919,8 +918,9 @@ function generateCountryList()
 function checkCountry()
 {
     var country = this.event.request.intent.slots.country_item.value;
-	//this.emit(":ask", "inside check country. ", criminal.country.countryName);
-	
+
+	console.log(country);
+
 	//assign choice of country and count for validation checking in other methods
     countryVisited++;
 
