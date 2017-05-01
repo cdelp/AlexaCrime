@@ -38,6 +38,19 @@ function pronounOwnership( gender )
     }
 }
 
+function contPronoun( gender )
+{
+    if(gender == 'male')
+    {
+        return "he's";
+    }
+    else
+    {
+        return "she's";
+    }
+}
+
+
 function pronounThird( gender )
 {
     if(gender == 'male')
@@ -600,7 +613,7 @@ var Ghana = {
 }
 //SouthAmerica
 var Brazil = {
-    countryName: 'brazil',
+    countryName: 'Brazil',
 	intro: 'Welcome to Brazil ',
     facts: ['The largest country in South America',
 'The macaw is the national animal',
@@ -655,7 +668,7 @@ var Venezuela = {
 }
 var Colombia = {
     countryName: 'Colombia',
-	intro: 'Welcome to Columbia ',
+	intro: 'Welcome to Colombia ',
     facts: ['The only country in South America that has a coastline on both the pacific ocean and the Caribbean Sea',
 'The capital is Bogota',
 'Where drug lord Pablo Escobar offered to pay the country’s debt to improve his reputation and escape justice',
@@ -778,29 +791,11 @@ var Chile = {
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
-var Columbia = {
-    countryName: 'Bolivia',
-	intro: ' ',
-    facts: ['One of two landlocked South American Countries',
-'Named after the Venezuelan military and political leader who led 4 south american countries to independence from Spain',
-'The capital is La Paz, the highest capital city in the world',
-'Home to worlds most dangerous road the camino de las yungas',
-'Where you offer dried llama to Pachamama or mother nature in return for blessings',
-'Home to the largest mirror on Earth called Salar de Uyuni which is a large salt flat ',
-'Main languages are Spanish, Quechua, Aymara and Guarani with an additional 33 other recognized languages',
-'Has the largest butterfly sanctuary',
-'Used to be called upper peru before gaining independence in 1825 from spain',
-'Where you can find pink dolphins in the amazon'
-],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
-    region: 'South America'
-}
 
 var MiddleEast = [Egypt, Iran, Algeria, Tunisia, Oman, Morocco, Syria, Iraq, SaudiArabia, Lebanon];
 var EastAsia = [Japan, China, Mongolia, Nepal, Taiwan, Philippines, Cambodia, Vietnam, NorthKorea, Malaysia];
 var Africa = [SouthAfrica, Uganda, Kenya, Somalia, Sudan, Nigeria, Cameroon, Senegal, Ghana];
-var SouthAmerica = [Brazil, Argentina, Venezuela, Colombia, Peru, Ecuador, Uruguay, Paraguay, Bolivia, Chile, Columbia];
+var SouthAmerica = [Brazil, Argentina, Venezuela, Colombia, Peru, Ecuador, Uruguay, Paraguay, Bolivia, Chile];
 var Region = [MiddleEast, EastAsia, Africa, SouthAmerica];
 //criminal and people methods
 
@@ -874,6 +869,7 @@ var criminalArr = [0, 1, 2];
 var talkingFlag = 0;
 var questionedCount = 0;
 
+// TODO, seeing duplicate countries sometimes
 function generateCountryList()
 {
     var tempArr = [];
@@ -885,7 +881,8 @@ function generateCountryList()
     {
         //push correct country
         countryOutputList.push(criminal.country);
-        tempArr = Region;
+        //tempArr = Region;
+		tempArr = [MiddleEast, EastAsia, Africa, SouthAmerica];
         //remove the region where country is
         tempArr.splice(tempArr.indexOf(criminal.region));
         //add 3 random country from ANY region (except criminal's region) since this is first stage. right?
@@ -922,7 +919,7 @@ function generateCountryList()
 function checkCountry()
 {
     var country = this.event.request.intent.slots.country_item.value;
-	//this.emit(":ask", "inside check country. ", country);
+	//this.emit(":ask", "inside check country. ", criminal.country.countryName);
 	
 	//assign choice of country and count for validation checking in other methods
     countryVisited++;
@@ -1223,8 +1220,8 @@ function talkedTo()
                 console.log("r_person seen value NOT 0 responses");
                 //TODO questioning responses here, just putting obvious country facts as clues here for testing
                 //0.00032 chance you won't see clues after talking to 5 people lol. Might need to fix that.
-                speechOutput = this.t("CORRECT_PERSON_RESPONSE", pronoun(criminal.gender));
-                this.emit(":tell", speechOutput);
+                speechOutput = this.t("CORRECT_PERSON_RESPONSE", contPronoun(criminal.gender), pronoun(criminal.gender));
+                this.emit(":ask", speechOutput);
             }
         }
         //moved this block to doneQuestioning()
@@ -1255,7 +1252,7 @@ function doneQuestioning ()
         //build response for next person walking by.
 
         speechOutput = this.t("DONE_QUESTIONING", pronoun(r_person.gender));
-        this.emit(":tell", speechOutput);
+        this.emit(":ask", speechOutput);
         speechOutput = this.t("PERSON_APPROACHING", r_person.gender, r_person.hairColor, criminal.body);
         this.emit(":ask", speechOutput);
     }
@@ -1269,12 +1266,14 @@ function generateQuestionResponse(questionType)
 {
     questionedCount++;
     var responseString = pronoun(criminal.gender) + " ";
+	var speechOutput;
     if(questionedCount > 3)
     {
         doneQuestioning();
     }
     else if(questionType == 1)
     {
+		
         if(r_person.seenArr.indexOf("height") != -1)
         {
 
@@ -1339,6 +1338,7 @@ function generateQuestionResponse(questionType)
 
         //TODO Chad can I use this.emit like this? Just passing a string as responseString
         speechOutput = this.t(responseString);
+		//speechOutput = this.t("TEST_OUTPUT");
         this.emit(":ask", speechOutput);
     }
     else if(questionType == 2)
@@ -1406,7 +1406,7 @@ function generateQuestionResponse(questionType)
         }
 
         //TODO Chad can I use this.emit like this? Just passing a string as responseString
-        speechOutput = this.t(responseString);
+        speechOutput = this.t("" + responseString);
         this.emit(":ask", speechOutput);
     }
     else if(questionType == 3)
@@ -1415,7 +1415,7 @@ function generateQuestionResponse(questionType)
         if(r_person.seenValue > 0)
         {
 
-            speechOutput = this.t("COUNTRY_FACT", pronoun(criminal.gender), criminal.country.facts )
+            speechOutput = this.t("COUNTRY_FACT", pronoun(criminal.gender), criminal.country.facts );
         }
     }
     else
@@ -1476,7 +1476,7 @@ var languageString = {
             "START_UNHANDLED": "Say start to start a new game.",
 			"GAME_UNHANDLED": "game unhandled error.",
 			"QUESTION_UNHANDLED": "unhandled error in questioning mode. ",
-			"PAUSE": " . . .",
+			"TEST_OUTPUT": "Testing output only. ", // testing only
             "NEW_GAME_MESSAGE": "Welcome to %s. ",
 			"GAME_START_MESSAGE": "Are you ready for a mission? ",
             "INTRO_MESSAGE": "We are on the hunt for %s.  %s is wanted in connection with a recent string of %s crimes resulting in %s million in damages. We must help bring the criminal responsible for these crimes to justice before %s goes into hiding. It will not be an easy task to catch %s , so pay close attention to clues on %s looks and whereabouts. %s was last seen in %s. Enough talking, we need to go ",
@@ -1488,7 +1488,7 @@ var languageString = {
 			"ARRIVAL_MESSAGE": "%s. Time to find info on %s. Get the attention of bystanders so you can ask them about the criminal, and where the criminal is going. ",
 			"PERSON_APPROACHING": "%s %s %s approaching. ",
 			"PERSON_RESPONSE": "%s walked by without acknowleding you . ",
-            "CORRECT_PERSON_RESPONSE": "Looks like this person might know something, maybe ask about the criminals looks, where he's going, or who %s is",
+            "CORRECT_PERSON_RESPONSE": "Looks like this person might know something, maybe ask about the criminals looks, where %s going, or who %s is",
 			"CONTINUE_PROMPT": "Would you like to continue your search for clues? ",
             "LOSE": "You loser",
             "WIN": "You Win",
@@ -1591,16 +1591,16 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
 		//this.emit(":ask", speechOutput);
     },
     "CrimeBackgroundQuestionIntent": function () {
-        generateQuestionResponse(1);
+        generateQuestionResponse.call(this, 1);
     },
     "CriminalLooksQuestionIntent": function () {
-        generateQuestionResponse(2);
+        generateQuestionResponse.call(this, 2);
     },
     "CriminalLocationQuestionIntent": function () {
-        generateQuestionResponse(3);
+        generateQuestionResponse.call(this, 3);
     },
     "DoneQuestioningIntent": function () {
-        doneQuestioning();
+        doneQuestioning.call(this);
 
     },
     "NabThiefIntent": function () {
@@ -1643,6 +1643,22 @@ var questioningStateHandlers = Alexa.CreateStateHandler(GAME_STATES.QUESTIONING,
 		this.handler.state = GAME_STATES.PLAY;
 		talkedTo.call(this);
 	},
+    "CrimeBackgroundQuestionIntent": function () {
+        generateQuestionResponse.call(this, 1);
+    },
+    "CriminalLooksQuestionIntent": function () {
+        generateQuestionResponse.call(this, 2);
+    },
+    "CriminalLocationQuestionIntent": function () {
+        generateQuestionResponse.call(this, 3);
+    },
+    "DoneQuestioningIntent": function () {
+        doneQuestioning.call(this);
+
+    },
+    "NabThiefIntent": function () {
+
+    },
 	"Unhandled": function () {
         var speechOutput = this.t("QUESTION_UNHANDLED");
         this.emit(":ask", speechOutput);
