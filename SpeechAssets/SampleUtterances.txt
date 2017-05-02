@@ -106,11 +106,7 @@ TarryStopIntent Hi guys
 TarryStopIntent Excuse me ladies
 TarryStopIntent Yo
 
-ContinueSearchIntent Yes
-ContinueSearchIntent OK
-ContinueSearchIntent Yep
-ContinueSearchIntent Alright
-ContinueSearchIntent lets continue
+ContinueSearchIntent continue
 
 CrimeBackgroundQuestionIntent Did you hear about {criminal_name}
 CrimeBackgroundQuestionIntent Have you heard about {criminal_name}
