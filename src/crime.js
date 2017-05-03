@@ -1424,7 +1424,7 @@ function generateQuestionResponse(questionType)
         if(r_person.seenValue > 0)
         {
 
-            speechOutput = this.t("COUNTRY_FACTS", pronoun(criminal.gender), criminal.country.facts ) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
+            speechOutput = this.t("COUNTRY_FACTS", pronoun(criminal.gender), criminal.country.facts[rand(0, criminal.country.facts.length -1)] ) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
 			this.emit(":ask", speechOutput);
         }
     }
@@ -1482,9 +1482,9 @@ var languageString = {
             "STOP_MESSAGE": "Would you like to keep playing?",
             "CANCEL_MESSAGE": "Ok, let\'s play again soon.", // if needed
             "NO_MESSAGE": "Ok, we\'ll play another time. Goodbye!", // if needed
-            "HELP_UNHANDLED": "Say yes to continue, or no to end the game.",
-            "START_UNHANDLED": "Say start to start a new game.",
-			"GAME_UNHANDLED": "game unhandled error.",
+            "HELP_UNHANDLED": "Say yes to continue, or no to end the game. ",
+            "START_UNHANDLED": "Say start to start a new game. ",
+			"GAME_UNHANDLED": "game unhandled error. ",
 			"QUESTION_UNHANDLED": "unhandled error in questioning mode. ",
 			"TEST_OUTPUT": "Testing output only. ", // testing only
             "NEW_GAME_MESSAGE": "Welcome to %s. ",
@@ -1497,9 +1497,9 @@ var languageString = {
 			"DEPARTURE_MESSAGE": "%s it is. Talk to you when you land. Get going sleuth! Insert Sound clip airplane taking off. ",
 			"ARRIVAL_MESSAGE": "%s. Time to find info on %s. Get the attention of bystanders so you can ask them about the criminal, and where the criminal is going. ",
 			"PERSON_APPROACHING": "%s %s %s approaching. ",
-			"PERSON_RESPONSE": "%s walked by without acknowleding you . ",
-            "CORRECT_PERSON_RESPONSE": "Looks like this person might know something, maybe ask about the criminals looks, where %s going, or who %s is",
-			"CONTINUE_PROMPT": "Would you like to continue your search for clues? ",
+			"PERSON_RESPONSE": "%s walked by without acknowleding you. ",
+            "CORRECT_PERSON_RESPONSE": "Looks like this person might know something, maybe ask about the criminals looks, where %s going, or who %s is. ",
+			"CONTINUE_PROMPT": ". Please say continue if you'd like to keep searching for clues. ", // can't figure out how to keep "yes" from triggering wrong intents
             "LOSE": "You loser",
             "WIN": "You Win",
             "WRONG_COUNTRY": "This doesn't seem to be the correct Country, try a different one. ",
@@ -1586,9 +1586,17 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
     },
 	"TarryStopIntent": function () {      
 		//r_person = new PopulateResponsePerson();
-		this.handler.state = GAME_STATES.QUESTIONING;
+		//this.handler.state = GAME_STATES.QUESTIONING;
 		talkedTo.call(this);
     },
+	"ContinueSearchIntent": function () {
+		r_person = new PopulateResponsePerson();
+		var speechOutput = this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+		var repromptOutput = this.t("REPEAT_MESSAGE");
+		this.emit(":ask", speechOutput, repromptOutput);
+		//this.handler.state = GAME_STATES.PLAY;
+		talkedTo.call(this); 
+	},
     "CrimeBackgroundQuestionIntent": function () {
         generateQuestionResponse.call(this, 1);
     },
@@ -1663,7 +1671,7 @@ var questioningStateHandlers = Alexa.CreateStateHandler(GAME_STATES.QUESTIONING,
         var speechOutput = this.t("QUESTION_UNHANDLED");
         this.emit(":ask", speechOutput);
     }
-});
+}); 
 
 // TODO, these copied from example. Still need to be adapted
 var helpStateHandlers = Alexa.CreateStateHandler(GAME_STATES.HELP, {
