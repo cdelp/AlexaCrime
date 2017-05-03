@@ -1201,10 +1201,7 @@ function talkedTo()
         talkedToCount++;
         //wrong country
         if (countryChoice != criminal.country) {
-            talkedToCount += 3;
-            //persons just walk by or have nothing to say
-            speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender))+ this.t("CONTINUE_PROMPT"); // added continue searching prompt. need to handle their response somewhere
-            this.emit(":ask", speechOutput);
+            talkedToCount += 3;           
             //exit from country on 2nd talk in wrong country
             if (talkedToCount >= 6)
             {
@@ -1215,25 +1212,30 @@ function talkedTo()
 				this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
                 this.emit(":ask", speechOutput);
             }
+			//persons just walk by or have nothing to say
+            speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender)) + this.t("PASSEDBY_PROMPT"); // added continue searching prompt. need to handle their response somewhere
+            this.emit(":ask", speechOutput);
         }
         //right country
         else {
-            //if the person has not seen anything or doesn't want to talk to you
-            if (r_person.seenValue == 0) {
-                console.log("r_person seen value = 0 reponses");
-                //right country but person hasn't seen anything (20% chance)
-                speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender)) + this.t("CONTINUE_PROMPT"); // added continue searching prompt. need to handle their response somewhere
-                this.emit(":ask", speechOutput);
-
-            }
-            //if person has seen something
-            else {
-                console.log("r_person seen value NOT 0 responses");
-                //TODO questioning responses here, just putting obvious country facts as clues here for testing
-                //0.00032 chance you won't see clues after talking to 5 people lol. Might need to fix that.
-                speechOutput = this.t("CORRECT_PERSON_RESPONSE", contPronoun(criminal.gender), pronoun(criminal.gender));
-                this.emit(":ask", speechOutput);
-            }
+            			
+			//if the person has not seen anything or doesn't want to talk to you
+			if (r_person.seenValue == 0) {
+				talkedToCount += 1;
+				console.log("r_person seen value = 0 reponses");
+				//right country but person hasn't seen anything (20% chance)
+				speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender)) + this.t("PASSEDBY_PROMPT"); // added continue searching prompt. need to handle their response somewhere
+				this.emit(":ask", speechOutput);
+			}
+			//if person has seen something
+			else {
+				talkedToCount += 1;
+				console.log("r_person seen value NOT 0 responses");
+				//TODO questioning responses here, just putting obvious country facts as clues here for testing
+				//0.00032 chance you won't see clues after talking to 5 people lol. Might need to fix that.
+				speechOutput = this.t("CORRECT_PERSON_RESPONSE", contPronoun(criminal.gender), pronoun(criminal.gender));
+				this.emit(":ask", speechOutput);
+			}			
         }
         //moved this block to doneQuestioning()
 
@@ -1252,9 +1254,13 @@ function doneQuestioning ()
             assignNextCountry();
             console.log("reached final person to talk to in 0 response");
 
-            speechOutput = this.t("LAST_PERSON");
+            // TODO not sure if there is supposed to be a country choice list here
+			speechOutput = this.t("LAST_PERSON") + this.t("CHOOSE_AGAIN") + 
+			this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
             this.emit(":ask", speechOutput);
         }
+		
+		// TODO need something here? 
 
     }
     else {
@@ -1262,9 +1268,9 @@ function doneQuestioning ()
         r_person = new PopulateResponsePerson();
         //build response for next person walking by.
 
-        speechOutput = this.t("DONE_QUESTIONING", pronoun(r_person.gender));
-        this.emit(":ask", speechOutput);
-        speechOutput = this.t("PERSON_APPROACHING", r_person.gender, r_person.hairColor, criminal.body);
+        //speechOutput = this.t("DONE_QUESTIONING", pronoun(r_person.gender));
+        //this.emit(":ask", speechOutput);
+        speechOutput = this.t("DONE_QUESTIONING", pronoun(r_person.gender)) + this.t("PERSON_APPROACHING", r_person.gender, r_person.hairColor, criminal.body);
         this.emit(":ask", speechOutput);
     }
 }
@@ -1280,7 +1286,7 @@ function generateQuestionResponse(questionType)
 	var speechOutput;
     if(questionedCount > 3)
     {
-        doneQuestioning();
+        doneQuestioning.call(this);
     }
     else if(questionType == 1)
     {
@@ -1415,7 +1421,7 @@ function generateQuestionResponse(questionType)
             }
         }
 
-        speechOutput = this.t(responseString) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
+        speechOutput = this.t(responseString) + this.t(questionedCount) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
         this.emit(":ask", speechOutput);
     }
     else if(questionType == 3)
@@ -1499,7 +1505,8 @@ var languageString = {
 			"PERSON_APPROACHING": "%s %s %s approaching. ",
 			"PERSON_RESPONSE": "%s walked by without acknowleding you. ",
             "CORRECT_PERSON_RESPONSE": "Looks like this person might know something, maybe ask about the criminals looks, where %s going, or who %s is. ",
-			"CONTINUE_PROMPT": ". Please say continue if you'd like to keep searching for clues. ", // can't figure out how to keep "yes" from triggering wrong intents
+			"PASSEDBY_PROMPT": ". say continue to keep searching. ",
+			"CONTINUE_PROMPT": ". Keep asking questions, or say continue to keep searching. ", // can't figure out how to keep "yes" from triggering wrong intents
             "LOSE": "You loser",
             "WIN": "You Win",
             "WRONG_COUNTRY": "This doesn't seem to be the correct Country, try a different one. ",
