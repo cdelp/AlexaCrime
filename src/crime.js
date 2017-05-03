@@ -1267,10 +1267,7 @@ function doneQuestioning ()
         console.log("populating new r_person from doneQuestioning");
         r_person = new PopulateResponsePerson();
         //build response for next person walking by.
-
-        //speechOutput = this.t("DONE_QUESTIONING", pronoun(r_person.gender));
-        //this.emit(":ask", speechOutput);
-        speechOutput = this.t("DONE_QUESTIONING", pronoun(r_person.gender)) + this.t("PERSON_APPROACHING", r_person.gender, r_person.hairColor, criminal.body);
+        speechOutput = this.t("DONE_QUESTIONING", pronoun(r_person.gender), r_person.gender, r_person.hairColor, r_person.body);
         this.emit(":ask", speechOutput);
     }
 }
@@ -1430,7 +1427,7 @@ function generateQuestionResponse(questionType)
         if(r_person.seenValue > 0)
         {
 
-            speechOutput = this.t("COUNTRY_FACTS", pronoun(criminal.gender), criminal.country.facts[rand(0, criminal.country.facts.length -1)] ) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
+            speechOutput = this.t("COUNTRY_FACTS", pronoun(criminal.gender), criminal.nextCountry.facts[rand(0, criminal.nextCountry.facts.length -1)] ) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
 			this.emit(":ask", speechOutput);
         }
     }
@@ -1511,7 +1508,7 @@ var languageString = {
             "WIN": "You Win",
             "WRONG_COUNTRY": "This doesn't seem to be the correct Country, try a different one. ",
             "LAST_PERSON": "Looks like we've talked to everyone, it's time to pick the next country. ",
-            "DONE_QUESTIONING": "Seems like that's all %s has to say, let's look for someone else. ",
+            "DONE_QUESTIONING": "Seems like that's all %s has to say, let's look for someone else. %s %s %s is approaching. ",
             "COUNTRY_FACTS": "I heard %s is going to %s. ",
             "ACCUSE": "Is this the Criminal? If so, say stop. "
 		}
@@ -1597,12 +1594,18 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
 		talkedTo.call(this);
     },
 	"ContinueSearchIntent": function () {
+        doneQuestioning.call(this);
+        //Is this the same as DoneQuestioningIntent?
+        //doneQuestioning intent is meant to be called when you no longer want to talk to someone and
+        // would like to generate the next person or next stage if already talked to 5 people
+        /**
 		r_person = new PopulateResponsePerson();
 		var speechOutput = this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
 		var repromptOutput = this.t("REPEAT_MESSAGE");
 		this.emit(":ask", speechOutput, repromptOutput);
 		//this.handler.state = GAME_STATES.PLAY;
-		talkedTo.call(this); 
+		talkedTo.call(this);
+         **/
 	},
     "CrimeBackgroundQuestionIntent": function () {
         generateQuestionResponse.call(this, 1);
