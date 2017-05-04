@@ -1246,7 +1246,7 @@ function doneQuestioning ()
 {
     var speechOutput;
     questionedCount = 0;
-    if (talkedToCount == 5) {
+    if (talkedToCount >= 5) {
         console.log("resetting counter, 5 people talked to, time to choose a country");
         talkedToCount = 0;
         //if they were in the correct country and finished talking to 5 people
@@ -1267,10 +1267,8 @@ function doneQuestioning ()
         console.log("populating new r_person from doneQuestioning");
         r_person = new PopulateResponsePerson();
         //build response for next person walking by.
+        speechOutput = this.t("DONE_QUESTIONING", pronoun(r_person.gender), r_person.gender, r_person.hairColor, r_person.body);
 
-        //speechOutput = this.t("DONE_QUESTIONING", pronoun(r_person.gender));
-        //this.emit(":ask", speechOutput);
-        speechOutput = this.t("DONE_QUESTIONING", pronoun(r_person.gender)) + this.t("PERSON_APPROACHING", r_person.gender, r_person.hairColor, criminal.body);
         this.emit(":ask", speechOutput);
     }
 }
@@ -1421,7 +1419,7 @@ function generateQuestionResponse(questionType)
             }
         }
 
-        speechOutput = this.t(responseString) + this.t(questionedCount) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
+        speechOutput = this.t(responseString) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
         this.emit(":ask", speechOutput);
     }
     else if(questionType == 3)
@@ -1430,7 +1428,7 @@ function generateQuestionResponse(questionType)
         if(r_person.seenValue > 0)
         {
 
-            speechOutput = this.t("COUNTRY_FACTS", pronoun(criminal.gender), criminal.country.facts[rand(0, criminal.country.facts.length -1)] ) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
+            speechOutput = this.t("COUNTRY_FACTS", pronoun(criminal.gender), criminal.nextCountry.facts[rand(0, criminal.nextCountry.facts.length -1)] ) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
 			this.emit(":ask", speechOutput);
         }
     }
@@ -1511,7 +1509,7 @@ var languageString = {
             "WIN": "You Win",
             "WRONG_COUNTRY": "This doesn't seem to be the correct Country, try a different one. ",
             "LAST_PERSON": "Looks like we've talked to everyone, it's time to pick the next country. ",
-            "DONE_QUESTIONING": "Seems like that's all %s has to say, let's look for someone else. ",
+            "DONE_QUESTIONING": "Seems like that's all %s has to say, let's look for someone else. %s %s %s is approaching. ",
             "COUNTRY_FACTS": "I heard %s is going to %s. ",
             "ACCUSE": "Is this the Criminal? If so, say stop. "
 		}
@@ -1527,7 +1525,7 @@ var languageString = {
 var GAME_STATES = {
     PLAY: "_PLAYMODE", // Playing the game.	
     START: "_STARTMODE", // Entry point, start the game.
-	QUESTIONING: "_QUESTIONINGMODE", // Used when conducting in-country questioning of bystanders
+	//QUESTIONING: "_QUESTIONINGMODE", // Used when conducting in-country questioning of bystanders
     HELP: "_HELPMODE" // The user is asking for help.
 };
 
@@ -1536,7 +1534,7 @@ exports.handler = function(event, context, callback) {
     alexa.appId = APP_ID;
     // To enable string internationalization (i18n) features, set a resources object.
     alexa.resources = languageString;
-    alexa.registerHandlers(newSessionHandlers, startStateHandlers, gameStateHandlers, questioningStateHandlers, helpStateHandlers);
+    alexa.registerHandlers(newSessionHandlers, startStateHandlers, gameStateHandlers, helpStateHandlers);
     alexa.execute();
 };
 
@@ -1597,12 +1595,18 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
 		talkedTo.call(this);
     },
 	"ContinueSearchIntent": function () {
+        doneQuestioning.call(this);
+        //Is this the same as DoneQuestioningIntent?
+        //doneQuestioning intent is meant to be called when you no longer want to talk to someone and
+        // would like to generate the next person or next stage if already talked to 5 people
+        /**
 		r_person = new PopulateResponsePerson();
 		var speechOutput = this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
 		var repromptOutput = this.t("REPEAT_MESSAGE");
 		this.emit(":ask", speechOutput, repromptOutput);
 		//this.handler.state = GAME_STATES.PLAY;
-		talkedTo.call(this); 
+		talkedTo.call(this);
+         **/
 	},
     "CrimeBackgroundQuestionIntent": function () {
         generateQuestionResponse.call(this, 1);
@@ -1648,8 +1652,8 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
     }
 });
 
-// TODO trying to provide prompt to continue after user gets response from bystanders
-var questioningStateHandlers = Alexa.CreateStateHandler(GAME_STATES.QUESTIONING, {
+// TODO remove if not needed
+/*var questioningStateHandlers = Alexa.CreateStateHandler(GAME_STATES.QUESTIONING, {
 	"ContinueSearchIntent": function () {
 		r_person = new PopulateResponsePerson();
 		var speechOutput = this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
@@ -1678,7 +1682,7 @@ var questioningStateHandlers = Alexa.CreateStateHandler(GAME_STATES.QUESTIONING,
         var speechOutput = this.t("QUESTION_UNHANDLED");
         this.emit(":ask", speechOutput);
     }
-}); 
+}); */
 
 // TODO, these copied from example. Still need to be adapted
 var helpStateHandlers = Alexa.CreateStateHandler(GAME_STATES.HELP, {
