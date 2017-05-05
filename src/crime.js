@@ -1248,7 +1248,7 @@ function doneQuestioning ()
 {
     var speechOutput;
     questionedCount = 0;
-    if (talkedToCount == 5) {
+    if (talkedToCount >= 5) {
         console.log("resetting counter, 5 people talked to, time to choose a country");
         talkedToCount = 0;
         //if they were in the correct country and finished talking to 5 people
