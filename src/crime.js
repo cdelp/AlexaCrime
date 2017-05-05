@@ -922,10 +922,12 @@ function generateCountryList()
     shuffleArray(countryOutputList);
 }
 
+
+var country; // trying this as global since it keeps repeating the intitial country choice when using an echo.
 //function checkCountry(country)
 function checkCountry()
 {
-    var country = this.event.request.intent.slots.country_item.value;
+    country = this.event.request.intent.slots.country_item.value;
 
 	console.log(country);
 
@@ -962,7 +964,13 @@ function checkCountry()
                 countryVisited = 0;
                 stage++;
     
-                var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+                // code works, but problem accessing clip. Need to convert to 48kbps 16000hz mpeg 2
+			/*	var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) 
+					+ "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+					+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+				*/
+					
+				var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
                 this.emit(":ask", speechOutput);
 
             }
@@ -1189,8 +1197,8 @@ function lastStage()
 //called when 'TarryStopIntent is called. checks for number of people talked to is <= 5. If less,  then generates next person to talk to.
 function talkedTo()
 {
-    // line below testing only
-	//this.emit(":ask", "inside talked to");
+    // line below testing only, trying to clear country variable because it seems to be keeping user's first choice in the game instead of updating with new choices
+	country = null;
 	
 	var speechOutput;
     //final stage prompt.
@@ -1205,10 +1213,7 @@ function talkedTo()
         talkedToCount++;
         //wrong country
         if (countryChoice != criminal.country) {
-            talkedToCount += 3;
-            //persons just walk by or have nothing to say
-            speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender))+ this.t("CONTINUE_PROMPT"); // added continue searching prompt. need to handle their response somewhere
-            this.emit(":ask", speechOutput);
+            talkedToCount += 3;           
             //exit from country on 2nd talk in wrong country
             if (talkedToCount >= 6)
             {
@@ -1219,25 +1224,30 @@ function talkedTo()
 				this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
                 this.emit(":ask", speechOutput);
             }
+			//persons just walk by or have nothing to say
+            speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender)) + this.t("PASSEDBY_PROMPT"); // added continue searching prompt. need to handle their response somewhere
+            this.emit(":ask", speechOutput);
         }
         //right country
         else {
-            //if the person has not seen anything or doesn't want to talk to you
-            if (r_person.seenValue == 0) {
-                console.log("r_person seen value = 0 reponses");
-                //right country but person hasn't seen anything (20% chance)
-                speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender)) + this.t("CONTINUE_PROMPT"); // added continue searching prompt. need to handle their response somewhere
-                this.emit(":ask", speechOutput);
-
-            }
-            //if person has seen something
-            else {
-                console.log("r_person seen value NOT 0 responses");
-                //TODO questioning responses here, just putting obvious country facts as clues here for testing
-                //0.00032 chance you won't see clues after talking to 5 people lol. Might need to fix that.
-                speechOutput = this.t("CORRECT_PERSON_RESPONSE", contPronoun(criminal.gender), pronoun(criminal.gender));
-                this.emit(":ask", speechOutput);
-            }
+            			
+			//if the person has not seen anything or doesn't want to talk to you
+			if (r_person.seenValue == 0) {
+				
+				console.log("r_person seen value = 0 reponses");
+				//right country but person hasn't seen anything (20% chance)
+				speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender)) + this.t("PASSEDBY_PROMPT"); // added continue searching prompt. need to handle their response somewhere
+				this.emit(":ask", speechOutput);
+			}
+			//if person has seen something
+			else {
+				
+				console.log("r_person seen value NOT 0 responses");
+				//TODO questioning responses here, just putting obvious country facts as clues here for testing
+				//0.00032 chance you won't see clues after talking to 5 people lol. Might need to fix that.
+				speechOutput = this.t("CORRECT_PERSON_RESPONSE", contPronoun(criminal.gender), pronoun(criminal.gender));
+				this.emit(":ask", speechOutput);
+			}			
         }
         //moved this block to doneQuestioning()
 
@@ -1256,9 +1266,13 @@ function doneQuestioning ()
             assignNextCountry();
             console.log("reached final person to talk to in 0 response");
 
-            speechOutput = this.t("LAST_PERSON");
+            // TODO not sure if there is supposed to be a country choice list here
+			speechOutput = this.t("LAST_PERSON") + this.t("CHOOSE_AGAIN") + 
+			this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
             this.emit(":ask", speechOutput);
         }
+		
+		// TODO need something here? 
 
     }
     else {
@@ -1266,6 +1280,7 @@ function doneQuestioning ()
         r_person = new PopulateResponsePerson();
         //build response for next person walking by.
         speechOutput = this.t("DONE_QUESTIONING", pronoun(r_person.gender), r_person.gender, r_person.hairColor, r_person.body);
+
         this.emit(":ask", speechOutput);
     }
 }
@@ -1281,7 +1296,7 @@ function generateQuestionResponse(questionType)
 	var speechOutput;
     if(questionedCount > 3)
     {
-        doneQuestioning();
+        doneQuestioning.call(this);
     }
     else if(questionType == 1)
     {
@@ -1495,12 +1510,14 @@ var languageString = {
 			"CHOOSE_COUNTRY": "  Where should we start our search? ",
 			"CHOOSE_AGAIN": "Where would you like to go now? ",
 			"COUNTRY_LIST": "%s, %s, %s, or %s? ",
-			"DEPARTURE_MESSAGE": "%s it is. Talk to you when you land. Get going sleuth! Insert Sound clip airplane taking off. ",
+			"DEPARTURE_MESSAGE": "%s it is. Talk to you when you land. Get going sleuth! ",
 			"ARRIVAL_MESSAGE": "%s. Time to find info on %s. Get the attention of bystanders so you can ask them about the criminal, and where the criminal is going. ",
 			"PERSON_APPROACHING": "%s %s %s approaching. ",
 			"PERSON_RESPONSE": "%s walked by without acknowleding you. ",
             "CORRECT_PERSON_RESPONSE": "Looks like this person might know something, maybe ask about the criminals looks, where %s going, or who %s is. ",
-			"CONTINUE_PROMPT": ". Please say continue if you'd like to keep searching for clues. ", // can't figure out how to keep "yes" from triggering wrong intents
+
+			"PASSEDBY_PROMPT": "Say continue to keep searching. ",
+			"CONTINUE_PROMPT": ". Keep asking questions, or say continue to keep searching. ", // can't figure out how to keep "yes" from triggering wrong intents
             "LOSE_WRONG": "Oh no! this is not the criminal. We have to step up our game.",
             "LOSE_GOT_AWAY": "Oh no! looks like that was the criminal but now they are gone forever.",
             "WIN": "You Win. You've caught the criminal!",
@@ -1522,7 +1539,7 @@ var languageString = {
 var GAME_STATES = {
     PLAY: "_PLAYMODE", // Playing the game.	
     START: "_STARTMODE", // Entry point, start the game.
-	QUESTIONING: "_QUESTIONINGMODE", // Used when conducting in-country questioning of bystanders
+	//QUESTIONING: "_QUESTIONINGMODE", // Used when conducting in-country questioning of bystanders
     HELP: "_HELPMODE" // The user is asking for help.
 };
 
@@ -1531,7 +1548,7 @@ exports.handler = function(event, context, callback) {
     alexa.appId = APP_ID;
     // To enable string internationalization (i18n) features, set a resources object.
     alexa.resources = languageString;
-    alexa.registerHandlers(newSessionHandlers, startStateHandlers, gameStateHandlers, questioningStateHandlers, helpStateHandlers);
+    alexa.registerHandlers(newSessionHandlers, startStateHandlers, gameStateHandlers, helpStateHandlers);
     alexa.execute();
 };
 
@@ -1651,8 +1668,8 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
     }
 });
 
-// TODO trying to provide prompt to continue after user gets response from bystanders
-var questioningStateHandlers = Alexa.CreateStateHandler(GAME_STATES.QUESTIONING, {
+// TODO remove if not needed
+/*var questioningStateHandlers = Alexa.CreateStateHandler(GAME_STATES.QUESTIONING, {
 	"ContinueSearchIntent": function () {
 		r_person = new PopulateResponsePerson();
 		var speechOutput = this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
@@ -1698,7 +1715,7 @@ var questioningStateHandlers = Alexa.CreateStateHandler(GAME_STATES.QUESTIONING,
         var speechOutput = this.t("QUESTION_UNHANDLED");
         this.emit(":ask", speechOutput);
     }
-}); 
+}); */
 
 // TODO, these copied from example. Still need to be adapted
 var helpStateHandlers = Alexa.CreateStateHandler(GAME_STATES.HELP, {
