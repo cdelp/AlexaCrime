@@ -921,10 +921,12 @@ function generateCountryList()
     shuffleArray(countryOutputList);
 }
 
+
+var country; // trying this as global since it keeps repeating the intitial country choice when using an echo.
 //function checkCountry(country)
 function checkCountry()
 {
-    var country = this.event.request.intent.slots.country_item.value;
+    country = this.event.request.intent.slots.country_item.value;
 
 	console.log(country);
 
@@ -961,7 +963,13 @@ function checkCountry()
                 countryVisited = 0;
                 stage++;
     
-                var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+                // code works, but problem accessing clip. Need to convert to 48kbps 16000hz mpeg 2
+			/*	var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) 
+					+ "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+					+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+				*/
+					
+				var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
                 this.emit(":ask", speechOutput);
 
             }
@@ -1185,8 +1193,8 @@ function lastStage()
 //called when 'TarryStopIntent is called. checks for number of people talked to is <= 5. If less,  then generates next person to talk to.
 function talkedTo()
 {
-    // line below testing only
-	//this.emit(":ask", "inside talked to");
+    // line below testing only, trying to clear country variable because it seems to be keeping user's first choice in the game instead of updating with new choices
+	country = null;
 	
 	var speechOutput;
     //final stage prompt.
@@ -1498,12 +1506,12 @@ var languageString = {
 			"CHOOSE_COUNTRY": "  Where should we start our search? ",
 			"CHOOSE_AGAIN": "Where would you like to go now? ",
 			"COUNTRY_LIST": "%s, %s, %s, or %s? ",
-			"DEPARTURE_MESSAGE": "%s it is. Talk to you when you land. Get going sleuth! Insert Sound clip airplane taking off. ",
+			"DEPARTURE_MESSAGE": "%s it is. Talk to you when you land. Get going sleuth! ",
 			"ARRIVAL_MESSAGE": "%s. Time to find info on %s. Get the attention of bystanders so you can ask them about the criminal, and where the criminal is going. ",
 			"PERSON_APPROACHING": "%s %s %s approaching. ",
 			"PERSON_RESPONSE": "%s walked by without acknowleding you. ",
             "CORRECT_PERSON_RESPONSE": "Looks like this person might know something, maybe ask about the criminals looks, where %s going, or who %s is. ",
-			"PASSEDBY_PROMPT": ". say continue to keep searching. ",
+			"PASSEDBY_PROMPT": "Say continue to keep searching. ",
 			"CONTINUE_PROMPT": ". Keep asking questions, or say continue to keep searching. ", // can't figure out how to keep "yes" from triggering wrong intents
             "LOSE": "You loser",
             "WIN": "You Win",
