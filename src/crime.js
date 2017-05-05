@@ -1233,7 +1233,7 @@ function talkedTo()
             			
 			//if the person has not seen anything or doesn't want to talk to you
 			if (r_person.seenValue == 0) {
-				talkedToCount += 1;
+				
 				console.log("r_person seen value = 0 reponses");
 				//right country but person hasn't seen anything (20% chance)
 				speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender)) + this.t("PASSEDBY_PROMPT"); // added continue searching prompt. need to handle their response somewhere
@@ -1241,7 +1241,7 @@ function talkedTo()
 			}
 			//if person has seen something
 			else {
-				talkedToCount += 1;
+				
 				console.log("r_person seen value NOT 0 responses");
 				//TODO questioning responses here, just putting obvious country facts as clues here for testing
 				//0.00032 chance you won't see clues after talking to 5 people lol. Might need to fix that.
