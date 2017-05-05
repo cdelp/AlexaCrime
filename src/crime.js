@@ -77,13 +77,13 @@ var greetings = ['hey', "what's up'", 'hi'];
 
 //temp vars that can be spliced in case game gets restarted
 //temp vars that can be spliced in case game gets restarted
-var t_height = ['short', 'medium', 'tall'];
-var t_body = ['chubby', 'skinny', 'medium'];
-var t_eyeSize = ['small', 'large'];
-var t_eyeColor = ['black', 'brown', 'blue', 'green'];
-var t_hairLength = ['long', 'short', 'medium'];
-var t_hairColor = ['black', 'brown', 'blond', 'red', 'silver', 'green', 'blue'];
-var t_special = ['headphones', 'bathing suit', 'naked'];
+//var t_height = height.slice(0);
+//var t_body = body.slice(0);
+//var t_eyeSize = eyeSize.slice(0);
+//var t_eyeColor = eyeColor.slice(0);
+//var t_hairLength = hairLength.slice(0);
+//var t_hairColor = hairColor.slice(0);
+//var t_special = p_special.slice(0);
 
 //Middle East
 var Egypt  = {
@@ -868,6 +868,7 @@ var countryOutputList = []; //TODO Need to fill with 1 correct country and rest 
 var countryChoice = null;
 var criminalArr = [0, 1, 2];
 var talkingFlag = 0;
+var criminalFlag = 0;
 var questionedCount = 0;
 
 // TODO, seeing duplicate countries sometimes
@@ -883,7 +884,7 @@ function generateCountryList()
         countryOutputList.push(criminal.country);
         tempArr = [MiddleEast, EastAsia, Africa, SouthAmerica];
         //remove the region where country is
-        tempArr.splice(tempArr.indexOf(criminal.region));
+        tempArr.splice(tempArr.indexOf(criminal.region), 1);
         //add 3 random country from ANY region (except criminal's region) since this is first stage. right?
         //if we're just sticking to it having to be in the same region then just remove this if block.
         for(var i = 0; i < 3; i++)
@@ -909,7 +910,7 @@ function generateCountryList()
         console.log("temp array from generateCountryList else: ");
         console.log(tempArr);
         //removing criminal.country from that list
-        tempArr.splice(tempArr.indexOf(criminal.country));
+        tempArr.splice(tempArr.indexOf(criminal.country), 1);
         //add 3 random country objects from criminal's region
         for(i = 0; i < 3; i++)
         {
@@ -1098,19 +1099,29 @@ function lastStage()
 {
     var speechOutput;
     shuffleArray(criminalArr);
-    var crimVar = criminalArr.pop();
+    //removes index 0 form criminalArr
+    var crimVar = criminalArr.splice(0, 1);
+    criminalFlag = crimVar;
+
+    var l_height = height.slice(0);
+    var l_body = body.slice(0);
+    var l_eyeSize = eyeSize.slice(0);
+    var l_eyeColor = eyeColor.slice(0);
+    var l_hairLength = hairLength.slice(0);
+    var l_hairColor = hairColor.slice(0);
+    var l_special = p_special.slice(0);
     //removing criminal traits from attribute arrays so randomizer doesn't pick them
-    console.log("before splice t_heght size: "+t_height);
+    console.log("before splice t_heght size: "+l_height);
     console.log("before splice heght size: "+height);
-    t_height.splice(t_height.indexOf(criminal.height), 1);
-    t_body.splice(t_body.indexOf(criminal.body), 1);
-    t_eyeSize.splice(t_eyeSize.indexOf(criminal.eyeSize), 1);
-    t_eyeColor.splice(t_eyeColor.indexOf(criminal.eyeColor), 1);
-    t_hairLength.splice(t_hairLength.indexOf(criminal.hairLength), 1);
-    t_hairColor.splice(t_hairColor.indexOf(criminal.hairColor), 1);
+    l_height.splice(l_height.indexOf(criminal.height), 1);
+    l_body.splice(l_body.indexOf(criminal.body), 1);
+    l_eyeSize.splice(l_eyeSize.indexOf(criminal.eyeSize), 1);
+    l_eyeColor.splice(l_eyeColor.indexOf(criminal.eyeColor), 1);
+    l_hairLength.splice(l_hairLength.indexOf(criminal.hairLength), 1);
+    l_hairColor.splice(l_hairColor.indexOf(criminal.hairColor), 1);
     //might keep special, idk.
-    t_special.splice(t_special.indexOf(criminal.special), 1);
-    console.log("After splice t_heght size: "+t_height);
+    l_special.splice(l_special.indexOf(criminal.special), 1);
+    console.log("After splice t_heght size: "+l_height);
     console.log("After splice heght size: "+height);
 
     if(crimVar == 2)
@@ -1120,14 +1131,10 @@ function lastStage()
             + criminal.hairLength+ " " + criminal.hairColor + " hair, and a"
             + criminal.special+" walks by. This is the Criminal.");
 
-        //can we use emit like this?
-        speechOutput = "A " +criminal.height + " " +criminal.body+ " " +pronounThird(criminal.gender)+" with "
-            + criminal.eyeSize +" " +criminal.eyeColor + " eyes, "
-            + criminal.hairLength+ " " + criminal.hairColor + " hair, and a"
-            + criminal.special+" walks by. This is the Criminal.";
-        this.emit(":tell", speechOutput);
+        //this.emit(":tell", speechOutput);
 
-        speechOutput = this.t("ACCUSE");
+        speechOutput = this.t("ACCUSE", criminal.height, criminal.body, pronounThird(criminal.gender), criminal.eyeSize,
+            criminal.eyeColor, criminal.hairLength, criminal.hairColor, criminal.special);
         this.emit(":ask", speechOutput);
 
 
@@ -1142,31 +1149,31 @@ function lastStage()
         var randNum = rand(1, 2);
         shuffleArray(attributeInd);
 
-        for(r = 1; r <= randNum; r++)
+        for(var r = 1; r <= randNum; r++)
         {
             switch(attributeInd[r])
             {
                 case 0:
-                    criminalAtt[attributeInd[r]] = t_height[rand(0, t_height.length) - 1];
+                    criminalAtt[attributeInd[r]] = l_height[rand(0, l_height.length) - 1];
                     break;
                 case 1:
-                    criminalAtt[attributeInd[r]] = t_body[rand(0, t_body.length) -1];
+                    criminalAtt[attributeInd[r]] = l_body[rand(0, l_body.length) -1];
                     break;
                 case 2:
-                    criminalAtt[attributeInd[r]] = t_eyeSize[rand(0, t_eyeSize.length -1)];
+                    criminalAtt[attributeInd[r]] = l_eyeSize[rand(0, l_eyeSize.length -1)];
                     break;
                 case 3:
-                    criminalAtt[attributeInd[r]] = t_eyeColor[rand(0, t_eyeColor.length -1)];
+                    criminalAtt[attributeInd[r]] = l_eyeColor[rand(0, l_eyeColor.length -1)];
                     break;
                 case 4:
-                    criminalAtt[attributeInd[r]] = t_hairLength[rand(0, t_hairLength.length -1)];
+                    criminalAtt[attributeInd[r]] = l_hairLength[rand(0, l_hairLength.length -1)];
                     break;
                 case 5:
-                    criminalAtt[attributeInd[r]] = t_hairColor[rand(0, t_hairLength.length -1)];
+                    criminalAtt[attributeInd[r]] = l_hairColor[rand(0, l_hairLength.length -1)];
                     break;
                 case 6:
                     //might remove case 6 as specials might be too easy
-                    criminalAtt[attributeInd[r]] = t_special[rand(0, t_special.length) -1];
+                    criminalAtt[attributeInd[r]] = l_special[rand(0, l_special.length) -1];
                     break;
                 default:
                     console.log("error populating final stage random person");
@@ -1178,13 +1185,10 @@ function lastStage()
             + criminalAtt[4]+ " " + criminalAtt[5] + " hair, and a"
             + criminalAtt[6]+" walks by. This is not the Criminal.");
 
-        speechOutput = "A " +criminalAtt[0] + " " +criminalAtt[1]+ " " +pronounThird(criminal.gender)+" with "
-            + criminalAtt[2] +" " +criminalAtt[3] + " eyes, "
-            + criminalAtt[4]+ " " + criminalAtt[5] + " hair, and a"
-            + criminalAtt[6]+" walks by. This is not the Criminal.";
-        this.emit(":tell", speechOutput);
+        //this.emit(":tell", speechOutput);
 
-        speechOutput = this.t("ACCUSE");
+        speechOutput = this.t("ACCUSE",criminalAtt[0], criminalAtt[1],pronounThird(criminal.gender),criminalAtt[2], criminalAtt[3],
+            criminalAtt[4], criminalAtt[5], criminalAtt[6]);
         this.emit(":ask", speechOutput);
 
     }
@@ -1511,15 +1515,17 @@ var languageString = {
 			"PERSON_APPROACHING": "%s %s %s approaching. ",
 			"PERSON_RESPONSE": "%s walked by without acknowleding you. ",
             "CORRECT_PERSON_RESPONSE": "Looks like this person might know something, maybe ask about the criminals looks, where %s going, or who %s is. ",
+
 			"PASSEDBY_PROMPT": "Say continue to keep searching. ",
 			"CONTINUE_PROMPT": ". Keep asking questions, or say continue to keep searching. ", // can't figure out how to keep "yes" from triggering wrong intents
-            "LOSE": "You loser",
-            "WIN": "You Win",
+            "LOSE_WRONG": "Oh no! this is not the criminal. We have to step up our game.",
+            "LOSE_GOT_AWAY": "Oh no! looks like that was the criminal but now they are gone forever.",
+            "WIN": "You Win. You've caught the criminal!",
             "WRONG_COUNTRY": "This doesn't seem to be the correct Country, try a different one. ",
             "LAST_PERSON": "Looks like we've talked to everyone, it's time to pick the next country. ",
             "DONE_QUESTIONING": "Seems like that's all %s has to say, let's look for someone else. %s %s %s is approaching. ",
             "COUNTRY_FACTS": "I heard %s is going to %s. ",
-            "ACCUSE": "Is this the Criminal? If so, say stop. "
+            "ACCUSE": "A %s %s %s with %s %s eyes, %s %s hair, and a %s walks by. Is this the criminal? If so, say stop criminal or say innocent to keep looking. "
 		}
     },
     "en-US": {
@@ -1584,6 +1590,8 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
 		//criminal.name = name(criminal.country, criminal.gender);
         //assigns the country the criminal will be headed to next so we can give clues regarding that.
 		assignNextCountry();
+		//reassigns array since this is spliced in last stage.
+        criminalArr = [0, 1, 2];
 
 		// introduces criminal and crime, asks which country the user would like to visit, TODO prompt with country choices
         //Grab country name like this: countryOutputList[i].countryName, where i = 0 to 3.
@@ -1684,7 +1692,24 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
 
     },
     "NabThiefIntent": function () {
-
+        if(criminalFlag != 2)
+        {
+            this.emit(":tell", this.t("LOSE_WRONG"));
+        }
+        else
+        {
+            this.emit(":tell", this.t("WIN"));
+        }
+    },
+    "innocentIntent": function () {
+        if(criminalFlag == 2)
+        {
+            this.emit(":tell", this.t("LOSE_GOT_AWAY"));
+        }
+        else
+        {
+            lastStage();
+        }
     },
 	"Unhandled": function () {
         var speechOutput = this.t("QUESTION_UNHANDLED");
