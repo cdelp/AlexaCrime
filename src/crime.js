@@ -1638,7 +1638,28 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
 
     },
     "NabThiefIntent": function () {
-
+        if(criminalFlag != 2)
+        {
+            this.emit(":tell", this.t("LOSE_WRONG"));
+        }
+        else
+        {
+            this.emit(":tell", this.t("WIN"));
+        }
+    },
+    "innocentIntent": function () {
+        if(criminalFlag == 2)
+        {
+            this.emit(":tell", this.t("LOSE_GOT_AWAY"));
+        }
+        else
+        {
+            lastStage();
+        }
+    },
+    "Unhandled": function () {
+        var speechOutput = this.t("QUESTION_UNHANDLED");
+        this.emit(":ask", speechOutput);
     },
     "AMAZON.StartOverIntent": function () {
         this.handler.state = GAME_STATES.START;
@@ -1659,63 +1680,10 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
     "AMAZON.CancelIntent": function () {
         this.emit(":tell", this.t("CANCEL_MESSAGE"));
     },
-    "Unhandled": function () {
-        var speechOutput = this.t("GAME_UNHANDLED");
-        this.emit(":ask", speechOutput, speechOutput);
-    }, 
     "SessionEndedRequest": function () {
         console.log("Session ended in trivia state: " + this.event.request.reason);
     }
 });
-
-// TODO remove if not needed
-/*var questioningStateHandlers = Alexa.CreateStateHandler(GAME_STATES.QUESTIONING, {
-	"ContinueSearchIntent": function () {
-		r_person = new PopulateResponsePerson();
-		var speechOutput = this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-		var repromptOutput = this.t("REPEAT_MESSAGE");
-		this.emit(":ask", speechOutput, repromptOutput);
-		this.handler.state = GAME_STATES.PLAY;
-		talkedTo.call(this); 
-	},
-    "CrimeBackgroundQuestionIntent": function () {
-		generateQuestionResponse.call(this, 1);
-    },
-    "CriminalLooksQuestionIntent": function () {
-		generateQuestionResponse.call(this, 2);
-    },
-    "CriminalLocationQuestionIntent": function () {
-		generateQuestionResponse.call(this, 3);
-    },
-    "DoneQuestioningIntent": function () {
-		doneQuestioning.call(this);
-
-    },
-    "NabThiefIntent": function () {
-        if(criminalFlag != 2)
-        {
-            this.emit(":tell", this.t("LOSE_WRONG"));
-        }
-        else
-        {
-            this.emit(":tell", this.t("WIN"));
-        }
-    },
-    "innocentIntent": function () {
-        if(criminalFlag == 2)
-        {
-            this.emit(":tell", this.t("LOSE_GOT_AWAY"));
-        }
-        else
-        {
-            lastStage();
-        }
-    },
-	"Unhandled": function () {
-        var speechOutput = this.t("QUESTION_UNHANDLED");
-        this.emit(":ask", speechOutput);
-    }
-}); */
 
 // TODO, these copied from example. Still need to be adapted
 var helpStateHandlers = Alexa.CreateStateHandler(GAME_STATES.HELP, {
