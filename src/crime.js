@@ -76,7 +76,6 @@ var p_special = ['headphones', 'bathing suit', 'naked'];
 var greetings = ['hey', "what's up'", 'hi'];
 
 //temp vars that can be spliced in case game gets restarted
-//temp vars that can be spliced in case game gets restarted
 var t_height = ['short', 'medium', 'tall'];
 var t_body = ['chubby', 'skinny', 'medium'];
 var t_eyeSize = ['small', 'large'];
