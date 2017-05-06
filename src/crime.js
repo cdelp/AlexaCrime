@@ -318,7 +318,7 @@ var Mongolia = {
 'The worlds second largest producer of Cashmere',
 -'Ulan Baatar meaning red hero is the capital city'
 ],
-    m_names: ['Dana', 'Ankhbaatar', 'Davaa', 'Zev'],
+    m_names: ['Dana', 'Ankhbaatar', 'Davaa', 'Zev', 'Bat-Erdene', 'Altantsetseg'],
     f_names: ['Zaya', 'Sondor', 'Oyundelger', 'Aigerim', 'Delgermaa', 'Jabek'],
     region: 'East Asia'
 }
@@ -340,7 +340,7 @@ var Nepal = {
     f_names: ['Shirisha', 'Shristi', 'Swornima', 'Tsamchou', 'Simixya', 'Palisha'],
     region: 'East Asia'
 }
-// still need names below this point
+
 var Taiwan = {
     countryName: 'Taiwan',
 	intro: 'Welcome to Taiwan, a country whose aboriginal people are attributed to have spread their culture as far as Madagascar to the west and Hawaii to the east. Taiwan’s national father, Sun Yat Sen, was actually American. ',
@@ -355,8 +355,8 @@ var Taiwan = {
 'Where you find a temple for worshipping the spirit of a dog',
 'Called the gay capital of Asia'
 ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Pai-han', 'Cheng-han', 'Kuan-ting', 'Kuan-yu', 'Chun-chieh', 'Yu-hsuan'],
+    f_names: ['Hui-ju', 'Chia-hua', 'Shu-fen', 'Wei-ting', 'Ya-fand', 'Hsin-yi'],
     region: 'East Asia'
 }
 var Philippines = {
@@ -373,8 +373,8 @@ var Philippines = {
 'Home to the longest Christmas season',
 'The capital city is Manila'
 ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Ian', 'Mark', 'Kyle', 'Jeff', 'Francis', 'Louis'],
+    f_names: ['Nicole', 'Alyssa', 'Karen', 'Valerie', 'Mary', 'Trisha'],
     region: 'East Asia'
 }
 var Cambodia = {
@@ -391,8 +391,8 @@ var Cambodia = {
 'Occupied by japan during world war 2',
 'Tarantulas are eaten as a snack'
 ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Bora', 'Chakara', 'Chann', 'Borey', 'Mao', 'Meaker'],
+    f_names: ['Akara', 'Chariya', 'Jorani', 'Davi', 'Kiri', 'Kesor'],
     region: 'East Asia'
 }
 var Vietnam = {
@@ -409,8 +409,8 @@ var Vietnam = {
 'The local currency is dong',
 'Legend has it that the people of this land originated from a union between an immoral chinese princess and the Dragon lord of the seas'
 ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Dinh', 'Thuan', 'Trai', 'Trang', 'Khan', 'Hung'],
+    f_names: ['Chau', 'Bian', 'Tien', 'Hue', 'Mai', 'Huong'],
     region: 'East Asia'
 }
 var NorthKorea = {
@@ -427,8 +427,8 @@ var NorthKorea = {
 'Land of the morning Calm',
 'Home to the DMZ, which is the most heavily guarded border in the world'
 ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Kim', 'Ban Ki-Moon', 'Chul', 'Hwan', 'Haneul', 'Suk'],
+    f_names: ['Areum', 'Eun', 'Sung', 'Yeong', 'Wook', 'Uk'],
     region: 'East Asia'
 }
 var Malaysia = {
@@ -444,16 +444,15 @@ var Malaysia = {
 'Known for the largest and longest caves in the world',
 'The state religion is Islam but they consider themselves very secular',
 'Home to the Petronas Towers which are the tallest twin skyscrapers'],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Ahmad', 'Ryan', 'Jack', 'Adam', 'Richard', 'Harris'],
+    f_names: ['Mira', 'Sarah', 'Lisa', 'Wani', 'Irdina', 'Nisa'],
     region: 'East Asia'
 }
 
-// intro still needed below this point
 //Africa
 var SouthAfrica = {
     countryName: 'South Africa',
-	intro: 'Welcome to South Africa ',
+	intro: 'Welcome to South Africa, most famous for Nelson Mandela, Kruger National Park, and a variety of gem stones and minerals',
     facts: ['Located at the cape of good hope',
 'The capital is Pretoria',
 'The only country to host world cup for soccer, rugby, and cricket',
@@ -465,13 +464,13 @@ var SouthAfrica = {
 'Home to the oldest remains of humans from over 160,000 years ago',
 'They have three capital cities for each branch: executive, judicial, and legislative'
 ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Junior', 'Bandile', 'Thato', 'Siyabonga', 'Lethabo', 'Kungawo'],
+    f_names: ['Minenhle', 'Amahle', 'Karabou', 'Iminathi', 'Lesedi', 'Amogelang'],
     region: 'Africa'
 }
 var Uganda = {
     countryName: 'Uganda',
-	intro: 'Welcome to Uganda ',
+	intro: 'Welcome to Uganda refered to as the Pearl of Africa. Most famous for being the source of the Nile River',
     facts: ['Located in eastern africa',
 'Home of gorillas',
 'Called the Pearl of Africa by Winston Churchill',
@@ -483,8 +482,8 @@ var Uganda = {
 'The national symbol is a grey crowned crane which is on its flag',
 'Known as Africa’s Banana Republic'
 ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Dembe', 'Majani', 'Amare', 'Mukisa', 'Ebo', 'Kojo'],
+    f_names: ['Amaka', 'Kia', 'Kamali', 'ife', 'Asha', 'Eshe'],
     region: 'Africa'
 }
 var Kenya = {
@@ -501,8 +500,8 @@ var Kenya = {
 'The official language is English and Swahili',
 'Take a safari at the stunning Maasai Mara savannah reserve'
 ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['', '', '', '', '', ''],
+    f_names: ['', '', '', '', '', ''],
     region: 'Africa'
 }
 var Somalia = {
@@ -519,8 +518,8 @@ var Somalia = {
 'The majority follow islam',
 'Lies along the gulf of Aden and the Indian Ocean'
 ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['', '', '', '', '', ''],
+    f_names: ['', '', '', '', '', ''],
     region: 'Africa'
 }
 var Sudan = {
@@ -537,8 +536,8 @@ var Sudan = {
 'Home to the first women movement in Africa and Middle East during the 60’s',
 'They had the first female parliamentarian in 1965 and the first female minister of health in 1974'
 ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['', '', '', '', '', ''],
+    f_names: ['', '', '', '', '', ''],
     region: 'Africa'
 }
 var Nigeria = {
@@ -555,8 +554,8 @@ var Nigeria = {
 'Home to the city of Lagos which is known as Africa’s big apple',
 'Known for hollywood type scene called Nollywood'
 ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['', '', '', '', '', ''],
+    f_names: ['', '', '', '', '', ''],
     region: 'Africa'
 }
 var Cameroon = {
@@ -572,8 +571,8 @@ var Cameroon = {
 'The flag has 3 vertical stripes green, red, and yellow with a gold star in the middle',
 'Where Ginger beer is consumed frequently by kids and adults and is non-alcoholic ',
 'Where you can find the only active volcano in western africa'],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['', '', '', '', '', ''],
+    f_names: ['', '', '', '', '', ''],
     region: 'Africa'
 }
 var Senegal = {
@@ -590,8 +589,8 @@ var Senegal = {
 'Predominantly muslim country with large ties to French and Lebanese culture ',
 'Where you can see The Senegambian Stone Circles'
 ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['', '', '', '', '', ''],
+    f_names: ['', '', '', '', '', ''],
     region: 'Africa'
 }
 var Ghana = {
@@ -608,8 +607,8 @@ var Ghana = {
 'First sub-saharan nation to gain independance post-colonialism',
 'Home to the largest market in West Africa called Kejetia Market'
 ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['', '', '', '', '', ''],
+    f_names: ['', '', '', '', '', ''],
     region: 'Africa'
 }
 //SouthAmerica
@@ -627,8 +626,8 @@ var Brazil = {
 'The motto on their flag means order and progress',
 'Where you see the statue of Christ the Redeemer looking down on you'
 ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['', '', '', '', '', ''],
+    f_names: ['', '', '', '', '', ''],
     region: 'South America'
 }
 var Argentina = {
@@ -645,8 +644,8 @@ var Argentina = {
 'Try Yerba Mate there. It is the national drink',
 'Home to the world’s widest avenue spanning 14 lanes and 4 lanes of parallel streets'
 ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['', '', '', '', '', ''],
+    f_names: ['', '', '', '', '', ''],
     region: 'South America'
 }
 var Venezuela = {
@@ -663,8 +662,8 @@ var Venezuela = {
 'Home to the famous breakfast dish Arepas',
 'The largest city and capital city is Caracas'
 ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['', '', '', '', '', ''],
+    f_names: ['', '', '', '', '', ''],
     region: 'South America'
 }
 var Colombia = {
@@ -681,8 +680,8 @@ var Colombia = {
 'Home to the largest theater festival called the Iberoamericana',
 'One out of every five butterfly species is found here'
 ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['', '', '', '', '', ''],
+    f_names: ['', '', '', '', '', ''],
     region: 'South America'
 }
 var Peru = {
@@ -699,13 +698,13 @@ var Peru = {
 'Third largest country in South America',
 'Home to Pima and Tanguis cotton'
 ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['', '', '', '', '', ''],
+    f_names: ['', '', '', '', '', ''],
     region: 'South America'
 }
 var Ecuador = {
     countryName: 'Ecuador',
-	intro: 'Welcome to Ecuador ',
+	intro: 'Welcome to Ecuador named after the equator that runs through the country. Also known as the closest country to space because of the earths rotation and shape',
     facts: ['Named after the equator that runs through the country',
 'The closest country to space',
 'Home to the #1 world heritage site Galapagos Islands',
@@ -716,13 +715,13 @@ var Ecuador = {
 'The capital is Quito',
 'Shares a border with Peru, Colombia, and the pacific ocean',
 'Fanesca, cerviche, and hornado are well known dishes there'],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Ivan', 'Danny', 'Anthony', 'Jeremy', 'Evelyn', 'Santiago'],
+    f_names: ['Grace', 'Ariana', 'Ginger', 'Mishel', 'Maylin', 'Magaly'],
     region: 'South America'
 }
 var Uruguay = {
     countryName: 'Uruguay',
-	intro: 'Welcome to Uruguay ',
+	intro: 'Welcome to Uruguay meaning the river of birds also known as the Eastern side of that river.',
     facts: ['Country name means river of the painted birds in the Guarani language',
 'Considered the least corrupt country in South America',
 'The smallest country in South America behind Suriname',
@@ -734,13 +733,13 @@ var Uruguay = {
 'Host of the first-ever FIFA world cup winning it twice so far',
 'The only country whose name has the same three letters in its first five'
 ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Juan', 'Santiago', 'Kevin', 'Felipe', 'Bruno', 'Mateo'],
+    f_names: ['Maria', 'Sofia', 'Lara', 'Pricila', 'Camila', 'Luana'],
     region: 'South America'
 }
 var Paraguay = {
     countryName: 'Paraguay',
-	intro: 'Welcome to Paraguay ',
+	intro: 'Welcome to Paraguay. Paraguay is famous for being the first south american country to gain independance from Spain rule in 1811.',
     facts: ['One of the few countries in south america that still speak their native language called Guarani with Spanish as second',
 'Often referred to as the heart of south America',
 'Home to the first railway line in South America',
@@ -752,13 +751,13 @@ var Paraguay = {
 'Home to South Americas second largest river after Amazon',
 'The national drink is mahtay often served hot'
 ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Daveed', 'Alba', 'Alin', 'Carlos', 'Elian', 'Enrique'],
+    f_names: ['Liz', 'Larisa', 'Saskia', 'Dara', 'Judith', 'Lilian'],
     region: 'South America'
 }
 var Bolivia = {
     countryName: 'Bolivia',
-	intro: 'Welcome to Bolivia ',
+	intro: 'Welcome to Bolivia named after independance fighter Simon Bolivar. He helped them gain independence from spain in 1825',
     facts: ['One of two landlocked South American Countries',
 'Named after the Venezuelan military and political leader who led 4 south american countries to independence from Spain',
 'The capital is La Paz, the highest capital city in the world',
@@ -770,13 +769,13 @@ var Bolivia = {
 'Used to be called upper peru before gaining independence in 1825 from spain',
 'Where you can find pink dolphins in the amazon'
 ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Eric', 'Flore', 'Rolando', 'Ricky', 'Luis', 'Arturo'],
+    f_names: ['Camilia', 'Monica', 'Jennifer', 'Adriana', 'Olive', 'Belen'],
     region: 'South America'
 }
 var Chile = {
     countryName: 'Chile',
-	intro: ' ',
+	intro: 'Welcome to Chile known for Easter Island. Easter Island is home to the large statues of heads called moai',
     facts: ['Home to the world’s largest swimming pool and it is filled with seawater from the pacific',
 'Where you can find the driest place on earth called the Atacama Desert runnning between the Andes Mountains and the Pacific',
 'Known for the statues on Easter island called Moai',
@@ -788,8 +787,8 @@ var Chile = {
 'Famous for the Alerce tree with some older than 4,000 years',
 'Home to the largest reserve of cooper'
 ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Agustin', 'Vicente', 'Matias', 'Mateo', 'Tomas', 'Alonzo'],
+    f_names: ['Josefa', 'Amanda', 'Martina', 'Sofia', 'Emilia', 'Florencia'],
     region: 'South America'
 }
 
@@ -846,7 +845,7 @@ function PopulateCriminal()  {
 
 function PopulateResponsePerson() {
     //may not need all these attributes, can pick what we want to output
-    this.seenValue = rand(0, 3);
+    this.seenValue = rand(0, 4);
     this.gender =  gender[rand(0, gender.length -1)];
     this.hairLength = hairLength[rand(0, hairLength.length -1)];
     this.hairColor = hairColor[rand(0, hairLength.length -1)];
@@ -927,125 +926,126 @@ var country; // trying this as global since it keeps repeating the intitial coun
 //function checkCountry(country)
 function checkCountry()
 {
-    if(talkedToCount != 0 || questionedCount != 0)
+    country = this.event.request.intent.slots.country_item.value;
+
+	console.log(country);
+
+	//assign choice of country and count for validation checking in other methods
+    countryVisited++;
+
+    if(stage == 0)
     {
-        var speechOutput = this.t("NOT_COUNTRY_PICK");
-        this.emit(":ask", speechOutput);
-    }
-    {
-        country = this.event.request.intent.slots.country_item.value;
-
-        console.log(country);
-
-        //assign choice of country and count for validation checking in other methods
-        countryVisited++;
-
-        if (stage == 0) {
-            console.log("in stage 0 for checkCountry");
-            for (i = 0; i < Region.length; i++) {
-                for (j = 0; j < Region[i].length; j++) {
-                    if (Region[i][j].countryName == country) {
-                        //assign countryChoice if said country is a valid choice
-                        countryChoice = Region[i][j];
-                    }
+        console.log("in stage 0 for checkCountry");
+        for (i = 0; i < Region.length; i++)
+        {
+            for(j = 0; j < Region[i].length; j++)
+            {
+                if (Region[i][j].countryName == country)
+                {
+                    //assign countryChoice if said country is a valid choice
+                    countryChoice = Region[i][j];
                 }
-            }
-
-            try {
-                //if country doesn't register then they gave a country name we don't have, error output
-                if (countryChoice.countryName != country) {
-                    //error response, prompt for a valid country choice.
-                    console.log("given country string did not match");
-                    //fix counter
-                    countryVisited--;
-                }
-
-                //if correct country chosen then reset count, go to next stage, assign next country
-                if (criminal.country.countryName == country) {
-                    console.log("correct country given");
-                    countryVisited = 0;
-                    stage++;
-
-                    // audio clips must be 48kbps 16000hz mpeg 2
-                    var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName)
-                        + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-                        + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-                    var repromptOutput = this.t("PLEASE_GREET");
-
-                    //var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-                    this.emit(":ask", speechOutput, repromptOutput);
-
-                }
-                else if ((criminal.country.countryName != country) && countryVisited >= 2) {
-                    //you lose.
-                    console.log("you lose");
-                    //TODO ask if they want to play again
-                    var speechOutput = this.t("LOSE");
-                    this.emit(":ask", speechOutput);
-                }
-                else {
-                    //picked wrong country but only on first try
-
-                    var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-                        + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-                    var repromptOutput = this.t("PLEASE_GREET");
-                    this.emit(":ask", speechOutput, repromptOutput);
-                }
-            } catch (error) {
-                console.log("CountryChoice incorrect handling");
-            }
-        }
-        else {
-            console.log("in else stage for checkCountry");
-            for (i = 0; i < criminal.region.length; i++) {
-                if (criminal.region[i].countryName == country) {
-                    countryChoice = criminal.region[i];
-                }
-            }
-
-            try {
-                //if country chosen doesn't exist
-                if (countryChoice.countryName != country) {
-                    //error response, prompt for a valid country choice.
-                    console.log("given country string did not match");
-                    //fix counter
-                    countryVisited--;
-                }
-
-                //if correct country chosen then reset count, go to next stage, assign next country
-                if (criminal.country.countryName == country) {
-                    console.log("correct country given");
-                    countryVisited = 0;
-                    stage++;
-                    crimCountryVisitedArr.push(countryChoice);
-                    //assignNextCountry();
-
-                    var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-                        + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-                    var repromptOutput = this.t("PLEASE_GREET");
-                    this.emit(":ask", speechOutput, repromptOutput);
-                }
-                else if (criminal.country.countryName != country && countryVisited >= 1) {
-                    //you lose.
-                    console.log("you lose");
-                    //TODO ask if they want to play again
-                    var speechOutput = this.t("LOSE");
-                    this.emit(":ask", speechOutput);
-                }
-                else {
-                    //picked wrong country
-
-                    var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-                        + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-                    var repromptOutput = this.t("PLEASE_GREET");
-                    this.emit(":ask", speechOutput, repromptOutput);
-                }
-            } catch (error) {
-                console.log("error in countryChecked()");
             }
         }
 
+        try {
+            //if country doesn't register then they gave a country name we don't have, error output
+            if (countryChoice.countryName != country) {
+                //error response, prompt for a valid country choice.
+                console.log("given country string did not match");
+                //fix counter
+                countryVisited--;
+            }
+
+            //if correct country chosen then reset count, go to next stage, assign next country
+            if (criminal.country.countryName == country) {
+                console.log("correct country given");
+                countryVisited = 0;
+                stage++;
+    
+                // audio clips must be 48kbps 16000hz mpeg 2
+				var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) 
+					+ "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+					+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+				var repromptOutput = this.t("PLEASE_GREET");
+					
+				//var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+                this.emit(":ask", speechOutput, repromptOutput);
+
+            }
+            else if ((criminal.country.countryName != country) && countryVisited >= 2) {
+				//you lose.
+                console.log("you lose");
+                //TODO ask if they want to play again
+                var speechOutput = this.t("LOSE");
+                this.emit(":ask", speechOutput);
+            }
+            else
+            {
+                //picked wrong country but only on first try
+                
+                var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>" 
+				+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+				var repromptOutput = this.t("PLEASE_GREET");
+                this.emit(":ask", speechOutput, repromptOutput);
+            }
+        } catch (error) {
+            console.log("CountryChoice incorrect handling");
+        }
     }
+    else
+    {
+        console.log("in else stage for checkCountry");
+        for(i = 0; i < criminal.region.length; i++)
+        {
+            if(criminal.region[i].countryName == country)
+            {
+                countryChoice = criminal.region[i];
+            }
+        }
+
+        try {
+            //if country chosen doesn't exist
+            if (countryChoice.countryName != country) {
+                //error response, prompt for a valid country choice.
+                console.log("given country string did not match");
+                //fix counter
+                countryVisited--;
+            }
+
+            //if correct country chosen then reset count, go to next stage, assign next country
+            if (criminal.country.countryName == country) {
+                console.log("correct country given");
+                countryVisited = 0;
+                stage++;
+                crimCountryVisitedArr.push(countryChoice);
+                //assignNextCountry();
+                
+                var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+				+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+				var repromptOutput = this.t("PLEASE_GREET");
+                this.emit(":ask", speechOutput, repromptOutput);
+            }
+            else if (criminal.country.countryName != country && countryVisited >= 1) {
+                //you lose.
+                console.log("you lose");
+                //TODO ask if they want to play again
+                var speechOutput = this.t("LOSE");
+                this.emit(":ask", speechOutput);
+            }
+            else
+            {
+                //picked wrong country
+                
+                var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+				+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+				var repromptOutput = this.t("PLEASE_GREET");
+                this.emit(":ask", speechOutput, repromptOutput);
+            }
+        }catch(error) {console.log("error in countryChecked()");}
+    }
+
+
 }
 
 //assign next country
@@ -1102,103 +1102,100 @@ function assignNextCountry()
 
 function lastStage()
 {
-    if(stage < 3 )
+    var speechOutput;
+    shuffleArray(criminalArr);
+    //removes index 0 form criminalArr
+    var crimVar = criminalArr.splice(0, 1);
+    criminalFlag = crimVar;
+
+    var l_height = height.slice(0);
+    var l_body = body.slice(0);
+    var l_eyeSize = eyeSize.slice(0);
+    var l_eyeColor = eyeColor.slice(0);
+    var l_hairLength = hairLength.slice(0);
+    var l_hairColor = hairColor.slice(0);
+    var l_special = p_special.slice(0);
+    //removing criminal traits from attribute arrays so randomizer doesn't pick them
+    console.log("before splice t_heght size: "+l_height);
+    console.log("before splice heght size: "+height);
+    l_height.splice(l_height.indexOf(criminal.height), 1);
+    l_body.splice(l_body.indexOf(criminal.body), 1);
+    l_eyeSize.splice(l_eyeSize.indexOf(criminal.eyeSize), 1);
+    l_eyeColor.splice(l_eyeColor.indexOf(criminal.eyeColor), 1);
+    l_hairLength.splice(l_hairLength.indexOf(criminal.hairLength), 1);
+    l_hairColor.splice(l_hairColor.indexOf(criminal.hairColor), 1);
+    //might keep special, idk.
+    l_special.splice(l_special.indexOf(criminal.special), 1);
+    console.log("After splice t_heght size: "+l_height);
+    console.log("After splice heght size: "+height);
+
+    if(crimVar == 2)
     {
-        var speechOutput = this.t("NOT_LAST_STAGE");
+        console.log( "A " +criminal.height + " " +criminal.body+ " " +pronounThird(criminal.gender)+" with "
+            + criminal.eyeSize +" " +criminal.eyeColor + " eyes, "
+            + criminal.hairLength+ " " + criminal.hairColor + " hair, and a"
+            + criminal.special+" walks by. This is the Criminal.");
+
+        //this.emit(":tell", speechOutput);
+
+        speechOutput = this.t("ACCUSE", criminal.height, criminal.body, pronounThird(criminal.gender), criminal.eyeSize,
+            criminal.eyeColor, criminal.hairLength, criminal.hairColor, criminal.special);
         this.emit(":ask", speechOutput);
 
+
+
     }
-    else {
-        var speechOutput;
-        shuffleArray(criminalArr);
-        //removes index 0 form criminalArr
-        var crimVar = criminalArr.splice(0, 1);
-        criminalFlag = crimVar;
+    else
+    {
+        //randomly picks 1 or 2 attributes to change
+        var criminalAtt = [criminal.height, criminal.body, criminal.eyeSize, criminal.eyeColor, criminal.hairLength,
+            criminal.hairColor, criminal.special];
+        var attributeInd = [0 , 1, 2, 3, 4, 5, 6];
+        var randNum = rand(1, 2);
+        shuffleArray(attributeInd);
 
-        var l_height = height.slice(0);
-        var l_body = body.slice(0);
-        var l_eyeSize = eyeSize.slice(0);
-        var l_eyeColor = eyeColor.slice(0);
-        var l_hairLength = hairLength.slice(0);
-        var l_hairColor = hairColor.slice(0);
-        var l_special = p_special.slice(0);
-        //removing criminal traits from attribute arrays so randomizer doesn't pick them
-        console.log("before splice t_heght size: " + l_height);
-        console.log("before splice heght size: " + height);
-        l_height.splice(l_height.indexOf(criminal.height), 1);
-        l_body.splice(l_body.indexOf(criminal.body), 1);
-        l_eyeSize.splice(l_eyeSize.indexOf(criminal.eyeSize), 1);
-        l_eyeColor.splice(l_eyeColor.indexOf(criminal.eyeColor), 1);
-        l_hairLength.splice(l_hairLength.indexOf(criminal.hairLength), 1);
-        l_hairColor.splice(l_hairColor.indexOf(criminal.hairColor), 1);
-        //might keep special, idk.
-        l_special.splice(l_special.indexOf(criminal.special), 1);
-        console.log("After splice t_heght size: " + l_height);
-        console.log("After splice heght size: " + height);
-
-        if (crimVar == 2) {
-            console.log("A " + criminal.height + " " + criminal.body + " " + pronounThird(criminal.gender) + " with "
-                + criminal.eyeSize + " " + criminal.eyeColor + " eyes, "
-                + criminal.hairLength + " " + criminal.hairColor + " hair, and a"
-                + criminal.special + " walks by. This is the Criminal.");
-
-            //this.emit(":tell", speechOutput);
-
-            speechOutput = this.t("ACCUSE", criminal.height, criminal.body, pronounThird(criminal.gender), criminal.eyeSize,
-                criminal.eyeColor, criminal.hairLength, criminal.hairColor, criminal.special);
-            this.emit(":ask", speechOutput);
-
-
-        }
-        else {
-            //randomly picks 1 or 2 attributes to change
-            var criminalAtt = [criminal.height, criminal.body, criminal.eyeSize, criminal.eyeColor, criminal.hairLength,
-                criminal.hairColor, criminal.special];
-            var attributeInd = [0, 1, 2, 3, 4, 5, 6];
-            var randNum = rand(1, 2);
-            shuffleArray(attributeInd);
-
-            for (var r = 1; r <= randNum; r++) {
-                switch (attributeInd[r]) {
-                    case 0:
-                        criminalAtt[attributeInd[r]] = l_height[rand(0, l_height.length) - 1];
-                        break;
-                    case 1:
-                        criminalAtt[attributeInd[r]] = l_body[rand(0, l_body.length) - 1];
-                        break;
-                    case 2:
-                        criminalAtt[attributeInd[r]] = l_eyeSize[rand(0, l_eyeSize.length - 1)];
-                        break;
-                    case 3:
-                        criminalAtt[attributeInd[r]] = l_eyeColor[rand(0, l_eyeColor.length - 1)];
-                        break;
-                    case 4:
-                        criminalAtt[attributeInd[r]] = l_hairLength[rand(0, l_hairLength.length - 1)];
-                        break;
-                    case 5:
-                        criminalAtt[attributeInd[r]] = l_hairColor[rand(0, l_hairLength.length - 1)];
-                        break;
-                    case 6:
-                        //might remove case 6 as specials might be too easy
-                        criminalAtt[attributeInd[r]] = l_special[rand(0, l_special.length) - 1];
-                        break;
-                    default:
-                        console.log("error populating final stage random person");
-                        break;
-                }
+        for(var r = 1; r <= randNum; r++)
+        {
+            switch(attributeInd[r])
+            {
+                case 0:
+                    criminalAtt[attributeInd[r]] = l_height[rand(0, l_height.length) - 1];
+                    break;
+                case 1:
+                    criminalAtt[attributeInd[r]] = l_body[rand(0, l_body.length) -1];
+                    break;
+                case 2:
+                    criminalAtt[attributeInd[r]] = l_eyeSize[rand(0, l_eyeSize.length -1)];
+                    break;
+                case 3:
+                    criminalAtt[attributeInd[r]] = l_eyeColor[rand(0, l_eyeColor.length -1)];
+                    break;
+                case 4:
+                    criminalAtt[attributeInd[r]] = l_hairLength[rand(0, l_hairLength.length -1)];
+                    break;
+                case 5:
+                    criminalAtt[attributeInd[r]] = l_hairColor[rand(0, l_hairLength.length -1)];
+                    break;
+                case 6:
+                    //might remove case 6 as specials might be too easy
+                    criminalAtt[attributeInd[r]] = l_special[rand(0, l_special.length) -1];
+                    break;
+                default:
+                    console.log("error populating final stage random person");
+                    break;
             }
-            console.log("A " + criminalAtt[0] + " " + criminalAtt[1] + " " + pronounThird(criminal.gender) + " with "
-                + criminalAtt[2] + " " + criminalAtt[3] + " eyes, "
-                + criminalAtt[4] + " " + criminalAtt[5] + " hair, and a"
-                + criminalAtt[6] + " walks by. This is not the Criminal.");
-
-            //this.emit(":tell", speechOutput);
-
-            speechOutput = this.t("ACCUSE", criminalAtt[0], criminalAtt[1], pronounThird(criminal.gender), criminalAtt[2], criminalAtt[3],
-                criminalAtt[4], criminalAtt[5], criminalAtt[6]);
-            this.emit(":ask", speechOutput);
-
         }
+        console.log( "A " +criminalAtt[0] + " " +criminalAtt[1]+ " " +pronounThird(criminal.gender)+" with "
+            + criminalAtt[2] +" " +criminalAtt[3] + " eyes, "
+            + criminalAtt[4]+ " " + criminalAtt[5] + " hair, and a"
+            + criminalAtt[6]+" walks by. This is not the Criminal.");
+
+        //this.emit(":tell", speechOutput);
+
+        speechOutput = this.t("ACCUSE",criminalAtt[0], criminalAtt[1],pronounThird(criminal.gender),criminalAtt[2], criminalAtt[3],
+            criminalAtt[4], criminalAtt[5], criminalAtt[6]);
+        this.emit(":ask", speechOutput);
+
     }
 }
 
@@ -1263,7 +1260,7 @@ function talkedTo()
     }
 }
 
-function doneQuestioning()
+function doneQuestioning ()
 {
     var speechOutput;
     questionedCount = 0;
@@ -1281,8 +1278,7 @@ function doneQuestioning()
             this.emit(":ask", speechOutput);
         }
 		
-		// TODO need something here?
-        //nope, don't think so since we can't question while in the wrong country.
+		// TODO need something here? 
 
     }
     else {
@@ -1520,8 +1516,6 @@ var languageString = {
             "LAST_PERSON": "Looks like we've talked to everyone, it's time to pick the next country. ",
             "DONE_QUESTIONING": "Seems like that's all %s has to say, let's look for someone else. %s %s %s is approaching. ",
             "COUNTRY_FACTS": "I heard %s is going to %s. ",
-            "NOT_LAST_STAGE": "We aren't ready to capture the criminal",
-            "NOT_COUNTRY_PICK": "We aren't done talking to people yet",
             "ACCUSE": "A %s %s %s with %s %s eyes, %s %s hair, and a %s walks by. Is this the criminal? If so, say stop criminal or say innocent to keep looking. "
 		}
     },
