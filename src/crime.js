@@ -964,12 +964,12 @@ function checkCountry()
                 stage++;
     
                 // code works, but problem accessing clip. Need to convert to 48kbps 16000hz mpeg 2
-			/*	var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) 
+				var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) 
 					+ "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
 					+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-				*/
+				
 					
-				var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+				//var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
                 this.emit(":ask", speechOutput);
 
             }
