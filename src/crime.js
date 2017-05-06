@@ -89,13 +89,13 @@ var greetings = ['hey', "what's up'", 'hi'];
 var Egypt  = {
     countryName: 'Egypt',
 	intro: 'Welcome to Egypt, an ancient civilization dating back to 3200 BC. Egypt is part of the fertile crescent because of the Nile River. ',
-    facts:  ['Where the world’s oldest dress was found over 5,000 years ago', 
+    facts:  ['Where the worlds oldest dress was found over 5,000 years ago', 
 'The nation of the steppe eagle', 
 'Where the statue of liberty was originally intended at the suez canal lighting the way to asia', 
 'Where the first sailing boats were invented',
 'Where the tradition of exchanging wedding rings started',
 'Known for the Great Pyramid of Giza',
-'The country with the world’s largest arab population',
+'The country with the worlds largest arab population',
 'Beer was once considered a national currency',
 'Where the circumference of the Earth was calculated 2200 years ago',
 'The land of Pharaohs'
@@ -110,10 +110,10 @@ var Iran = {
     facts: ['Where the capital is Tehran, which means warm slope',
 'Where their flag has three equal horizontal bands of green, white, and red',
 'Known as Persia',
-'Where the world’s oldest continuous civilizations dating back 4000 BC',
+'Where the worlds oldest continuous civilizations dating back 4000 BC',
 'The inventors of a water supply system called qanat, which collects underground water and moves it through tunnels',
 'Known for the best rugs and tapestry',
-'The world’s largest producers of caviar, pistachios, and saffron',
+'The worlds largest producers of caviar, pistachios, and saffron',
 'Where Polo was played as early as 6th century B.C.',
 'Where they speak farsi',
 'Where Islam became the state religion in 637'
@@ -124,7 +124,7 @@ var Iran = {
 }
 var Algeria = {
     countryName: 'Algeria',
-	intro: 'Welcome to Algeria, a nation with over 2 million square kilometers of land, only 12% of which is inhabited. 98% of Algeria’s exports consist of petroleum and gas. ',
+	intro: 'Welcome to Algeria, a nation with over 2 million square kilometers of land, only 12% of which is inhabited. 98% of Algerias exports consist of petroleum and gas. ',
     facts: ['Where the capital is Algiers',
 'Where the Sahara Desert covers 80% of the country',
 'Where they gained independance from France in 1962',
@@ -186,7 +186,7 @@ var Morocco = {
 'Only 8-miles from Europe',
 'Possible to see the Atlantic and Mediterranean at the same time',
 'The Alaouites are the royal family',
-'Home to the world’s first university',
+'Home to the worlds first university',
 'The liver is considered to be the symbol of love',
 'Only country in Africa not part of the African union'
 ],
@@ -222,9 +222,9 @@ var Iraq = {
 'The flag contains green script of Allahu Akbar meaning God is the Great',
 'The capital is Baghdad formerly known as the world center for math, science, and astronomy',
 'Where the tower of babel happened representing the start of different languages',
-'The capital city translates to God’s Gift.',
+'The capital city translates to Gods Gift.',
 'Where poetry and literature thrived with tales such as A thousand and One Nights',
-'Don’t forget to try the Tigris fish roasted over an open fire'
+'Dont forget to try the Tigris fish roasted over an open fire'
 ],
     m_names: ['Zamanlabib', 'Mustafa', 'Barhoomee', 'Baravan', 'Jahmir', 'Fadhil'],
     f_names: ['Zainab', 'Noora', 'Sham', 'Telenaz', 'Rukia', 'Kayoosh'],
@@ -232,7 +232,7 @@ var Iraq = {
 }
 var SaudiArabia = {
     countryName: 'Saudi Arabia',
-	intro: 'Welcome to Saudi Arabia, where around 100 camels are sold every day in its capital city. A very high 60% of Saudi Arabia’s workforce is foreign ',
+	intro: 'Welcome to Saudi Arabia, where around 100 camels are sold every day in its capital city. A very high 60% of Saudi Arabias workforce is foreign ',
     facts: ['Going to Mecca for hajj pilgrimage',
 'Dont get caught in the empty quarter, the largest sand desert in the world',
 'The capital city is Riyadh',
@@ -259,7 +259,7 @@ var Lebanon = {
 'The countrys name has been unchanged for over 4000 years',
 'Where the first alphabet was created',
 'Where the first sailors called phoenicians built the first ever boat from cedar trees',
-'The country is know as God’s Country on Earth',
+'The country is know as Gods Country on Earth',
 'The creators of Tom & Jerrry and directed other cartoons such as Scooby-Doo, The Jetsons, and The smurfs are lebanese'
 ],
     m_names: ['Mahmous', 'Nader', 'Ayman', 'Wehbe', 'Rami', 'Moukhtar'],
@@ -270,7 +270,7 @@ var Lebanon = {
 //East Asia
 var Japan = {
     countryName: 'Japan',
-	intro: 'Welcome to Japan, with its 108 active volcanoes, as part of the Pacific Ocean’s ring of fire.Japan consists of 47 prefectures, each lead by an elected governor. ',
+	intro: 'Welcome to Japan, with its 108 active volcanoes, as part of the Pacific Oceans ring of fire.Japan consists of 47 prefectures, each lead by an elected governor. ',
     facts: ['Nihon or Nippon which means the land of the rising sun',
 'Consists of over 6,800 islands',
 'Home to the largest populated metropolitan region in the world',
@@ -288,14 +288,14 @@ var Japan = {
 }
 var China = {
     countryName: 'China',
-	intro: 'Welcome to China, home to the world’s entire giant panda population.  ',
+	intro: 'Welcome to China, home to the worlds entire giant panda population.  ',
     facts: ['Home to the largest population in the world',
 'Capital is Beijing',
 'Known for the great wall, which is the largest man made structure in the world soon to be trumped by President Trump haha',
 'The worlds largest army',
 'The worlds largest exporter of goods',
 'The national sport is table tennis',
-'Half of the world’s pigs live in china',
+'Half of the worlds pigs live in china',
 'Where it is common for rich people to hire a body double to serve their sentence',
 'The worlds largest economy',
 'The forbidden city is the largest palace in the world'
@@ -306,7 +306,7 @@ var China = {
 }
 var Mongolia = {
     countryName: 'Mongolia',
-	intro: 'Welcome to Mongolia, with the world’s coldest national capital, Ulaanbaatar, averaging -1 degrees celsius. ',
+	intro: 'Welcome to Mongolia, with the worlds coldest national capital, Ulaanbaatar, averaging -1 degrees celsius. ',
     facts: ['Arguably the creators of ice cream',
 'Home to 13 times more horses than humans',
 'Known for its great ruler Genghis Khan stretching their empire from China to the Caspian Sea',
@@ -343,7 +343,7 @@ var Nepal = {
 // still need names below this point
 var Taiwan = {
     countryName: 'Taiwan',
-	intro: 'Welcome to Taiwan, a country whose aboriginal people are attributed to have spread their culture as far as Madagascar to the west and Hawaii to the east. Taiwan’s national father, Sun Yat Sen, was actually American. ',
+	intro: 'Welcome to Taiwan, a country whose aboriginal people are attributed to have spread their culture as far as Madagascar to the west and Hawaii to the east. Taiwans national father, Sun Yat Sen, was actually American. ',
     facts: ['Island nation off the coast of Mainland China',
 'Walking in the rain goes against cultural norms',
 'Where 7-11 convenience stores are everywhere offering more than snacks and drinks',
@@ -379,7 +379,7 @@ var Philippines = {
 }
 var Cambodia = {
     countryName: 'Cambodia',
-	intro: 'Welcome to Cambodia, overcoming a tragic past that included the genocide of several million people, it is now one of Asia’s fastest growing economies, with a robust tourism industry revolving around its deep history and ancient architecture. ',
+	intro: 'Welcome to Cambodia, overcoming a tragic past that included the genocide of several million people, it is now one of Asias fastest growing economies, with a robust tourism industry revolving around its deep history and ancient architecture. ',
     facts: ['The land of a million mopeds',
 'The only country flag with a building on it',
 'Known for their textile industry',
@@ -397,7 +397,7 @@ var Cambodia = {
 }
 var Vietnam = {
     countryName: 'Vietnam',
-	intro: 'Welcome to Vietnam, home of the world’s largest cave, and the region’s highest mountain, known as the roof of indochina. ',
+	intro: 'Welcome to Vietnam, home of the worlds largest cave, and the regions highest mountain, known as the roof of indochina. ',
     facts: ['The country with flag is red with a large yellow star in the middle',
 'The capital city is Hanoi',
 'It is an S shaped country',
@@ -416,8 +416,8 @@ var Vietnam = {
 var NorthKorea = {
     countryName: 'North Korea',
 	intro: 'Welcome to North Korea, founded in 1948 and officially name Democratic Peoples Republic of Korea. Despite its name, it is considered the most authoritarian regime in the world, with all elections having only one candidate. ',
-    facts: ['Where the calendar is based on Kim II-Sung’s date of birth',
-'Home to the world’s largest stadium',
+    facts: ['Where the calendar is based on Kim II-Sungs date of birth',
+'Home to the worlds largest stadium',
 'The national instrument is the accordion',
 'Where godzilla is known as Pulgasari',
 'Where you can score 4-points in a basketball game and lose points for missed free throws',
@@ -481,7 +481,7 @@ var Uganda = {
 'Much of the population lives near Lake Victoria',
 'The nile river starts here before flowing through 9 other countries and ending into the mediterranean sea in egypt',
 'The national symbol is a grey crowned crane which is on its flag',
-'Known as Africa’s Banana Republic'
+'Known as Africas Banana Republic'
 ],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
@@ -493,7 +493,7 @@ var Kenya = {
     facts: ['East African country with coastline on the Indian Ocean',
 'The capital is Nairobi',
 'Flag has two crossed white spears behind a rea, white, and black Maasai shield',
-'Country means God’s resting place',
+'Country means Gods resting place',
 'Where they make most of their money on exporting coffee but do not drink it themselves',
 'Majority are christian protestant',
 'Home to the fastest distance runners',
@@ -534,7 +534,7 @@ var Sudan = {
 'The capital means elephant trunk because the resemblance to the bend in the nile river there',
 'The northern and western part of the country contain remnants of old volcanoes',
 'There are more pyramids here than in egypt',
-'Home to the first women movement in Africa and Middle East during the 60’s',
+'Home to the first women movement in Africa and Middle East during the 60s',
 'They had the first female parliamentarian in 1965 and the first female minister of health in 1974'
 ],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
@@ -552,7 +552,7 @@ var Nigeria = {
 'Home to the Zuma Rock, the gateway to the capital',
 'The flag is 3 vertical stripes with 2 green sandwhiching one white stripe',
 'Most famous for petroleum',
-'Home to the city of Lagos which is known as Africa’s big apple',
+'Home to the city of Lagos which is known as Africas big apple',
 'Known for hollywood type scene called Nollywood'
 ],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
@@ -597,7 +597,7 @@ var Senegal = {
 var Ghana = {
     countryName: 'Ghana',
 	intro: 'Welcome to Ghana ',
-    facts: ['Sandwhiched between Cote d’ivoire and Togo',
+    facts: ['Sandwhiched between Cote divoire and Togo',
 'The capital is Accra',
 'The local currency is cedi meaning sea shells',
 'The entire southern border sits on the Gulf of Guinea',
@@ -643,7 +643,7 @@ var Argentina = {
 'Known for tango dancing',
 'The capital is Buenos Aires meaning good airs or fair winds in spanish',
 'Try Yerba Mate there. It is the national drink',
-'Home to the world’s widest avenue spanning 14 lanes and 4 lanes of parallel streets'
+'Home to the worlds widest avenue spanning 14 lanes and 4 lanes of parallel streets'
 ],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
@@ -655,7 +655,7 @@ var Venezuela = {
     facts: ['The name means little venice named after by an Italian explorer',
 'Home to the largest lake in South America and one of the oldest on earth',
 'It is a magical sight to see lightning called Catatumbo which mean continuous high frequency in Spanish',
-'Where you can find the world’s tallest waterfall about 15 times taller than Niagra Falls',
+'Where you can find the worlds tallest waterfall about 15 times taller than Niagra Falls',
 'Home to the highest statue of Virgin Mary, which is taller than the Statue of Liberty',
 'Known for their large proven oil reserves',
 'Their favorite sport is baseball',
@@ -672,7 +672,7 @@ var Colombia = {
 	intro: 'Welcome to Colombia ',
     facts: ['The only country in South America that has a coastline on both the pacific ocean and the Caribbean Sea',
 'The capital is Bogota',
-'Where drug lord Pablo Escobar offered to pay the country’s debt to improve his reputation and escape justice',
+'Where drug lord Pablo Escobar offered to pay the countrys debt to improve his reputation and escape justice',
 'Part of the ring of fire making it vulnerable to earthquakes and volcanic eruptions',
 'Located on the equator so expect much heat and sun',
 'Breakfast consists of Changua milk soup with undercooked egg and salty blocks of cheese in your coffee',
@@ -692,7 +692,7 @@ var Peru = {
 'Cuy or Guinea Pig is their traditional dish',
 'The potato originated from here and corn is grown in almost any color you can think of',
 'Home to the oldest university in the Western Hemisphere',
-'Where you can find the world’s deepest canyon almost twice as deep as the grand canyon',
+'Where you can find the worlds deepest canyon almost twice as deep as the grand canyon',
 'It is a tradition to give friends and family yellow underpants to ring in the new year',
 'Home to the highest sand dune in the world, Cerro Blanco',
 'Lima is the capital and largest city',
@@ -710,7 +710,7 @@ var Ecuador = {
 'The closest country to space',
 'Home to the #1 world heritage site Galapagos Islands',
 'Charles Darwin studied here resulting in his theory on evolution',
-'The world’s largest exporter of bananas',
+'The worlds largest exporter of bananas',
 'One of two countries that do not share a border with Brazil',
 'Known as the most biodiverse country in the world',
 'The capital is Quito',
@@ -728,7 +728,7 @@ var Uruguay = {
 'The smallest country in South America behind Suriname',
 'Over half the population live in the capital city Montevideo',
 'Where Crows known locally as Quebrada de los Cuervos outnumber people 4 to 1',
-'Home to the world’s largest national anthem Orientales la Patria o la Tumba',
+'Home to the worlds largest national anthem Orientales la Patria o la Tumba',
 'Least religious country in South America leading to renaming of many catholic holidays',
 'The first country in the world to legalize the production and sale of marijuana',
 'Host of the first-ever FIFA world cup winning it twice so far',
@@ -777,7 +777,7 @@ var Bolivia = {
 var Chile = {
     countryName: 'Chile',
 	intro: 'Welcome to Chile ',
-    facts: ['Home to the world’s largest swimming pool and it is filled with seawater from the pacific',
+    facts: ['Home to the worlds largest swimming pool and it is filled with seawater from the pacific',
 'Where you can find the driest place on earth called the Atacama Desert runnning between the Andes Mountains and the Pacific',
 'Known for the statues on Easter island called Moai',
 'The capital is Sanitago founded by a spanish explorer in 1541',
@@ -802,24 +802,24 @@ var Region = [MiddleEast, EastAsia, Africa, SouthAmerica];
 
 var crimes = ["arson", "property", "human trafficking", "burglary", "drug-related", "robbery", "embezzlement", "grand-larceny", "forgery", "fraud", "white-collar"];
 
-var crimeBackground = [‘Saw it on snapchat...crazy man’, 
-‘I heard about' + 'criminal.name' + 'but didnt see it’, 
-‘Ya dude. ' + 'criminal.name' + 'went live on facebook’, 
-‘I saw some photos on whatsapp’, 
-‘I wouldn’t mess with ' + 'criminal.name' + 'criminal.name' + is crazy’,
- ‘criminal.name' + 'went wild on twitter’, 
- ‘Good luck stopping' + 'criminal.name' + ', i saw it on the news last night’, 
- ‘My friend was there and saw the whole thing’, 
- ‘Social media is ruining our world. ' + 'criminal.name' + 'is all over instagram’,
- ‘Did you see the photos on Instagram? They were taken down but are replicated all over the internet’, 
- ‘Heard there were millions in damages. What is wrong with people?’, 
- ‘What is this world coming to? Please bring' + 'criminal.name' + 'to justice’, 
- ‘Read about this on my newsfeed. Great thing I wasn’t there and no one got hurt’, 
- ‘Checkout twitter. ' + 'criminal.name' +  'is trending’, 
- ‘Wish I was there to do something about it. Just disgusting what people are doing today’, 
- ‘I was there that night. I saw everything and let authorities know what he looked like and where he was headed’, 
- ‘Whatsapp is becoming the go to choice for communication between these criminals. I saw a couple messages shared on my group and it looked crazy’, 
- ‘Dude is out of control and must be stopped’];
+var crimeBackground = ['Saw it on snapchat. crazy man', 
+'I heard about it, but didnt see it', 
+'Ya dude. It was live on facebook', 
+'I saw some photos on whatsapp', 
+'I wouldnt mess with them. They are crazy',
+' They went wild on twitter', 
+ 'Good luck stopping them. i saw it on the news last night', 
+ 'My friend was there and saw the whole thing', 
+ 'Social media is ruining our world. theyre all over instagram',
+ 'Did you see the photos on Instagram? They were taken down but are replicated all over the internet', 
+ 'Heard there were millions in damages. What is wrong with people?', 
+ 'What is this world coming to? Please bring that criminal to justice', 
+ 'Read about this on my newsfeed. Great thing I wasnt there and no one got hurt', 
+ 'Checkout twitter. The criminal is trending', 
+ 'Wish I was there to do something about it. Just disgusting what people are doing today', 
+ 'I was there that night. I saw everything and let authorities know what he looked like and where he was headed', 
+ 'Whatsapp is becoming the go to choice for communication between these criminals. I saw a couple messages shared on my group and it looked crazy', 
+ 'Dude is out of control and must be stopped'];
 
 function name(country, gender)
 {
@@ -1121,7 +1121,6 @@ function assignNextCountry()
 
 function lastStage()
 {
-<<<<<<< HEAD
     var speechOutput;
 	var repromptOutput
     shuffleArray(criminalArr);
@@ -1150,10 +1149,7 @@ function lastStage()
     console.log("After splice t_heght size: "+l_height);
     console.log("After splice heght size: "+height);
 
-    if(crimVar == 2)
-=======
     if(stage < 3 )
->>>>>>> b576e78ec40fd6ce9e25af2f203fc6213fc90ef5
     {
         var speechOutput = this.t("NOT_LAST_STAGE");
         this.emit(":ask", speechOutput);
@@ -1540,9 +1536,10 @@ var languageString = {
         "translation": {
             //"QUESTIONS" : questions["QUESTIONS"],
             "GAME_NAME" : "Seuth Hound", 
-            "HELP_MESSAGE": "Need to add help message ", // add if needed
+            "HELP_MESSAGE": "Please ask questions like how do I play, what is the concept of the game, what am I supposed to do? ",
             "REPEAT_MESSAGE": "Please repeat your choice. ", 
-            "HELP_REPROMPT": "Need to add help reprompt", // add if needed
+			"HELP_RESPONSE": "You, with the guidance of Chief Alexa, track down criminals as they try to elude you. Collect clues from bystanders by asking them if they heard about the crime, where the criminal went, and what the criminal looked like. ",
+            "HELP_REPROMPT": "Are you listening to me? ", 
             "STOP_MESSAGE": "Would you like to keep playing?",
             "CANCEL_MESSAGE": "Ok, let\'s play again soon.", // if needed
             "NO_MESSAGE": "Ok, we\'ll play another time. Goodbye!", // if needed
@@ -1744,10 +1741,11 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
 // TODO, these copied from example. Still need to be adapted
 var helpStateHandlers = Alexa.CreateStateHandler(GAME_STATES.HELP, {
     "helpTheUser": function (newGame) {
-        var askMessage = newGame ? this.t("ASK_MESSAGE_START") : this.t("REPEAT_QUESTION_MESSAGE") + this.t("STOP_MESSAGE");
-        var speechOutput = this.t("HELP_MESSAGE") + askMessage;
-        var repromptText = this.t("HELP_REPROMPT") + askMessage;
-        this.emit(":ask", speechOutput, repromptText);
+        //var askMessage = newGame ? this.t("ASK_MESSAGE_START") : this.t("REPEAT_MESSAGE") + this.t("STOP_MESSAGE");
+        var speechOutput = this.t("HELP_RESPONSE");
+		this.emitWithState("StartGame", true);
+        //var repromptText = this.t("HELP_RESPONSE");
+        this.emit(":ask", speechOutput);
     },
     "AMAZON.StartOverIntent": function () {
         this.handler.state = GAME_STATES.START;
