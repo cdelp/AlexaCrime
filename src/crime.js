@@ -964,14 +964,14 @@ function checkCountry()
                 countryVisited = 0;
                 stage++;
     
-                // code works, but problem accessing clip. Need to convert to 48kbps 16000hz mpeg 2
+                // audio clips must be 48kbps 16000hz mpeg 2
 				var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) 
 					+ "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
 					+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-				
+				var repromptOutput = this.t("PLEASE_GREET");
 					
 				//var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-                this.emit(":ask", speechOutput);
+                this.emit(":ask", speechOutput, repromptOutput);
 
             }
             else if ((criminal.country.countryName != country) && countryVisited >= 2) {
@@ -985,8 +985,10 @@ function checkCountry()
             {
                 //picked wrong country but only on first try
                 
-                var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-                this.emit(":ask", speechOutput);
+                var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>" 
+				+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+				var repromptOutput = this.t("PLEASE_GREET");
+                this.emit(":ask", speechOutput, repromptOutput);
             }
         } catch (error) {
             console.log("CountryChoice incorrect handling");
@@ -1020,8 +1022,10 @@ function checkCountry()
                 crimCountryVisitedArr.push(countryChoice);
                 //assignNextCountry();
                 
-                var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-                this.emit(":ask", speechOutput);
+                var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+				+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+				var repromptOutput = this.t("PLEASE_GREET");
+                this.emit(":ask", speechOutput, repromptOutput);
             }
             else if (criminal.country.countryName != country && countryVisited >= 1) {
                 //you lose.
@@ -1034,8 +1038,10 @@ function checkCountry()
             {
                 //picked wrong country
                 
-                var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-                this.emit(":ask", speechOutput);
+                var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+				+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+				var repromptOutput = this.t("PLEASE_GREET");
+                this.emit(":ask", speechOutput, repromptOutput);
             }
         }catch(error) {console.log("error in countryChecked()");}
     }
@@ -1197,7 +1203,7 @@ function lastStage()
 //called when 'TarryStopIntent is called. checks for number of people talked to is <= 5. If less,  then generates next person to talk to.
 function talkedTo()
 {
-    // line below testing only, trying to clear country variable because it seems to be keeping user's first choice in the game instead of updating with new choices
+    // line below seemed to be needed to clear user spoken country for next round. Otherwise kept repeating first country choice regardless of what they said.
 	country = null;
 	
 	var speechOutput;
@@ -1222,7 +1228,8 @@ function talkedTo()
                 //TODO will need to relist the countries here
                 speechOutput = this.t("WRONG_COUNTRY") + this.t("CHOOSE_AGAIN") + 
 				this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
-                this.emit(":ask", speechOutput);
+				repromptOutput = this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
+                this.emit(":ask", speechOutput, repromptOutput);
             }
 			//persons just walk by or have nothing to say
             speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender)) + this.t("PASSEDBY_PROMPT"); // added continue searching prompt. need to handle their response somewhere
@@ -1450,9 +1457,7 @@ function generateQuestionResponse(questionType)
     }
 }
 
-//Chad TODO
-//fill intents with whatever repsonses just to test if we are triggering them.
-// test, added by Chad ***************************************************************************************************
+
 var Alexa = require("alexa-sdk");
 var APP_ID = undefined;  // TODO replace with your app ID (OPTIONAL).
 var countryString = undefined;
@@ -1472,20 +1477,6 @@ var speechOutput = speech.ssml(true);
 this.emit(':ask', speechOutput , speechOutput); 
 */
 
-// example of sound clip, TODO find and host clips, add where needed
-/*var speechOutput = {
-  speech: "<speak>Welcome to the sand box. "
-    + "<audio src='https://s3.amazonaws.com/sounds226/boom.mp3'/>"
-    + "</speak>",
-  type: AlexaSkill.speechOutputType.SSML
-  },
-  repromptOutput = {
-    speech: "This is the reprompt text. ",
-    type: AlexaSkill.speechOutputType.PLAIN_TEXT
-  };
-
-response.ask(speechOutput, repromptOutput);
-*/
 
 var languageString = {
     "en": {
@@ -1501,7 +1492,7 @@ var languageString = {
             "HELP_UNHANDLED": "Say yes to continue, or no to end the game. ",
             "START_UNHANDLED": "Say start to start a new game. ",
 			"GAME_UNHANDLED": "game unhandled error. ",
-			"QUESTION_UNHANDLED": "unhandled error in questioning mode. ",
+			"QUESTION_UNHANDLED": "I'm sorry. I didn't understand your choice. ",
 			"TEST_OUTPUT": "Testing output only. ", // testing only
             "NEW_GAME_MESSAGE": "Welcome to %s. ",
 			"GAME_START_MESSAGE": "Are you ready for a mission? ",
@@ -1516,6 +1507,7 @@ var languageString = {
 			"PERSON_RESPONSE": "%s walked by without acknowleding you. ",
             "CORRECT_PERSON_RESPONSE": "Looks like this person might know something, maybe ask about the criminals looks, where %s going, or who %s is. ",
 
+			"PLEASE_GREET": "Please get the person's attention by using common phrases like hello or excuse me. ",
 			"PASSEDBY_PROMPT": "Say continue to keep searching. ",
 			"CONTINUE_PROMPT": ". Keep asking questions, or say continue to keep searching. ", // can't figure out how to keep "yes" from triggering wrong intents
             "LOSE_WRONG": "Oh no! this is not the criminal. We have to step up our game.",
@@ -1539,7 +1531,6 @@ var languageString = {
 var GAME_STATES = {
     PLAY: "_PLAYMODE", // Playing the game.	
     START: "_STARTMODE", // Entry point, start the game.
-	//QUESTIONING: "_QUESTIONINGMODE", // Used when conducting in-country questioning of bystanders
     HELP: "_HELPMODE" // The user is asking for help.
 };
 
@@ -1599,7 +1590,7 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
 		var speechOutput = this.t("INTRO_MESSAGE", criminal.name, pronoun(criminal.gender), criminal.crime, rand(50, 800), criminal.name, criminal.name, pronounOwnership(criminal.gender), criminal.name, criminal.country.facts[0]) + 
 		this.t("CHOOSE_COUNTRY") + 
 		this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
-		var repromptOutput = this.t("REPEAT_MESSAGE");
+		var repromptOutput = this.t("REPEAT_MESSAGE") + this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
 		this.emit(":ask", speechOutput, repromptOutput);
     },
     "CountryIntent": function () {
@@ -1615,6 +1606,9 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
         //Is this the same as DoneQuestioningIntent?
         //doneQuestioning intent is meant to be called when you no longer want to talk to someone and
         // would like to generate the next person or next stage if already talked to 5 people
+		
+		// could be treated the same maybe. This is more for when you need to prompt the user in cases like when the person walked by without taking, or finished and left.
+		// could make an interupt version for breaking out of a current conversation.
         /**
 		r_person = new PopulateResponsePerson();
 		var speechOutput = this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
