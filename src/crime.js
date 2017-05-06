@@ -1263,7 +1263,7 @@ function talkedTo()
     }
 }
 
-function doneQuestioning ()
+function doneQuestioning()
 {
     var speechOutput;
     questionedCount = 0;
@@ -1281,7 +1281,8 @@ function doneQuestioning ()
             this.emit(":ask", speechOutput);
         }
 		
-		// TODO need something here? 
+		// TODO need something here?
+        //nope, don't think so since we can't question while in the wrong country.
 
     }
     else {
