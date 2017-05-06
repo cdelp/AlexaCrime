@@ -846,7 +846,7 @@ function PopulateCriminal()  {
 
 function PopulateResponsePerson() {
     //may not need all these attributes, can pick what we want to output
-    this.seenValue = rand(0, 4);
+    this.seenValue = rand(0, 3);
     this.gender =  gender[rand(0, gender.length -1)];
     this.hairLength = hairLength[rand(0, hairLength.length -1)];
     this.hairColor = hairColor[rand(0, hairLength.length -1)];
@@ -927,126 +927,125 @@ var country; // trying this as global since it keeps repeating the intitial coun
 //function checkCountry(country)
 function checkCountry()
 {
-    country = this.event.request.intent.slots.country_item.value;
-
-	console.log(country);
-
-	//assign choice of country and count for validation checking in other methods
-    countryVisited++;
-
-    if(stage == 0)
+    if(talkedToCount != 0 || questionedCount != 0)
     {
-        console.log("in stage 0 for checkCountry");
-        for (i = 0; i < Region.length; i++)
-        {
-            for(j = 0; j < Region[i].length; j++)
-            {
-                if (Region[i][j].countryName == country)
-                {
-                    //assign countryChoice if said country is a valid choice
-                    countryChoice = Region[i][j];
+        var speechOutput = this.t("NOT_COUNTRY_PICK");
+        this.emit(":ask", speechOutput);
+    }
+    {
+        country = this.event.request.intent.slots.country_item.value;
+
+        console.log(country);
+
+        //assign choice of country and count for validation checking in other methods
+        countryVisited++;
+
+        if (stage == 0) {
+            console.log("in stage 0 for checkCountry");
+            for (i = 0; i < Region.length; i++) {
+                for (j = 0; j < Region[i].length; j++) {
+                    if (Region[i][j].countryName == country) {
+                        //assign countryChoice if said country is a valid choice
+                        countryChoice = Region[i][j];
+                    }
                 }
             }
+
+            try {
+                //if country doesn't register then they gave a country name we don't have, error output
+                if (countryChoice.countryName != country) {
+                    //error response, prompt for a valid country choice.
+                    console.log("given country string did not match");
+                    //fix counter
+                    countryVisited--;
+                }
+
+                //if correct country chosen then reset count, go to next stage, assign next country
+                if (criminal.country.countryName == country) {
+                    console.log("correct country given");
+                    countryVisited = 0;
+                    stage++;
+
+                    // audio clips must be 48kbps 16000hz mpeg 2
+                    var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName)
+                        + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+                        + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+                    var repromptOutput = this.t("PLEASE_GREET");
+
+                    //var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+                    this.emit(":ask", speechOutput, repromptOutput);
+
+                }
+                else if ((criminal.country.countryName != country) && countryVisited >= 2) {
+                    //you lose.
+                    console.log("you lose");
+                    //TODO ask if they want to play again
+                    var speechOutput = this.t("LOSE");
+                    this.emit(":ask", speechOutput);
+                }
+                else {
+                    //picked wrong country but only on first try
+
+                    var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+                        + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+                    var repromptOutput = this.t("PLEASE_GREET");
+                    this.emit(":ask", speechOutput, repromptOutput);
+                }
+            } catch (error) {
+                console.log("CountryChoice incorrect handling");
+            }
+        }
+        else {
+            console.log("in else stage for checkCountry");
+            for (i = 0; i < criminal.region.length; i++) {
+                if (criminal.region[i].countryName == country) {
+                    countryChoice = criminal.region[i];
+                }
+            }
+
+            try {
+                //if country chosen doesn't exist
+                if (countryChoice.countryName != country) {
+                    //error response, prompt for a valid country choice.
+                    console.log("given country string did not match");
+                    //fix counter
+                    countryVisited--;
+                }
+
+                //if correct country chosen then reset count, go to next stage, assign next country
+                if (criminal.country.countryName == country) {
+                    console.log("correct country given");
+                    countryVisited = 0;
+                    stage++;
+                    crimCountryVisitedArr.push(countryChoice);
+                    //assignNextCountry();
+
+                    var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+                        + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+                    var repromptOutput = this.t("PLEASE_GREET");
+                    this.emit(":ask", speechOutput, repromptOutput);
+                }
+                else if (criminal.country.countryName != country && countryVisited >= 1) {
+                    //you lose.
+                    console.log("you lose");
+                    //TODO ask if they want to play again
+                    var speechOutput = this.t("LOSE");
+                    this.emit(":ask", speechOutput);
+                }
+                else {
+                    //picked wrong country
+
+                    var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+                        + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+                    var repromptOutput = this.t("PLEASE_GREET");
+                    this.emit(":ask", speechOutput, repromptOutput);
+                }
+            } catch (error) {
+                console.log("error in countryChecked()");
+            }
         }
 
-        try {
-            //if country doesn't register then they gave a country name we don't have, error output
-            if (countryChoice.countryName != country) {
-                //error response, prompt for a valid country choice.
-                console.log("given country string did not match");
-                //fix counter
-                countryVisited--;
-            }
-
-            //if correct country chosen then reset count, go to next stage, assign next country
-            if (criminal.country.countryName == country) {
-                console.log("correct country given");
-                countryVisited = 0;
-                stage++;
-    
-                // audio clips must be 48kbps 16000hz mpeg 2
-				var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) 
-					+ "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-					+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-				var repromptOutput = this.t("PLEASE_GREET");
-					
-				//var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-                this.emit(":ask", speechOutput, repromptOutput);
-
-            }
-            else if ((criminal.country.countryName != country) && countryVisited >= 2) {
-				//you lose.
-                console.log("you lose");
-                //TODO ask if they want to play again
-                var speechOutput = this.t("LOSE");
-                this.emit(":ask", speechOutput);
-            }
-            else
-            {
-                //picked wrong country but only on first try
-                
-                var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>" 
-				+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-				var repromptOutput = this.t("PLEASE_GREET");
-                this.emit(":ask", speechOutput, repromptOutput);
-            }
-        } catch (error) {
-            console.log("CountryChoice incorrect handling");
-        }
     }
-    else
-    {
-        console.log("in else stage for checkCountry");
-        for(i = 0; i < criminal.region.length; i++)
-        {
-            if(criminal.region[i].countryName == country)
-            {
-                countryChoice = criminal.region[i];
-            }
-        }
-
-        try {
-            //if country chosen doesn't exist
-            if (countryChoice.countryName != country) {
-                //error response, prompt for a valid country choice.
-                console.log("given country string did not match");
-                //fix counter
-                countryVisited--;
-            }
-
-            //if correct country chosen then reset count, go to next stage, assign next country
-            if (criminal.country.countryName == country) {
-                console.log("correct country given");
-                countryVisited = 0;
-                stage++;
-                crimCountryVisitedArr.push(countryChoice);
-                //assignNextCountry();
-                
-                var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-				+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-				var repromptOutput = this.t("PLEASE_GREET");
-                this.emit(":ask", speechOutput, repromptOutput);
-            }
-            else if (criminal.country.countryName != country && countryVisited >= 1) {
-                //you lose.
-                console.log("you lose");
-                //TODO ask if they want to play again
-                var speechOutput = this.t("LOSE");
-                this.emit(":ask", speechOutput);
-            }
-            else
-            {
-                //picked wrong country
-                
-                var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-				+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-				var repromptOutput = this.t("PLEASE_GREET");
-                this.emit(":ask", speechOutput, repromptOutput);
-            }
-        }catch(error) {console.log("error in countryChecked()");}
-    }
-
-
 }
 
 //assign next country
@@ -1103,100 +1102,103 @@ function assignNextCountry()
 
 function lastStage()
 {
-    var speechOutput;
-    shuffleArray(criminalArr);
-    //removes index 0 form criminalArr
-    var crimVar = criminalArr.splice(0, 1);
-    criminalFlag = crimVar;
-
-    var l_height = height.slice(0);
-    var l_body = body.slice(0);
-    var l_eyeSize = eyeSize.slice(0);
-    var l_eyeColor = eyeColor.slice(0);
-    var l_hairLength = hairLength.slice(0);
-    var l_hairColor = hairColor.slice(0);
-    var l_special = p_special.slice(0);
-    //removing criminal traits from attribute arrays so randomizer doesn't pick them
-    console.log("before splice t_heght size: "+l_height);
-    console.log("before splice heght size: "+height);
-    l_height.splice(l_height.indexOf(criminal.height), 1);
-    l_body.splice(l_body.indexOf(criminal.body), 1);
-    l_eyeSize.splice(l_eyeSize.indexOf(criminal.eyeSize), 1);
-    l_eyeColor.splice(l_eyeColor.indexOf(criminal.eyeColor), 1);
-    l_hairLength.splice(l_hairLength.indexOf(criminal.hairLength), 1);
-    l_hairColor.splice(l_hairColor.indexOf(criminal.hairColor), 1);
-    //might keep special, idk.
-    l_special.splice(l_special.indexOf(criminal.special), 1);
-    console.log("After splice t_heght size: "+l_height);
-    console.log("After splice heght size: "+height);
-
-    if(crimVar == 2)
+    if(stage < 3 )
     {
-        console.log( "A " +criminal.height + " " +criminal.body+ " " +pronounThird(criminal.gender)+" with "
-            + criminal.eyeSize +" " +criminal.eyeColor + " eyes, "
-            + criminal.hairLength+ " " + criminal.hairColor + " hair, and a"
-            + criminal.special+" walks by. This is the Criminal.");
-
-        //this.emit(":tell", speechOutput);
-
-        speechOutput = this.t("ACCUSE", criminal.height, criminal.body, pronounThird(criminal.gender), criminal.eyeSize,
-            criminal.eyeColor, criminal.hairLength, criminal.hairColor, criminal.special);
+        var speechOutput = this.t("NOT_LAST_STAGE");
         this.emit(":ask", speechOutput);
-
-
 
     }
-    else
-    {
-        //randomly picks 1 or 2 attributes to change
-        var criminalAtt = [criminal.height, criminal.body, criminal.eyeSize, criminal.eyeColor, criminal.hairLength,
-            criminal.hairColor, criminal.special];
-        var attributeInd = [0 , 1, 2, 3, 4, 5, 6];
-        var randNum = rand(1, 2);
-        shuffleArray(attributeInd);
+    else {
+        var speechOutput;
+        shuffleArray(criminalArr);
+        //removes index 0 form criminalArr
+        var crimVar = criminalArr.splice(0, 1);
+        criminalFlag = crimVar;
 
-        for(var r = 1; r <= randNum; r++)
-        {
-            switch(attributeInd[r])
-            {
-                case 0:
-                    criminalAtt[attributeInd[r]] = l_height[rand(0, l_height.length) - 1];
-                    break;
-                case 1:
-                    criminalAtt[attributeInd[r]] = l_body[rand(0, l_body.length) -1];
-                    break;
-                case 2:
-                    criminalAtt[attributeInd[r]] = l_eyeSize[rand(0, l_eyeSize.length -1)];
-                    break;
-                case 3:
-                    criminalAtt[attributeInd[r]] = l_eyeColor[rand(0, l_eyeColor.length -1)];
-                    break;
-                case 4:
-                    criminalAtt[attributeInd[r]] = l_hairLength[rand(0, l_hairLength.length -1)];
-                    break;
-                case 5:
-                    criminalAtt[attributeInd[r]] = l_hairColor[rand(0, l_hairLength.length -1)];
-                    break;
-                case 6:
-                    //might remove case 6 as specials might be too easy
-                    criminalAtt[attributeInd[r]] = l_special[rand(0, l_special.length) -1];
-                    break;
-                default:
-                    console.log("error populating final stage random person");
-                    break;
-            }
+        var l_height = height.slice(0);
+        var l_body = body.slice(0);
+        var l_eyeSize = eyeSize.slice(0);
+        var l_eyeColor = eyeColor.slice(0);
+        var l_hairLength = hairLength.slice(0);
+        var l_hairColor = hairColor.slice(0);
+        var l_special = p_special.slice(0);
+        //removing criminal traits from attribute arrays so randomizer doesn't pick them
+        console.log("before splice t_heght size: " + l_height);
+        console.log("before splice heght size: " + height);
+        l_height.splice(l_height.indexOf(criminal.height), 1);
+        l_body.splice(l_body.indexOf(criminal.body), 1);
+        l_eyeSize.splice(l_eyeSize.indexOf(criminal.eyeSize), 1);
+        l_eyeColor.splice(l_eyeColor.indexOf(criminal.eyeColor), 1);
+        l_hairLength.splice(l_hairLength.indexOf(criminal.hairLength), 1);
+        l_hairColor.splice(l_hairColor.indexOf(criminal.hairColor), 1);
+        //might keep special, idk.
+        l_special.splice(l_special.indexOf(criminal.special), 1);
+        console.log("After splice t_heght size: " + l_height);
+        console.log("After splice heght size: " + height);
+
+        if (crimVar == 2) {
+            console.log("A " + criminal.height + " " + criminal.body + " " + pronounThird(criminal.gender) + " with "
+                + criminal.eyeSize + " " + criminal.eyeColor + " eyes, "
+                + criminal.hairLength + " " + criminal.hairColor + " hair, and a"
+                + criminal.special + " walks by. This is the Criminal.");
+
+            //this.emit(":tell", speechOutput);
+
+            speechOutput = this.t("ACCUSE", criminal.height, criminal.body, pronounThird(criminal.gender), criminal.eyeSize,
+                criminal.eyeColor, criminal.hairLength, criminal.hairColor, criminal.special);
+            this.emit(":ask", speechOutput);
+
+
         }
-        console.log( "A " +criminalAtt[0] + " " +criminalAtt[1]+ " " +pronounThird(criminal.gender)+" with "
-            + criminalAtt[2] +" " +criminalAtt[3] + " eyes, "
-            + criminalAtt[4]+ " " + criminalAtt[5] + " hair, and a"
-            + criminalAtt[6]+" walks by. This is not the Criminal.");
+        else {
+            //randomly picks 1 or 2 attributes to change
+            var criminalAtt = [criminal.height, criminal.body, criminal.eyeSize, criminal.eyeColor, criminal.hairLength,
+                criminal.hairColor, criminal.special];
+            var attributeInd = [0, 1, 2, 3, 4, 5, 6];
+            var randNum = rand(1, 2);
+            shuffleArray(attributeInd);
 
-        //this.emit(":tell", speechOutput);
+            for (var r = 1; r <= randNum; r++) {
+                switch (attributeInd[r]) {
+                    case 0:
+                        criminalAtt[attributeInd[r]] = l_height[rand(0, l_height.length) - 1];
+                        break;
+                    case 1:
+                        criminalAtt[attributeInd[r]] = l_body[rand(0, l_body.length) - 1];
+                        break;
+                    case 2:
+                        criminalAtt[attributeInd[r]] = l_eyeSize[rand(0, l_eyeSize.length - 1)];
+                        break;
+                    case 3:
+                        criminalAtt[attributeInd[r]] = l_eyeColor[rand(0, l_eyeColor.length - 1)];
+                        break;
+                    case 4:
+                        criminalAtt[attributeInd[r]] = l_hairLength[rand(0, l_hairLength.length - 1)];
+                        break;
+                    case 5:
+                        criminalAtt[attributeInd[r]] = l_hairColor[rand(0, l_hairLength.length - 1)];
+                        break;
+                    case 6:
+                        //might remove case 6 as specials might be too easy
+                        criminalAtt[attributeInd[r]] = l_special[rand(0, l_special.length) - 1];
+                        break;
+                    default:
+                        console.log("error populating final stage random person");
+                        break;
+                }
+            }
+            console.log("A " + criminalAtt[0] + " " + criminalAtt[1] + " " + pronounThird(criminal.gender) + " with "
+                + criminalAtt[2] + " " + criminalAtt[3] + " eyes, "
+                + criminalAtt[4] + " " + criminalAtt[5] + " hair, and a"
+                + criminalAtt[6] + " walks by. This is not the Criminal.");
 
-        speechOutput = this.t("ACCUSE",criminalAtt[0], criminalAtt[1],pronounThird(criminal.gender),criminalAtt[2], criminalAtt[3],
-            criminalAtt[4], criminalAtt[5], criminalAtt[6]);
-        this.emit(":ask", speechOutput);
+            //this.emit(":tell", speechOutput);
 
+            speechOutput = this.t("ACCUSE", criminalAtt[0], criminalAtt[1], pronounThird(criminal.gender), criminalAtt[2], criminalAtt[3],
+                criminalAtt[4], criminalAtt[5], criminalAtt[6]);
+            this.emit(":ask", speechOutput);
+
+        }
     }
 }
 
@@ -1517,6 +1519,8 @@ var languageString = {
             "LAST_PERSON": "Looks like we've talked to everyone, it's time to pick the next country. ",
             "DONE_QUESTIONING": "Seems like that's all %s has to say, let's look for someone else. %s %s %s is approaching. ",
             "COUNTRY_FACTS": "I heard %s is going to %s. ",
+            "NOT_LAST_STAGE": "We aren't ready to capture the criminal",
+            "NOT_COUNTRY_PICK": "We aren't done talking to people yet",
             "ACCUSE": "A %s %s %s with %s %s eyes, %s %s hair, and a %s walks by. Is this the criminal? If so, say stop criminal or say innocent to keep looking. "
 		}
     },
