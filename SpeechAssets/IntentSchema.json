@@ -8,6 +8,7 @@
 	{"intent": "CussIntent"},
 	{"intent": "PersonalIntent"},
 	{"intent": "GameStart"},
+    {"intent": "innocentIntent"},
 	{
 		"intent": "CountryIntent",
 		"slots": [
