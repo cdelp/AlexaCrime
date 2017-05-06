@@ -64,25 +64,26 @@ function pronounThird( gender )
 }
 
 //People attributes
-var gender = ['male', 'female'];
-var hairLength = ['long', 'short', 'medium'];
-var hairColor = ['black', 'brown', 'blond', 'red', 'silver', 'green', 'blue'];
+var gender = ['male', 'female', 'drag queen', 'transgender'];
+var hairLength = ['long', 'short', 'medium', 'bald', 'curly'];
+var hairColor = ['black', 'brown', 'blond', 'red', 'silver', 'gray', 'dark', 'light'];
 var eyeSize = ['small', 'large'];
-var eyeColor = ['black', 'brown', 'blue', 'green'];
-var body = ['chubby', 'skinny', 'medium'];
-var height = ['short', 'medium', 'tall'];
-var special = ['missing hand', 'limp', 'eye patch'];
-var p_special = ['headphones', 'bathing suit', 'naked'];
+var eyeColor = ['black', 'brown', 'blue', 'green', 'hazel'];
+var body = ['heavy-set', 'thin', 'average'];
+var height = ['petite', 'average', 'tall'];
+var special = ['missing hand', 'cane', 'eye patch', 'glasses', 'shades', 'beanie'];
+var p_special = ['headphones', 'bathing suit', 'bag', 'satchel'];
 var greetings = ['hey', "what's up'", 'hi'];
 
 //temp vars that can be spliced in case game gets restarted
-var t_height = ['short', 'medium', 'tall'];
-var t_body = ['chubby', 'skinny', 'medium'];
-var t_eyeSize = ['small', 'large'];
-var t_eyeColor = ['black', 'brown', 'blue', 'green'];
-var t_hairLength = ['long', 'short', 'medium'];
-var t_hairColor = ['black', 'brown', 'blond', 'red', 'silver', 'green', 'blue'];
-var t_special = ['headphones', 'bathing suit', 'naked'];
+//temp vars that can be spliced in case game gets restarted
+//var t_height = height.slice(0);
+//var t_body = body.slice(0);
+//var t_eyeSize = eyeSize.slice(0);
+//var t_eyeColor = eyeColor.slice(0);
+//var t_hairLength = hairLength.slice(0);
+//var t_hairColor = hairColor.slice(0);
+//var t_special = p_special.slice(0);
 
 //Middle East
 var Egypt  = {
@@ -189,8 +190,8 @@ var Morocco = {
         'The liver is considered to be the symbol of love',
         'Only country in Africa not part of the African union'
     ],
-    m_names: ['Abdo', 'Ahmen', 'Karim', 'Ali', 'Rachid', 'Brahim'],
-    f_names: ['Zineb', 'Ghita', 'Marwa', 'Aya', 'Lina', 'Rania'],
+    m_names: ['Abdou', 'Ahmen', 'Karim', 'Ali', 'Rasheed', 'Braheem'],
+    f_names: ['Zayneb', 'Ghita', 'Marwa', 'Alia', 'Lina', 'Raniya'],
     region: 'Middle East'
 }
 var Syria = {
@@ -317,7 +318,7 @@ var Mongolia = {
         'The worlds second largest producer of Cashmere',
         -'Ulan Baatar meaning red hero is the capital city'
     ],
-    m_names: ['Dana', 'Ankhbaatar', 'Davaa', 'Zev'],
+    m_names: ['Dana', 'Ankhbaatar', 'Davaa', 'Zev', 'Bat-Erdene', 'Altantsetseg'],
     f_names: ['Zaya', 'Sondor', 'Oyundelger', 'Aigerim', 'Delgermaa', 'Jabek'],
     region: 'East Asia'
 }
@@ -339,7 +340,7 @@ var Nepal = {
     f_names: ['Shirisha', 'Shristi', 'Swornima', 'Tsamchou', 'Simixya', 'Palisha'],
     region: 'East Asia'
 }
-// still need names below this point
+
 var Taiwan = {
     countryName: 'Taiwan',
     intro: 'Welcome to Taiwan, a country whose aboriginal people are attributed to have spread their culture as far as Madagascar to the west and Hawaii to the east. Taiwan’s national father, Sun Yat Sen, was actually American. ',
@@ -354,12 +355,12 @@ var Taiwan = {
         'Where you find a temple for worshipping the spirit of a dog',
         'Called the gay capital of Asia'
     ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Pai-han', 'Cheng-han', 'Kuan-ting', 'Kuan-yu', 'Chun-chieh', 'Yu-hsuan'],
+    f_names: ['Hui-ju', 'Chia-hua', 'Shu-fen', 'Wei-ting', 'Ya-fand', 'Hsin-yi'],
     region: 'East Asia'
 }
 var Philippines = {
-    countryName: 'the Philippines',
+    countryName: 'Philippines',
     intro: 'Welcome to the Philippines, comprised of over 7000 islands. 175 different languages are spoken in the Philippines. ',
     facts: ['The first country to gain independence after world war 2',
         'The country is named after a spanish king',
@@ -372,8 +373,8 @@ var Philippines = {
         'Home to the longest Christmas season',
         'The capital city is Manila'
     ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Ian', 'Mark', 'Kyle', 'Jeff', 'Francis', 'Louis'],
+    f_names: ['Nicole', 'Alyssa', 'Karen', 'Valerie', 'Mary', 'Trisha'],
     region: 'East Asia'
 }
 var Cambodia = {
@@ -390,8 +391,8 @@ var Cambodia = {
         'Occupied by japan during world war 2',
         'Tarantulas are eaten as a snack'
     ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Bora', 'Chakara', 'Chann', 'Borey', 'Mao', 'Meaker'],
+    f_names: ['Akara', 'Chariya', 'Jorani', 'Davi', 'Kiri', 'Kesor'],
     region: 'East Asia'
 }
 var Vietnam = {
@@ -408,8 +409,8 @@ var Vietnam = {
         'The local currency is dong',
         'Legend has it that the people of this land originated from a union between an immoral chinese princess and the Dragon lord of the seas'
     ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Dinh', 'Thuan', 'Trai', 'Trang', 'Khan', 'Hung'],
+    f_names: ['Chau', 'Bian', 'Tien', 'Hue', 'Mai', 'Huong'],
     region: 'East Asia'
 }
 var NorthKorea = {
@@ -426,8 +427,8 @@ var NorthKorea = {
         'Land of the morning Calm',
         'Home to the DMZ, which is the most heavily guarded border in the world'
     ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Kim', 'Ban Ki-Moon', 'Chul', 'Hwan', 'Haneul', 'Suk'],
+    f_names: ['Areum', 'Eun', 'Sung', 'Yeong', 'Wook', 'Uk'],
     region: 'East Asia'
 }
 var Malaysia = {
@@ -443,16 +444,15 @@ var Malaysia = {
         'Known for the largest and longest caves in the world',
         'The state religion is Islam but they consider themselves very secular',
         'Home to the Petronas Towers which are the tallest twin skyscrapers'],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Ahmad', 'Ryan', 'Jack', 'Adam', 'Richard', 'Harris'],
+    f_names: ['Mira', 'Sarah', 'Lisa', 'Wani', 'Irdina', 'Nisa'],
     region: 'East Asia'
 }
 
-// intro still needed below this point
 //Africa
 var SouthAfrica = {
     countryName: 'South Africa',
-    intro: 'Welcome to South Africa ',
+    intro: 'Welcome to South Africa, most famous for Nelson Mandela, Kruger National Park, and a variety of gem stones and minerals',
     facts: ['Located at the cape of good hope',
         'The capital is Pretoria',
         'The only country to host world cup for soccer, rugby, and cricket',
@@ -464,13 +464,13 @@ var SouthAfrica = {
         'Home to the oldest remains of humans from over 160,000 years ago',
         'They have three capital cities for each branch: executive, judicial, and legislative'
     ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Junior', 'Bandile', 'Thato', 'Siyabonga', 'Lethabo', 'Kungawo'],
+    f_names: ['Minenhle', 'Amahle', 'Karabou', 'Iminathi', 'Lesedi', 'Amogelang'],
     region: 'Africa'
 }
 var Uganda = {
     countryName: 'Uganda',
-    intro: 'Welcome to Uganda ',
+    intro: 'Welcome to Uganda refered to as the Pearl of Africa. Most famous for being the source of the Nile River',
     facts: ['Located in eastern africa',
         'Home of gorillas',
         'Called the Pearl of Africa by Winston Churchill',
@@ -482,13 +482,13 @@ var Uganda = {
         'The national symbol is a grey crowned crane which is on its flag',
         'Known as Africa’s Banana Republic'
     ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Dembe', 'Majani', 'Amare', 'Mukisa', 'Ebo', 'Kojo'],
+    f_names: ['Amaka', 'Kia', 'Kamali', 'ife', 'Asha', 'Eshe'],
     region: 'Africa'
 }
 var Kenya = {
     countryName: 'Kenya',
-    intro: 'Welcome to Kenya ',
+    intro: 'Welcome to Kenya known as the cradel of mankind and home to the Big 5; Lions, Elephants, Buffalo, Rhinos and Leopards',
     facts: ['East African country with coastline on the Indian Ocean',
         'The capital is Nairobi',
         'Flag has two crossed white spears behind a rea, white, and black Maasai shield',
@@ -500,13 +500,13 @@ var Kenya = {
         'The official language is English and Swahili',
         'Take a safari at the stunning Maasai Mara savannah reserve'
     ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Abdullah', 'Hanif', 'Muraty', 'Musa', 'Safiri', 'Shani'],
+    f_names: ['Abbo', 'Asya', 'Himaya', 'Hasanati', 'Sanura', 'Aisha'],
     region: 'Africa'
 }
 var Somalia = {
     countryName: 'Somalia',
-    intro: 'Welcome to Somalia ',
+    intro: 'Welcome to Somalia known as the Land of Punt. Punt was famous for frankincense and myrrh.',
     facts: ['The flag is all blue with a large white star in the middle',
         'Located in the horn of Africa',
         'Known for piracy off the coast',
@@ -518,13 +518,13 @@ var Somalia = {
         'The majority follow islam',
         'Lies along the gulf of Aden and the Indian Ocean'
     ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Aynab', 'Muhammad', 'Jawahir', 'Ladan', 'Braheem', 'Nadeem'],
+    f_names: ['Jameelah', 'Aamina', 'Khadija', 'Uba', 'Ugbad', 'Filsan'],
     region: 'Africa'
 }
 var Sudan = {
     countryName: 'Sudan',
-    intro: 'Welcome to Sudan ',
+    intro: 'Welcome to Sudan, the biggest country in Africa, but it receives the least number of international visitors among African countries due to the ongoing conflict in several parts of Sudan.',
     facts: ['The capital is Khartoum',
         'The official language is Arabic and english with the country meaning The land of the Blacks',
         'Used to be the largest country in Africa before being split into north and south in 2011',
@@ -536,13 +536,13 @@ var Sudan = {
         'Home to the first women movement in Africa and Middle East during the 60’s',
         'They had the first female parliamentarian in 1965 and the first female minister of health in 1974'
     ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Suleyman', 'malce', 'Ibraheem', 'Shakir', 'Kareem', 'Patrick'],
+    f_names: ['Yaya', 'Nadia', 'Anita', 'Hiba', 'joyce', 'Racehl'],
     region: 'Africa'
 }
 var Nigeria = {
     countryName: 'Nigeria',
-    intro: 'Welcome to Nigeria ',
+    intro: 'Welcome to Nigeria. When you think oil, you think Nigeria. Nigeria remains Africas largest oil producer ',
     facts: ['Located near the ivory coast',
         'Where you can find the infamous prince that can make you rich over email',
         'Known as the Giant of Africa due to its large population and economy',
@@ -554,13 +554,13 @@ var Nigeria = {
         'Home to the city of Lagos which is known as Africa’s big apple',
         'Known for hollywood type scene called Nollywood'
     ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Simon', 'Akoni', 'Kalu', 'Kelechi', 'Kwento', 'Oba'],
+    f_names: ['Alkana', 'Iyawa', 'Juba', 'Kokumu', 'Lewa', 'Obi'],
     region: 'Africa'
 }
 var Cameroon = {
     countryName: 'Cameroon',
-    intro: 'Welcome to Cameroon ',
+    intro: 'Welcome to Cameroon known as All of Africa in one country due to its geography and lively culture of music, particularly makossa and bikutsi, and for its successful national football team. ',
     facts: ['Central African country just north of Gabon',
         '230 other languages are spoken with French and English as the official languages',
         'Known as the hinge of africa and Africa in miniature',
@@ -571,13 +571,13 @@ var Cameroon = {
         'The flag has 3 vertical stripes green, red, and yellow with a gold star in the middle',
         'Where Ginger beer is consumed frequently by kids and adults and is non-alcoholic ',
         'Where you can find the only active volcano in western africa'],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Mamado', 'Alfa', 'Joseph', 'Demba', 'Samba', 'Alex'],
+    f_names: ['Amy', 'Ouria', 'Seynabou', 'Pauline', 'Angel', 'Cynthia'],
     region: 'Africa'
 }
 var Senegal = {
     countryName: 'Senegal',
-    intro: 'Welcome to Sénégal ',
+    intro: 'Welcome to Senegal known as the vibrant pulse of West Africa due to its tradition of storytelling, which is done by griots, who have kept West African history alive for thousands of years through words and music',
     facts: ['The capital is Dakar',
         'Named by Portuguese fisherman which means these are our boats',
         'Used to be the hub for the international slave trade',
@@ -589,13 +589,13 @@ var Senegal = {
         'Predominantly muslim country with large ties to French and Lebanese culture ',
         'Where you can see The Senegambian Stone Circles'
     ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Yves', 'Romeo', 'Frank', 'Oliver', 'Nelson', 'Wilson'],
+    f_names: ['Cynthia', 'Stephanie', ' Marie', 'Laura', 'Hillary', 'Diana'],
     region: 'Africa'
 }
 var Ghana = {
     countryName: 'Ghana',
-    intro: 'Welcome to Ghana ',
+    intro: 'Welcome to Ghana historically famous for its gold. It was previously called the Gold Coast. Now, Chocolate has probably taken over, with it being one of the key suppliers of Cocoa to the likes of Cadburys',
     facts: ['Sandwhiched between Cote d’ivoire and Togo',
         'The capital is Accra',
         'The local currency is cedi meaning sea shells',
@@ -607,14 +607,14 @@ var Ghana = {
         'First sub-saharan nation to gain independance post-colonialism',
         'Home to the largest market in West Africa called Kejetia Market'
     ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Abdul-Samad', 'Atsu', 'Muhsin', 'Nsoah', 'Qamar', 'Sabir'],
+    f_names: ['Mawusi', 'Najla', 'Nana', 'Rihana', 'Tawbah', 'Thema'],
     region: 'Africa'
 }
 //SouthAmerica
 var Brazil = {
     countryName: 'Brazil',
-    intro: 'Welcome to Brazil ',
+    intro: 'Welcome to Brazil, the only country in South America that speaks Portuguese. Known for soccer and coffee',
     facts: ['The largest country in South America',
         'The macaw is the national animal',
         'Known as the worlds largest producer of coffee',
@@ -626,13 +626,13 @@ var Brazil = {
         'The motto on their flag means order and progress',
         'Where you see the statue of Christ the Redeemer looking down on you'
     ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Gabriel', 'Arthur', 'Luis', 'Lucas', 'Pedro', 'Bruno'],
+    f_names: ['Gabriella', 'Amanda', 'Beatriz', 'Victoria', 'Raquel', 'Sabrina'],
     region: 'South America'
 }
 var Argentina = {
     countryName: 'Argentina',
-    intro: 'Welcome to Argentina ',
+    intro: 'Welcome to Argentina known for its elite national soccer team, the famed revolutionary Che Guevara and such beautiful landforms as the Iguazu Falls. One of the most striking countries in South America, Argentina is a popular tourist destination and features a dense heritage.',
     facts: ['The name comes from the latin word for silver',
         'Home to Pope Francis, the first non-european pontiff of the Roman Catholic Church',
         'Where the first animated film was created in 1917',
@@ -644,13 +644,13 @@ var Argentina = {
         'Try Yerba Mate there. It is the national drink',
         'Home to the world’s widest avenue spanning 14 lanes and 4 lanes of parallel streets'
     ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Marcos', 'Juan', 'Agustine', 'Pablo', 'Fernando', 'Armando'],
+    f_names: ['Agustina', 'Camila', 'Paula', 'Sara', 'Julia', ''],
     region: 'South America'
 }
 var Venezuela = {
     countryName: 'Venezuela',
-    intro: 'Welcome to Venezuela ',
+    intro: 'Welcome to Venezuela known widely for its petroleum industry, the environmental diversity of its territory, and its natural features. Home to a huge diversity of wildlife in a variety of protected habitats, Venezuela is considered to be among the 17 most megadiverse countries in the world',
     facts: ['The name means little venice named after by an Italian explorer',
         'Home to the largest lake in South America and one of the oldest on earth',
         'It is a magical sight to see lightning called Catatumbo which mean continuous high frequency in Spanish',
@@ -662,13 +662,13 @@ var Venezuela = {
         'Home to the famous breakfast dish Arepas',
         'The largest city and capital city is Caracas'
     ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Sebastian', 'Mateo', 'Nicholas', 'Alehandro', 'Diego', 'Tomas'],
+    f_names: ['Alehandra', 'Marian', 'Lucero', 'Michele', 'Diyan', 'Juliana'],
     region: 'South America'
 }
 var Colombia = {
     countryName: 'Colombia',
-    intro: 'Welcome to Colombia ',
+    intro: 'Welcome to Colombia known for its emeralds, the myth of El dorado, and its tropical landscapes nettled in the Andean peaks',
     facts: ['The only country in South America that has a coastline on both the pacific ocean and the Caribbean Sea',
         'The capital is Bogota',
         'Where drug lord Pablo Escobar offered to pay the country’s debt to improve his reputation and escape justice',
@@ -680,13 +680,13 @@ var Colombia = {
         'Home to the largest theater festival called the Iberoamericana',
         'One out of every five butterfly species is found here'
     ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Andres', 'Camillo', 'Diego', 'Ricardo', 'Luis', 'Juan Diego'],
+    f_names: ['Diana', 'Paula', 'Erica', 'Susana', 'Leidi', 'Vanessa'],
     region: 'South America'
 }
 var Peru = {
     countryName: 'Peru',
-    intro: 'Welcome to Peru ',
+    intro: 'Welcome to Peru most famous for Machu Picchu and the Incan Trail. Amongst certain people it is famous for its Ayahuasca ceremonies and Shamans in the Amazon',
     facts: ['Home to Machu Picchu and the Incan Trail',
         'Cuy or Guinea Pig is their traditional dish',
         'The potato originated from here and corn is grown in almost any color you can think of',
@@ -698,13 +698,13 @@ var Peru = {
         'Third largest country in South America',
         'Home to Pima and Tanguis cotton'
     ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Stefano', 'John', 'Carlos', 'Hayzus', 'Victor', 'paulo'],
+    f_names: ['Andrea', 'Daniella', 'Carlita', 'Marissa', 'Myra', 'Ruth'],
     region: 'South America'
 }
 var Ecuador = {
     countryName: 'Ecuador',
-    intro: 'Welcome to Ecuador ',
+    intro: 'Welcome to Ecuador named after the equator that runs through the country. Also known as the closest country to space because of the earths rotation and shape',
     facts: ['Named after the equator that runs through the country',
         'The closest country to space',
         'Home to the #1 world heritage site Galapagos Islands',
@@ -715,13 +715,13 @@ var Ecuador = {
         'The capital is Quito',
         'Shares a border with Peru, Colombia, and the pacific ocean',
         'Fanesca, cerviche, and hornado are well known dishes there'],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Ivan', 'Danny', 'Anthony', 'Jeremy', 'Evelyn', 'Santiago'],
+    f_names: ['Grace', 'Ariana', 'Ginger', 'Mishel', 'Maylin', 'Magaly'],
     region: 'South America'
 }
 var Uruguay = {
     countryName: 'Uruguay',
-    intro: 'Welcome to Uruguay ',
+    intro: 'Welcome to Uruguay meaning the river of birds also known as the Eastern side of that river.',
     facts: ['Country name means river of the painted birds in the Guarani language',
         'Considered the least corrupt country in South America',
         'The smallest country in South America behind Suriname',
@@ -733,13 +733,13 @@ var Uruguay = {
         'Host of the first-ever FIFA world cup winning it twice so far',
         'The only country whose name has the same three letters in its first five'
     ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Juan', 'Santiago', 'Kevin', 'Felipe', 'Bruno', 'Mateo'],
+    f_names: ['Maria', 'Sofia', 'Lara', 'Pricila', 'Camila', 'Luana'],
     region: 'South America'
 }
 var Paraguay = {
     countryName: 'Paraguay',
-    intro: 'Welcome to Paraguay ',
+    intro: 'Welcome to Paraguay. Paraguay is famous for being the first south american country to gain independance from Spain rule in 1811.',
     facts: ['One of the few countries in south america that still speak their native language called Guarani with Spanish as second',
         'Often referred to as the heart of south America',
         'Home to the first railway line in South America',
@@ -751,13 +751,13 @@ var Paraguay = {
         'Home to South Americas second largest river after Amazon',
         'The national drink is mahtay often served hot'
     ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Daveed', 'Alba', 'Alin', 'Carlos', 'Elian', 'Enrique'],
+    f_names: ['Liz', 'Larisa', 'Saskia', 'Dara', 'Judith', 'Lilian'],
     region: 'South America'
 }
 var Bolivia = {
     countryName: 'Bolivia',
-    intro: 'Welcome to Bolivia ',
+    intro: 'Welcome to Bolivia named after independance fighter Simon Bolivar. He helped them gain independence from spain in 1825',
     facts: ['One of two landlocked South American Countries',
         'Named after the Venezuelan military and political leader who led 4 south american countries to independence from Spain',
         'The capital is La Paz, the highest capital city in the world',
@@ -769,13 +769,13 @@ var Bolivia = {
         'Used to be called upper peru before gaining independence in 1825 from spain',
         'Where you can find pink dolphins in the amazon'
     ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Eric', 'Flore', 'Rolando', 'Ricky', 'Luis', 'Arturo'],
+    f_names: ['Camilia', 'Monica', 'Jennifer', 'Adriana', 'Olive', 'Belen'],
     region: 'South America'
 }
 var Chile = {
     countryName: 'Chile',
-    intro: ' ',
+    intro: 'Welcome to Chile known for Easter Island. Easter Island is home to the large statues of heads called moai',
     facts: ['Home to the world’s largest swimming pool and it is filled with seawater from the pacific',
         'Where you can find the driest place on earth called the Atacama Desert runnning between the Andes Mountains and the Pacific',
         'Known for the statues on Easter island called Moai',
@@ -787,8 +787,8 @@ var Chile = {
         'Famous for the Alerce tree with some older than 4,000 years',
         'Home to the largest reserve of cooper'
     ],
-    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
-    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
+    m_names: ['Agustin', 'Vicente', 'Matias', 'Mateo', 'Tomas', 'Alonzo'],
+    f_names: ['Josefa', 'Amanda', 'Martina', 'Sofia', 'Emilia', 'Florencia'],
     region: 'South America'
 }
 
@@ -1204,61 +1204,67 @@ function lastStage()
 //called when 'TarryStopIntent is called. checks for number of people talked to is <= 5. If less,  then generates next person to talk to.
 function talkedTo()
 {
-    // line below seemed to be needed to clear user spoken country for next round. Otherwise kept repeating first country choice regardless of what they said.
-	country = null;
-	
-	var speechOutput;
-    //final stage prompt.
-    if(stage >= 3)
+    if(questionedCount != 0)
     {
-        //stuff for populating possible criminals for player to stop.
-        lastStage();
-        //console.log("third stage people walk by");
+        var speechOutput = this.t("NOT_DONE_QUESTIONING");
+        this.emit(":ask", speechOutput);
     }
-    else {
-        //non-final stages
-        talkedToCount++;
-        //wrong country
-        if (countryChoice != criminal.country) {
-            talkedToCount += 3;           
-            //exit from country on 2nd talk in wrong country
-            if (talkedToCount >= 6)
-            {
-                //talked to 2 people in the wrong country
-                console.log("wrong country response");
-                //TODO will need to relist the countries here
-                speechOutput = this.t("WRONG_COUNTRY") + this.t("CHOOSE_AGAIN") + 
-				this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
-				repromptOutput = this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
-                this.emit(":ask", speechOutput, repromptOutput);
-            }
-			//persons just walk by or have nothing to say
-            speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender)) + this.t("PASSEDBY_PROMPT"); // added continue searching prompt. need to handle their response somewhere
-            this.emit(":ask", speechOutput);
-        }
-        //right country
-        else {
-            			
-			//if the person has not seen anything or doesn't want to talk to you
-			if (r_person.seenValue == 0) {
-				
-				console.log("r_person seen value = 0 reponses");
-				//right country but person hasn't seen anything (20% chance)
-				speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender)) + this.t("PASSEDBY_PROMPT"); // added continue searching prompt. need to handle their response somewhere
-				this.emit(":ask", speechOutput);
-			}
-			//if person has seen something
-			else {
-				
-				console.log("r_person seen value NOT 0 responses");
-				//TODO questioning responses here, just putting obvious country facts as clues here for testing
-				//0.00032 chance you won't see clues after talking to 5 people lol. Might need to fix that.
-				speechOutput = this.t("CORRECT_PERSON_RESPONSE", contPronoun(criminal.gender), pronoun(criminal.gender));
-				this.emit(":ask", speechOutput);
-			}			
-        }
-        //moved this block to doneQuestioning()
+    else
+    {
+        // line below seemed to be needed to clear user spoken country for next round. Otherwise kept repeating first country choice regardless of what they said.
+        country = null;
 
+        var speechOutput;
+        //final stage prompt.
+        if (stage >= 3) {
+            //stuff for populating possible criminals for player to stop.
+            lastStage();
+            //console.log("third stage people walk by");
+        }
+        else {
+            //non-final stages
+            talkedToCount++;
+            //wrong country
+            if (countryChoice != criminal.country) {
+                talkedToCount += 3;
+                //exit from country on 2nd talk in wrong country
+                if (talkedToCount >= 6) {
+                    //talked to 2 people in the wrong country
+                    console.log("wrong country response");
+                    //TODO will need to relist the countries here
+                    speechOutput = this.t("WRONG_COUNTRY") + this.t("CHOOSE_AGAIN") +
+                        this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
+                    repromptOutput = this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
+                    this.emit(":ask", speechOutput, repromptOutput);
+                }
+                //persons just walk by or have nothing to say
+                speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender)) + this.t("PASSEDBY_PROMPT"); // added continue searching prompt. need to handle their response somewhere
+                this.emit(":ask", speechOutput);
+            }
+            //right country
+            else {
+
+                //if the person has not seen anything or doesn't want to talk to you
+                if (r_person.seenValue == 0) {
+
+                    console.log("r_person seen value = 0 reponses");
+                    //right country but person hasn't seen anything (20% chance)
+                    speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender)) + this.t("PASSEDBY_PROMPT"); // added continue searching prompt. need to handle their response somewhere
+                    this.emit(":ask", speechOutput);
+                }
+                //if person has seen something
+                else {
+
+                    console.log("r_person seen value NOT 0 responses");
+                    //TODO questioning responses here, just putting obvious country facts as clues here for testing
+                    //0.00032 chance you won't see clues after talking to 5 people lol. Might need to fix that.
+                    speechOutput = this.t("CORRECT_PERSON_RESPONSE", contPronoun(criminal.gender), pronoun(criminal.gender));
+                    this.emit(":ask", speechOutput);
+                }
+            }
+            //moved this block to doneQuestioning()
+
+        }
     }
 }
 
@@ -1486,13 +1492,13 @@ var languageString = {
             //"QUESTIONS" : questions["QUESTIONS"],
             "GAME_NAME" : "Seuth Hound", 
             "HELP_MESSAGE": "Need to add help message ", // add if needed
-            "REPEAT_MESSAGE": "Please repeat your choice. ", 
+            "REPEAT_MESSAGE": "Sorry I could not hear you. What did you say?. ",
             "HELP_REPROMPT": "Need to add help reprompt", // add if needed
-            "STOP_MESSAGE": "Would you like to keep playing?",
-            "CANCEL_MESSAGE": "Ok, let\'s play again soon.", // if needed
-            "NO_MESSAGE": "Ok, we\'ll play another time. Goodbye!", // if needed
-            "HELP_UNHANDLED": "Say yes to continue, or no to end the game. ",
-            "START_UNHANDLED": "Say start to start a new game. ",
+            "STOP_MESSAGE": "Would you like to continue our search?",
+            "CANCEL_MESSAGE": "Ok, see you next time Sleuth.", // if needed
+            "NO_MESSAGE": "Ok, we\'ll resume our hunt for criminals when you get back from leave. Until next time Sleuth!", // if needed
+            "HELP_UNHANDLED": "Say yes to continue our mission, or no to end the game. ",
+            "START_UNHANDLED": "Say start to start a new mission. ",
 			"GAME_UNHANDLED": "game unhandled error. ",
 			"QUESTION_UNHANDLED": "I'm sorry. I didn't understand your choice. ",
 			"TEST_OUTPUT": "Testing output only. ", // testing only
@@ -1501,26 +1507,27 @@ var languageString = {
             "INTRO_MESSAGE": "We are on the hunt for %s.  %s is wanted in connection with a recent string of %s crimes resulting in %s million in damages. We must help bring the criminal responsible for these crimes to justice before %s goes into hiding. It will not be an easy task to catch %s , so pay close attention to clues on %s looks and whereabouts. %s was last seen in %s. Enough talking, we need to go ",
 			"LOCATION_TEST": "%s is in %s, %s. ", // testing only
 			"CHOOSE_COUNTRY": "  Where should we start our search? ",
-			"CHOOSE_AGAIN": "Where would you like to go now? ",
+			"CHOOSE_AGAIN": "Where would you like to go next? ",
 			"COUNTRY_LIST": "%s, %s, %s, or %s? ",
 			"DEPARTURE_MESSAGE": "%s it is. Talk to you when you land. Get going sleuth! ",
-			"ARRIVAL_MESSAGE": "%s. Time to find info on %s. Get the attention of bystanders so you can ask them about the criminal, and where the criminal is going. ",
-			"PERSON_APPROACHING": "%s %s %s approaching. ",
-			"PERSON_RESPONSE": "%s walked by without acknowleding you. ",
-            "CORRECT_PERSON_RESPONSE": "Looks like this person might know something, maybe ask about the criminals looks, where %s going, or who %s is. ",
+			"ARRIVAL_MESSAGE": "%s. Time to find info on %s. Get the attention of bystanders so you can ask get clues on what happened, what the criminal looks like, and where the criminal went. ",
+			"PERSON_APPROACHING": "%s %s %s approaching us. ",
+			"PERSON_RESPONSE": "%s kept on walking by. ",
+            "CORRECT_PERSON_RESPONSE": "You got the persons attention, try to get some clues on the criminal. ",
 
-			"PLEASE_GREET": "Please get the person's attention by using common phrases like hello or excuse me. ",
-			"PASSEDBY_PROMPT": "Say continue to keep searching. ",
-			"CONTINUE_PROMPT": ". Keep asking questions, or say continue to keep searching. ", // can't figure out how to keep "yes" from triggering wrong intents
+			"PLEASE_GREET": "Get bystanders attention by saying something like hello or excuse me. ",
+			"PASSEDBY_PROMPT": "Say Continue to look for others. ",
+			"CONTINUE_PROMPT": ". Get more clues, or say bye to talk to someone else. ", // can't figure out how to keep "yes" from triggering wrong intents
             "LOSE_WRONG": "Oh no! this is not the criminal. We have to step up our game.",
-            "LOSE_GOT_AWAY": "Oh no! looks like that was the criminal but now they are gone forever.",
-            "WIN": "You Win. You've caught the criminal!",
+            "LOSE_GOT_AWAY": "Oh no! we were so close but the criminal has slipped into hiding.",
+            "WIN": "Great work Sleuth. You caught the criminal!",
             "WRONG_COUNTRY": "This doesn't seem to be the correct Country, try a different one. ",
             "LAST_PERSON": "Looks like we've talked to everyone, it's time to pick the next country. ",
-            "DONE_QUESTIONING": "Seems like that's all %s has to say, let's look for someone else. %s %s %s is approaching. ",
+            "DONE_QUESTIONING": "Alright, let's look for someone else. %s %s %s is approaching. ",
             "COUNTRY_FACTS": "I heard %s is going to %s. ",
-            "NOT_LAST_STAGE": "We aren't ready to capture the criminal",
-            "NOT_COUNTRY_PICK": "We aren't done talking to people yet",
+            "NOT_LAST_STAGE": "We aren't ready to capture the criminal yet, to finish talking, say I'm done questioning",
+            "NOT_COUNTRY_PICK": "We aren't done talking to people yet. To finish talking, say I'm done questioning",
+            "NOT_DONE_QUESTIONING": "If you're finished questioning and ready to move on , say I'm done questioning",
             "ACCUSE": "A %s %s %s with %s %s eyes, %s %s hair, and a %s walks by. Is this the criminal? If so, say stop criminal or say innocent to keep looking. "
 		}
     },
