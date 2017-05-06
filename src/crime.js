@@ -776,7 +776,7 @@ var Bolivia = {
 }
 var Chile = {
     countryName: 'Chile',
-	intro: ' ',
+	intro: 'Welcome to Chile ',
     facts: ['Home to the world’s largest swimming pool and it is filled with seawater from the pacific',
 'Where you can find the driest place on earth called the Atacama Desert runnning between the Andes Mountains and the Pacific',
 'Known for the statues on Easter island called Moai',
@@ -800,7 +800,9 @@ var SouthAmerica = [Brazil, Argentina, Venezuela, Colombia, Peru, Ecuador, Urugu
 var Region = [MiddleEast, EastAsia, Africa, SouthAmerica];
 //criminal and people methods
 
-var crimes = ['crime type 1', 'crime type 2', 'crime type 3'];
+var crimes = ["arson", "property", "human trafficking", "burglary", "drug-related", "robbery", "embezzlement", "grand-larceny", "forgery", "fraud", "white-collar"];
+
+var crimeBackground = [‘Saw it on snapchat...crazy man’, ‘I heard about' + 'criminal.name' + 'but didnt see it’, ‘Ya dude. ' + 'criminal.name' + 'went live on facebook’, ‘I saw some photos on whatsapp’, ‘I wouldn’t mess with ' + 'criminal.name' + 'criminal.name' + is crazy’, ‘criminal.name' + 'went wild on twitter’, ‘Good luck stopping' + 'criminal.name' + ', i saw it on the news last night’, ‘My friend was there and saw the whole thing’, ‘Social media is ruining our world. ' + 'criminal.name' + 'is all over instagram’,‘Did you see the photos on Instagram?...They were taken down but are replicated all over the internet’, ‘Heard there were millions in damages..What is wrong with people?’, ‘What is this world coming to? Please bring' + 'criminal.name' + to justice’, ‘Read about this on my newsfeed. Great thing I wasn’t there and no one got hurt’, ‘Checkout twitter. ' + 'criminal.name' +  'is trending’, ‘Wish I was there to do something about it..Just disgusting what people are doing today’, ‘I was there that night...I saw everything and let authorities know what he looked like and where he was headed’, ‘Whatsapp is becoming the go to choice for communication between these criminals. I saw a couple messages shared on my group and it looked crazy’, ‘Dude is out of control and must be stopped’];
 
 function name(country, gender)
 {
@@ -1104,6 +1106,7 @@ function assignNextCountry()
 function lastStage()
 {
     var speechOutput;
+	var repromptOutput
     shuffleArray(criminalArr);
     //removes index 0 form criminalArr
     var crimVar = criminalArr.splice(0, 1);
@@ -1233,7 +1236,8 @@ function talkedTo()
             }
 			//persons just walk by or have nothing to say
             speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender)) + this.t("PASSEDBY_PROMPT"); // added continue searching prompt. need to handle their response somewhere
-            this.emit(":ask", speechOutput);
+            repromptOutput = this.t("PASSEDBY_PROMPT");
+			this.emit(":ask", speechOutput, repromptOutput);
         }
         //right country
         else {
@@ -1244,7 +1248,8 @@ function talkedTo()
 				console.log("r_person seen value = 0 reponses");
 				//right country but person hasn't seen anything (20% chance)
 				speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender)) + this.t("PASSEDBY_PROMPT"); // added continue searching prompt. need to handle their response somewhere
-				this.emit(":ask", speechOutput);
+				repromptOutput = this.t("PASSEDBY_PROMPT");
+				this.emit(":ask", speechOutput, repromptOutput);
 			}
 			//if person has seen something
 			else {
@@ -1253,7 +1258,8 @@ function talkedTo()
 				//TODO questioning responses here, just putting obvious country facts as clues here for testing
 				//0.00032 chance you won't see clues after talking to 5 people lol. Might need to fix that.
 				speechOutput = this.t("CORRECT_PERSON_RESPONSE", contPronoun(criminal.gender), pronoun(criminal.gender));
-				this.emit(":ask", speechOutput);
+				repromptOutput = this.t("PLEASE_ASK");
+				this.emit(":ask", speechOutput, repromptOutput);
 			}			
         }
         //moved this block to doneQuestioning()
@@ -1286,7 +1292,7 @@ function doneQuestioning ()
         console.log("populating new r_person from doneQuestioning");
         r_person = new PopulateResponsePerson();
         //build response for next person walking by.
-        speechOutput = this.t("DONE_QUESTIONING", pronoun(r_person.gender), r_person.gender, r_person.hairColor, r_person.body);
+        speechOutput = this.t("DONE_QUESTIONING", pronoun(r_person.gender), r_person.body, r_person.hairColor, r_person.gender);
 
         this.emit(":ask", speechOutput);
     }
@@ -1371,7 +1377,7 @@ function generateQuestionResponse(questionType)
         }
 
         //These emits confirmed to work when .call is used, and "this" is explicitly passed
-        speechOutput = this.t(responseString) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
+        speechOutput = this.t("CRIME_FACTS", criminal.name) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
         this.emit(":ask", speechOutput);
     }
     else if(questionType == 2)
@@ -1501,6 +1507,7 @@ var languageString = {
 			"CHOOSE_COUNTRY": "  Where should we start our search? ",
 			"CHOOSE_AGAIN": "Where would you like to go now? ",
 			"COUNTRY_LIST": "%s, %s, %s, or %s? ",
+			"CRIME_FACTS": "%s. ",
 			"DEPARTURE_MESSAGE": "%s it is. Talk to you when you land. Get going sleuth! ",
 			"ARRIVAL_MESSAGE": "%s. Time to find info on %s. Get the attention of bystanders so you can ask them about the criminal, and where the criminal is going. ",
 			"PERSON_APPROACHING": "%s %s %s approaching. ",
@@ -1508,6 +1515,7 @@ var languageString = {
             "CORRECT_PERSON_RESPONSE": "Looks like this person might know something, maybe ask about the criminals looks, where %s going, or who %s is. ",
 
 			"PLEASE_GREET": "Please get the person's attention by using common phrases like hello or excuse me. ",
+			"PLEASE_ASK": "Please ask questions like, what did the criminal look like, or, do you know where the criminal went. ",
 			"PASSEDBY_PROMPT": "Say continue to keep searching. ",
 			"CONTINUE_PROMPT": ". Keep asking questions, or say continue to keep searching. ", // can't figure out how to keep "yes" from triggering wrong intents
             "LOSE_WRONG": "Oh no! this is not the criminal. We have to step up our game.",
@@ -1516,6 +1524,7 @@ var languageString = {
             "WRONG_COUNTRY": "This doesn't seem to be the correct Country, try a different one. ",
             "LAST_PERSON": "Looks like we've talked to everyone, it's time to pick the next country. ",
             "DONE_QUESTIONING": "Seems like that's all %s has to say, let's look for someone else. %s %s %s is approaching. ",
+			"NICE_DAY": "%s. ",
             "COUNTRY_FACTS": "I heard %s is going to %s. ",
             "ACCUSE": "A %s %s %s with %s %s eyes, %s %s hair, and a %s walks by. Is this the criminal? If so, say stop criminal or say innocent to keep looking. "
 		}
