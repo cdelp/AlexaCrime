@@ -77,191 +77,191 @@ var greetings = ['hey', "what's up'", 'hi'];
 
 //temp vars that can be spliced in case game gets restarted
 //temp vars that can be spliced in case game gets restarted
-//var t_height = height.slice(0);
-//var t_body = body.slice(0);
-//var t_eyeSize = eyeSize.slice(0);
-//var t_eyeColor = eyeColor.slice(0);
-//var t_hairLength = hairLength.slice(0);
-//var t_hairColor = hairColor.slice(0);
-//var t_special = p_special.slice(0);
+var t_height = ['short', 'medium', 'tall'];
+var t_body = ['chubby', 'skinny', 'medium'];
+var t_eyeSize = ['small', 'large'];
+var t_eyeColor = ['black', 'brown', 'blue', 'green'];
+var t_hairLength = ['long', 'short', 'medium'];
+var t_hairColor = ['black', 'brown', 'blond', 'red', 'silver', 'green', 'blue'];
+var t_special = ['headphones', 'bathing suit', 'naked'];
 
 //Middle East
 var Egypt  = {
     countryName: 'Egypt',
-	intro: 'Welcome to Egypt, an ancient civilization dating back to 3200 BC. Egypt is part of the fertile crescent because of the Nile River. ',
-    facts:  ['Where the world’s oldest dress was found over 5,000 years ago', 
-'The nation of the steppe eagle', 
-'Where the statue of liberty was originally intended at the suez canal lighting the way to asia', 
-'Where the first sailing boats were invented',
-'Where the tradition of exchanging wedding rings started',
-'Known for the Great Pyramid of Giza',
-'The country with the world’s largest arab population',
-'Beer was once considered a national currency',
-'Where the circumference of the Earth was calculated 2200 years ago',
-'The land of Pharaohs'
-],
+    intro: 'Welcome to Egypt, an ancient civilization dating back to 3200 BC. Egypt is part of the fertile crescent because of the Nile River. ',
+    facts:  ['Where the world’s oldest dress was found over 5,000 years ago',
+        'The nation of the steppe eagle',
+        'Where the statue of liberty was originally intended at the suez canal lighting the way to asia',
+        'Where the first sailing boats were invented',
+        'Where the tradition of exchanging wedding rings started',
+        'Known for the Great Pyramid of Giza',
+        'The country with the world’s largest arab population',
+        'Beer was once considered a national currency',
+        'Where the circumference of the Earth was calculated 2200 years ago',
+        'The land of Pharaohs'
+    ],
     m_names: ['Aaheru', 'Abuskhau', 'Acheri', 'Aches', 'Am', 'Akhekh', 'Amenamen'],
     f_names: ['Cleopatra', 'Amisi', 'Bast', 'Ebio', 'Emu', 'Isis'],
     region: 'Middle East'
 }
 var Iran = {
     countryName: 'Iran',
-	intro: 'Welcome to Iran, known as the Islamic Republic of Iran since 1979. Iran has the largest natural gas supply in the world. ',
+    intro: 'Welcome to Iran, known as the Islamic Republic of Iran since 1979. Iran has the largest natural gas supply in the world. ',
     facts: ['Where the capital is Tehran, which means warm slope',
-'Where their flag has three equal horizontal bands of green, white, and red',
-'Known as Persia',
-'Where the world’s oldest continuous civilizations dating back 4000 BC',
-'The inventors of a water supply system called qanat, which collects underground water and moves it through tunnels',
-'Known for the best rugs and tapestry',
-'The world’s largest producers of caviar, pistachios, and saffron',
-'Where Polo was played as early as 6th century B.C.',
-'Where they speak farsi',
-'Where Islam became the state religion in 637'
-],
+        'Where their flag has three equal horizontal bands of green, white, and red',
+        'Known as Persia',
+        'Where the world’s oldest continuous civilizations dating back 4000 BC',
+        'The inventors of a water supply system called qanat, which collects underground water and moves it through tunnels',
+        'Known for the best rugs and tapestry',
+        'The world’s largest producers of caviar, pistachios, and saffron',
+        'Where Polo was played as early as 6th century B.C.',
+        'Where they speak farsi',
+        'Where Islam became the state religion in 637'
+    ],
     m_names: ['Mohammad', 'Amir', 'Yosef', 'Mehran', 'Faraz', 'Hooman'],
     f_names: ['Ada', 'Saye', 'Nooshin', 'Sajedeh', 'Niyusha', 'Fatima'],
     region: 'Middle East'
 }
 var Algeria = {
     countryName: 'Algeria',
-	intro: 'Welcome to Algeria, a nation with over 2 million square kilometers of land, only 12% of which is inhabited. 98% of Algeria’s exports consist of petroleum and gas. ',
+    intro: 'Welcome to Algeria, a nation with over 2 million square kilometers of land, only 12% of which is inhabited. 98% of Algeria’s exports consist of petroleum and gas. ',
     facts: ['Where the capital is Algiers',
-'Where the Sahara Desert covers 80% of the country',
-'Where they gained independance from France in 1962',
-'Home to St Augusting of Hippo, an early christian theologian',
-'The largest country in Africa',
-'Where they love to eat couscous',
-'Cheb Mami accompanied Sting on his song Desert Rose',
-'The national animal is a fennec fox native to North Africa',
-'Most of the population lives on the mediterranean sea leaving 80% of the country uninhabited',
-'Known for delicious dates',
-'A skip away from Italy and Spain'
-],
+        'Where the Sahara Desert covers 80% of the country',
+        'Where they gained independance from France in 1962',
+        'Home to St Augusting of Hippo, an early christian theologian',
+        'The largest country in Africa',
+        'Where they love to eat couscous',
+        'Cheb Mami accompanied Sting on his song Desert Rose',
+        'The national animal is a fennec fox native to North Africa',
+        'Most of the population lives on the mediterranean sea leaving 80% of the country uninhabited',
+        'Known for delicious dates',
+        'A skip away from Italy and Spain'
+    ],
     m_names: ['Mohammad', 'Amine', 'Anis', 'Brahim', 'Zaki', 'Mounir'],
     f_names: ['Meriem', 'Sabrina', 'Safia', 'Yasmine', 'Chiraz', 'Aya'],
     region: 'Middle East'
 }
 var Tunisia = {
     countryName: 'Tunisia',
-	intro: 'Welcome to Tunisia, formerly part of the Ottoman Empire, and later a French protectorate. It achieved full independence in 1956. Arabic, French, and Italian are all commonly spoken in Tunisia. ',
+    intro: 'Welcome to Tunisia, formerly part of the Ottoman Empire, and later a French protectorate. It achieved full independence in 1956. Arabic, French, and Italian are all commonly spoken in Tunisia. ',
     facts: ['Red flag with crescent moon in the middle',
-'Shares borders with Algeria and libya',
-'The capital is tunis',
-'Smallest country in Africa',
-'All but one Star Wars Movies were filmed here',
-'Where you can find a 6,000 year old amphitheatre',
-'Known for its fish souks or markets',
-'The country playing pass with Italy',
-'Once know as the center of power for the city of Carthage in 6th BC',
-'Known for starting the Arab spring revolution via social media'
-],
+        'Shares borders with Algeria and libya',
+        'The capital is tunis',
+        'Smallest country in Africa',
+        'All but one Star Wars Movies were filmed here',
+        'Where you can find a 6,000 year old amphitheatre',
+        'Known for its fish souks or markets',
+        'The country playing pass with Italy',
+        'Once know as the center of power for the city of Carthage in 6th BC',
+        'Known for starting the Arab spring revolution via social media'
+    ],
     m_names: ['Ahmed', 'Hazim', 'Slim', 'Aziz', 'Mehdi', 'Raouf'],
     f_names: ['Fatma', 'Eya', 'Hiba', 'Sarah', 'Farah', 'Rim'],
     region: 'Middle East'
 }
 var Oman = {
     countryName: 'Oman',
-	intro: 'Welcome to Oman. Opened to tourism in the late 1980s, this coastal nation located on the tip of  the Arabian Peninsula now hosts several million foreign visitors a year. The soft drink Mountain Dew is jokingly referred to as Omani alcohol due to its high level of popularity among Omanis. ',
+    intro: 'Welcome to Oman. Opened to tourism in the late 1980s, this coastal nation located on the tip of  the Arabian Peninsula now hosts several million foreign visitors a year. The soft drink Mountain Dew is jokingly referred to as Omani alcohol due to its high level of popularity among Omanis. ',
     facts: ['Located on the southeastern coast of the Arabian Peninsula',
-'Humans have been living here for at least 107,000 years',
-'Known for birdwatching during migration season',
-'The national symbol has a pair of crossed Khanjars or daggers',
-'Credited with being the greatest ship builders in the world',
-'The finest breeders of the beautiful arabian horse',
-'It is a tradition to greet visitors with dates, qahwa, and fruit',
-'The capital is Muscat',
-'They were occupied by the Portuguese for 150 years',
-'The mutrah souk is one of the oldest marketplaces in the world'],
+        'Humans have been living here for at least 107,000 years',
+        'Known for birdwatching during migration season',
+        'The national symbol has a pair of crossed Khanjars or daggers',
+        'Credited with being the greatest ship builders in the world',
+        'The finest breeders of the beautiful arabian horse',
+        'It is a tradition to greet visitors with dates, qahwa, and fruit',
+        'The capital is Muscat',
+        'They were occupied by the Portuguese for 150 years',
+        'The mutrah souk is one of the oldest marketplaces in the world'],
     m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
     f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Middle East'
 }
 var Morocco = {
     countryName: 'Morocco',
-	intro: 'Welcome to Morocco, the first country to recognize the United States as an independent nation, and home to the famous city of Casablanca. ',
+    intro: 'Welcome to Morocco, the first country to recognize the United States as an independent nation, and home to the famous city of Casablanca. ',
     facts: ['The flag is maroon with a green star in the middle',
-'Called Al-Magrib or the extreme west',
-'The capital is Rabbat',
-'Often called the Red City',
-'Only 8-miles from Europe',
-'Possible to see the Atlantic and Mediterranean at the same time',
-'The Alaouites are the royal family',
-'Home to the world’s first university',
-'The liver is considered to be the symbol of love',
-'Only country in Africa not part of the African union'
-],
+        'Called Al-Magrib or the extreme west',
+        'The capital is Rabbat',
+        'Often called the Red City',
+        'Only 8-miles from Europe',
+        'Possible to see the Atlantic and Mediterranean at the same time',
+        'The Alaouites are the royal family',
+        'Home to the world’s first university',
+        'The liver is considered to be the symbol of love',
+        'Only country in Africa not part of the African union'
+    ],
     m_names: ['Abdo', 'Ahmen', 'Karim', 'Ali', 'Rachid', 'Brahim'],
     f_names: ['Zineb', 'Ghita', 'Marwa', 'Aya', 'Lina', 'Rania'],
     region: 'Middle East'
 }
 var Syria = {
     countryName: 'Syria',
-	intro: 'Welcome to Syria, whose largest lake is man made, created in 1968. New Years is traditionally celebrate on April first in Syria. ',
+    intro: 'Welcome to Syria, whose largest lake is man made, created in 1968. New Years is traditionally celebrate on April first in Syria. ',
     facts: ['Formerly known as Ash-Sham and synonymous with the Levant',
-'Where the capital is Damascus known as Jasmine City',
-'The two green stars on the flag represent the previous union with Egypt',
-'Suffering the worst humanitarian crisis since World War II impacting 13 million people',
-'Home to the oldest continuously inhabited city in the world',
-'Major point on the silk road from Asia',
-'The biggest city is Haleb or Aleppo meaning iron due to its source of metals',
-'Enjoy some toasted freekeh wheat with chicken and fatoush',
-'Shares Northern Border with Turkey',
-'The Euphrates river is the lifeline for this mostly arid country'
-],
+        'Where the capital is Damascus known as Jasmine City',
+        'The two green stars on the flag represent the previous union with Egypt',
+        'Suffering the worst humanitarian crisis since World War II impacting 13 million people',
+        'Home to the oldest continuously inhabited city in the world',
+        'Major point on the silk road from Asia',
+        'The biggest city is Haleb or Aleppo meaning iron due to its source of metals',
+        'Enjoy some toasted freekeh wheat with chicken and fatoush',
+        'Shares Northern Border with Turkey',
+        'The Euphrates river is the lifeline for this mostly arid country'
+    ],
     m_names: ['Adnan', 'Elias', 'Nizar', 'Sayid', 'Yaman', 'Rifat'],
     f_names: ['Zeinah', 'Uri', 'Amena', 'Shayma', 'Nooda', 'Aisl'],
     region: 'Middle East'
 }
 var Iraq = {
     countryName: 'Iraq',
-	intro: 'Welcome to Iraq, origin of the oldest known writing system, dating from 3200 B.C. ',
+    intro: 'Welcome to Iraq, origin of the oldest known writing system, dating from 3200 B.C. ',
     facts: ['The land of the two rivers',
-'Where civilization began in Mesopotamia',
-'Known for its rich oil reserves',
-'The name translates to deeply rooted, fertile',
-'The flag contains green script of Allahu Akbar meaning God is the Great',
-'The capital is Baghdad formerly known as the world center for math, science, and astronomy',
-'Where the tower of babel happened representing the start of different languages',
-'The capital city translates to God’s Gift.',
-'Where poetry and literature thrived with tales such as A thousand and One Nights',
-'Don’t forget to try the Tigris fish roasted over an open fire'
-],
+        'Where civilization began in Mesopotamia',
+        'Known for its rich oil reserves',
+        'The name translates to deeply rooted, fertile',
+        'The flag contains green script of Allahu Akbar meaning God is the Great',
+        'The capital is Baghdad formerly known as the world center for math, science, and astronomy',
+        'Where the tower of babel happened representing the start of different languages',
+        'The capital city translates to God’s Gift.',
+        'Where poetry and literature thrived with tales such as A thousand and One Nights',
+        'Don’t forget to try the Tigris fish roasted over an open fire'
+    ],
     m_names: ['Zamanlabib', 'Mustafa', 'Barhoomee', 'Baravan', 'Jahmir', 'Fadhil'],
     f_names: ['Zainab', 'Noora', 'Sham', 'Telenaz', 'Rukia', 'Kayoosh'],
     region: 'Middle East'
 }
 var SaudiArabia = {
     countryName: 'Saudi Arabia',
-	intro: 'Welcome to Saudi Arabia, where around 100 camels are sold every day in its capital city. A very high 60% of Saudi Arabia’s workforce is foreign ',
+    intro: 'Welcome to Saudi Arabia, where around 100 camels are sold every day in its capital city. A very high 60% of Saudi Arabia’s workforce is foreign ',
     facts: ['Going to Mecca for hajj pilgrimage',
-'Dont get caught in the empty quarter, the largest sand desert in the world',
-'The capital city is Riyadh',
-'Where Islam was founded by prophet Muhammad',
-'The largest country in the world with no river',
-'Borders the Red Sea and the Arabian gulf',
-'Try to catch a glimpse of sidewalk skiing but I would advise against trying it',
-'Home to the worlds tallest skyscraper',
-'Where the camel market is thriving',
-'The largest country in the Region and 13th largest in the world'
-],
+        'Dont get caught in the empty quarter, the largest sand desert in the world',
+        'The capital city is Riyadh',
+        'Where Islam was founded by prophet Muhammad',
+        'The largest country in the world with no river',
+        'Borders the Red Sea and the Arabian gulf',
+        'Try to catch a glimpse of sidewalk skiing but I would advise against trying it',
+        'Home to the worlds tallest skyscraper',
+        'Where the camel market is thriving',
+        'The largest country in the Region and 13th largest in the world'
+    ],
     m_names: ['Kahaled', 'Mahamat', 'Inam', 'Taha', 'Hossien', 'Zishan'],
     f_names: ['Faten', 'Habiba', 'Reema', 'Nadia', 'Bushra', 'Salsabyl'],
     region: 'Middle East'
 }
 var Lebanon = {
     countryName: 'Lebanon',
-	intro: 'Welcome to Lebanon, home to 4.5 million Lebanese. Compared to 20-30 million who live outside of Lebanon. ',
+    intro: 'Welcome to Lebanon, home to 4.5 million Lebanese. Compared to 20-30 million who live outside of Lebanon. ',
     facts: ['Known as the paris of the middle east due to its renaissance after world war II',
-'Capital City is Beirut',
-'The only Arab country without a desert',
-'Home to the first ever law school in the world',
-'Where tourist flock to for skiing, night life, shopping, and swimming',
-'The countrys name has been unchanged for over 4000 years',
-'Where the first alphabet was created',
-'Where the first sailors called phoenicians built the first ever boat from cedar trees',
-'The country is know as God’s Country on Earth',
-'The creators of Tom & Jerrry and directed other cartoons such as Scooby-Doo, The Jetsons, and The smurfs are lebanese'
-],
+        'Capital City is Beirut',
+        'The only Arab country without a desert',
+        'Home to the first ever law school in the world',
+        'Where tourist flock to for skiing, night life, shopping, and swimming',
+        'The countrys name has been unchanged for over 4000 years',
+        'Where the first alphabet was created',
+        'Where the first sailors called phoenicians built the first ever boat from cedar trees',
+        'The country is know as God’s Country on Earth',
+        'The creators of Tom & Jerrry and directed other cartoons such as Scooby-Doo, The Jetsons, and The smurfs are lebanese'
+    ],
     m_names: ['Mahmous', 'Nader', 'Ayman', 'Wehbe', 'Rami', 'Moukhtar'],
     f_names: ['Nour', 'Alaa', 'Souad', 'Sousou', 'Yasmine', 'Fatme'],
     region: 'Middle East'
@@ -270,525 +270,526 @@ var Lebanon = {
 //East Asia
 var Japan = {
     countryName: 'Japan',
-	intro: 'Welcome to Japan, with its 108 active volcanoes, as part of the Pacific Ocean’s ring of fire.Japan consists of 47 prefectures, each lead by an elected governor. ',
+    intro: 'Welcome to Japan, with its 108 active volcanoes, as part of the Pacific Ocean’s ring of fire.Japan consists of 47 prefectures, each lead by an elected governor. ',
     facts: ['Nihon or Nippon which means the land of the rising sun',
-'Consists of over 6,800 islands',
-'Home to the largest populated metropolitan region in the world',
-'The largest importers of seafood in the world',
-'The originators of ramen noodles',
-'Where you will find the best sushi in the world',
-'Home to world-renowned Kobe beef, which comes from cows treated like royalty',
-'Where you can find suicide forest at the base of Mount Fuji',
-'The national flower is Cherry blossoms or sakura',
-'Where Haiku poetry was invented'
-],
+        'Consists of over 6,800 islands',
+        'Home to the largest populated metropolitan region in the world',
+        'The largest importers of seafood in the world',
+        'The originators of ramen noodles',
+        'Where you will find the best sushi in the world',
+        'Home to world-renowned Kobe beef, which comes from cows treated like royalty',
+        'Where you can find suicide forest at the base of Mount Fuji',
+        'The national flower is Cherry blossoms or sakura',
+        'Where Haiku poetry was invented'
+    ],
     m_names: ['Dorobo', 'Naruto', 'Ren', 'Tatsuya', 'Daisuke', 'Kazuki'],
     f_names: ['Yuri', 'Ayumi', 'Minami', 'Nana', 'Risa', 'Hana'],
     region: 'East Asia'
 }
 var China = {
     countryName: 'China',
-	intro: 'Welcome to China, home to the world’s entire giant panda population.  ',
+    intro: 'Welcome to China, home to the world’s entire giant panda population.  ',
     facts: ['Home to the largest population in the world',
-'Capital is Beijing',
-'Known for the great wall, which is the largest man made structure in the world soon to be trumped by President Trump haha',
-'The worlds largest army',
-'The worlds largest exporter of goods',
-'The national sport is table tennis',
-'Half of the world’s pigs live in china',
-'Where it is common for rich people to hire a body double to serve their sentence',
-'The worlds largest economy',
-'The forbidden city is the largest palace in the world'
-],
+        'Capital is Beijing',
+        'Known for the great wall, which is the largest man made structure in the world soon to be trumped by President Trump haha',
+        'The worlds largest army',
+        'The worlds largest exporter of goods',
+        'The national sport is table tennis',
+        'Half of the world’s pigs live in china',
+        'Where it is common for rich people to hire a body double to serve their sentence',
+        'The worlds largest economy',
+        'The forbidden city is the largest palace in the world'
+    ],
     m_names: ['Ching', 'Chong', 'Ting', 'Chow', 'Yang', 'Ming'],
     f_names: ['Ming Ming', 'Chi CHi', 'Jade', 'Ying', 'Fei Fei', 'Fai Di La'],
     region: 'East Asia'
 }
 var Mongolia = {
     countryName: 'Mongolia',
-	intro: 'Welcome to Mongolia, with the world’s coldest national capital, Ulaanbaatar, averaging -1 degrees celsius. ',
+    intro: 'Welcome to Mongolia, with the world’s coldest national capital, Ulaanbaatar, averaging -1 degrees celsius. ',
     facts: ['Arguably the creators of ice cream',
-'Home to 13 times more horses than humans',
-'Known for its great ruler Genghis Khan stretching their empire from China to the Caspian Sea',
-'Where you will find the Gobi desert, the largest in Asia',
-'Referred to as the land of the blue sky',
-'The meaning of the country comes from the word mong or brave',
-'More than 17 million people living today descended from Genghis Khan',
-'Where wrestling is a tradition that goes back before recorded history',
-'The worlds second largest producer of Cashmere',
--'Ulan Baatar meaning red hero is the capital city'
-],
-    m_names: ['Dana', 'Ankhbaatar', 'Davaa', 'Zev', 'Bat-Erdene', 'Altantsetseg'],
+        'Home to 13 times more horses than humans',
+        'Known for its great ruler Genghis Khan stretching their empire from China to the Caspian Sea',
+        'Where you will find the Gobi desert, the largest in Asia',
+        'Referred to as the land of the blue sky',
+        'The meaning of the country comes from the word mong or brave',
+        'More than 17 million people living today descended from Genghis Khan',
+        'Where wrestling is a tradition that goes back before recorded history',
+        'The worlds second largest producer of Cashmere',
+        -'Ulan Baatar meaning red hero is the capital city'
+    ],
+    m_names: ['Dana', 'Ankhbaatar', 'Davaa', 'Zev'],
     f_names: ['Zaya', 'Sondor', 'Oyundelger', 'Aigerim', 'Delgermaa', 'Jabek'],
     region: 'East Asia'
 }
 var Nepal = {
     countryName: 'Nepal',
-	intro: 'Welcome to Nepal, with a calendar 57.7 years ahead of the Gregorian calendar. It is currently 2075 based on the Nepalese calendar. ',
+    intro: 'Welcome to Nepal, with a calendar 57.7 years ahead of the Gregorian calendar. It is currently 2075 based on the Nepalese calendar. ',
     facts: ['Home to the birthplace of buddha',
-'Where you find Mt. Everest the highest mountain in the world',
-'The cow is the national animal preventing them from eating any beef products',
-'The only country that doesnt have a square or rectangle flag',
-'Home to the worlds shortest person',
-'Home to the dish momo',
-'The largerst producers of mustard seed in the world',
-'The left hand is forbidden from used when eating',
-'The capital is Kathmandu',
-'Landlocked country bordering China and india'
-],
+        'Where you find Mt. Everest the highest mountain in the world',
+        'The cow is the national animal preventing them from eating any beef products',
+        'The only country that doesnt have a square or rectangle flag',
+        'Home to the worlds shortest person',
+        'Home to the dish momo',
+        'The largerst producers of mustard seed in the world',
+        'The left hand is forbidden from used when eating',
+        'The capital is Kathmandu',
+        'Landlocked country bordering China and india'
+    ],
     m_names: ['Krishna', 'Bishal', 'Bibek', 'Kiran', 'Bikash', 'Yash'],
     f_names: ['Shirisha', 'Shristi', 'Swornima', 'Tsamchou', 'Simixya', 'Palisha'],
     region: 'East Asia'
 }
-
+// still need names below this point
 var Taiwan = {
     countryName: 'Taiwan',
-	intro: 'Welcome to Taiwan, a country whose aboriginal people are attributed to have spread their culture as far as Madagascar to the west and Hawaii to the east. Taiwan’s national father, Sun Yat Sen, was actually American. ',
+    intro: 'Welcome to Taiwan, a country whose aboriginal people are attributed to have spread their culture as far as Madagascar to the west and Hawaii to the east. Taiwan’s national father, Sun Yat Sen, was actually American. ',
     facts: ['Island nation off the coast of Mainland China',
-'Walking in the rain goes against cultural norms',
-'Where 7-11 convenience stores are everywhere offering more than snacks and drinks',
-'The capital is taipei',
-'Home to the bamboo-shaped skyscraper',
-'The official language is mandarin',
-'The flag has a white sun in the top left corner',
-'Known for their famous night markets',
-'Where you find a temple for worshipping the spirit of a dog',
-'Called the gay capital of Asia'
-],
-    m_names: ['Pai-han', 'Cheng-han', 'Kuan-ting', 'Kuan-yu', 'Chun-chieh', 'Yu-hsuan'],
-    f_names: ['Hui-ju', 'Chia-hua', 'Shu-fen', 'Wei-ting', 'Ya-fand', 'Hsin-yi'],
+        'Walking in the rain goes against cultural norms',
+        'Where 7-11 convenience stores are everywhere offering more than snacks and drinks',
+        'The capital is taipei',
+        'Home to the bamboo-shaped skyscraper',
+        'The official language is mandarin',
+        'The flag has a white sun in the top left corner',
+        'Known for their famous night markets',
+        'Where you find a temple for worshipping the spirit of a dog',
+        'Called the gay capital of Asia'
+    ],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
 }
 var Philippines = {
     countryName: 'the Philippines',
-	intro: 'Welcome to the Philippines, comprised of over 7000 islands. 175 different languages are spoken in the Philippines. ',
+    intro: 'Welcome to the Philippines, comprised of over 7000 islands. 175 different languages are spoken in the Philippines. ',
     facts: ['The first country to gain independence after world war 2',
-'The country is named after a spanish king',
-'Known for large shopping malls',
-'Where the largest pearl was discovered known as Pearl of Allah',
-'The largest exporter of coconuts and tropical fruits',
-'The only majority christian nation in asia',
-'The national symbol is the monkey-eating eagle',
-'Invented the modern yoyo meaning come back',
-'Home to the longest Christmas season',
-'The capital city is Manila'
-],
-    m_names: ['Ian', 'Mark', 'Kyle', 'Jeff', 'Francis', 'Louis'],
-    f_names: ['Nicole', 'Alyssa', 'Karen', 'Valerie', 'Mary', 'Trisha'],
+        'The country is named after a spanish king',
+        'Known for large shopping malls',
+        'Where the largest pearl was discovered known as Pearl of Allah',
+        'The largest exporter of coconuts and tropical fruits',
+        'The only majority christian nation in asia',
+        'The national symbol is the monkey-eating eagle',
+        'Invented the modern yoyo meaning come back',
+        'Home to the longest Christmas season',
+        'The capital city is Manila'
+    ],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
 }
 var Cambodia = {
     countryName: 'Cambodia',
-	intro: 'Welcome to Cambodia, overcoming a tragic past that included the genocide of several million people, it is now one of Asia’s fastest growing economies, with a robust tourism industry revolving around its deep history and ancient architecture. ',
+    intro: 'Welcome to Cambodia, overcoming a tragic past that included the genocide of several million people, it is now one of Asia’s fastest growing economies, with a robust tourism industry revolving around its deep history and ancient architecture. ',
     facts: ['The land of a million mopeds',
-'The only country flag with a building on it',
-'Known for their textile industry',
-'Where it is disrespectful to let your feet or soles point at people or things',
-'Wedged between Thailand, Laos, and Vietnam',
-'Home to Angkor Wat, a massive stone temple complex',
-'The capital is Phnom Penh',
-'Was a colony of France for 90 years',
-'Occupied by japan during world war 2',
-'Tarantulas are eaten as a snack'
-],
-    m_names: ['Bora', 'Chakara', 'Chann', 'Borey', 'Mao', 'Meaker'],
-    f_names: ['Akara', 'Chariya', 'Jorani', 'Davi', 'Kiri', 'Kesor'],
+        'The only country flag with a building on it',
+        'Known for their textile industry',
+        'Where it is disrespectful to let your feet or soles point at people or things',
+        'Wedged between Thailand, Laos, and Vietnam',
+        'Home to Angkor Wat, a massive stone temple complex',
+        'The capital is Phnom Penh',
+        'Was a colony of France for 90 years',
+        'Occupied by japan during world war 2',
+        'Tarantulas are eaten as a snack'
+    ],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
 }
 var Vietnam = {
     countryName: 'Vietnam',
-	intro: 'Welcome to Vietnam, home of the world’s largest cave, and the region’s highest mountain, known as the roof of indochina. ',
+    intro: 'Welcome to Vietnam, home of the world’s largest cave, and the region’s highest mountain, known as the roof of indochina. ',
     facts: ['The country with flag is red with a large yellow star in the middle',
-'The capital city is Hanoi',
-'It is an S shaped country',
-'Gongs are used to call children to school',
-'Known for the dish called ruou ran',
-'The second largest coffee producer',
-'Sometimes called cashew nut heaven',
-'They have a kitchen god called Ong Tao',
-'The local currency is dong',
-'Legend has it that the people of this land originated from a union between an immoral chinese princess and the Dragon lord of the seas'
-],
-    m_names: ['Dinh', 'Thuan', 'Trai', 'Trang', 'Khan', 'Hung'],
-    f_names: ['Chau', 'Bian', 'Tien', 'Hue', 'Mai', 'Huong'],
+        'The capital city is Hanoi',
+        'It is an S shaped country',
+        'Gongs are used to call children to school',
+        'Known for the dish called ruou ran',
+        'The second largest coffee producer',
+        'Sometimes called cashew nut heaven',
+        'They have a kitchen god called Ong Tao',
+        'The local currency is dong',
+        'Legend has it that the people of this land originated from a union between an immoral chinese princess and the Dragon lord of the seas'
+    ],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
 }
 var NorthKorea = {
     countryName: 'North Korea',
-	intro: 'Welcome to North Korea, founded in 1948 and officially name Democratic Peoples Republic of Korea. Despite its name, it is considered the most authoritarian regime in the world, with all elections having only one candidate. ',
+    intro: 'Welcome to North Korea, founded in 1948 and officially name Democratic Peoples Republic of Korea. Despite its name, it is considered the most authoritarian regime in the world, with all elections having only one candidate. ',
     facts: ['Where the calendar is based on Kim II-Sung’s date of birth',
-'Home to the world’s largest stadium',
-'The national instrument is the accordion',
-'Where godzilla is known as Pulgasari',
-'Where you can score 4-points in a basketball game and lose points for missed free throws',
-'The capital city is Pyongyang',
-'They live off of the principle of juche or self reliance',
-'Where they have their own time zone',
-'Land of the morning Calm',
-'Home to the DMZ, which is the most heavily guarded border in the world'
-],
-    m_names: ['Kim', 'Ban Ki-Moon', 'Chul', 'Hwan', 'Haneul', 'Suk'],
-    f_names: ['Areum', 'Eun', 'Sung', 'Yeong', 'Wook', 'Uk'],
+        'Home to the world’s largest stadium',
+        'The national instrument is the accordion',
+        'Where godzilla is known as Pulgasari',
+        'Where you can score 4-points in a basketball game and lose points for missed free throws',
+        'The capital city is Pyongyang',
+        'They live off of the principle of juche or self reliance',
+        'Where they have their own time zone',
+        'Land of the morning Calm',
+        'Home to the DMZ, which is the most heavily guarded border in the world'
+    ],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
 }
 var Malaysia = {
     countryName: 'Malaysia',
-	intro: 'Welcome to Malaysia. As one of Asias predominately muslim nations, Islam is the official state religion. Over 60% of the population practices Islam. ',
+    intro: 'Welcome to Malaysia. As one of Asias predominately muslim nations, Islam is the official state religion. Over 60% of the population practices Islam. ',
     facts: ['The capital is Kuala Lumpur',
-'The flag looks similar to the US flag except it has a crescent moon and sun in the top left',
-'Historically called the peninsula of gold',
-'The only country that includes territory both on mainland and in the islands',
-'Home to the biggest roundabout in the world',
-'The Japanese invaded this country the same day they bombed pearl harbor',
-'The national dish is Nasi Lemak which is a rice dish cooked in coconut milk served in a banana leaf',
-'Known for the largest and longest caves in the world',
-'The state religion is Islam but they consider themselves very secular',
-'Home to the Petronas Towers which are the tallest twin skyscrapers'],
-    m_names: ['Ahmad', 'Ryan', 'Jack', 'Adam', 'Richard', 'Harris'],
-    f_names: ['Mira', 'Sarah', 'Lisa', 'Wani', 'Irdina', 'Nisa'],
+        'The flag looks similar to the US flag except it has a crescent moon and sun in the top left',
+        'Historically called the peninsula of gold',
+        'The only country that includes territory both on mainland and in the islands',
+        'Home to the biggest roundabout in the world',
+        'The Japanese invaded this country the same day they bombed pearl harbor',
+        'The national dish is Nasi Lemak which is a rice dish cooked in coconut milk served in a banana leaf',
+        'Known for the largest and longest caves in the world',
+        'The state religion is Islam but they consider themselves very secular',
+        'Home to the Petronas Towers which are the tallest twin skyscrapers'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'East Asia'
 }
 
+// intro still needed below this point
 //Africa
 var SouthAfrica = {
     countryName: 'South Africa',
-	intro: 'Welcome to South Africa, most famous for Nelson Mandela, Kruger National Park, and a variety of gem stones and minerals',
+    intro: 'Welcome to South Africa ',
     facts: ['Located at the cape of good hope',
-'The capital is Pretoria',
-'The only country to host world cup for soccer, rugby, and cricket',
-'Where table mountain considered the oldest mountain and one of the 12 main energy centers.',
-'Home to the largest brewing company in the world',
-'Local currency is the rand',
-'Where you can find two nobel peace prize winners that lived on the same street',
-'Where Nelson Mandela led the anti-apartheid movement to end racial segregation',
-'Home to the oldest remains of humans from over 160,000 years ago',
-'They have three capital cities for each branch: executive, judicial, and legislative'
-],
-    m_names: ['Junior', 'Bandile', 'Thato', 'Siyabonga', 'Lethabo', 'Kungawo'],
-    f_names: ['Minenhle', 'Amahle', 'Karabou', 'Iminathi', 'Lesedi', 'Amogelang'],
+        'The capital is Pretoria',
+        'The only country to host world cup for soccer, rugby, and cricket',
+        'Where table mountain considered the oldest mountain and one of the 12 main energy centers.',
+        'Home to the largest brewing company in the world',
+        'Local currency is the rand',
+        'Where you can find two nobel peace prize winners that lived on the same street',
+        'Where Nelson Mandela led the anti-apartheid movement to end racial segregation',
+        'Home to the oldest remains of humans from over 160,000 years ago',
+        'They have three capital cities for each branch: executive, judicial, and legislative'
+    ],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
 var Uganda = {
     countryName: 'Uganda',
-	intro: 'Welcome to Uganda refered to as the Pearl of Africa. Most famous for being the source of the Nile River',
+    intro: 'Welcome to Uganda ',
     facts: ['Located in eastern africa',
-'Home of gorillas',
-'Called the Pearl of Africa by Winston Churchill',
-'The capital is Kampala',
-'Where you can enjoy panfried grasshoppers',
-'Landlocked country sharing borders with Sudan, Kenya, and Tanzania',
-'Much of the population lives near Lake Victoria',
-'The nile river starts here before flowing through 9 other countries and ending into the mediterranean sea in egypt',
-'The national symbol is a grey crowned crane which is on its flag',
-'Known as Africa’s Banana Republic'
-],
-    m_names: ['Dembe', 'Majani', 'Amare', 'Mukisa', 'Ebo', 'Kojo'],
-    f_names: ['Amaka', 'Kia', 'Kamali', 'ife', 'Asha', 'Eshe'],
+        'Home of gorillas',
+        'Called the Pearl of Africa by Winston Churchill',
+        'The capital is Kampala',
+        'Where you can enjoy panfried grasshoppers',
+        'Landlocked country sharing borders with Sudan, Kenya, and Tanzania',
+        'Much of the population lives near Lake Victoria',
+        'The nile river starts here before flowing through 9 other countries and ending into the mediterranean sea in egypt',
+        'The national symbol is a grey crowned crane which is on its flag',
+        'Known as Africa’s Banana Republic'
+    ],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
 var Kenya = {
     countryName: 'Kenya',
-	intro: 'Welcome to Kenya ',
+    intro: 'Welcome to Kenya ',
     facts: ['East African country with coastline on the Indian Ocean',
-'The capital is Nairobi',
-'Flag has two crossed white spears behind a rea, white, and black Maasai shield',
-'Country means God’s resting place',
-'Where they make most of their money on exporting coffee but do not drink it themselves',
-'Majority are christian protestant',
-'Home to the fastest distance runners',
-'Shares borders with 5 countries such as somalia and tanzania',
-'The official language is English and Swahili',
-'Take a safari at the stunning Maasai Mara savannah reserve'
-],
-    m_names: ['', '', '', '', '', ''],
-    f_names: ['', '', '', '', '', ''],
+        'The capital is Nairobi',
+        'Flag has two crossed white spears behind a rea, white, and black Maasai shield',
+        'Country means God’s resting place',
+        'Where they make most of their money on exporting coffee but do not drink it themselves',
+        'Majority are christian protestant',
+        'Home to the fastest distance runners',
+        'Shares borders with 5 countries such as somalia and tanzania',
+        'The official language is English and Swahili',
+        'Take a safari at the stunning Maasai Mara savannah reserve'
+    ],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
 var Somalia = {
     countryName: 'Somalia',
-	intro: 'Welcome to Somalia ',
+    intro: 'Welcome to Somalia ',
     facts: ['The flag is all blue with a large white star in the middle',
-'Located in the horn of Africa',
-'Known for piracy off the coast',
-'The capital is Mogadishu',
-'The first African nation used for flying British warplanes',
-'The only country in the world that does not possess a central form of government',
-'Home to ancient rock paintings dating back 5000 years',
-'Shebelle and Juba are their two main rivers',
-'The majority follow islam',
-'Lies along the gulf of Aden and the Indian Ocean'
-],
-    m_names: ['', '', '', '', '', ''],
-    f_names: ['', '', '', '', '', ''],
+        'Located in the horn of Africa',
+        'Known for piracy off the coast',
+        'The capital is Mogadishu',
+        'The first African nation used for flying British warplanes',
+        'The only country in the world that does not possess a central form of government',
+        'Home to ancient rock paintings dating back 5000 years',
+        'Shebelle and Juba are their two main rivers',
+        'The majority follow islam',
+        'Lies along the gulf of Aden and the Indian Ocean'
+    ],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
 var Sudan = {
     countryName: 'Sudan',
-	intro: 'Welcome to Sudan ',
+    intro: 'Welcome to Sudan ',
     facts: ['The capital is Khartoum',
-'The official language is Arabic and english with the country meaning The land of the Blacks',
-'Used to be the largest country in Africa before being split into north and south in 2011',
-'They border the red sea',
-'Just a hop and skip away from Saudi Arabia',
-'The capital means elephant trunk because the resemblance to the bend in the nile river there',
-'The northern and western part of the country contain remnants of old volcanoes',
-'There are more pyramids here than in egypt',
-'Home to the first women movement in Africa and Middle East during the 60’s',
-'They had the first female parliamentarian in 1965 and the first female minister of health in 1974'
-],
-    m_names: ['', '', '', '', '', ''],
-    f_names: ['', '', '', '', '', ''],
+        'The official language is Arabic and english with the country meaning The land of the Blacks',
+        'Used to be the largest country in Africa before being split into north and south in 2011',
+        'They border the red sea',
+        'Just a hop and skip away from Saudi Arabia',
+        'The capital means elephant trunk because the resemblance to the bend in the nile river there',
+        'The northern and western part of the country contain remnants of old volcanoes',
+        'There are more pyramids here than in egypt',
+        'Home to the first women movement in Africa and Middle East during the 60’s',
+        'They had the first female parliamentarian in 1965 and the first female minister of health in 1974'
+    ],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
 var Nigeria = {
     countryName: 'Nigeria',
-	intro: 'Welcome to Nigeria ',
+    intro: 'Welcome to Nigeria ',
     facts: ['Located near the ivory coast',
-'Where you can find the infamous prince that can make you rich over email',
-'Known as the Giant of Africa due to its large population and economy',
-'The capital is Abuja',
-'It borders the Gulf of Guinea, which leads to the Atlantic ocean',
-'Home to the Zuma Rock, the gateway to the capital',
-'The flag is 3 vertical stripes with 2 green sandwhiching one white stripe',
-'Most famous for petroleum',
-'Home to the city of Lagos which is known as Africa’s big apple',
-'Known for hollywood type scene called Nollywood'
-],
-    m_names: ['', '', '', '', '', ''],
-    f_names: ['', '', '', '', '', ''],
+        'Where you can find the infamous prince that can make you rich over email',
+        'Known as the Giant of Africa due to its large population and economy',
+        'The capital is Abuja',
+        'It borders the Gulf of Guinea, which leads to the Atlantic ocean',
+        'Home to the Zuma Rock, the gateway to the capital',
+        'The flag is 3 vertical stripes with 2 green sandwhiching one white stripe',
+        'Most famous for petroleum',
+        'Home to the city of Lagos which is known as Africa’s big apple',
+        'Known for hollywood type scene called Nollywood'
+    ],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
 var Cameroon = {
     countryName: 'Cameroon',
-	intro: 'Welcome to Cameroon ',
+    intro: 'Welcome to Cameroon ',
     facts: ['Central African country just north of Gabon',
-'230 other languages are spoken with French and English as the official languages',
-'Known as the hinge of africa and Africa in miniature',
-'The first African country to reach the quarter-finals in the world cup',
-'Famous for coffee, cocoa, and cotton',
-'The name of the country means River of Pawn in portuguese',
-'The capital is Yaounde',
-'The flag has 3 vertical stripes green, red, and yellow with a gold star in the middle',
-'Where Ginger beer is consumed frequently by kids and adults and is non-alcoholic ',
-'Where you can find the only active volcano in western africa'],
-    m_names: ['', '', '', '', '', ''],
-    f_names: ['', '', '', '', '', ''],
+        '230 other languages are spoken with French and English as the official languages',
+        'Known as the hinge of africa and Africa in miniature',
+        'The first African country to reach the quarter-finals in the world cup',
+        'Famous for coffee, cocoa, and cotton',
+        'The name of the country means River of Pawn in portuguese',
+        'The capital is Yaounde',
+        'The flag has 3 vertical stripes green, red, and yellow with a gold star in the middle',
+        'Where Ginger beer is consumed frequently by kids and adults and is non-alcoholic ',
+        'Where you can find the only active volcano in western africa'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
 var Senegal = {
     countryName: 'Senegal',
-	intro: 'Welcome to Sénégal ',
+    intro: 'Welcome to Sénégal ',
     facts: ['The capital is Dakar',
-'Named by Portuguese fisherman which means these are our boats',
-'Used to be the hub for the international slave trade',
-'Best known for ivory, fish, and gold',
-'Home to the first ever movie made in Africa',
-'Located on the western coast of Africa just south of the sahara desert',
-'The national dish is chep-bu-jen or rice with fish',
-'The economy is largely based on agriculture',
-'Predominantly muslim country with large ties to French and Lebanese culture ',
-'Where you can see The Senegambian Stone Circles'
-],
-    m_names: ['', '', '', '', '', ''],
-    f_names: ['', '', '', '', '', ''],
+        'Named by Portuguese fisherman which means these are our boats',
+        'Used to be the hub for the international slave trade',
+        'Best known for ivory, fish, and gold',
+        'Home to the first ever movie made in Africa',
+        'Located on the western coast of Africa just south of the sahara desert',
+        'The national dish is chep-bu-jen or rice with fish',
+        'The economy is largely based on agriculture',
+        'Predominantly muslim country with large ties to French and Lebanese culture ',
+        'Where you can see The Senegambian Stone Circles'
+    ],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
 var Ghana = {
     countryName: 'Ghana',
-	intro: 'Welcome to Ghana ',
+    intro: 'Welcome to Ghana ',
     facts: ['Sandwhiched between Cote d’ivoire and Togo',
-'The capital is Accra',
-'The local currency is cedi meaning sea shells',
-'The entire southern border sits on the Gulf of Guinea',
-'Ranked as Africas most peaceful country',
-'Home to Lake Volta, the largest man-made lake',
-'The country name means warrior king',
-'Known as the gold coast for its gold and salt trade',
-'First sub-saharan nation to gain independance post-colonialism',
-'Home to the largest market in West Africa called Kejetia Market'
-],
-    m_names: ['', '', '', '', '', ''],
-    f_names: ['', '', '', '', '', ''],
+        'The capital is Accra',
+        'The local currency is cedi meaning sea shells',
+        'The entire southern border sits on the Gulf of Guinea',
+        'Ranked as Africas most peaceful country',
+        'Home to Lake Volta, the largest man-made lake',
+        'The country name means warrior king',
+        'Known as the gold coast for its gold and salt trade',
+        'First sub-saharan nation to gain independance post-colonialism',
+        'Home to the largest market in West Africa called Kejetia Market'
+    ],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'Africa'
 }
 //SouthAmerica
 var Brazil = {
     countryName: 'Brazil',
-	intro: 'Welcome to Brazil ',
+    intro: 'Welcome to Brazil ',
     facts: ['The largest country in South America',
-'The macaw is the national animal',
-'Known as the worlds largest producer of coffee',
-'The capital looks like an airplane from above',
-'The official language is portuguese',
-'Home to the Amazon River which is the 2nd largest in the world',
-'Known for their soccer skills winning the World cup the most times',
-'Home to the worlds best beach',
-'The motto on their flag means order and progress',
-'Where you see the statue of Christ the Redeemer looking down on you'
-],
-    m_names: ['', '', '', '', '', ''],
-    f_names: ['', '', '', '', '', ''],
+        'The macaw is the national animal',
+        'Known as the worlds largest producer of coffee',
+        'The capital looks like an airplane from above',
+        'The official language is portuguese',
+        'Home to the Amazon River which is the 2nd largest in the world',
+        'Known for their soccer skills winning the World cup the most times',
+        'Home to the worlds best beach',
+        'The motto on their flag means order and progress',
+        'Where you see the statue of Christ the Redeemer looking down on you'
+    ],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
 var Argentina = {
     countryName: 'Argentina',
-	intro: 'Welcome to Argentina ',
+    intro: 'Welcome to Argentina ',
     facts: ['The name comes from the latin word for silver',
-'Home to Pope Francis, the first non-european pontiff of the Roman Catholic Church',
-'Where the first animated film was created in 1917',
-'The first South American country to legalize same-sex marriage',
-'Known for soccer greats diego maradona and lionel messi',
-'Home to Mt. Aconcagua, the highest point in the Western Hemisphere',
-'Known for tango dancing',
-'The capital is Buenos Aires meaning good airs or fair winds in spanish',
-'Try Yerba Mate there. It is the national drink',
-'Home to the world’s widest avenue spanning 14 lanes and 4 lanes of parallel streets'
-],
-    m_names: ['', '', '', '', '', ''],
-    f_names: ['', '', '', '', '', ''],
+        'Home to Pope Francis, the first non-european pontiff of the Roman Catholic Church',
+        'Where the first animated film was created in 1917',
+        'The first South American country to legalize same-sex marriage',
+        'Known for soccer greats diego maradona and lionel messi',
+        'Home to Mt. Aconcagua, the highest point in the Western Hemisphere',
+        'Known for tango dancing',
+        'The capital is Buenos Aires meaning good airs or fair winds in spanish',
+        'Try Yerba Mate there. It is the national drink',
+        'Home to the world’s widest avenue spanning 14 lanes and 4 lanes of parallel streets'
+    ],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
 var Venezuela = {
     countryName: 'Venezuela',
-	intro: 'Welcome to Venezuela ',
+    intro: 'Welcome to Venezuela ',
     facts: ['The name means little venice named after by an Italian explorer',
-'Home to the largest lake in South America and one of the oldest on earth',
-'It is a magical sight to see lightning called Catatumbo which mean continuous high frequency in Spanish',
-'Where you can find the world’s tallest waterfall about 15 times taller than Niagra Falls',
-'Home to the highest statue of Virgin Mary, which is taller than the Statue of Liberty',
-'Known for their large proven oil reserves',
-'Their favorite sport is baseball',
-'Won the most beauty pageant titles in the world',
-'Home to the famous breakfast dish Arepas',
-'The largest city and capital city is Caracas'
-],
-    m_names: ['', '', '', '', '', ''],
-    f_names: ['', '', '', '', '', ''],
+        'Home to the largest lake in South America and one of the oldest on earth',
+        'It is a magical sight to see lightning called Catatumbo which mean continuous high frequency in Spanish',
+        'Where you can find the world’s tallest waterfall about 15 times taller than Niagra Falls',
+        'Home to the highest statue of Virgin Mary, which is taller than the Statue of Liberty',
+        'Known for their large proven oil reserves',
+        'Their favorite sport is baseball',
+        'Won the most beauty pageant titles in the world',
+        'Home to the famous breakfast dish Arepas',
+        'The largest city and capital city is Caracas'
+    ],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
 var Colombia = {
     countryName: 'Colombia',
-	intro: 'Welcome to Colombia ',
+    intro: 'Welcome to Colombia ',
     facts: ['The only country in South America that has a coastline on both the pacific ocean and the Caribbean Sea',
-'The capital is Bogota',
-'Where drug lord Pablo Escobar offered to pay the country’s debt to improve his reputation and escape justice',
-'Part of the ring of fire making it vulnerable to earthquakes and volcanic eruptions',
-'Located on the equator so expect much heat and sun',
-'Breakfast consists of Changua milk soup with undercooked egg and salty blocks of cheese in your coffee',
-'Futbol or soccer is the national sport boasting the most unique goal dance',
-'Home to Shakira',
-'Home to the largest theater festival called the Iberoamericana',
-'One out of every five butterfly species is found here'
-],
-    m_names: ['', '', '', '', '', ''],
-    f_names: ['', '', '', '', '', ''],
+        'The capital is Bogota',
+        'Where drug lord Pablo Escobar offered to pay the country’s debt to improve his reputation and escape justice',
+        'Part of the ring of fire making it vulnerable to earthquakes and volcanic eruptions',
+        'Located on the equator so expect much heat and sun',
+        'Breakfast consists of Changua milk soup with undercooked egg and salty blocks of cheese in your coffee',
+        'Futbol or soccer is the national sport boasting the most unique goal dance',
+        'Home to Shakira',
+        'Home to the largest theater festival called the Iberoamericana',
+        'One out of every five butterfly species is found here'
+    ],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
 var Peru = {
     countryName: 'Peru',
-	intro: 'Welcome to Peru ',
+    intro: 'Welcome to Peru ',
     facts: ['Home to Machu Picchu and the Incan Trail',
-'Cuy or Guinea Pig is their traditional dish',
-'The potato originated from here and corn is grown in almost any color you can think of',
-'Home to the oldest university in the Western Hemisphere',
-'Where you can find the world’s deepest canyon almost twice as deep as the grand canyon',
-'It is a tradition to give friends and family yellow underpants to ring in the new year',
-'Home to the highest sand dune in the world, Cerro Blanco',
-'Lima is the capital and largest city',
-'Third largest country in South America',
-'Home to Pima and Tanguis cotton'
-],
-    m_names: ['', '', '', '', '', ''],
-    f_names: ['', '', '', '', '', ''],
+        'Cuy or Guinea Pig is their traditional dish',
+        'The potato originated from here and corn is grown in almost any color you can think of',
+        'Home to the oldest university in the Western Hemisphere',
+        'Where you can find the world’s deepest canyon almost twice as deep as the grand canyon',
+        'It is a tradition to give friends and family yellow underpants to ring in the new year',
+        'Home to the highest sand dune in the world, Cerro Blanco',
+        'Lima is the capital and largest city',
+        'Third largest country in South America',
+        'Home to Pima and Tanguis cotton'
+    ],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
 var Ecuador = {
     countryName: 'Ecuador',
-	intro: 'Welcome to Ecuador named after the equator that runs through the country. Also known as the closest country to space because of the earths rotation and shape',
+    intro: 'Welcome to Ecuador ',
     facts: ['Named after the equator that runs through the country',
-'The closest country to space',
-'Home to the #1 world heritage site Galapagos Islands',
-'Charles Darwin studied here resulting in his theory on evolution',
-'The world’s largest exporter of bananas',
-'One of two countries that do not share a border with Brazil',
-'Known as the most biodiverse country in the world',
-'The capital is Quito',
-'Shares a border with Peru, Colombia, and the pacific ocean',
-'Fanesca, cerviche, and hornado are well known dishes there'],
-    m_names: ['Ivan', 'Danny', 'Anthony', 'Jeremy', 'Evelyn', 'Santiago'],
-    f_names: ['Grace', 'Ariana', 'Ginger', 'Mishel', 'Maylin', 'Magaly'],
+        'The closest country to space',
+        'Home to the #1 world heritage site Galapagos Islands',
+        'Charles Darwin studied here resulting in his theory on evolution',
+        'The world’s largest exporter of bananas',
+        'One of two countries that do not share a border with Brazil',
+        'Known as the most biodiverse country in the world',
+        'The capital is Quito',
+        'Shares a border with Peru, Colombia, and the pacific ocean',
+        'Fanesca, cerviche, and hornado are well known dishes there'],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
 var Uruguay = {
     countryName: 'Uruguay',
-	intro: 'Welcome to Uruguay meaning the river of birds also known as the Eastern side of that river.',
+    intro: 'Welcome to Uruguay ',
     facts: ['Country name means river of the painted birds in the Guarani language',
-'Considered the least corrupt country in South America',
-'The smallest country in South America behind Suriname',
-'Over half the population live in the capital city Montevideo',
-'Where Crows known locally as Quebrada de los Cuervos outnumber people 4 to 1',
-'Home to the world’s largest national anthem Orientales la Patria o la Tumba',
-'Least religious country in South America leading to renaming of many catholic holidays',
-'The first country in the world to legalize the production and sale of marijuana',
-'Host of the first-ever FIFA world cup winning it twice so far',
-'The only country whose name has the same three letters in its first five'
-],
-    m_names: ['Juan', 'Santiago', 'Kevin', 'Felipe', 'Bruno', 'Mateo'],
-    f_names: ['Maria', 'Sofia', 'Lara', 'Pricila', 'Camila', 'Luana'],
+        'Considered the least corrupt country in South America',
+        'The smallest country in South America behind Suriname',
+        'Over half the population live in the capital city Montevideo',
+        'Where Crows known locally as Quebrada de los Cuervos outnumber people 4 to 1',
+        'Home to the world’s largest national anthem Orientales la Patria o la Tumba',
+        'Least religious country in South America leading to renaming of many catholic holidays',
+        'The first country in the world to legalize the production and sale of marijuana',
+        'Host of the first-ever FIFA world cup winning it twice so far',
+        'The only country whose name has the same three letters in its first five'
+    ],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
 var Paraguay = {
     countryName: 'Paraguay',
-	intro: 'Welcome to Paraguay. Paraguay is famous for being the first south american country to gain independance from Spain rule in 1811.',
+    intro: 'Welcome to Paraguay ',
     facts: ['One of the few countries in south america that still speak their native language called Guarani with Spanish as second',
-'Often referred to as the heart of south America',
-'Home to the first railway line in South America',
-'One of two landlocked countries in South America',
-'Has the largest navy of any landlocked country',
-'Home to the second largest hydroelectric-power plant called Itaipu Dam on the Parana River',
-'The capital is Asuncion referring to the ascension of mary',
-'Name means crowned river after the Guarani words for water and palm crown',
-'Home to South Americas second largest river after Amazon',
-'The national drink is mahtay often served hot'
-],
-    m_names: ['Daveed', 'Alba', 'Alin', 'Carlos', 'Elian', 'Enrique'],
-    f_names: ['Liz', 'Larisa', 'Saskia', 'Dara', 'Judith', 'Lilian'],
+        'Often referred to as the heart of south America',
+        'Home to the first railway line in South America',
+        'One of two landlocked countries in South America',
+        'Has the largest navy of any landlocked country',
+        'Home to the second largest hydroelectric-power plant called Itaipu Dam on the Parana River',
+        'The capital is Asuncion referring to the ascension of mary',
+        'Name means crowned river after the Guarani words for water and palm crown',
+        'Home to South Americas second largest river after Amazon',
+        'The national drink is mahtay often served hot'
+    ],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
 var Bolivia = {
     countryName: 'Bolivia',
-	intro: 'Welcome to Bolivia named after independance fighter Simon Bolivar. He helped them gain independence from spain in 1825',
+    intro: 'Welcome to Bolivia ',
     facts: ['One of two landlocked South American Countries',
-'Named after the Venezuelan military and political leader who led 4 south american countries to independence from Spain',
-'The capital is La Paz, the highest capital city in the world',
-'Home to worlds most dangerous road the camino de las yungas',
-'Where you offer dried llama to Pachamama or mother nature in return for blessings',
-'Home to the largest mirror on Earth called Salar de Uyuni which is a large salt flat ',
-'Main languages are Spanish, Quechua, Aymara and Guarani with an additional 33 other recognized languages',
-'Has the largest butterfly sanctuary',
-'Used to be called upper peru before gaining independence in 1825 from spain',
-'Where you can find pink dolphins in the amazon'
-],
-    m_names: ['Eric', 'Flore', 'Rolando', 'Ricky', 'Luis', 'Arturo'],
-    f_names: ['Camilia', 'Monica', 'Jennifer', 'Adriana', 'Olive', 'Belen'],
+        'Named after the Venezuelan military and political leader who led 4 south american countries to independence from Spain',
+        'The capital is La Paz, the highest capital city in the world',
+        'Home to worlds most dangerous road the camino de las yungas',
+        'Where you offer dried llama to Pachamama or mother nature in return for blessings',
+        'Home to the largest mirror on Earth called Salar de Uyuni which is a large salt flat ',
+        'Main languages are Spanish, Quechua, Aymara and Guarani with an additional 33 other recognized languages',
+        'Has the largest butterfly sanctuary',
+        'Used to be called upper peru before gaining independence in 1825 from spain',
+        'Where you can find pink dolphins in the amazon'
+    ],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
 var Chile = {
     countryName: 'Chile',
-	intro: 'Welcome to Chile known for Easter Island. Easter Island is home to the large statues of heads called moai',
+    intro: ' ',
     facts: ['Home to the world’s largest swimming pool and it is filled with seawater from the pacific',
-'Where you can find the driest place on earth called the Atacama Desert runnning between the Andes Mountains and the Pacific',
-'Known for the statues on Easter island called Moai',
-'The capital is Sanitago founded by a spanish explorer in 1541',
-'Derives its name meaning where the land ends',
-'The national flag is similar to the state flag of texas',
-'The longest country in the world from north to south',
-'Pisco is the national drink which is a clear liquid similar to brandy',
-'Famous for the Alerce tree with some older than 4,000 years',
-'Home to the largest reserve of cooper'
-],
-    m_names: ['Agustin', 'Vicente', 'Matias', 'Mateo', 'Tomas', 'Alonzo'],
-    f_names: ['Josefa', 'Amanda', 'Martina', 'Sofia', 'Emilia', 'Florencia'],
+        'Where you can find the driest place on earth called the Atacama Desert runnning between the Andes Mountains and the Pacific',
+        'Known for the statues on Easter island called Moai',
+        'The capital is Sanitago founded by a spanish explorer in 1541',
+        'Derives its name meaning where the land ends',
+        'The national flag is similar to the state flag of texas',
+        'The longest country in the world from north to south',
+        'Pisco is the national drink which is a clear liquid similar to brandy',
+        'Famous for the Alerce tree with some older than 4,000 years',
+        'Home to the largest reserve of cooper'
+    ],
+    m_names: ['Jassim', 'Omar', 'Walood', 'Abbadi', 'Augusto', 'Raghav'],
+    f_names: ['Khulood', 'Tanvi', 'Nassra', 'Leizl', 'Esraa', 'Adi'],
     region: 'South America'
 }
 
@@ -845,7 +846,7 @@ function PopulateCriminal()  {
 
 function PopulateResponsePerson() {
     //may not need all these attributes, can pick what we want to output
-    this.seenValue = rand(0, 4);
+    this.seenValue = rand(0, 3);
     this.gender =  gender[rand(0, gender.length -1)];
     this.hairLength = hairLength[rand(0, hairLength.length -1)];
     this.hairColor = hairColor[rand(0, hairLength.length -1)];
@@ -926,126 +927,125 @@ var country; // trying this as global since it keeps repeating the intitial coun
 //function checkCountry(country)
 function checkCountry()
 {
-    country = this.event.request.intent.slots.country_item.value;
-
-	console.log(country);
-
-	//assign choice of country and count for validation checking in other methods
-    countryVisited++;
-
-    if(stage == 0)
+    if(talkedToCount != 0 || questionedCount != 0)
     {
-        console.log("in stage 0 for checkCountry");
-        for (i = 0; i < Region.length; i++)
-        {
-            for(j = 0; j < Region[i].length; j++)
-            {
-                if (Region[i][j].countryName == country)
-                {
-                    //assign countryChoice if said country is a valid choice
-                    countryChoice = Region[i][j];
+        var speechOutput = this.t("NOT_COUNTRY_PICK");
+        this.emit(":ask", speechOutput);
+    }
+    {
+        country = this.event.request.intent.slots.country_item.value;
+
+        console.log(country);
+
+        //assign choice of country and count for validation checking in other methods
+        countryVisited++;
+
+        if (stage == 0) {
+            console.log("in stage 0 for checkCountry");
+            for (i = 0; i < Region.length; i++) {
+                for (j = 0; j < Region[i].length; j++) {
+                    if (Region[i][j].countryName == country) {
+                        //assign countryChoice if said country is a valid choice
+                        countryChoice = Region[i][j];
+                    }
                 }
             }
+
+            try {
+                //if country doesn't register then they gave a country name we don't have, error output
+                if (countryChoice.countryName != country) {
+                    //error response, prompt for a valid country choice.
+                    console.log("given country string did not match");
+                    //fix counter
+                    countryVisited--;
+                }
+
+                //if correct country chosen then reset count, go to next stage, assign next country
+                if (criminal.country.countryName == country) {
+                    console.log("correct country given");
+                    countryVisited = 0;
+                    stage++;
+
+                    // audio clips must be 48kbps 16000hz mpeg 2
+                    var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName)
+                        + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+                        + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+                    var repromptOutput = this.t("PLEASE_GREET");
+
+                    //var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+                    this.emit(":ask", speechOutput, repromptOutput);
+
+                }
+                else if ((criminal.country.countryName != country) && countryVisited >= 2) {
+                    //you lose.
+                    console.log("you lose");
+                    //TODO ask if they want to play again
+                    var speechOutput = this.t("LOSE");
+                    this.emit(":ask", speechOutput);
+                }
+                else {
+                    //picked wrong country but only on first try
+
+                    var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+                        + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+                    var repromptOutput = this.t("PLEASE_GREET");
+                    this.emit(":ask", speechOutput, repromptOutput);
+                }
+            } catch (error) {
+                console.log("CountryChoice incorrect handling");
+            }
+        }
+        else {
+            console.log("in else stage for checkCountry");
+            for (i = 0; i < criminal.region.length; i++) {
+                if (criminal.region[i].countryName == country) {
+                    countryChoice = criminal.region[i];
+                }
+            }
+
+            try {
+                //if country chosen doesn't exist
+                if (countryChoice.countryName != country) {
+                    //error response, prompt for a valid country choice.
+                    console.log("given country string did not match");
+                    //fix counter
+                    countryVisited--;
+                }
+
+                //if correct country chosen then reset count, go to next stage, assign next country
+                if (criminal.country.countryName == country) {
+                    console.log("correct country given");
+                    countryVisited = 0;
+                    stage++;
+                    crimCountryVisitedArr.push(countryChoice);
+                    //assignNextCountry();
+
+                    var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+                        + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+                    var repromptOutput = this.t("PLEASE_GREET");
+                    this.emit(":ask", speechOutput, repromptOutput);
+                }
+                else if (criminal.country.countryName != country && countryVisited >= 1) {
+                    //you lose.
+                    console.log("you lose");
+                    //TODO ask if they want to play again
+                    var speechOutput = this.t("LOSE");
+                    this.emit(":ask", speechOutput);
+                }
+                else {
+                    //picked wrong country
+
+                    var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+                        + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+                    var repromptOutput = this.t("PLEASE_GREET");
+                    this.emit(":ask", speechOutput, repromptOutput);
+                }
+            } catch (error) {
+                console.log("error in countryChecked()");
+            }
         }
 
-        try {
-            //if country doesn't register then they gave a country name we don't have, error output
-            if (countryChoice.countryName != country) {
-                //error response, prompt for a valid country choice.
-                console.log("given country string did not match");
-                //fix counter
-                countryVisited--;
-            }
-
-            //if correct country chosen then reset count, go to next stage, assign next country
-            if (criminal.country.countryName == country) {
-                console.log("correct country given");
-                countryVisited = 0;
-                stage++;
-    
-                // audio clips must be 48kbps 16000hz mpeg 2
-				var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) 
-					+ "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-					+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-				var repromptOutput = this.t("PLEASE_GREET");
-					
-				//var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-                this.emit(":ask", speechOutput, repromptOutput);
-
-            }
-            else if ((criminal.country.countryName != country) && countryVisited >= 2) {
-				//you lose.
-                console.log("you lose");
-                //TODO ask if they want to play again
-                var speechOutput = this.t("LOSE");
-                this.emit(":ask", speechOutput);
-            }
-            else
-            {
-                //picked wrong country but only on first try
-                
-                var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>" 
-				+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-				var repromptOutput = this.t("PLEASE_GREET");
-                this.emit(":ask", speechOutput, repromptOutput);
-            }
-        } catch (error) {
-            console.log("CountryChoice incorrect handling");
-        }
     }
-    else
-    {
-        console.log("in else stage for checkCountry");
-        for(i = 0; i < criminal.region.length; i++)
-        {
-            if(criminal.region[i].countryName == country)
-            {
-                countryChoice = criminal.region[i];
-            }
-        }
-
-        try {
-            //if country chosen doesn't exist
-            if (countryChoice.countryName != country) {
-                //error response, prompt for a valid country choice.
-                console.log("given country string did not match");
-                //fix counter
-                countryVisited--;
-            }
-
-            //if correct country chosen then reset count, go to next stage, assign next country
-            if (criminal.country.countryName == country) {
-                console.log("correct country given");
-                countryVisited = 0;
-                stage++;
-                crimCountryVisitedArr.push(countryChoice);
-                //assignNextCountry();
-                
-                var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-				+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-				var repromptOutput = this.t("PLEASE_GREET");
-                this.emit(":ask", speechOutput, repromptOutput);
-            }
-            else if (criminal.country.countryName != country && countryVisited >= 1) {
-                //you lose.
-                console.log("you lose");
-                //TODO ask if they want to play again
-                var speechOutput = this.t("LOSE");
-                this.emit(":ask", speechOutput);
-            }
-            else
-            {
-                //picked wrong country
-                
-                var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-				+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-				var repromptOutput = this.t("PLEASE_GREET");
-                this.emit(":ask", speechOutput, repromptOutput);
-            }
-        }catch(error) {console.log("error in countryChecked()");}
-    }
-
-
 }
 
 //assign next country
@@ -1102,100 +1102,103 @@ function assignNextCountry()
 
 function lastStage()
 {
-    var speechOutput;
-    shuffleArray(criminalArr);
-    //removes index 0 form criminalArr
-    var crimVar = criminalArr.splice(0, 1);
-    criminalFlag = crimVar;
-
-    var l_height = height.slice(0);
-    var l_body = body.slice(0);
-    var l_eyeSize = eyeSize.slice(0);
-    var l_eyeColor = eyeColor.slice(0);
-    var l_hairLength = hairLength.slice(0);
-    var l_hairColor = hairColor.slice(0);
-    var l_special = p_special.slice(0);
-    //removing criminal traits from attribute arrays so randomizer doesn't pick them
-    console.log("before splice t_heght size: "+l_height);
-    console.log("before splice heght size: "+height);
-    l_height.splice(l_height.indexOf(criminal.height), 1);
-    l_body.splice(l_body.indexOf(criminal.body), 1);
-    l_eyeSize.splice(l_eyeSize.indexOf(criminal.eyeSize), 1);
-    l_eyeColor.splice(l_eyeColor.indexOf(criminal.eyeColor), 1);
-    l_hairLength.splice(l_hairLength.indexOf(criminal.hairLength), 1);
-    l_hairColor.splice(l_hairColor.indexOf(criminal.hairColor), 1);
-    //might keep special, idk.
-    l_special.splice(l_special.indexOf(criminal.special), 1);
-    console.log("After splice t_heght size: "+l_height);
-    console.log("After splice heght size: "+height);
-
-    if(crimVar == 2)
+    if(stage < 3 )
     {
-        console.log( "A " +criminal.height + " " +criminal.body+ " " +pronounThird(criminal.gender)+" with "
-            + criminal.eyeSize +" " +criminal.eyeColor + " eyes, "
-            + criminal.hairLength+ " " + criminal.hairColor + " hair, and a"
-            + criminal.special+" walks by. This is the Criminal.");
-
-        //this.emit(":tell", speechOutput);
-
-        speechOutput = this.t("ACCUSE", criminal.height, criminal.body, pronounThird(criminal.gender), criminal.eyeSize,
-            criminal.eyeColor, criminal.hairLength, criminal.hairColor, criminal.special);
+        var speechOutput = this.t("NOT_LAST_STAGE");
         this.emit(":ask", speechOutput);
-
-
 
     }
-    else
-    {
-        //randomly picks 1 or 2 attributes to change
-        var criminalAtt = [criminal.height, criminal.body, criminal.eyeSize, criminal.eyeColor, criminal.hairLength,
-            criminal.hairColor, criminal.special];
-        var attributeInd = [0 , 1, 2, 3, 4, 5, 6];
-        var randNum = rand(1, 2);
-        shuffleArray(attributeInd);
+    else {
+        var speechOutput;
+        shuffleArray(criminalArr);
+        //removes index 0 form criminalArr
+        var crimVar = criminalArr.splice(0, 1);
+        criminalFlag = crimVar;
 
-        for(var r = 1; r <= randNum; r++)
-        {
-            switch(attributeInd[r])
-            {
-                case 0:
-                    criminalAtt[attributeInd[r]] = l_height[rand(0, l_height.length) - 1];
-                    break;
-                case 1:
-                    criminalAtt[attributeInd[r]] = l_body[rand(0, l_body.length) -1];
-                    break;
-                case 2:
-                    criminalAtt[attributeInd[r]] = l_eyeSize[rand(0, l_eyeSize.length -1)];
-                    break;
-                case 3:
-                    criminalAtt[attributeInd[r]] = l_eyeColor[rand(0, l_eyeColor.length -1)];
-                    break;
-                case 4:
-                    criminalAtt[attributeInd[r]] = l_hairLength[rand(0, l_hairLength.length -1)];
-                    break;
-                case 5:
-                    criminalAtt[attributeInd[r]] = l_hairColor[rand(0, l_hairLength.length -1)];
-                    break;
-                case 6:
-                    //might remove case 6 as specials might be too easy
-                    criminalAtt[attributeInd[r]] = l_special[rand(0, l_special.length) -1];
-                    break;
-                default:
-                    console.log("error populating final stage random person");
-                    break;
-            }
+        var l_height = height.slice(0);
+        var l_body = body.slice(0);
+        var l_eyeSize = eyeSize.slice(0);
+        var l_eyeColor = eyeColor.slice(0);
+        var l_hairLength = hairLength.slice(0);
+        var l_hairColor = hairColor.slice(0);
+        var l_special = p_special.slice(0);
+        //removing criminal traits from attribute arrays so randomizer doesn't pick them
+        console.log("before splice t_heght size: " + l_height);
+        console.log("before splice heght size: " + height);
+        l_height.splice(l_height.indexOf(criminal.height), 1);
+        l_body.splice(l_body.indexOf(criminal.body), 1);
+        l_eyeSize.splice(l_eyeSize.indexOf(criminal.eyeSize), 1);
+        l_eyeColor.splice(l_eyeColor.indexOf(criminal.eyeColor), 1);
+        l_hairLength.splice(l_hairLength.indexOf(criminal.hairLength), 1);
+        l_hairColor.splice(l_hairColor.indexOf(criminal.hairColor), 1);
+        //might keep special, idk.
+        l_special.splice(l_special.indexOf(criminal.special), 1);
+        console.log("After splice t_heght size: " + l_height);
+        console.log("After splice heght size: " + height);
+
+        if (crimVar == 2) {
+            console.log("A " + criminal.height + " " + criminal.body + " " + pronounThird(criminal.gender) + " with "
+                + criminal.eyeSize + " " + criminal.eyeColor + " eyes, "
+                + criminal.hairLength + " " + criminal.hairColor + " hair, and a"
+                + criminal.special + " walks by. This is the Criminal.");
+
+            //this.emit(":tell", speechOutput);
+
+            speechOutput = this.t("ACCUSE", criminal.height, criminal.body, pronounThird(criminal.gender), criminal.eyeSize,
+                criminal.eyeColor, criminal.hairLength, criminal.hairColor, criminal.special);
+            this.emit(":ask", speechOutput);
+
+
         }
-        console.log( "A " +criminalAtt[0] + " " +criminalAtt[1]+ " " +pronounThird(criminal.gender)+" with "
-            + criminalAtt[2] +" " +criminalAtt[3] + " eyes, "
-            + criminalAtt[4]+ " " + criminalAtt[5] + " hair, and a"
-            + criminalAtt[6]+" walks by. This is not the Criminal.");
+        else {
+            //randomly picks 1 or 2 attributes to change
+            var criminalAtt = [criminal.height, criminal.body, criminal.eyeSize, criminal.eyeColor, criminal.hairLength,
+                criminal.hairColor, criminal.special];
+            var attributeInd = [0, 1, 2, 3, 4, 5, 6];
+            var randNum = rand(1, 2);
+            shuffleArray(attributeInd);
 
-        //this.emit(":tell", speechOutput);
+            for (var r = 1; r <= randNum; r++) {
+                switch (attributeInd[r]) {
+                    case 0:
+                        criminalAtt[attributeInd[r]] = l_height[rand(0, l_height.length) - 1];
+                        break;
+                    case 1:
+                        criminalAtt[attributeInd[r]] = l_body[rand(0, l_body.length) - 1];
+                        break;
+                    case 2:
+                        criminalAtt[attributeInd[r]] = l_eyeSize[rand(0, l_eyeSize.length - 1)];
+                        break;
+                    case 3:
+                        criminalAtt[attributeInd[r]] = l_eyeColor[rand(0, l_eyeColor.length - 1)];
+                        break;
+                    case 4:
+                        criminalAtt[attributeInd[r]] = l_hairLength[rand(0, l_hairLength.length - 1)];
+                        break;
+                    case 5:
+                        criminalAtt[attributeInd[r]] = l_hairColor[rand(0, l_hairLength.length - 1)];
+                        break;
+                    case 6:
+                        //might remove case 6 as specials might be too easy
+                        criminalAtt[attributeInd[r]] = l_special[rand(0, l_special.length) - 1];
+                        break;
+                    default:
+                        console.log("error populating final stage random person");
+                        break;
+                }
+            }
+            console.log("A " + criminalAtt[0] + " " + criminalAtt[1] + " " + pronounThird(criminal.gender) + " with "
+                + criminalAtt[2] + " " + criminalAtt[3] + " eyes, "
+                + criminalAtt[4] + " " + criminalAtt[5] + " hair, and a"
+                + criminalAtt[6] + " walks by. This is not the Criminal.");
 
-        speechOutput = this.t("ACCUSE",criminalAtt[0], criminalAtt[1],pronounThird(criminal.gender),criminalAtt[2], criminalAtt[3],
-            criminalAtt[4], criminalAtt[5], criminalAtt[6]);
-        this.emit(":ask", speechOutput);
+            //this.emit(":tell", speechOutput);
 
+            speechOutput = this.t("ACCUSE", criminalAtt[0], criminalAtt[1], pronounThird(criminal.gender), criminalAtt[2], criminalAtt[3],
+                criminalAtt[4], criminalAtt[5], criminalAtt[6]);
+            this.emit(":ask", speechOutput);
+
+        }
     }
 }
 
@@ -1260,7 +1263,7 @@ function talkedTo()
     }
 }
 
-function doneQuestioning ()
+function doneQuestioning()
 {
     var speechOutput;
     questionedCount = 0;
@@ -1278,7 +1281,8 @@ function doneQuestioning ()
             this.emit(":ask", speechOutput);
         }
 		
-		// TODO need something here? 
+		// TODO need something here?
+        //nope, don't think so since we can't question while in the wrong country.
 
     }
     else {
@@ -1516,6 +1520,8 @@ var languageString = {
             "LAST_PERSON": "Looks like we've talked to everyone, it's time to pick the next country. ",
             "DONE_QUESTIONING": "Seems like that's all %s has to say, let's look for someone else. %s %s %s is approaching. ",
             "COUNTRY_FACTS": "I heard %s is going to %s. ",
+            "NOT_LAST_STAGE": "We aren't ready to capture the criminal",
+            "NOT_COUNTRY_PICK": "We aren't done talking to people yet",
             "ACCUSE": "A %s %s %s with %s %s eyes, %s %s hair, and a %s walks by. Is this the criminal? If so, say stop criminal or say innocent to keep looking. "
 		}
     },
