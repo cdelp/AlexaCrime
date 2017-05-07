@@ -138,6 +138,7 @@ CrimeBackgroundQuestionIntent Do you know anything about the crime
 CrimeBackgroundQuestionIntent Anyone talk about the crime
 CrimeBackgroundQuestionIntent Anyone say something about the crime
 CrimeBackgroundQuestionIntent Do you know what happened
+CrimeBackgroundQuestionIntent Did you hear anything about the crime
 
 CriminalLooksQuestionIntent Do you know what {criminal_name} looks like
 CriminalLooksQuestionIntent Do you know what he looks like
@@ -151,10 +152,13 @@ CriminalLooksQuestionIntent What did the criminal look like
 CriminalLooksQuestionIntent What did {criminal_name} look like
 CriminalLooksQuestionIntent Is the criminal a male or female
 CriminalLooksQuestionIntent What does he look like
+CriminalLooksQuestionIntent What does she look like
 CriminalLooksQuestionIntent What does {criminal_name} look like
+CriminalLooksQuestionIntent What does the criminal look like
 CriminalLooksQuestionIntent How does he look
 CriminalLooksQuestionIntent How does {criminal_name} look
 CriminalLooksQuestionIntent How does she look
+CriminalLooksQuestionIntent Did you hear anything about the criminal
 
 CriminalLocationQuestionIntent Where did he go
 CriminalLocationQuestionIntent Where did she go
@@ -182,14 +186,17 @@ CriminalLocationQuestionIntent Do you know where {criminal_name} fled to
 CriminalLocationQuestionIntent You know where he went
 CriminalLocationQuestionIntent You know where she went
 CriminalLocationQuestionIntent You know where {criminal_name} went
+CriminalLocationQuestionIntent You know where the criminal went
 
 NabThiefIntent Gotcha {criminal_name}
 NabThiefIntent Gotcha
 NabThiefIntent Stop there {criminal_name}
 NabThiefIntent Stop thief under arrest
+NabThiefIntent Stop thief
 NabThiefIntent I got ya {criminal_name}
 NabThiefIntent I got ya criminal
-
+NabThiefIntent Freeze sucker
+NabThiefIntent Stop youre under arrest
 
 innocentIntent innocent
 innocentIntent this isnt the criminal

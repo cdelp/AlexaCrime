@@ -979,7 +979,8 @@ function checkCountry()
     if(talkedToCount != 0 || questionedCount != 0 || stage >= 3)
     {
         var speechOutput = this.t("NOT_COUNTRY_PICK");
-        this.emit(":ask", speechOutput);
+		var repromptOutput = this.t("NOT_COUNTRY_REPROMPT");
+        this.emit(":ask", speechOutput, representing);
     }
     {
         country = this.event.request.intent.slots.country_item.value;
@@ -1091,7 +1092,9 @@ function checkCountry()
 							+ "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
 							+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name)
 							+ this.t("LAST_STAGE_READY");
-							this.emit(":ask", speechOutput);
+							repromptOutput = this.t("LAST_STAGE_READY_REPROMPT");
+							this.emit(":ask", speechOutput, repromptOutput);
+						
 							
 							//lastStage();
 					}
@@ -1176,7 +1179,8 @@ function lastStage()
     if(stage < 3 )
     {
         var speechOutput = this.t("NOT_LAST_STAGE");
-        this.emit(":ask", speechOutput);
+		var repromptOutput = this.t("NOT_COUNTRY_REPROMPT");
+        this.emit(":ask", speechOutput, repromptOutput);
 
     }
     else {
@@ -1217,7 +1221,8 @@ function lastStage()
 
             speechOutput = this.t("ACCUSE", criminal.height, criminal.body, pronounThird(criminal.gender), criminal.eyeSize,
                 criminal.eyeColor, criminal.hairLength, criminal.hairColor, criminal.special);
-            this.emit(":ask", speechOutput);
+			repromptOutput = this.t("ACCUSE_REPROMPT");
+            this.emit(":ask", speechOutput, repromptOutput);
 
 
         }
@@ -1266,7 +1271,8 @@ function lastStage()
 						
             speechOutput = this.t("ACCUSE", criminalAtt[0], criminalAtt[1], pronounThird(criminal.gender), criminalAtt[2], criminalAtt[3],
                 criminalAtt[4], criminalAtt[5], criminalAtt[6]);
-            this.emit(":ask", speechOutput);
+			repromptOutput = this.t("ACCUSE_REPROMPT");
+            this.emit(":ask", speechOutput, repromptOutput);
 
         }
     }
@@ -1302,7 +1308,8 @@ function talkedTo()
     if(questionedCount != 0)
     {
         var speechOutput = this.t("NOT_DONE_QUESTIONING");
-        this.emit(":ask", speechOutput);
+		var repromptOutput = this.t("NOT_COUNTRY_REPROMPT");
+        this.emit(":ask", speechOutput, repromptOutput);
     }
     else if (stage >= 3)
     {
@@ -1342,7 +1349,8 @@ function talkedTo()
                 }
                 //persons just walk by or have nothing to say
                 speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender)) + this.t("PASSEDBY_PROMPT"); // added continue searching prompt. need to handle their response somewhere
-                this.emit(":ask", speechOutput);
+                repromptOutput = this.t("PASSEDBY_REPROMPT");
+				this.emit(":ask", speechOutput, repromptOutput);
             }
             //right country
             else {
@@ -1353,7 +1361,8 @@ function talkedTo()
                     console.log("r_person seen value = 0 reponses");
                     //right country but person hasn't seen anything (20% chance)
                     speechOutput = this.t("PERSON_RESPONSE", pronoun(r_person.gender)) + this.t("PASSEDBY_PROMPT"); // added continue searching prompt. need to handle their response somewhere
-                    this.emit(":ask", speechOutput);
+                    repromptOutput = this.t("PASSEDBY_REPROMPT");
+					this.emit(":ask", speechOutput, repromptOutput);
                 }
                 //if person has seen something
                 else {
@@ -1362,7 +1371,8 @@ function talkedTo()
                     //TODO questioning responses here, just putting obvious country facts as clues here for testing
                     //0.00032 chance you won't see clues after talking to 5 people lol. Might need to fix that.
                     speechOutput = this.t("CORRECT_PERSON_RESPONSE", contPronoun(criminal.gender), pronoun(criminal.gender));
-                    this.emit(":ask", speechOutput);
+					repromptOutput = this.t("ASK_REPROMT");
+                    this.emit(":ask", speechOutput, repromptOutput);
                 }
             }
             //moved this block to doneQuestioning()
@@ -1383,10 +1393,11 @@ function doneQuestioning()
             assignNextCountry();
             console.log("reached final person to talk to in 0 response");
 
-            // TODO not sure if there is supposed to be a country choice list here
             speechOutput = this.t("LAST_PERSON") + this.t("CHOOSE_AGAIN") +
                 this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
-            this.emit(":ask", speechOutput);
+            repromptOutput = this.t("CHOOSE_AGAIN") +
+                this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
+			this.emit(":ask", speechOutput, repromptOutput);
         }
 
         // TODO need something here?
@@ -1398,8 +1409,9 @@ function doneQuestioning()
         r_person = new PopulateResponsePerson();
         //build response for next person walking by.
         speechOutput = this.t("DONE_QUESTIONING", pronoun(r_person.gender), r_person.body, r_person.hairColor, r_person.gender);
+		repromptOutput = this.t("PLEASE_GREET");
 
-        this.emit(":ask", speechOutput);
+        this.emit(":ask", speechOutput, repromptOutput);
     }
 }
 
@@ -1412,6 +1424,7 @@ function generateQuestionResponse(questionType)
     questionedCount++;
     var responseString = pronoun(criminal.gender) + " ";
     var speechOutput;
+	var repromptOutput;
     if(questionedCount > 3)
     {
         doneQuestioning.call(this);
@@ -1484,7 +1497,8 @@ function generateQuestionResponse(questionType)
         //These emits confirmed to work when .call is used, and "this" is explicitly passed
         var crimeF = crimeBackground[rand(0, crimeBackground.length -1)];
         speechOutput = this.t("CRIME_FACTS", crimeF) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
-        this.emit(":ask", speechOutput);
+		repromptOutput = this.t("CONTINUE_REPROMPT");
+        this.emit(":ask", speechOutput, repromptOutput);
     }
     else if(questionType == 2)
     {
@@ -1551,7 +1565,8 @@ function generateQuestionResponse(questionType)
         }
 
         speechOutput = this.t(responseString) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
-        this.emit(":ask", speechOutput);
+		repromptOutput = this.t("CONTINUE_REPROMPT");
+        this.emit(":ask", speechOutput, repromptOutput);
     }
     else if(questionType == 3)
     {
@@ -1560,7 +1575,8 @@ function generateQuestionResponse(questionType)
         {
 
             speechOutput = this.t("COUNTRY_FACTS", pronoun(criminal.gender), criminal.nextCountry.facts[rand(0, criminal.nextCountry.facts.length -1)] ) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
-            this.emit(":ask", speechOutput);
+            repromptOutput = this.t("CONTINUE_REPROMPT");
+			this.emit(":ask", speechOutput, repromptOutput);
         }
     }
     else
@@ -1600,13 +1616,13 @@ var languageString = {
 			"REPEAT_MESSAGE": "Sorry I could not hear you. What did you say?. ",
 			"HELP_RESPONSE": "You, with the guidance of Chief Alexa, track down criminals as they try to elude you. Collect clues from bystanders by asking them if they heard about the crime, where the criminal went, and what the criminal looked like. ",
             "HELP_REPROMPT": "Are you listening to me? ", 
-            "STOP_MESSAGE": "Would you like to continue our search?",
+            "STOP_MESSAGE": "Would you like to continue our search? Please say no if you'd like to quit",
             "CANCEL_MESSAGE": "Ok, see you next time Sleuth.", // if needed
             "NO_MESSAGE": "Ok, we\'ll resume our hunt for criminals when you get back from leave. Until next time Sleuth!", // if needed
             "HELP_UNHANDLED": "Say yes to continue our mission, or no to end the game. ",
             "START_UNHANDLED": "Say start to start a new mission. ",
 			"GAME_UNHANDLED": "game unhandled error. ",
-			"QUESTION_UNHANDLED": "I'm sorry. I didn't understand your choice. ",
+			"QUESTION_UNHANDLED": "I'm sorry. I didn't understand your choice. Please say it again. ",
 			"TEST_OUTPUT": "Testing output only. ", // testing only
             "NEW_GAME_MESSAGE": "Welcome to %s. ",
 			"GAME_START_MESSAGE": "Are you ready for a mission? ",
@@ -1620,10 +1636,13 @@ var languageString = {
 			"PERSON_APPROACHING": "%s with %s build and %s hair is approaching us. ",
 			"PERSON_RESPONSE": "%s kept on walking by. ",
             "CORRECT_PERSON_RESPONSE": "You got the persons attention, try to get some clues on the criminal. ",
+			"ASK_REPROMT": "Ask questions like, did you hear anything about the criminal, or what does the criminal look like. ",
 			"PLEASE_GREET": "Get bystanders attention by saying something like hello or excuse me. ",
 			"PASSEDBY_PROMPT": "Say Continue to look for others. ", 
+			"PASSEDBY_REPROMPT": "Please say Continue to keep looking for clues. ",
 			"CONTINUE_PROMPT": ". Get more clues, or say bye to talk to someone else. ", // can't figure out how to keep "yes" from triggering wrong intents
-            "LOSE_WRONG": "Oh no! this is not the criminal. We have to step up our game.",
+            "CONTINUE_REPROMPT": ". Please keep asking questions to find more clues, or say bye to talk to someone else. ",
+			"LOSE_WRONG": "Oh no! this is not the criminal. We have to step up our game.",
 			"CRIME_FACTS": "%s .",
             "LOSE_GOT_AWAY": "Oh no! we were so close but the criminal has slipped into hiding.",
             "WIN": "Great work Sleuth. You caught the criminal!",
@@ -1631,12 +1650,15 @@ var languageString = {
             "LAST_PERSON": "Looks like we've talked to everyone, it's time to pick the next country. ",
             "DONE_QUESTIONING": "Alright, let's look for someone else. %s with %s build and %s hair is approaching us. ",
             "COUNTRY_FACTS": "I heard %s is going to %s. ",
-            "NOT_LAST_STAGE": "We aren't ready to capture the criminal yet, to finish talking, say I'm done questioning",
-            "LAST_STAGE": "The Criminal is close, we should try to capture the criminal.",
-            "NOT_COUNTRY_PICK": "We aren't done talking to people yet. To finish talking, say I'm done questioning",
-            "NOT_DONE_QUESTIONING": "If you're finished questioning and ready to move on , say I'm done questioning",
-			"LAST_STAGE_READY": "Say Ready to be a Sleuth when youre ready to catch the criminal",
-            "ACCUSE": "A %s %s %s with %s %s eyes, %s %s hair, and a %s walks by. Is this the criminal? If so, say stop criminal or say innocent to keep looking. "
+            "NOT_LAST_STAGE": "We aren't ready to capture the criminal yet, to finish talking, say I'm done questioning. ",
+            "LAST_STAGE": "The Criminal is close, we should try to capture the criminal. ",
+            "NOT_COUNTRY_PICK": "We aren't done talking to people yet. To finish talking, say I'm done questioning. ",
+			"NOT_COUNTRY_REPROMPT": "Please say, I'm done questioning. ",
+            "NOT_DONE_QUESTIONING": "If you're finished questioning and ready to move on , say I'm done questioning. ",
+			"LAST_STAGE_READY": "Say Ready to be a Sleuth when youre ready to catch the criminal. ",
+			"LAST_STAGE_READY_REPROMPT": "Please say ready to be a sleuth. ",
+            "ACCUSE": "A %s %s %s with %s %s eyes, %s %s hair, and a %s walks by. Is this the criminal? If so, say stop criminal or say innocent to keep looking. ",
+			"ACCUSE_REPROMPT": "Please say something like stop thief, or gotcha, if this is the criminal. Otherwise say innocent to keep looking. "
         }
     },
     "en-US": {
@@ -1768,7 +1790,7 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
     },
     "Unhandled": function () {
         var speechOutput = this.t("QUESTION_UNHANDLED");
-        this.emit(":ask", speechOutput);
+        this.emit(":ask", speechOutput, speechOutput);
     },
     "AMAZON.StartOverIntent": function () {
         this.handler.state = GAME_STATES.START;
