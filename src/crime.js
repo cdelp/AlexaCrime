@@ -976,7 +976,7 @@ var country; // trying this as global since it keeps repeating the intitial coun
 //function checkCountry(country)
 function checkCountry()
 {
-    if(talkedToCount != 0 || questionedCount != 0)
+    if(talkedToCount != 0 || questionedCount != 0 || stage >= 3)
     {
         var speechOutput = this.t("NOT_COUNTRY_PICK");
         this.emit(":ask", speechOutput);
@@ -1289,7 +1289,10 @@ function talkedTo()
         var speechOutput = this.t("NOT_DONE_QUESTIONING");
         this.emit(":ask", speechOutput);
     }
+    else if (stage >= 3)
+    {
 
+    }
     else
     {
         // line below seemed to be needed to clear user spoken country for next round. Otherwise kept repeating first country choice regardless of what they said.
@@ -1311,6 +1314,7 @@ function talkedTo()
                 talkedToCount += 3;
                 //exit from country on 2nd talk in wrong country
                 if (talkedToCount >= 6) {
+                    talkedToCount = 0;
                     //talked to 2 people in the wrong country
                     console.log("wrong country response");
                     //TODO will need to relist the countries here
@@ -1461,7 +1465,8 @@ function generateQuestionResponse(questionType)
         }
 
         //These emits confirmed to work when .call is used, and "this" is explicitly passed
-        speechOutput = this.t("CRIME_FACTS", crimeBackground[rand(0, crimeBackground.length -1)]) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
+        var crimeF = crimeBackground[rand(0, crimeBackground.length -1)]);
+        speechOutput = this.t("CRIME_FACTS", crimeF) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
         this.emit(":ask", speechOutput);
     }
     else if(questionType == 2)
@@ -1575,8 +1580,8 @@ var languageString = {
 
             "GAME_NAME" : "Seuth Hound", 
             "HELP_MESSAGE": "Please ask questions like how do I play, what is the concept of the game, what am I supposed to do? ",
-            "REPEAT_MESSAGE": "Please repeat your choice. ", 
-			      "HELP_RESPONSE": "You, with the guidance of Chief Alexa, track down criminals as they try to elude you. Collect clues from bystanders by asking them if they heard about the crime, where the criminal went, and what the criminal looked like. ",
+            "REPEAT_MESSAGE": "Please repeat your choice. ",
+            "HELP_RESPONSE": "You, with the guidance of Chief Alexa, track down criminals as they try to elude you. Collect clues from bystanders by asking them if they heard about the crime, where the criminal went, and what the criminal looked like. ",
             "HELP_REPROMPT": "Are you listening to me? ", 
 
             "STOP_MESSAGE": "Would you like to keep playing?",
@@ -1616,6 +1621,7 @@ var languageString = {
             "DONE_QUESTIONING": "Alright, let's look for someone else. %s %s %s is approaching. ",
             "COUNTRY_FACTS": "I heard %s is going to %s. ",
             "NOT_LAST_STAGE": "We aren't ready to capture the criminal yet, to finish talking, say I'm done questioning",
+            "LAST_STAGE": "The Criminal is close, we should try to capture the criminal",
             "NOT_COUNTRY_PICK": "We aren't done talking to people yet. To finish talking, say I'm done questioning",
             "NOT_DONE_QUESTIONING": "If you're finished questioning and ready to move on , say I'm done questioning",
             "ACCUSE": "A %s %s %s with %s %s eyes, %s %s hair, and a %s walks by. Is this the criminal? If so, say stop criminal or say innocent to keep looking. "
@@ -1676,6 +1682,13 @@ var startStateHandlers = Alexa.CreateStateHandler(GAME_STATES.START, {
 
 var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
     "GameStart": function () {
+        shuffleArray(Region);
+        talkedToCount = 0;
+        countryVisited = 0;
+        questionedCount = 0;
+        criminalFlag = 0;
+        questionedCount = 0;
+
         criminal = new PopulateCriminal();
         r_person = new PopulateResponsePerson();
         //criminal name already populated with above code.
