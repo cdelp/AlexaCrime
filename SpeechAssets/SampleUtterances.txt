@@ -106,7 +106,17 @@ TarryStopIntent Hi guys
 TarryStopIntent Excuse me ladies
 TarryStopIntent Yo
 
-ContinueSearchIntent continue
+ContinueSearchIntent bye
+ContinueSearchIntent buh bye
+ContinueSearchIntent I'm done questioning
+ContinueSearchIntent that's all
+ContinueSearchIntent I'm done talking
+ContinueSearchIntent Thanks
+ContinueSearchIntent Thanks for your help
+ContinueSearchIntent Have a nice day
+ContinueSearchIntent Good day
+ContinueSearchIntent I appreciate your help
+ContinueSearchIntent No more questions
 
 CrimeBackgroundQuestionIntent Did you hear about {criminal_name}
 CrimeBackgroundQuestionIntent Have you heard about {criminal_name}
@@ -179,14 +189,9 @@ NabThiefIntent I got ya criminal
 
 
 innocentIntent innocent
-innocentIntent this isn't the criminal
+innocentIntent this isnt the criminal
 innocentIntent not him
 innocentIntent not her
 innocentIntent not it
 innocentIntent next
 innocentIntent next person
-
-
-DoneQuestioningIntent I'm done questioning
-DoneQuestioningIntent that's all
-DoneQuestioningIntent I'm done talking

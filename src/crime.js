@@ -89,13 +89,13 @@ var greetings = ['hey', "what's up'", 'hi'];
 var Egypt  = {
     countryName: 'Egypt',
     intro: 'Welcome to Egypt, an ancient civilization dating back to 3200 BC. Egypt is part of the fertile crescent because of the Nile River. ',
-    facts:  ['Where the world’s oldest dress was found over 5,000 years ago',
+    facts:  ['Where the worlds oldest dress was found over 5,000 years ago',
         'The nation of the steppe eagle',
         'Where the statue of liberty was originally intended at the suez canal lighting the way to asia',
         'Where the first sailing boats were invented',
         'Where the tradition of exchanging wedding rings started',
         'Known for the Great Pyramid of Giza',
-        'The country with the world’s largest arab population',
+        'The country with the worlds largest arab population',
         'Beer was once considered a national currency',
         'Where the circumference of the Earth was calculated 2200 years ago',
         'The land of Pharaohs'
@@ -110,21 +110,22 @@ var Iran = {
     facts: ['Where the capital is Tehran, which means warm slope',
         'Where their flag has three equal horizontal bands of green, white, and red',
         'Known as Persia',
-        'Where the world’s oldest continuous civilizations dating back 4000 BC',
+        'Where the worlds oldest continuous civilizations dating back 4000 BC',
         'The inventors of a water supply system called qanat, which collects underground water and moves it through tunnels',
         'Known for the best rugs and tapestry',
-        'The world’s largest producers of caviar, pistachios, and saffron',
+        'The worlds largest producers of caviar, pistachios, and saffron',
         'Where Polo was played as early as 6th century B.C.',
         'Where they speak farsi',
         'Where Islam became the state religion in 637'
     ],
+
     m_names: ['Mohammad', 'Amir', 'Yosef', 'Mehran', 'Faraz', 'Hooman'],
     f_names: ['Ada', 'Saye', 'Nooshin', 'Sajedeh', 'Niyusha', 'Fatima'],
     region: 'Middle East'
 }
 var Algeria = {
     countryName: 'Algeria',
-    intro: 'Welcome to Algeria, a nation with over 2 million square kilometers of land, only 12% of which is inhabited. 98% of Algeria’s exports consist of petroleum and gas. ',
+    intro: 'Welcome to Algeria, a nation with over 2 million square kilometers of land, only 12% of which is inhabited. 98% of Algerias exports consist of petroleum and gas. ',
     facts: ['Where the capital is Algiers',
         'Where the Sahara Desert covers 80% of the country',
         'Where they gained independance from France in 1962',
@@ -222,9 +223,9 @@ var Iraq = {
         'The flag contains green script of Allahu Akbar meaning God is the Great',
         'The capital is Baghdad formerly known as the world center for math, science, and astronomy',
         'Where the tower of babel happened representing the start of different languages',
-        'The capital city translates to God’s Gift.',
+        'The capital city translates to Gods Gift.',
         'Where poetry and literature thrived with tales such as A thousand and One Nights',
-        'Don’t forget to try the Tigris fish roasted over an open fire'
+        'Dont forget to try the Tigris fish roasted over an open fire'
     ],
     m_names: ['Zamanlabib', 'Mustafa', 'Barhoomee', 'Baravan', 'Jahmir', 'Fadhil'],
     f_names: ['Zainab', 'Noora', 'Sham', 'Telenaz', 'Rukia', 'Kayoosh'],
@@ -232,7 +233,7 @@ var Iraq = {
 }
 var SaudiArabia = {
     countryName: 'Saudi Arabia',
-    intro: 'Welcome to Saudi Arabia, where around 100 camels are sold every day in its capital city. A very high 60% of Saudi Arabia’s workforce is foreign ',
+    intro: 'Welcome to Saudi Arabia, where around 100 camels are sold every day in its capital city. A very high 60% of Saudi Arabias workforce is foreign ',
     facts: ['Going to Mecca for hajj pilgrimage',
         'Dont get caught in the empty quarter, the largest sand desert in the world',
         'The capital city is Riyadh',
@@ -259,7 +260,7 @@ var Lebanon = {
         'The countrys name has been unchanged for over 4000 years',
         'Where the first alphabet was created',
         'Where the first sailors called phoenicians built the first ever boat from cedar trees',
-        'The country is know as God’s Country on Earth',
+        'The country is know as Gods Country on Earth',
         'The creators of Tom & Jerrry and directed other cartoons such as Scooby-Doo, The Jetsons, and The smurfs are lebanese'
     ],
     m_names: ['Mahmous', 'Nader', 'Ayman', 'Wehbe', 'Rami', 'Moukhtar'],
@@ -270,7 +271,7 @@ var Lebanon = {
 //East Asia
 var Japan = {
     countryName: 'Japan',
-    intro: 'Welcome to Japan, with its 108 active volcanoes, as part of the Pacific Ocean’s ring of fire.Japan consists of 47 prefectures, each lead by an elected governor. ',
+    intro: 'Welcome to Japan, with its 108 active volcanoes, as part of the Pacific Oceans ring of fire.Japan consists of 47 prefectures, each lead by an elected governor. ',
     facts: ['Nihon or Nippon which means the land of the rising sun',
         'Consists of over 6,800 islands',
         'Home to the largest populated metropolitan region in the world',
@@ -288,14 +289,14 @@ var Japan = {
 }
 var China = {
     countryName: 'China',
-    intro: 'Welcome to China, home to the world’s entire giant panda population.  ',
+    intro: 'Welcome to China, home to the worlds entire giant panda population.  ',
     facts: ['Home to the largest population in the world',
         'Capital is Beijing',
         'Known for the great wall, which is the largest man made structure in the world soon to be trumped by President Trump haha',
         'The worlds largest army',
         'The worlds largest exporter of goods',
         'The national sport is table tennis',
-        'Half of the world’s pigs live in china',
+        'Half of the worlds pigs live in china',
         'Where it is common for rich people to hire a body double to serve their sentence',
         'The worlds largest economy',
         'The forbidden city is the largest palace in the world'
@@ -306,7 +307,7 @@ var China = {
 }
 var Mongolia = {
     countryName: 'Mongolia',
-    intro: 'Welcome to Mongolia, with the world’s coldest national capital, Ulaanbaatar, averaging -1 degrees celsius. ',
+    intro: 'Welcome to Mongolia, with the worlds coldest national capital, Ulaanbaatar, averaging -1 degrees celsius. ',
     facts: ['Arguably the creators of ice cream',
         'Home to 13 times more horses than humans',
         'Known for its great ruler Genghis Khan stretching their empire from China to the Caspian Sea',
@@ -343,7 +344,7 @@ var Nepal = {
 
 var Taiwan = {
     countryName: 'Taiwan',
-    intro: 'Welcome to Taiwan, a country whose aboriginal people are attributed to have spread their culture as far as Madagascar to the west and Hawaii to the east. Taiwan’s national father, Sun Yat Sen, was actually American. ',
+    intro: 'Welcome to Taiwan, a country whose aboriginal people are attributed to have spread their culture as far as Madagascar to the west and Hawaii to the east. Taiwans national father, Sun Yat Sen, was actually American. ',
     facts: ['Island nation off the coast of Mainland China',
         'Walking in the rain goes against cultural norms',
         'Where 7-11 convenience stores are everywhere offering more than snacks and drinks',
@@ -379,7 +380,7 @@ var Philippines = {
 }
 var Cambodia = {
     countryName: 'Cambodia',
-    intro: 'Welcome to Cambodia, overcoming a tragic past that included the genocide of several million people, it is now one of Asia’s fastest growing economies, with a robust tourism industry revolving around its deep history and ancient architecture. ',
+    intro: 'Welcome to Cambodia, overcoming a tragic past that included the genocide of several million people, it is now one of Asias fastest growing economies, with a robust tourism industry revolving around its deep history and ancient architecture. ',
     facts: ['The land of a million mopeds',
         'The only country flag with a building on it',
         'Known for their textile industry',
@@ -397,7 +398,7 @@ var Cambodia = {
 }
 var Vietnam = {
     countryName: 'Vietnam',
-    intro: 'Welcome to Vietnam, home of the world’s largest cave, and the region’s highest mountain, known as the roof of indochina. ',
+    intro: 'Welcome to Vietnam, home of the worlds largest cave, and the regions highest mountain, known as the roof of indochina. ',
     facts: ['The country with flag is red with a large yellow star in the middle',
         'The capital city is Hanoi',
         'It is an S shaped country',
@@ -416,8 +417,8 @@ var Vietnam = {
 var NorthKorea = {
     countryName: 'North Korea',
     intro: 'Welcome to North Korea, founded in 1948 and officially name Democratic Peoples Republic of Korea. Despite its name, it is considered the most authoritarian regime in the world, with all elections having only one candidate. ',
-    facts: ['Where the calendar is based on Kim II-Sung’s date of birth',
-        'Home to the world’s largest stadium',
+    facts: ['Where the calendar is based on Kim II-Sungs date of birth',
+        'Home to the worlds largest stadium',
         'The national instrument is the accordion',
         'Where godzilla is known as Pulgasari',
         'Where you can score 4-points in a basketball game and lose points for missed free throws',
@@ -533,7 +534,7 @@ var Sudan = {
         'The capital means elephant trunk because the resemblance to the bend in the nile river there',
         'The northern and western part of the country contain remnants of old volcanoes',
         'There are more pyramids here than in egypt',
-        'Home to the first women movement in Africa and Middle East during the 60’s',
+        'Home to the first women movement in Africa and Middle East during the 60s',
         'They had the first female parliamentarian in 1965 and the first female minister of health in 1974'
     ],
     m_names: ['Suleyman', 'malce', 'Ibraheem', 'Shakir', 'Kareem', 'Patrick'],
@@ -551,7 +552,7 @@ var Nigeria = {
         'Home to the Zuma Rock, the gateway to the capital',
         'The flag is 3 vertical stripes with 2 green sandwhiching one white stripe',
         'Most famous for petroleum',
-        'Home to the city of Lagos which is known as Africa’s big apple',
+        'Home to the city of Lagos which is known as Africas big apple',
         'Known for hollywood type scene called Nollywood'
     ],
     m_names: ['Simon', 'Akoni', 'Kalu', 'Kelechi', 'Kwento', 'Oba'],
@@ -642,7 +643,7 @@ var Argentina = {
         'Known for tango dancing',
         'The capital is Buenos Aires meaning good airs or fair winds in spanish',
         'Try Yerba Mate there. It is the national drink',
-        'Home to the world’s widest avenue spanning 14 lanes and 4 lanes of parallel streets'
+        'Home to the worlds widest avenue spanning 14 lanes and 4 lanes of parallel streets'
     ],
     m_names: ['Marcos', 'Juan', 'Agustine', 'Pablo', 'Fernando', 'Armando'],
     f_names: ['Agustina', 'Camila', 'Paula', 'Sara', 'Julia', ''],
@@ -709,7 +710,7 @@ var Ecuador = {
         'The closest country to space',
         'Home to the #1 world heritage site Galapagos Islands',
         'Charles Darwin studied here resulting in his theory on evolution',
-        'The world’s largest exporter of bananas',
+        'The worlds largest exporter of bananas',
         'One of two countries that do not share a border with Brazil',
         'Known as the most biodiverse country in the world',
         'The capital is Quito',
@@ -723,6 +724,7 @@ var Uruguay = {
     countryName: 'Uruguay',
     intro: 'Welcome to Uruguay meaning the river of birds also known as the Eastern side of that river.',
     facts: ['Country name means river of the painted birds in the Guarani language',
+
         'Considered the least corrupt country in South America',
         'The smallest country in South America behind Suriname',
         'Over half the population live in the capital city Montevideo',
@@ -799,7 +801,26 @@ var SouthAmerica = [Brazil, Argentina, Venezuela, Colombia, Peru, Ecuador, Urugu
 var Region = [MiddleEast, EastAsia, Africa, SouthAmerica];
 //criminal and people methods
 
-var crimes = ['crime type 1', 'crime type 2', 'crime type 3'];
+var crimes = ["arson", "property", "human trafficking", "burglary", "drug-related", "robbery", "embezzlement", "grand-larceny", "forgery", "fraud", "white-collar"];
+
+var crimeBackground = ['Saw it on snapchat. crazy man',
+    'I heard about it, but didnt see it',
+    'Ya dude. It was live on facebook',
+    'I saw some photos on whatsapp',
+    'I wouldnt mess with them. They are crazy',
+    ' They went wild on twitter',
+    'Good luck stopping them. i saw it on the news last night',
+    'My friend was there and saw the whole thing',
+    'Social media is ruining our world. theyre all over instagram',
+    'Did you see the photos on Instagram? They were taken down but are replicated all over the internet',
+    'Heard there were millions in damages. What is wrong with people?',
+    'What is this world coming to? Please bring that criminal to justice',
+    'Read about this on my newsfeed. Great thing I wasnt there and no one got hurt',
+    'Checkout twitter. The criminal is trending',
+    'Wish I was there to do something about it. Just disgusting what people are doing today',
+    'I was there that night. I saw everything and let authorities know what he looked like and where he was headed',
+    'Whatsapp is becoming the go to choice for communication between these criminals. I saw a couple messages shared on my group and it looked crazy',
+    'Dude is out of control and must be stopped'];
 
 function name(country, gender)
 {
@@ -1101,6 +1122,34 @@ function assignNextCountry()
 
 function lastStage()
 {
+    var speechOutput;
+    var repromptOutput
+    shuffleArray(criminalArr);
+    //removes index 0 form criminalArr
+    var crimVar = criminalArr.splice(0, 1);
+    criminalFlag = crimVar;
+
+    var l_height = height.slice(0);
+    var l_body = body.slice(0);
+    var l_eyeSize = eyeSize.slice(0);
+    var l_eyeColor = eyeColor.slice(0);
+    var l_hairLength = hairLength.slice(0);
+    var l_hairColor = hairColor.slice(0);
+    var l_special = p_special.slice(0);
+    //removing criminal traits from attribute arrays so randomizer doesn't pick them
+    console.log("before splice t_heght size: "+l_height);
+    console.log("before splice heght size: "+height);
+    l_height.splice(l_height.indexOf(criminal.height), 1);
+    l_body.splice(l_body.indexOf(criminal.body), 1);
+    l_eyeSize.splice(l_eyeSize.indexOf(criminal.eyeSize), 1);
+    l_eyeColor.splice(l_eyeColor.indexOf(criminal.eyeColor), 1);
+    l_hairLength.splice(l_hairLength.indexOf(criminal.hairLength), 1);
+    l_hairColor.splice(l_hairColor.indexOf(criminal.hairColor), 1);
+    //might keep special, idk.
+    l_special.splice(l_special.indexOf(criminal.special), 1);
+    console.log("After splice t_heght size: "+l_height);
+    console.log("After splice heght size: "+height);
+
     if(stage < 3 )
     {
         var speechOutput = this.t("NOT_LAST_STAGE");
@@ -1209,6 +1258,7 @@ function talkedTo()
         var speechOutput = this.t("NOT_DONE_QUESTIONING");
         this.emit(":ask", speechOutput);
     }
+
     else
     {
         // line below seemed to be needed to clear user spoken country for next round. Otherwise kept repeating first country choice regardless of what they said.
@@ -1222,6 +1272,7 @@ function talkedTo()
             //console.log("third stage people walk by");
         }
         else {
+
             //non-final stages
             talkedToCount++;
             //wrong country
@@ -1281,12 +1332,12 @@ function doneQuestioning()
             console.log("reached final person to talk to in 0 response");
 
             // TODO not sure if there is supposed to be a country choice list here
-			speechOutput = this.t("LAST_PERSON") + this.t("CHOOSE_AGAIN") + 
-			this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
+            speechOutput = this.t("LAST_PERSON") + this.t("CHOOSE_AGAIN") +
+                this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
             this.emit(":ask", speechOutput);
         }
-		
-		// TODO need something here?
+
+        // TODO need something here?
         //nope, don't think so since we can't question while in the wrong country.
 
     }
@@ -1294,7 +1345,7 @@ function doneQuestioning()
         console.log("populating new r_person from doneQuestioning");
         r_person = new PopulateResponsePerson();
         //build response for next person walking by.
-        speechOutput = this.t("DONE_QUESTIONING", pronoun(r_person.gender), r_person.gender, r_person.hairColor, r_person.body);
+        speechOutput = this.t("DONE_QUESTIONING", pronoun(r_person.gender), r_person.body, r_person.hairColor, r_person.gender);
 
         this.emit(":ask", speechOutput);
     }
@@ -1308,14 +1359,14 @@ function generateQuestionResponse(questionType)
 {
     questionedCount++;
     var responseString = pronoun(criminal.gender) + " ";
-	var speechOutput;
+    var speechOutput;
     if(questionedCount > 3)
     {
         doneQuestioning.call(this);
     }
     else if(questionType == 1)
     {
-		
+
         if(r_person.seenArr.indexOf("height") != -1)
         {
 
@@ -1379,7 +1430,7 @@ function generateQuestionResponse(questionType)
         }
 
         //These emits confirmed to work when .call is used, and "this" is explicitly passed
-        speechOutput = this.t(responseString) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
+        speechOutput = this.t("CRIME_FACTS", crimeBackground[rand(0, crimeBackground.length -1)]) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
         this.emit(":ask", speechOutput);
     }
     else if(questionType == 2)
@@ -1456,7 +1507,7 @@ function generateQuestionResponse(questionType)
         {
 
             speechOutput = this.t("COUNTRY_FACTS", pronoun(criminal.gender), criminal.nextCountry.facts[rand(0, criminal.nextCountry.facts.length -1)] ) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
-			this.emit(":ask", speechOutput);
+            this.emit(":ask", speechOutput);
         }
     }
     else
@@ -1471,53 +1522,55 @@ var APP_ID = undefined;  // TODO replace with your app ID (OPTIONAL).
 var countryString = undefined;
 
 function Countries(number){
-	return "Test Country Name";
+    return "Test Country Name";
 }
 
 // example of pause, TODO add where needed
 /*
-var speech = new Speech();
+ var speech = new Speech();
 
-speech.say('This is a test response & works great!');
-speech.pause('100ms');
-speech.say('How can I help you?');    
-var speechOutput = speech.ssml(true);        
-this.emit(':ask', speechOutput , speechOutput); 
-*/
+ speech.say('This is a test response & works great!');
+ speech.pause('100ms');
+ speech.say('How can I help you?');
+ var speechOutput = speech.ssml(true);
+ this.emit(':ask', speechOutput , speechOutput);
+ */
 
 
 var languageString = {
     "en": {
         "translation": {
             //"QUESTIONS" : questions["QUESTIONS"],
-            "GAME_NAME" : "Seuth Hound", 
-            "HELP_MESSAGE": "Need to add help message ", // add if needed
-            "REPEAT_MESSAGE": "Sorry I could not hear you. What did you say?. ",
-            "HELP_REPROMPT": "Need to add help reprompt", // add if needed
-            "STOP_MESSAGE": "Would you like to continue our search?",
-            "CANCEL_MESSAGE": "Ok, see you next time Sleuth.", // if needed
-            "NO_MESSAGE": "Ok, we\'ll resume our hunt for criminals when you get back from leave. Until next time Sleuth!", // if needed
-            "HELP_UNHANDLED": "Say yes to continue our mission, or no to end the game. ",
-            "START_UNHANDLED": "Say start to start a new mission. ",
-			"GAME_UNHANDLED": "game unhandled error. ",
-			"QUESTION_UNHANDLED": "I'm sorry. I didn't understand your choice. ",
-			"TEST_OUTPUT": "Testing output only. ", // testing only
+            "GAME_NAME" : "Seuth Hound",
+            "HELP_MESSAGE": "Please ask questions like how do I play, what is the concept of the game, what am I supposed to do? ",
+            "REPEAT_MESSAGE": "Please repeat your choice. ",
+            "HELP_RESPONSE": "You, with the guidance of Chief Alexa, track down criminals as they try to elude you. Collect clues from bystanders by asking them if they heard about the crime, where the criminal went, and what the criminal looked like. ",
+            "HELP_REPROMPT": "Are you listening to me? ",
+            "STOP_MESSAGE": "Would you like to keep playing?",
+            "CANCEL_MESSAGE": "Ok, let\'s play again soon.", // if needed
+            "NO_MESSAGE": "Ok, we\'ll play another time. Goodbye!", // if needed
+            "HELP_UNHANDLED": "Say yes to continue, or no to end the game. ",
+            "START_UNHANDLED": "Say start to start a new game. ",
+            "GAME_UNHANDLED": "game unhandled error. ",
+            "QUESTION_UNHANDLED": "I'm sorry. I didn't understand your choice. ",
+            "TEST_OUTPUT": "Testing output only. ", // testing only
             "NEW_GAME_MESSAGE": "Welcome to %s. ",
-			"GAME_START_MESSAGE": "Are you ready for a mission? ",
-            "INTRO_MESSAGE": "Let's do it Sleuth! We are on the hunt for %s.  %s is wanted in connection with a recent string of %s crimes resulting in %s million in damages. We must help bring the criminal responsible for these crimes to justice before %s goes into hiding. It will not be an easy task to catch %s , so pay close attention to clues that we get from bystanders on %s looks and whereabouts. %s was last seen in %s. Enough talking, let's do it! ",
-			"LOCATION_TEST": "%s is in %s, %s. ", // testing only
-			"CHOOSE_COUNTRY": "  Where do you think the crime happened? ",
-			"CHOOSE_AGAIN": "Where did the criminal go? ",
-			"COUNTRY_LIST": "%s, %s, %s, or %s? ",
-			"DEPARTURE_MESSAGE": "%s it is. Talk to you when you land. Get going sleuth! ",
-			"ARRIVAL_MESSAGE": "%s. Time to find info on %s. Get the attention of bystanders so you can ask get clues on what happened, what the criminal looks like, and where the criminal went. ",
-			"PERSON_APPROACHING": "%s %s %s approaching us. ",
-			"PERSON_RESPONSE": "%s kept on walking by. ",
+            "GAME_START_MESSAGE": "Are you ready for a mission? ",
+            "INTRO_MESSAGE": "We are on the hunt for %s.  %s is wanted in connection with a recent string of %s crimes resulting in %s million in damages. We must help bring the criminal responsible for these crimes to justice before %s goes into hiding. It will not be an easy task to catch %s , so pay close attention to clues on %s looks and whereabouts. %s was last seen in %s. Enough talking, we need to go ",
+            "LOCATION_TEST": "%s is in %s, %s. ", // testing only
+            "CHOOSE_COUNTRY": "  Where should we start our search? ",
+            "CHOOSE_AGAIN": "Where would you like to go next? ",
+            "COUNTRY_LIST": "%s, %s, %s, or %s? ",
+            "CRIME_FACTS": "%s. ",
+            "DEPARTURE_MESSAGE": "%s it is. Talk to you when you land. Get going sleuth! ",
+            "ARRIVAL_MESSAGE": "%s. Time to find info on %s. Get the attention of bystanders so you can ask them for clues on what happened, what the criminal looks like, and where the criminal went. ",
+            "PERSON_APPROACHING": "%s %s %s approaching us. ",
+            "PERSON_RESPONSE": "%s kept on walking by. ",
             "CORRECT_PERSON_RESPONSE": "You got the persons attention, try to get some clues on the criminal. ",
 
-			"PLEASE_GREET": "Get bystanders attention by saying something like hello or excuse me. ",
-			"PASSEDBY_PROMPT": "Say Continue to look for others. ",
-			"CONTINUE_PROMPT": ". Get more clues, or say bye to talk to someone else. ", // can't figure out how to keep "yes" from triggering wrong intents
+            "PLEASE_GREET": "Get bystanders attention by saying something like hello or excuse me. ",
+            "PASSEDBY_PROMPT": "Say Continue to look for others. ",
+            "CONTINUE_PROMPT": ". Get more clues, or say bye to talk to someone else. ", // can't figure out how to keep "yes" from triggering wrong intents
             "LOSE_WRONG": "Oh no! this is not the criminal. We have to step up our game.",
             "LOSE_GOT_AWAY": "Oh no! we were so close but the criminal has slipped into hiding.",
             "WIN": "Great work Sleuth. You caught the criminal!",
@@ -1529,7 +1582,7 @@ var languageString = {
             "NOT_COUNTRY_PICK": "We aren't done talking to people yet. To finish talking, say I'm done questioning",
             "NOT_DONE_QUESTIONING": "If you're finished questioning and ready to move on , say I'm done questioning",
             "ACCUSE": "A %s %s %s with %s %s eyes, %s %s hair, and a %s walks by. Is this the criminal? If so, say stop criminal or say innocent to keep looking. "
-		}
+        }
     },
     "en-US": {
         "translation": {
@@ -1540,7 +1593,7 @@ var languageString = {
 };
 
 var GAME_STATES = {
-    PLAY: "_PLAYMODE", // Playing the game.	
+    PLAY: "_PLAYMODE", // Playing the game.
     START: "_STARTMODE", // Entry point, start the game.
     HELP: "_HELPMODE" // The user is asking for help.
 };
@@ -1575,9 +1628,9 @@ var newSessionHandlers = {
 
 var startStateHandlers = Alexa.CreateStateHandler(GAME_STATES.START, {
     "StartGame": function (newGame) {
-		// welcomes play and asks if they want to play
-		var speechOutput = newGame ? this.t("NEW_GAME_MESSAGE", this.t("GAME_NAME")) + this.t("GAME_START_MESSAGE") : "";
-		var repromptOutput = this.t("REPEAT_MESSAGE");
+        // welcomes play and asks if they want to play
+        var speechOutput = newGame ? this.t("NEW_GAME_MESSAGE", this.t("GAME_NAME")) + this.t("GAME_START_MESSAGE") : "";
+        var repromptOutput = this.t("REPEAT_MESSAGE");
         // Set the current state to play mode. The skill will now use handlers defined in gameStateHandlers
         this.handler.state = GAME_STATES.PLAY;
         this.emit(":askWithCard", speechOutput, repromptOutput);
@@ -1589,46 +1642,46 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
         criminal = new PopulateCriminal();
         r_person = new PopulateResponsePerson();
         //criminal name already populated with above code.
-		//criminal.name = name(criminal.country, criminal.gender);
+        //criminal.name = name(criminal.country, criminal.gender);
         //assigns the country the criminal will be headed to next so we can give clues regarding that.
-		assignNextCountry();
-		//reassigns array since this is spliced in last stage.
+        assignNextCountry();
+        //reassigns array since this is spliced in last stage.
         criminalArr = [0, 1, 2];
 
-		// introduces criminal and crime, asks which country the user would like to visit, TODO prompt with country choices
+        // introduces criminal and crime, asks which country the user would like to visit, TODO prompt with country choices
         //Grab country name like this: countryOutputList[i].countryName, where i = 0 to 3.
         //countryOutputList is already shuffled so you can use any order of index you like.
-		var speechOutput = this.t("INTRO_MESSAGE", criminal.name, pronoun(criminal.gender), criminal.crime, rand(50, 800), criminal.name, criminal.name, pronounOwnership(criminal.gender), criminal.name, criminal.country.facts[0]) + 
-		this.t("CHOOSE_COUNTRY") + 
-		this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
-		var repromptOutput = this.t("REPEAT_MESSAGE") + this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
-		this.emit(":ask", speechOutput, repromptOutput);
+        var speechOutput = this.t("INTRO_MESSAGE", criminal.name, pronoun(criminal.gender), criminal.crime, rand(50, 800), criminal.name, criminal.name, pronounOwnership(criminal.gender), criminal.name, criminal.country.facts[0]) +
+            this.t("CHOOSE_COUNTRY") +
+            this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
+        var repromptOutput = this.t("REPEAT_MESSAGE") + this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
+        this.emit(":ask", speechOutput, repromptOutput);
     },
     "CountryIntent": function () {
-		checkCountry.call(this);
+        checkCountry.call(this);
     },
-	"TarryStopIntent": function () {      
-		//r_person = new PopulateResponsePerson();
-		//this.handler.state = GAME_STATES.QUESTIONING;
-		talkedTo.call(this);
+    "TarryStopIntent": function () {
+        //r_person = new PopulateResponsePerson();
+        //this.handler.state = GAME_STATES.QUESTIONING;
+        talkedTo.call(this);
     },
-	"ContinueSearchIntent": function () {
+    "ContinueSearchIntent": function () {
         doneQuestioning.call(this);
         //Is this the same as DoneQuestioningIntent?
         //doneQuestioning intent is meant to be called when you no longer want to talk to someone and
         // would like to generate the next person or next stage if already talked to 5 people
-		
-		// could be treated the same maybe. This is more for when you need to prompt the user in cases like when the person walked by without taking, or finished and left.
-		// could make an interupt version for breaking out of a current conversation.
+
+        // could be treated the same maybe. This is more for when you need to prompt the user in cases like when the person walked by without taking, or finished and left.
+        // could make an interupt version for breaking out of a current conversation.
         /**
-		r_person = new PopulateResponsePerson();
-		var speechOutput = this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-		var repromptOutput = this.t("REPEAT_MESSAGE");
-		this.emit(":ask", speechOutput, repromptOutput);
-		//this.handler.state = GAME_STATES.PLAY;
-		talkedTo.call(this);
+         r_person = new PopulateResponsePerson();
+         var speechOutput = this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+         var repromptOutput = this.t("REPEAT_MESSAGE");
+         this.emit(":ask", speechOutput, repromptOutput);
+         //this.handler.state = GAME_STATES.PLAY;
+         talkedTo.call(this);
          **/
-	},
+    },
     "CrimeBackgroundQuestionIntent": function () {
         generateQuestionResponse.call(this, 1);
     },
@@ -1693,10 +1746,11 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
 // TODO, these copied from example. Still need to be adapted
 var helpStateHandlers = Alexa.CreateStateHandler(GAME_STATES.HELP, {
     "helpTheUser": function (newGame) {
-        var askMessage = newGame ? this.t("ASK_MESSAGE_START") : this.t("REPEAT_QUESTION_MESSAGE") + this.t("STOP_MESSAGE");
-        var speechOutput = this.t("HELP_MESSAGE") + askMessage;
-        var repromptText = this.t("HELP_REPROMPT") + askMessage;
-        this.emit(":ask", speechOutput, repromptText);
+        //var askMessage = newGame ? this.t("ASK_MESSAGE_START") : this.t("REPEAT_MESSAGE") + this.t("STOP_MESSAGE");
+        var speechOutput = this.t("HELP_RESPONSE");
+        this.emitWithState("StartGame", true);
+        //var repromptText = this.t("HELP_RESPONSE");
+        this.emit(":ask", speechOutput);
     },
     "AMAZON.StartOverIntent": function () {
         this.handler.state = GAME_STATES.START;
@@ -1718,7 +1772,7 @@ var helpStateHandlers = Alexa.CreateStateHandler(GAME_STATES.HELP, {
             this.handler.state = GAME_STATES.START;
             this.emitWithState("StartGame", false);
         }
-    }, 
+    },
     "AMAZON.NoIntent": function() {
         var speechOutput = this.t("NO_MESSAGE");
         this.emit(":tell", speechOutput);
@@ -1742,74 +1796,74 @@ var helpStateHandlers = Alexa.CreateStateHandler(GAME_STATES.HELP, {
 // end test ******************************************************************************************
 
 /*
-exports.handler = (event, context) => {
-    // New session
-    try{
-        if(event.session.new)
-        {
-            console.log("NEW SESSION")
+ exports.handler = (event, context) => {
+ // New session
+ try{
+ if(event.session.new)
+ {
+ console.log("NEW SESSION")
 
-        }
+ }
 
-        switch (event.request.type)
-        {
-            case "LaunchRequest":
-                //var output = "Welcome to sleuth hound"
-                context.succeed(generateResponse({}, buildSpeechletResponse("Welcome to sleuth hound Alan", false)));
-                break;
+ switch (event.request.type)
+ {
+ case "LaunchRequest":
+ //var output = "Welcome to sleuth hound"
+ context.succeed(generateResponse({}, buildSpeechletResponse("Welcome to sleuth hound Alan", false)));
+ break;
 
-            case "IntentRequest":
-                //intent request
-                //main stuff here
-                switch(event.request.intent.name)
-                {
-                    case "GameStart":
-                        //false start check. If games already in place ask if they want to start a new one.
-                        //populate criminal
-                        criminal = new PopulateCriminal();
-                        assignNextCountry();
-                        r_person = new PopulateResponsePerson();
-                        break;
+ case "IntentRequest":
+ //intent request
+ //main stuff here
+ switch(event.request.intent.name)
+ {
+ case "GameStart":
+ //false start check. If games already in place ask if they want to start a new one.
+ //populate criminal
+ criminal = new PopulateCriminal();
+ assignNextCountry();
+ r_person = new PopulateResponsePerson();
+ break;
 
-                        //build a response using criminal.country.facts, criminal.name, criminal.gender
-                    case "CountryIntent":
-                        //false country pick check. If TalkedToCount < 5 then tell the user they haven't finished talking to all NPC yet.
-                        //Chad TODO
-                        //Figure out how to grab the country slot value when this Country intent is triggered so it can be used in checkCountry(country)
-                        //grab country from intent first then call checkCountry(country) method
-                        checkCountry(country);
-                        //arrival jingle response
+ //build a response using criminal.country.facts, criminal.name, criminal.gender
+ case "CountryIntent":
+ //false country pick check. If TalkedToCount < 5 then tell the user they haven't finished talking to all NPC yet.
+ //Chad TODO
+ //Figure out how to grab the country slot value when this Country intent is triggered so it can be used in checkCountry(country)
+ //grab country from intent first then call checkCountry(country) method
+ checkCountry(country);
+ //arrival jingle response
 
-                        //response from countryChoice.facts[rand(0, countryChoice.facts.length -1]
+ //response from countryChoice.facts[rand(0, countryChoice.facts.length -1]
 
-                        //build-person walking-by response using r_person.gender, r_person.p_special
+ //build-person walking-by response using r_person.gender, r_person.p_special
 
-                        break;
+ break;
 
-                    case "TarryStopIntent":
-                        //false stop check. If not currently
-                        talkedTo();
-                        break;
+ case "TarryStopIntent":
+ //false stop check. If not currently
+ talkedTo();
+ break;
 
-                    //case "CrimeBackgroundQuestionIntent":
-                    //    break;
-                    default:
-						console.log("default")
-                }
-                console.log("INTENT REQUEST")
-                break;
+ //case "CrimeBackgroundQuestionIntent":
+ //    break;
+ default:
+ console.log("default")
+ }
+ console.log("INTENT REQUEST")
+ break;
 
-            case "SessionEndedRequest":
-                console.log('SESSION ENDED REQUEST')
-                break;
+ case "SessionEndedRequest":
+ console.log('SESSION ENDED REQUEST')
+ break;
 
-            default:
-                context.fail('INVALID REQUEST TYPE: ${event.request.type}')
-        }
+ default:
+ context.fail('INVALID REQUEST TYPE: ${event.request.type}')
+ }
 
-    } catch(error) {context.fail("Exception: " + error);}
+ } catch(error) {context.fail("Exception: " + error);}
 
-} */
+ } */
 
 function printStuff()
 {
@@ -1821,4 +1875,3 @@ function printStuff()
     console.log(crimCountryVisitedArr);//array of countries criminal has been to, used to match against
     console.log(countryChoice);
 }
-

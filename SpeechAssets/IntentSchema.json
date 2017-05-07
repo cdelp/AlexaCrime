@@ -1,70 +1,70 @@
 {
   "intents": [
-	{"intent": "RulesIntent"},
-	{"intent": "WhoIntent"},
-	{"intent": "SleuthIntent"},
-	{"intent": "JokeIntent"},
-	{"intent": "SassyIntent"},
-	{"intent": "CussIntent"},
-	{"intent": "PersonalIntent"},
-	{"intent": "GameStart"},
+    {"intent": "RulesIntent"},
+    {"intent": "WhoIntent"},
+    {"intent": "SleuthIntent"},
+    {"intent": "JokeIntent"},
+    {"intent": "SassyIntent"},
+    {"intent": "CussIntent"},
+    {"intent": "PersonalIntent"},
+    {"intent": "GameStart"},
     {"intent": "innocentIntent"},
     {"intent": "DoneQuestioningIntent"},
-	{
-		"intent": "CountryIntent",
-		"slots": [
-			{
-				"name": "country_item",
-				"type": "LIST_OF_COUNTRIES"
-			}
-		]
-	},
-	{"intent": "TarryStopIntent"},
-	{"intent": "ContinueSearchIntent"},
-	{
-		"intent": "CrimeBackgroundQuestionIntent",
-		"slots": [
-				{
-					"name": "criminal_name",
-					"type": "LIST_OF_CRIMINALS"
-				}
-		]
-	},
-	{
-		"intent": "CriminalLooksQuestionIntent",
-		"slots": [
-				{
-					"name": "criminal_name",
-					"type": "LIST_OF_CRIMINALS"
-				}
-		]
-	},
-	{
-		"intent": "CriminalLocationQuestionIntent",
-		"slots": [
-				{
-					"name": "criminal_name",
-					"type": "LIST_OF_CRIMINALS"
-				}
-		]
-	},
-	{
-		"intent": "NabThiefIntent",
-		"slots": [
-				{
-					"name": "criminal_name",
-					"type": "LIST_OF_CRIMINALS"
-				}
-		]
-	},
+    {
+      "intent": "CountryIntent",
+      "slots": [
+        {
+          "name": "country_item",
+          "type": "LIST_OF_COUNTRIES"
+        }
+      ]
+    },
+    {"intent": "TarryStopIntent"},
+    {"intent": "ContinueSearchIntent"},
+    {
+      "intent": "CrimeBackgroundQuestionIntent",
+      "slots": [
+        {
+          "name": "criminal_name",
+          "type": "LIST_OF_CRIMINALS"
+        }
+      ]
+    },
+    {
+      "intent": "CriminalLooksQuestionIntent",
+      "slots": [
+        {
+          "name": "criminal_name",
+          "type": "LIST_OF_CRIMINALS"
+        }
+      ]
+    },
+    {
+      "intent": "CriminalLocationQuestionIntent",
+      "slots": [
+        {
+          "name": "criminal_name",
+          "type": "LIST_OF_CRIMINALS"
+        }
+      ]
+    },
+    {
+      "intent": "NabThiefIntent",
+      "slots": [
+        {
+          "name": "criminal_name",
+          "type": "LIST_OF_CRIMINALS"
+        }
+      ]
+    },
     {"intent": "AMAZON.StartOverIntent"},
-	{"intent": "AMAZON.RepeatIntent"},
-	{"intent": "AMAZON.PauseIntent"},
-	{"intent": "AMAZON.ResumeIntent"},
-	{"intent": "AMAZON.HelpIntent"},
-	{"intent": "AMAZON.YesIntent"},
-	{"intent": "AMAZON.NoIntent"},
-	{"intent": "AMAZON.StopIntent"},
-	{"intent": "AMAZON.CancelIntent"}
+    {"intent": "AMAZON.RepeatIntent"},
+    {"intent": "AMAZON.PauseIntent"},
+    {"intent": "AMAZON.ResumeIntent"},
+    {"intent": "AMAZON.HelpIntent"},
+    {"intent": "AMAZON.YesIntent"},
+    {"intent": "AMAZON.NoIntent"},
+    {"intent": "AMAZON.StopIntent"},
+    {"intent": "AMAZON.CancelIntent"}
   ]
 }
