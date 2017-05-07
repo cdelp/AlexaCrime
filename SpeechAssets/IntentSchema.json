@@ -9,6 +9,7 @@
     {"intent": "PersonalIntent"},
     {"intent": "GameStart"},
     {"intent": "innocentIntent"},
+	{"intent": "LastStageIntent"},
     {"intent": "DoneQuestioningIntent"},
     {
       "intent": "CountryIntent",

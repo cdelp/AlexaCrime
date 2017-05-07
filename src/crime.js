@@ -825,7 +825,7 @@ var MiddleEast = [Egypt, Iran, Algeria, Tunisia, Oman, Morocco, Syria, Iraq, Sau
 var EastAsia = [Japan, China, Mongolia, Nepal, Taiwan, Philippines, Cambodia, Vietnam, NorthKorea, Malaysia];
 var Africa = [SouthAfrica, Uganda, Kenya, Somalia, Sudan, Nigeria, Cameroon, Senegal, Ghana];
 var SouthAmerica = [Brazil, Argentina, Venezuela, Colombia, Peru, Ecuador, Uruguay, Paraguay, Bolivia, Chile];
-var Region = [MiddleEast, EastAsia, Africa, SouthAmerica];
+var Region = [MiddleEast, Africa, EastAsia, SouthAmerica];
 //criminal and people methods
 
 var crimes = ["arson", "property", "human trafficking", "burglary", "drug-related", "robbery", "embezzlement", "grand-larceny", "forgery", "fraud", "white-collar"];
@@ -1014,15 +1014,30 @@ function checkCountry()
                     console.log("correct country given");
                     countryVisited = 0;
                     stage++;
+					if(stage < 3)
+					{
+						// audio clips must be 48kbps 16000hz mpeg 2
+						var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName)
+							+ "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+							+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.gender, r_person.body, r_person.hair);
+						var repromptOutput = this.t("PLEASE_GREET");
 
-                    // audio clips must be 48kbps 16000hz mpeg 2
-                    var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName)
-                        + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-                        + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-                    var repromptOutput = this.t("PLEASE_GREET");
-
-                    //var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-                    this.emit(":ask", speechOutput, repromptOutput);
+						//var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+						this.emit(":ask", speechOutput, repromptOutput);
+					}
+					else
+					{
+						// audio clips must be 48kbps 16000hz mpeg 2
+						
+						speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName)
+							+ "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+							+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name)
+							+ this.t("LAST_STAGE_READY");
+							this.emit(":ask", speechOutput);
+							
+							//lastStage();
+					}
+					
 
                 }
                 else if ((criminal.country.countryName != country) && countryVisited >= 2) {
@@ -1036,7 +1051,7 @@ function checkCountry()
                     //picked wrong country but only on first try
 
                     var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-                        + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+                        + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.gender, r_person.body, r_person.hair);
                     var repromptOutput = this.t("PLEASE_GREET");
                     this.emit(":ask", speechOutput, repromptOutput);
                 }
@@ -1069,10 +1084,29 @@ function checkCountry()
                     crimCountryVisitedArr.push(countryChoice);
                     //assignNextCountry();
 
-                    var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-                        + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-                    var repromptOutput = this.t("PLEASE_GREET");
-                    this.emit(":ask", speechOutput, repromptOutput);
+                   if(stage < 3)
+					{
+						// audio clips must be 48kbps 16000hz mpeg 2
+						var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName)
+							+ "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+							+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.gender, r_person.body, r_person.hair);
+						var repromptOutput = this.t("PLEASE_GREET");
+
+						//var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+						this.emit(":ask", speechOutput, repromptOutput);
+					}
+					else
+					{
+						// audio clips must be 48kbps 16000hz mpeg 2
+						
+						speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName)
+							+ "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+							+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name)
+							+ this.t("LAST_STAGE_READY");
+							this.emit(":ask", speechOutput);
+							
+							//lastStage();
+					}
                 }
                 else if (criminal.country.countryName != country && countryVisited >= 1) {
                     //you lose.
@@ -1085,7 +1119,7 @@ function checkCountry()
                     //picked wrong country
 
                     var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-                        + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+                        + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.gender, r_person.body, r_person.hair);
                     var repromptOutput = this.t("PLEASE_GREET");
                     this.emit(":ask", speechOutput, repromptOutput);
                 }
@@ -1151,36 +1185,6 @@ function assignNextCountry()
 
 function lastStage()
 {
-    var speechOutput;
-
-	  var repromptOutput
-
-    shuffleArray(criminalArr);
-    //removes index 0 form criminalArr
-    var crimVar = criminalArr.splice(0, 1);
-    criminalFlag = crimVar;
-
-    var l_height = height.slice(0);
-    var l_body = body.slice(0);
-    var l_eyeSize = eyeSize.slice(0);
-    var l_eyeColor = eyeColor.slice(0);
-    var l_hairLength = hairLength.slice(0);
-    var l_hairColor = hairColor.slice(0);
-    var l_special = p_special.slice(0);
-    //removing criminal traits from attribute arrays so randomizer doesn't pick them
-    console.log("before splice t_heght size: "+l_height);
-    console.log("before splice heght size: "+height);
-    l_height.splice(l_height.indexOf(criminal.height), 1);
-    l_body.splice(l_body.indexOf(criminal.body), 1);
-    l_eyeSize.splice(l_eyeSize.indexOf(criminal.eyeSize), 1);
-    l_eyeColor.splice(l_eyeColor.indexOf(criminal.eyeColor), 1);
-    l_hairLength.splice(l_hairLength.indexOf(criminal.hairLength), 1);
-    l_hairColor.splice(l_hairColor.indexOf(criminal.hairColor), 1);
-    //might keep special, idk.
-    l_special.splice(l_special.indexOf(criminal.special), 1);
-    console.log("After splice t_heght size: "+l_height);
-    console.log("After splice heght size: "+height);
-
     if(stage < 3 )
     {
         var speechOutput = this.t("NOT_LAST_STAGE");
@@ -1271,14 +1275,37 @@ function lastStage()
                 + criminalAtt[4] + " " + criminalAtt[5] + " hair, and a"
                 + criminalAtt[6] + " walks by. This is not the Criminal.");
 
-            //this.emit(":tell", speechOutput);
-
+						
             speechOutput = this.t("ACCUSE", criminalAtt[0], criminalAtt[1], pronounThird(criminal.gender), criminalAtt[2], criminalAtt[3],
                 criminalAtt[4], criminalAtt[5], criminalAtt[6]);
             this.emit(":ask", speechOutput);
 
         }
     }
+}
+
+function innocentFunction()
+{
+	if(criminalFlag == 2)
+	{
+		this.emit(":tell", this.t("LOSE_GOT_AWAY"));
+	}
+	else
+	{
+		lastStage();
+	}
+}
+
+function nabThiefFunction()
+{
+	if(criminalFlag != 2)
+	{
+		this.emit(":tell", this.t("LOSE_WRONG"));
+	}
+	else
+	{
+		this.emit(":tell", this.t("WIN"));
+	}
 }
 
 //called when 'TarryStopIntent is called. checks for number of people talked to is <= 5. If less,  then generates next person to talk to.
@@ -1466,7 +1493,7 @@ function generateQuestionResponse(questionType)
         }
 
         //These emits confirmed to work when .call is used, and "this" is explicitly passed
-        var crimeF = crimeBackground[rand(0, crimeBackground.length -1)]);
+        var crimeF = crimeBackground[rand(0, crimeBackground.length -1)];
         speechOutput = this.t("CRIME_FACTS", crimeF) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
         this.emit(":ask", speechOutput);
     }
@@ -1601,23 +1628,25 @@ var languageString = {
 			"COUNTRY_LIST": "%s, %s, %s, or %s? ",
 			"DEPARTURE_MESSAGE": "%s it is. Talk to you when you land. Get going sleuth! ",
 			"ARRIVAL_MESSAGE": "%s. Time to find info on %s. Get the attention of bystanders so you can ask them for clues on what happened, what the criminal looks like, and where the criminal went. ",
-			"PERSON_APPROACHING": "%s %s %s approaching us. ",
+			"PERSON_APPROACHING": "%s with %s build and %s hair is approaching us. ",
 			"PERSON_RESPONSE": "%s kept on walking by. ",
             "CORRECT_PERSON_RESPONSE": "You got the persons attention, try to get some clues on the criminal. ",
 			"PLEASE_GREET": "Get bystanders attention by saying something like hello or excuse me. ",
 			"PASSEDBY_PROMPT": "Say Continue to look for others. ", 
 			"CONTINUE_PROMPT": ". Get more clues, or say bye to talk to someone else. ", // can't figure out how to keep "yes" from triggering wrong intents
             "LOSE_WRONG": "Oh no! this is not the criminal. We have to step up our game.",
+			"CRIME_FACTS": "%s .",
             "LOSE_GOT_AWAY": "Oh no! we were so close but the criminal has slipped into hiding.",
             "WIN": "Great work Sleuth. You caught the criminal!",
             "WRONG_COUNTRY": "This doesn't seem to be the correct Country, try a different one. ",
             "LAST_PERSON": "Looks like we've talked to everyone, it's time to pick the next country. ",
-            "DONE_QUESTIONING": "Alright, let's look for someone else. %s %s %s is approaching. ",
+            "DONE_QUESTIONING": "Alright, let's look for someone else. %s with %s build and %s hair is approaching us. ",
             "COUNTRY_FACTS": "I heard %s is going to %s. ",
             "NOT_LAST_STAGE": "We aren't ready to capture the criminal yet, to finish talking, say I'm done questioning",
-            "LAST_STAGE": "The Criminal is close, we should try to capture the criminal",
+            "LAST_STAGE": "The Criminal is close, we should try to capture the criminal.",
             "NOT_COUNTRY_PICK": "We aren't done talking to people yet. To finish talking, say I'm done questioning",
             "NOT_DONE_QUESTIONING": "If you're finished questioning and ready to move on , say I'm done questioning",
+			"LAST_STAGE_READY": "Say Ready to be a Sleuth when youre ready to catch the criminal",
             "ACCUSE": "A %s %s %s with %s %s eyes, %s %s hair, and a %s walks by. Is this the criminal? If so, say stop criminal or say innocent to keep looking. "
         }
     },
@@ -1739,25 +1768,15 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
         doneQuestioning.call(this);
 
     },
+	"LastStageIntent": function () {
+        lastStage.call(this);
+
+    },
     "NabThiefIntent": function () {
-        if(criminalFlag != 2)
-        {
-            this.emit(":tell", this.t("LOSE_WRONG"));
-        }
-        else
-        {
-            this.emit(":tell", this.t("WIN"));
-        }
+        nabThiefFunction.call(this);
     },
     "innocentIntent": function () {
-        if(criminalFlag == 2)
-        {
-            this.emit(":tell", this.t("LOSE_GOT_AWAY"));
-        }
-        else
-        {
-            lastStage();
-        }
+		innocentFunction.call(this);
     },
     "Unhandled": function () {
         var speechOutput = this.t("QUESTION_UNHANDLED");
