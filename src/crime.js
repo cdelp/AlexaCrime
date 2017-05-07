@@ -883,7 +883,7 @@ function PopulateCriminal()  {
     this.country = this.region[rand(0, this.region.length -1)];
     this.nextCountry = null; //should exempt current country, write a new method for this.
     this.hairLength = hairLength[rand(0, hairLength.length -1)];
-    this.hairColor = hairColor[rand(0, hairLength.length -1)];
+    this.hairColor = hairColor[rand(0, hairColor.length -1)];
     this.eyeSize = eyeSize[rand(0, eyeSize.length -1)];
     this.eyeColor = eyeColor[rand(0, eyeColor.length -1)];
     this.body = body[rand(0, body.length -1)];
@@ -898,7 +898,7 @@ function PopulateResponsePerson() {
     this.seenValue = rand(0, 3);
     this.gender =  gender[rand(0, gender.length -1)];
     this.hairLength = hairLength[rand(0, hairLength.length -1)];
-    this.hairColor = hairColor[rand(0, hairLength.length -1)];
+    this.hairColor = hairColor[rand(0, hairColor.length -1)];
     this.eyeSize = eyeSize[rand(0, eyeSize.length -1)];
     this.eyeColor = eyeColor[rand(0, eyeColor.length -1)];
     this.body = body[rand(0, body.length -1)];
@@ -950,7 +950,7 @@ function generateCountryList()
         //one correct country
         countryOutputList.push(criminal.country);
         //Assigning all countries in region to tempArr
-        var tempArr = [];
+        var tempArr = criminal.region.slice(0);
         for(var i = 0; i < criminal.region.length; i++)
         {
             tempArr[i] = criminal.region[i];
@@ -1025,19 +1025,7 @@ function checkCountry()
 						//var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
 						this.emit(":ask", speechOutput, repromptOutput);
 					}
-					else
-					{
-						// audio clips must be 48kbps 16000hz mpeg 2
-						
-						speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName)
-							+ "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-							+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name)
-							+ this.t("LAST_STAGE_READY");
-							this.emit(":ask", speechOutput);
-							
-							//lastStage();
-					}
-					
+
 
                 }
                 else if ((criminal.country.countryName != country) && countryVisited >= 2) {
@@ -1108,7 +1096,7 @@ function checkCountry()
 							//lastStage();
 					}
                 }
-                else if (criminal.country.countryName != country && countryVisited >= 1) {
+                else if (criminal.country.countryName != country && countryVisited >= 2) {
                     //you lose.
                     console.log("you lose");
                     //TODO ask if they want to play again
@@ -1194,7 +1182,7 @@ function lastStage()
     else {
         var speechOutput;
         shuffleArray(criminalArr);
-        //removes index 0 form criminalArr
+        //removes index 0 from criminalArr
         var crimVar = criminalArr.splice(0, 1);
         criminalFlag = crimVar;
 
@@ -1259,7 +1247,7 @@ function lastStage()
                         criminalAtt[attributeInd[r]] = l_hairLength[rand(0, l_hairLength.length - 1)];
                         break;
                     case 5:
-                        criminalAtt[attributeInd[r]] = l_hairColor[rand(0, l_hairLength.length - 1)];
+                        criminalAtt[attributeInd[r]] = l_hairColor[rand(0, l_hairColor.length - 1)];
                         break;
                     case 6:
                         //might remove case 6 as specials might be too easy
@@ -1318,7 +1306,8 @@ function talkedTo()
     }
     else if (stage >= 3)
     {
-
+        //shouldn't ever happen, maybe print error
+        console.log("Some crasy ish went down, talkedTo got triggered in stage 3+");
     }
     else
     {
@@ -1708,7 +1697,6 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
         shuffleArray(Region);
         talkedToCount = 0;
         countryVisited = 0;
-        questionedCount = 0;
         criminalFlag = 0;
         questionedCount = 0;
 
