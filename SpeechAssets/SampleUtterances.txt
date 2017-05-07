@@ -117,6 +117,7 @@ ContinueSearchIntent Have a nice day
 ContinueSearchIntent Good day
 ContinueSearchIntent I appreciate your help
 ContinueSearchIntent No more questions
+ContinueSearchIntent continue
 
 CrimeBackgroundQuestionIntent Did you hear about {criminal_name}
 CrimeBackgroundQuestionIntent Have you heard about {criminal_name}
@@ -156,7 +157,9 @@ CriminalLooksQuestionIntent How does {criminal_name} look
 CriminalLooksQuestionIntent How does she look
 
 CriminalLocationQuestionIntent Where did he go
+CriminalLocationQuestionIntent Where did she go
 CriminalLocationQuestionIntent Where did {criminal_name} go
+CriminalLocationQuestionIntent Where did the criminal go
 CriminalLocationQuestionIntent Do you know where {criminal_name} was headed
 CriminalLocationQuestionIntent Do you know where {criminal_name} went next
 CriminalLocationQuestionIntent Do you know where {criminal_name} went
@@ -195,4 +198,6 @@ innocentIntent not her
 innocentIntent not it
 innocentIntent next
 innocentIntent next person
+
+LastStageIntent ready to be a Sleuth
 
