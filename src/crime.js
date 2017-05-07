@@ -1280,7 +1280,8 @@ function talkedTo()
                 talkedToCount += 3;
                 //exit from country on 2nd talk in wrong country
                 if (talkedToCount >= 6) {
-                    //talked to 2 people in the wrong country
+                    talkedToCount = 0;
+					//talked to 2 people in the wrong country
                     console.log("wrong country response");
                     //TODO will need to relist the countries here
                     speechOutput = this.t("WRONG_COUNTRY") + this.t("CHOOSE_AGAIN") +
@@ -1543,25 +1544,24 @@ var languageString = {
             //"QUESTIONS" : questions["QUESTIONS"],
             "GAME_NAME" : "Seuth Hound", 
             "HELP_MESSAGE": "Please ask questions like how do I play, what is the concept of the game, what am I supposed to do? ",
-            "REPEAT_MESSAGE": "Please repeat your choice. ", 
+			"REPEAT_MESSAGE": "Sorry I could not hear you. What did you say?. ",
 			"HELP_RESPONSE": "You, with the guidance of Chief Alexa, track down criminals as they try to elude you. Collect clues from bystanders by asking them if they heard about the crime, where the criminal went, and what the criminal looked like. ",
             "HELP_REPROMPT": "Are you listening to me? ", 
-            "STOP_MESSAGE": "Would you like to keep playing?",
-            "CANCEL_MESSAGE": "Ok, let\'s play again soon.", // if needed
-            "NO_MESSAGE": "Ok, we\'ll play another time. Goodbye!", // if needed
-            "HELP_UNHANDLED": "Say yes to continue, or no to end the game. ",
-            "START_UNHANDLED": "Say start to start a new game. ",
+            "STOP_MESSAGE": "Would you like to continue our search?",
+            "CANCEL_MESSAGE": "Ok, see you next time Sleuth.", // if needed
+            "NO_MESSAGE": "Ok, we\'ll resume our hunt for criminals when you get back from leave. Until next time Sleuth!", // if needed
+            "HELP_UNHANDLED": "Say yes to continue our mission, or no to end the game. ",
+            "START_UNHANDLED": "Say start to start a new mission. ",
 			"GAME_UNHANDLED": "game unhandled error. ",
 			"QUESTION_UNHANDLED": "I'm sorry. I didn't understand your choice. ",
 			"TEST_OUTPUT": "Testing output only. ", // testing only
             "NEW_GAME_MESSAGE": "Welcome to %s. ",
 			"GAME_START_MESSAGE": "Are you ready for a mission? ",
-            "INTRO_MESSAGE": "We are on the hunt for %s.  %s is wanted in connection with a recent string of %s crimes resulting in %s million in damages. We must help bring the criminal responsible for these crimes to justice before %s goes into hiding. It will not be an easy task to catch %s , so pay close attention to clues on %s looks and whereabouts. %s was last seen in %s. Enough talking, we need to go ",
+            "INTRO_MESSAGE": "Let's do it Sleuth! We are on the hunt for %s.  %s is wanted in connection with a recent string of %s crimes resulting in %s million in damages. We must help bring the criminal responsible for these crimes to justice before %s goes into hiding. It will not be an easy task to catch %s , so pay close attention to clues that we get from bystanders on %s looks and whereabouts. %s was last seen in %s. Enough talking, let's do it! ",
 			"LOCATION_TEST": "%s is in %s, %s. ", // testing only
-			"CHOOSE_COUNTRY": "  Where should we start our search? ",
-			"CHOOSE_AGAIN": "Where would you like to go next? ",
+			"CHOOSE_COUNTRY": "  Where do you think the crime happened? ",
+			"CHOOSE_AGAIN": "Where did the criminal go? ",
 			"COUNTRY_LIST": "%s, %s, %s, or %s? ",
-			"CRIME_FACTS": "%s. ",
 			"DEPARTURE_MESSAGE": "%s it is. Talk to you when you land. Get going sleuth! ",
 			"ARRIVAL_MESSAGE": "%s. Time to find info on %s. Get the attention of bystanders so you can ask them for clues on what happened, what the criminal looks like, and where the criminal went. ",
 			"PERSON_APPROACHING": "%s %s %s approaching us. ",
@@ -1569,7 +1569,7 @@ var languageString = {
             "CORRECT_PERSON_RESPONSE": "You got the persons attention, try to get some clues on the criminal. ",
 
 			"PLEASE_GREET": "Get bystanders attention by saying something like hello or excuse me. ",
-			"PASSEDBY_PROMPT": "Say Continue to look for others. ",
+			"PASSEDBY_PROMPT": "Say Continue to look for others. ", 
 			"CONTINUE_PROMPT": ". Get more clues, or say bye to talk to someone else. ", // can't figure out how to keep "yes" from triggering wrong intents
             "LOSE_WRONG": "Oh no! this is not the criminal. We have to step up our game.",
             "LOSE_GOT_AWAY": "Oh no! we were so close but the criminal has slipped into hiding.",
@@ -1722,6 +1722,10 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
     "AMAZON.StartOverIntent": function () {
         this.handler.state = GAME_STATES.START;
         this.emitWithState("StartGame", false);
+    },
+	"AMAZON.NoIntent": function() {
+        var speechOutput = this.t("NO_MESSAGE");
+        this.emit(":tell", speechOutput);
     },
     "AMAZON.RepeatIntent": function () {
         this.emit(":ask", this.attributes["speechOutput"], this.attributes["repromptText"]);
