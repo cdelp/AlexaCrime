@@ -65,7 +65,7 @@ function pronounThird( gender )
 
 //People attributes
 var gender = ['male', 'female', 'male', 'female', 'male', 'female', 'transgender'];
-var hairLength = ['long', 'short', 'medium', 'bald', 'curly', 'wavy', 'silky', 'frizzy', 'straight',];
+var hairLength = ['long', 'short', 'medium', 'balding', 'curly', 'wavy', 'silky', 'frizzy', 'straight'];
 var hairColor = ['black', 'brown', 'blond', 'red', 'silver', 'gray', 'dark', 'white', 'auburn', 'jet black', 'light brown', 'platinum blond', 'medium brown', 'ash brown', 'dark brown'];
 var eyeSize = ['small', 'large', 'round', 'almond', 'hooded', 'droopy', 'beady', 'downturned', 'upturned', 'monolid'];
 var eyeColor = ['black', 'dark brown', 'blue', 'green', 'hazel', 'amber', 'grey', 'red and violet', 'light blue', 'light brown', 'light green'];
@@ -979,6 +979,9 @@ var country; // trying this as global since it keeps repeating the intitial coun
 //function checkCountry(country)
 function checkCountry()
 {
+    country = this.event.request.intent.slots.country_item.value;
+
+    console.log(country);
     if(talkedToCount != 0 || questionedCount != 0 || stage >= 3)
     {
         var speechOutput = this.t("NOT_COUNTRY_PICK");
@@ -986,9 +989,6 @@ function checkCountry()
         this.emit(":ask", speechOutput, representing);
     }
     {
-        country = this.event.request.intent.slots.country_item.value;
-
-        console.log(country);
 
         //assign choice of country and count for validation checking in other methods
         countryVisited++;
@@ -1052,73 +1052,86 @@ function checkCountry()
             }
         }
         else {
+
             console.log("in else stage for checkCountry");
+            //assign valid country
             for (i = 0; i < criminal.region.length; i++) {
                 if (criminal.region[i].countryName == country) {
                     countryChoice = criminal.region[i];
                 }
             }
 
-            try {
-                //if country chosen doesn't exist
-                if (countryChoice.countryName != country) {
-                    //error response, prompt for a valid country choice.
-                    console.log("given country string did not match");
-                    //fix counter
-                    countryVisited--;
-                }
+            if(crimCountryVisitedArr.indexOf(countryChoice) != -1)
+            {
+                //gave a country that's already been used so we should return a reprompt
+                speechOutput = this.t("WRONG_COUNTRY_ERROR") + this.t("CHOOSE_AGAIN") +
+                    this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
+                repromptOutput = this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
+                this.emit(":ask", speechOutput, repromptOutput);
 
-                //if correct country chosen then reset count, go to next stage, assign next country
-                if (criminal.country.countryName == country) {
-                    console.log("correct country given");
-                    countryVisited = 0;
-                    stage++;
-                    crimCountryVisitedArr.push(countryChoice);
-                    //assignNextCountry();
-
-                   if(stage < 3)
-					{
-						// audio clips must be 48kbps 16000hz mpeg 2
-						var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName)
-							+ "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-							+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.body, r_person.height, r_person.gender, r_person.bystanderAction, r_person.bystanderApproachingDirection);
-						var repromptOutput = this.t("PLEASE_GREET");
-
-						//var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-						this.emit(":ask", speechOutput, repromptOutput);
-					}
-					else
-					{
-						// audio clips must be 48kbps 16000hz mpeg 2
-						
-						speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName)
-							+ "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-							+ this.t("LAST_ARRIVAL_MESSAGE", countryChoice.intro, criminal.name, criminal.name);
-							repromptOutput = this.t("LAST_STAGE_READY_REPROMPT");
-							this.emit(":ask", speechOutput, repromptOutput);
-						
-							
-							//lastStage();
-					}
-                }
-                else if (criminal.country.countryName != country && countryVisited >= 2) {
-                    //you lose.
-                    console.log("you lose");
-                    //TODO ask if they want to play again
-                    var speechOutput = this.t("LOSE");
-                    this.emit(":ask", speechOutput);
-                }
-                else {
-                    //picked wrong country
-
-                    var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-                        + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.body, r_person.height, r_person.gender, r_person.bystanderAction, r_person.bystanderApproachingDirection);
-                    var repromptOutput = this.t("PLEASE_GREET");
-                    this.emit(":ask", speechOutput, repromptOutput);
-                }
-            } catch (error) {
-                console.log("error in countryChecked()");
             }
+            else {
+
+                try {
+                    //if country chosen doesn't exist
+                    if (countryChoice.countryName != country) {
+                        //error response, prompt for a valid country choice.
+                        console.log("given country string did not match");
+                        //fix counter
+                        countryVisited--;
+                    }
+
+                    //if correct country chosen then reset count, go to next stage, assign next country
+                    if (criminal.country.countryName == country) {
+                        console.log("correct country given");
+                        countryVisited = 0;
+                        stage++;
+                        crimCountryVisitedArr.push(criminal.country.countryName);
+                        //assignNextCountry();
+
+                        if (stage < 3) {
+                            // audio clips must be 48kbps 16000hz mpeg 2
+                            var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName)
+                                + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+                                + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.body, r_person.height, r_person.gender, r_person.bystanderAction, r_person.bystanderApproachingDirection);
+                            var repromptOutput = this.t("PLEASE_GREET");
+
+                            //var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+                            this.emit(":ask", speechOutput, repromptOutput);
+                        }
+                        else {
+                            // audio clips must be 48kbps 16000hz mpeg 2
+
+                            speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName)
+                                + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+                                + this.t("LAST_ARRIVAL_MESSAGE", countryChoice.intro, criminal.name, criminal.name);
+                            repromptOutput = this.t("LAST_STAGE_READY_REPROMPT");
+                            this.emit(":ask", speechOutput, repromptOutput);
+
+
+                            //lastStage();
+                        }
+                    }
+                    else if (criminal.country.countryName != country && countryVisited >= 2) {
+                        //you lose.
+                        console.log("you lose");
+                        //TODO ask if they want to play again
+                        var speechOutput = this.t("LOSE");
+                        this.emit(":ask", speechOutput);
+                    }
+                    else {
+                        //picked wrong country
+
+                        var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+                            + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.body, r_person.height, r_person.gender, r_person.bystanderAction, r_person.bystanderApproachingDirection);
+                        var repromptOutput = this.t("PLEASE_GREET");
+                        this.emit(":ask", speechOutput, repromptOutput);
+                    }
+                } catch (error) {
+                    console.log("error in countryChecked()");
+                }
+            }
+
         }
 
     }
@@ -1635,8 +1648,8 @@ var languageString = {
             "CORRECT_PERSON_RESPONSE": " %s %s.",
 			"ASK_REPROMT": "Ask questions like, did you hear anything about the criminal, or what does the criminal look like. ",
 			"PLEASE_GREET": "Get bystanders attention by saying something like hello or excuse me. ",
-			"PASSEDBY_PROMPT": "Say Continue to look for others. ", 
-			"PASSEDBY_REPROMPT": "Please say Continue to keep looking for clues. ",
+			"PASSEDBY_PROMPT": "Say move on to look for others. ",
+			"PASSEDBY_REPROMPT": "Please say move on to keep looking for clues. ",
 			"CONTINUE_PROMPT": ". Get more clues, or say bye to talk to someone else. ", // can't figure out how to keep "yes" from triggering wrong intents
             "CONTINUE_REPROMPT": ". Please keep asking questions to find more clues, or say bye to talk to someone else. ",
 			"LOSE_WRONG": "Oh no! this is not the criminal. We have to step up our game.",
@@ -1644,6 +1657,7 @@ var languageString = {
             "LOSE_GOT_AWAY": "Oh no! we were so close but the criminal has slipped into hiding.",
             "WIN": "Great work Sleuth. You caught the criminal!",
             "WRONG_COUNTRY": "This doesn't seem to be the correct Country, try a different one. ",
+            "WRONG_COUNTRY_ERROR": "Looks like we've already been to this country, try a different one. ",
             "LAST_PERSON": "Looks like we've talked to everyone, it's time to pick the next country. ",
             "DONE_QUESTIONING": "Alright, let's look for someone else. A %s, %s, %s, is %s %s",
             "COUNTRY_FACTS": seenMix[(rand(0, seenMix.length - 1))],
