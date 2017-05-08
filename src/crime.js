@@ -136,7 +136,7 @@ var Algeria = {
     facts: ['Where the capital city is Algiers.',
         'Where the Sahara Desert covers 80% of the country.',
         'Where they gained independance from France in 1962.',
-        'Home to St Augusting of Hippo, an early christian theologian.',
+        'In the country home to St Augustine of Hippo, an early christian theologian.',
         'In The largest country in Africa.',
         'Where they love to eat couscous.',
         'Where singer Cheb Mami joined Sting on his song Desert Rose.',
