@@ -1601,7 +1601,7 @@ function Countries(number){
  this.emit(':ask', speechOutput , speechOutput);
  */
 
-var seenMix =['I heard %s was last seen %s', 'Word is %s was seen %s, Not sure', 'but someone said %s is %s', 'All I know is %s is %s, Gosh, what did they say, oh ya, %s is' ];
+var seenMix =['I heard %s was last seen %s', 'Word is %s was seen %s, Not sure', 'but someone said %s is %s', 'All I know is %s is %s', 'Gosh, what did they say, oh ya, %s is %s' ];
 var languageString = {
     "en": {
         "translation": {
