@@ -1611,17 +1611,21 @@ var languageString = {
             "HELP_MESSAGE": "Please ask questions like, how do I play, what is the concept of the game, what am I supposed to do? ",
 			"REPEAT_MESSAGE": "Sorry I could not hear you. What did you say?. ",
 			"HELP_RESPONSE": "You, with the guidance of Chief Alexa, track down criminals as they try to elude you. Collect clues from bystanders by asking them if they heard about the crime, where the criminal went, and what the criminal looked like. Say yes if you would like to keep playing the game. ",
+			"PAUSE_HELP": "You, with the guidance of Chief Alexa, track down criminals as they try to elude you. Collect clues from bystanders by asking them if they heard about the crime, where the criminal went, and what the criminal looked like. Say continue to keep playing. ",
             "HELP_REPROMPT": "Are you listening to me? ", 
             "STOP_MESSAGE": "Would you like to continue our search? Please say no if you'd like to quit",
             "CANCEL_MESSAGE": "Ok, see you next time Sleuth.", // if needed
-            "NO_MESSAGE": "Ok, we\'ll resume our hunt for criminals when you get back from leave. Until next time Sleuth!", // if needed
+			"SASSY_END": "If you don't want a fun and exciting adventure with Chief Alexa, go play one of the many terrible Alexa games. Good bye. You lose since you tested my patience. ",
+            "CUSS_END": "Please not in front of the kids. I would hate to embarrass you with my graduated vocabulary. Just for that, game over punk.",
+			"PERSONAL_END": "Easy on throwing shade, guy. My worthlessness has reached 7million people in 2-years. I wonder what that makes you hotshot. You lose because I dont have time for haters. ",
+			"NO_MESSAGE": "Ok, we\'ll resume our hunt for criminals when you get back from leave. Until next time Sleuth!", // if needed
             "HELP_UNHANDLED": "Say yes to continue our mission, or no to end the game. ",
             "START_UNHANDLED": "Say start to start a new mission. ",
 			"GAME_UNHANDLED": "game unhandled error. ",
 			"QUESTION_UNHANDLED": "I'm sorry. I didn't understand your choice. Please say it again. ",
 			"TEST_OUTPUT": "Testing output only. ", // testing only
             "NEW_GAME_MESSAGE": "Welcome to %s. ",
-			"GAME_START_MESSAGE": "Are you ready for a mission? ",
+			"GAME_START_MESSAGE": "Ask, how do I play, if you have questions. Otherwise, are you ready for a mission? ",
             "INTRO_MESSAGE": "Let's do it Sleuth! We are on the hunt for %s.  %s is wanted in connection with a recent string of %s crimes resulting in %s million in damages. We must help bring the criminal responsible for these crimes to justice before %s goes into hiding. It will not be an easy task to catch %s , so pay close attention to clues that we get from bystanders on %s looks and whereabouts. %s was last seen %s. Enough talking, let's do it! ",
 			"LOCATION_TEST": "%s is in %s, %s. ", // testing only
 			"CHOOSE_COUNTRY": "  Where do you think the crime happened? ",
@@ -1635,8 +1639,8 @@ var languageString = {
             "CORRECT_PERSON_RESPONSE": " %s %s.",
 			"ASK_REPROMT": "Ask questions like, did you hear anything about the criminal, or what does the criminal look like. ",
 			"PLEASE_GREET": "Get bystanders attention by saying something like hello or excuse me. ",
-			"PASSEDBY_PROMPT": "Say Continue to look for others. ", 
-			"PASSEDBY_REPROMPT": "Please say Continue to keep looking for clues. ",
+			"PASSEDBY_PROMPT": "Say keep going to look for others. ", 
+			"PASSEDBY_REPROMPT": "Please say keep going to keep looking for clues. ",
 			"CONTINUE_PROMPT": ". Get more clues, or say bye to talk to someone else. ", // can't figure out how to keep "yes" from triggering wrong intents
             "CONTINUE_REPROMPT": ". Please keep asking questions to find more clues, or say bye to talk to someone else. ",
 			"LOSE_WRONG": "Oh no! this is not the criminal. We have to step up our game.",
@@ -1717,7 +1721,7 @@ var startStateHandlers = Alexa.CreateStateHandler(GAME_STATES.START, {
 	"AMAZON.HelpIntent": function () {
         //this.handler.state = GAME_STATES.HELP;
         //this.emitWithState("helpTheUser", false);
-		this.emit(":ask", this.t("HELP_RESPONSE"));
+		this.emit(":ask", this.t("HELP_RESPONSE"), this.t("START_UNHANDLED"));
     }
 });
 
@@ -1795,6 +1799,18 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
     "innocentIntent": function () {
 		innocentFunction.call(this);
     },
+	"SassyIntent": function (){
+		var speechOutput = this.t("SASSY_END");
+		this.emit(":tell", speechOutput);
+	},
+    "CussIntent": function ()  {
+		var speechOutput = this.t("CUSS_END");
+		this.emit(":tell", speechOutput);
+	},
+    "PersonalIntent": function () {
+		var speechOutput = this.t("PERSONAL_END");
+		this.emit(":tell", speechOutput);
+	},
 	"RulesIntent": function () {
         //this.handler.state = GAME_STATES.HELP;
         //this.emitWithState("helpTheUser", false);
@@ -1815,11 +1831,18 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
     "AMAZON.RepeatIntent": function () {
         this.emit(":ask", this.attributes["speechOutput"], this.attributes["repromptText"]);
     },
+/*	"AMAZON.PauseIntent": function () {
+        var speechOutput = this.t("PAUSE_HELP");
+        this.emit(":ask", speechOutput, speechOutput);
+    },
+	"AMAZON.ResumeIntent": function () {
+        this.emit("tell:", "app resuming");
+    }, */
     "AMAZON.HelpIntent": function () {
         //this.handler.state = GAME_STATES.HELP;
         //this.emitWithState("helpTheUser", false);
-		this.emit(":ask", this.t("HELP_RESPONSE"));
-    },
+		this.emit(":ask", this.t("HELP_RESPONSE"), this.t("HELP_RESPONSE"));
+    }, 
     "AMAZON.StopIntent": function () {
         this.handler.state = GAME_STATES.HELP;
         var speechOutput = this.t("STOP_MESSAGE");
@@ -1838,12 +1861,10 @@ var helpStateHandlers = Alexa.CreateStateHandler(GAME_STATES.HELP, {
     "helpTheUser": function (newGame) {
         //var askMessage = newGame ? this.t("ASK_MESSAGE_START") : this.t("REPEAT_MESSAGE") + this.t("STOP_MESSAGE");
         var speechOutput = this.t("HELP_RESPONSE");
+		var repromptOutput = this.t("START_UNHANDLED");
 		this.handler.state = GAME_STATES.START;
-
 		//this.emitWithState("StartGame", true);
-
-        //var repromptText = this.t("HELP_RESPONSE");
-        this.emit(":ask", speechOutput);
+        this.emit(":ask", speechOutput, repromptOutput);
     }, 
     "AMAZON.StartOverIntent": function () {
         this.handler.state = GAME_STATES.START;
@@ -1870,7 +1891,19 @@ var helpStateHandlers = Alexa.CreateStateHandler(GAME_STATES.HELP, {
             this.emitWithState("StartGame", false);
         }
     },
-    "AMAZON.NoIntent": function() {
+    "SassyIntent": function (){
+		var speechOutput = this.t("SASSY_END");
+		this.emit(":tell", speechOutput);
+	},
+    "CussIntent": function ()  {
+		var speechOutput = this.t("CUSS_END");
+		this.emit(":tell", speechOutput);
+	},
+    "PersonalIntent": function () {
+		var speechOutput = this.t("PERSONAL_END");
+		this.emit(":tell", speechOutput);
+	},
+	"AMAZON.NoIntent": function() {
         var speechOutput = this.t("NO_MESSAGE");
         this.emit(":tell", speechOutput);
     },
@@ -1878,6 +1911,14 @@ var helpStateHandlers = Alexa.CreateStateHandler(GAME_STATES.HELP, {
         var speechOutput = this.t("STOP_MESSAGE");
         this.emit(":ask", speechOutput, speechOutput);
     },
+/*	"AMAZON.PauseIntent": function () {
+        var speechOutput = this.t("PAUSE_HELP");
+        this.emit(":ask", speechOutput, speechOutput);
+    },
+	"AMAZON.ResumeIntent": function () {
+		var speechOutput = this.t("");
+        this.emit("tell:", "app resuming");
+    }, */
     "AMAZON.CancelIntent": function () {
         this.emit(":tell", this.t("CANCEL_MESSAGE"));
     },
@@ -1891,78 +1932,6 @@ var helpStateHandlers = Alexa.CreateStateHandler(GAME_STATES.HELP, {
         console.log("Session ended in help state: " + this.event.request.reason);
     }
 });
-
-// end test ******************************************************************************************
-
-/*
- exports.handler = (event, context) => {
- // New session
- try{
- if(event.session.new)
- {
- console.log("NEW SESSION")
-
- }
-
- switch (event.request.type)
- {
- case "LaunchRequest":
- //var output = "Welcome to sleuth hound"
- context.succeed(generateResponse({}, buildSpeechletResponse("Welcome to sleuth hound Alan", false)));
- break;
-
- case "IntentRequest":
- //intent request
- //main stuff here
- switch(event.request.intent.name)
- {
- case "GameStart":
- //false start check. If games already in place ask if they want to start a new one.
- //populate criminal
- criminal = new PopulateCriminal();
- assignNextCountry();
- r_person = new PopulateResponsePerson();
- break;
-
- //build a response using criminal.country.facts, criminal.name, criminal.gender
- case "CountryIntent":
- //false country pick check. If TalkedToCount < 5 then tell the user they haven't finished talking to all NPC yet.
- //Chad TODO
- //Figure out how to grab the country slot value when this Country intent is triggered so it can be used in checkCountry(country)
- //grab country from intent first then call checkCountry(country) method
- checkCountry(country);
- //arrival jingle response
-
- //response from countryChoice.facts[rand(0, countryChoice.facts.length -1]
-
- //build-person walking-by response using r_person.gender, r_person.p_special
-
- break;
-
- case "TarryStopIntent":
- //false stop check. If not currently
- talkedTo();
- break;
-
- //case "CrimeBackgroundQuestionIntent":
- //    break;
- default:
- console.log("default")
- }
- console.log("INTENT REQUEST")
- break;
-
- case "SessionEndedRequest":
- console.log('SESSION ENDED REQUEST')
- break;
-
- default:
- context.fail('INVALID REQUEST TYPE: ${event.request.type}')
- }
-
- } catch(error) {context.fail("Exception: " + error);}
-
- } */
 
 function printStuff()
 {
