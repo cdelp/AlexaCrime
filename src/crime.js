@@ -847,7 +847,7 @@ var crimeBackground = ['Man, I saw all of it on snapchat. Crazyness at its fines
  'Wish I was there to do something about it. Just disgusting what people are doing today in our society.', 
  'I was there that night. I saw everything and let authorities know what the criminal looked like and where I thought they went.', 
  'Whatsapp is becoming the go to choice for communication between these criminals. I saw a couple messages shared on my group and I was flabbergasted', 
- 'Dude is out of control and must be stopped. I hope authorities do something soon to bring the criminal responsible to justice.'];
+ 'Dude is out of control and must be stopped. I hope authorities do something soon to bring the criminal responsible to justice.', 'I am disgusted with what happened. People just need to stop taking advantage of eachother.', 'We will never have world peace with idiots like this. I hope they are brought to justice along with all the idiots they work with.', 'Gee wiz are they out of control! What happened to the world that we all call home?', 'I heard like everyone else. Crime is not new but criminals are becoming a larger segment of the population and it makes me sick that we let this happen'];
 
 
 function name(country, gender)
@@ -1601,7 +1601,7 @@ function Countries(number){
  this.emit(':ask', speechOutput , speechOutput);
  */
 
-var seenMix =['I heard %s was last seen %s', 'Word is %s was seen %s, Not sure', 'but someone said %s is %s', 'All I know is %s is %s', 'Gosh, what did they say, oh ya, %s is %s' ];
+var seenMix =['I heard %s was last seen %s', 'Word is, %s was seen %s', 'Not sure, but someone said %s is %s', 'All I know is %s is %s', 'Gosh, what did they say, oh ya, %s is %s', 'People are talking, %s is %s', '%s is %s, but you didnt hear that from me', 'Beats me, but I did hear %s was seen %s', 'Im following the updates on twitter, the last post says %s is %s', '%s was last seen %s', 'Checkout there new account on twitter, %s is %s'];
 var languageString = {
     "en": {
         "translation": {
