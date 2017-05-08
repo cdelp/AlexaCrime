@@ -135,7 +135,7 @@ var Algeria = {
 
     facts: ['Where the capital city is Algiers.',
         'Where the Sahara Desert covers 80% of the country.',
-        'Where they gained independance from France in 1962.',
+        'Where they gained independence from France in 1962.',
         'In the country home to St Augustine of Hippo, an early christian theologian.',
         'In The largest country in Africa.',
         'Where they love to eat couscous.',
@@ -210,7 +210,7 @@ var Syria = {
         'Where the national flag has two green stars that represent the previous union with Egypt.',
         'In a country Suffering the worst humanitarian crisis since World War 2 impacting 13 million people.',
         'Headed to the oldest continuously inhabited city in the world.',
-        'In a coutnry situated as a Major point on the silk road from Asia.',
+        'In a country situated as a Major point on the silk road from Asia.',
         'Where the biggest city is Haleb or Aleppo meaning iron due to its source of metals.',
         'Where you can Enjoy some toasted freekeh wheat with chicken and fatoush.',
         'In a country that Shares a Northern Border with Turkey.',
@@ -272,7 +272,7 @@ var Lebanon = {
 'Where the first alphabet was created.',
 'Where the first sailors called phoenicians built the first ever boat from cedar trees.',
 'In The country known as Gods Country on Earth.',
-'In the country where The creators of Tom & Jerrry and other cartoons such as Scooby-Doo, The Jetsons, and The smurfs call motherland.'
+'In the country where The creators of Tom & Jerry and other cartoons such as Scooby-Doo, The Jetsons, and The smurfs call motherland.'
 ],
 
     m_names: ['Mahmous', 'Nader', 'Ayman', 'Wehbe', 'Rami', 'Moukhtar'],
@@ -323,7 +323,7 @@ var China = {
 var Mongolia = {
     countryName: 'Mongolia',
 
-	intro: 'Welcome to Mongolia, with the worlds coldest national capital, Ulaanbaatar, averaging -1 degrees celsius. ',
+	intro: 'Welcome to Mongolia, with the worlds coldest national capital, Ulaan baatar, averaging -1 degrees celsius. ',
 
     facts: ['In a country known for creating ice cream.',
         'In a country Home to 13 times more horses than humans.',
@@ -334,7 +334,7 @@ var Mongolia = {
         'Where you can trace back More than 17 million peoples blood line to Genghis Khan.',
         'Where wrestling is a tradition that goes back before recorded history.',
         'In a country that is The worlds second largest producer of Cashmere.',
-        'Headed to the capital city Ulan Baatar, meaning red hero.'
+        'Headed to the capital city Ulaan Baatar, meaning red hero.'
     ],
     m_names: ['Dana', 'Ankhbaatar', 'Davaa', 'Zev', 'Bat-Erdene', 'Altantsetseg'],
     f_names: ['Zaya', 'Sondor', 'Oyundelger', 'Aigerim', 'Delgermaa', 'Jabek'],
@@ -349,7 +349,7 @@ var Nepal = {
         'In The only country that doesnt have a square or rectangle flag.',
         'Where you can find the worlds shortest person.',
         'Where you can enjoy the delicious dish, momo, which is a type of dumpling.',
-        'In a country that is The largerst producers of mustard seed in the world.',
+        'In a country that is The largest producers of mustard seed in the world.',
         'Where The left hand is forbidden from used when eating.',
         'Headed to The capital, Kathmandu.',
         'In a Landlocked country that borders China and india.'
@@ -496,12 +496,12 @@ var SouthAfrica = {
 }
 var Uganda = {
     countryName: 'Uganda',
-    intro: 'Welcome to Uganda refered to as the Pearl of Africa. Most famous for being the source of the Nile River',
+    intro: 'Welcome to Uganda referred to as the Pearl of Africa. Most famous for being the source of the Nile River',
     facts: ['In a country that is Located in eastern africa.',
         'Headed to the Home of gorillas.',
         'In a country Called the Pearl of Africa by Winston Churchill.',
         'Headed to The capital city of Kampala.',
-        'Where you can enjoy panfried grasshoppers.',
+        'Where you can enjoy pan fried grasshoppers.',
         'In a Landlocked country sharing borders with Sudan, Kenya, and Tanzania.',
         'Where most of the population lives near Lake Victoria.',
         'Where The nile river starts here before flowing through 9 other countries and ending into the mediterranean sea in egypt.',
@@ -683,10 +683,10 @@ var Venezuela = {
         'In a country where you can see magical lightning called Catatumbo, which means continuous high frequency in Spanish.',
         'Where you can find the world’s tallest waterfall about 15 times taller than Niagra Falls.',
         'Headed to the highest statue of Virgin Mary, which is taller than the Statue of Liberty.',
-        'In the coutnry known for their large proven oil reserves.',
+        'In the country known for their large proven oil reserves.',
         'In a country where baseball is their favorite sport.',
         'In a country Known for winning the most beauty pageant titles in the world.',
-        'In the coutnry Home to the famous breakfast dish Arepas.',
+        'In the country Home to the famous breakfast dish Arepas.',
         'In the largest city and capital city of Caracas.'
     ],
     m_names: ['Sebastian', 'Mateo', 'Nicholas', 'Alehandro', 'Diego', 'Tomas'],
@@ -703,9 +703,9 @@ var Colombia = {
         'In a country situated on the equator, so expect much heat and sun',
         'Where breakfast consists of Changua milk soup with undercooked egg and salty blocks of cheese in your coffee',
         'Where Futbol or soccer is the national sport boasting the most unique goal dance',
-        'In the coutnry Home to world renowned singer and dancer, Shakira',
-        'In the coutnry Home to the largest theater festival called the Iberoamericana',
-        'In the coutnry Home to one out of every five butterfly species.'
+        'In the country Home to world renowned singer and dancer, Shakira',
+        'In the country Home to the largest theater festival called the Iberoamericana',
+        'In the country Home to one out of every five butterfly species.'
     ],
     m_names: ['Andres', 'Camillo', 'Diego', 'Ricardo', 'Luis', 'Juan Diego'],
     f_names: ['Diana', 'Paula', 'Erica', 'Susana', 'Leidi', 'Vanessa'],
@@ -715,12 +715,12 @@ var Peru = {
     countryName: 'Peru',
     intro: 'Welcome to Peru most famous for Machu Picchu and the Incan Trail. Amongst certain people it is famous for its Ayahuasca ceremonies and Shamans in the Amazon',
     facts: ['Where you can find the incan citadale, Machu Picchu, and the Incan Trail.',
-        'In the coutnry Home to the traditional dish of Cuy or Guinea Pig.',
+        'In the country Home to the traditional dish of Cuy or Guinea Pig.',
         'Where the potato originated from here and corn is grown in almost any color you can think of.',
         'Where you can find the oldest university in the Western Hemisphere.',
         'Where you can find the world’s deepest canyon almost twice as deep as the grand canyon.',
         'Where it is a tradition to give friends and family yellow underpants to ring in the new year.',
-        'In the coutnry Home to the highest sand dune in the world, Cerro Blanco.',
+        'In the country Home to the highest sand dune in the world, Cerro Blanco.',
         'In the capital city of Lima, which is also the largest city in the country.',
         'In the third largest country in South America.',
         'Where you can find both Pima and Tanguis cotton.'
@@ -734,9 +734,9 @@ var Ecuador = {
     intro: 'Welcome to Ecuador named after the equator that runs through the country. Also known as the closest country to space because of the earths rotation and shape',
     facts: ['Where the country is named after the equator that runs through the country.',
 'In the closest country to space.',
-'In the coutnry Home to the #1 world heritage site Galapagos Islands.',
+'In the country Home to the #1 world heritage site Galapagos Islands.',
 'Where Charles Darwin studied resulting in his theory on evolution.',
-'In the coutnry Home to the worlds largest exporter of bananas.',
+'In the country Home to the worlds largest exporter of bananas.',
 'In one of two south american countries that do not share a border with Brazil.',
 'Where you can find the most biodiverse country in the world.',
 'Headed to the capital city of Quito.',
@@ -751,12 +751,12 @@ var Uruguay = {
     countryName: 'Uruguay',
     intro: 'Welcome to Uruguay meaning the river of birds also known as the Eastern side of that river.',
     facts: ['Where the country name means river of the painted birds in the Guarani language.',
-        'In the coutnry Home to the least corrupt country in South America.',
+        'In the country Home to the least corrupt country in South America.',
         'In the smallest country in South America behind Suriname.',
         'Where more than half the population live in the capital city of Montevideo.',
         'Where Crows known locally as Quebrada de los Cuervos outnumber people 4 to 1.',
-        'In the coutnry Home to the world’s largest national anthem Orientales la Patria o la Tumba.',
-        'In the coutnry Home to the Least religious country in South America leading to renaming of many catholic holidays.',
+        'In the country Home to the world’s largest national anthem Orientales la Patria o la Tumba.',
+        'In the country Home to the Least religious country in South America leading to renaming of many catholic holidays.',
         'In the first country in the world to legalize the production and sale of marijuana.',
         'Where the first-ever FIFA world cup was hosted and won by the host nation.',
         'In the only country whose name has the same three letters in its first five.'
@@ -767,16 +767,16 @@ var Uruguay = {
 }
 var Paraguay = {
     countryName: 'Paraguay',
-    intro: 'Welcome to Paraguay. Paraguay is famous for being the first south american country to gain independance from Spain rule in 1811.',
+    intro: 'Welcome to Paraguay. Paraguay is famous for being the first south american country to gain independence from Spain rule in 1811.',
     facts: ['Headed to One of the few countries in south america that still speak their native language called Guarani with Spanish as second.',
         'In a place often referred to as the heart of south America.',
-        'In the coutnry Home to the first railway line in South America.',
+        'In the country Home to the first railway line in South America.',
         'Known as One of two landlocked countries in South America.',
-        'In the coutnry Home to the largest navy of any landlocked country.',
-        'In the coutnry Home to the second largest hydroelectric-power plant called Itaipu Dam on the Parana River.',
+        'In the country Home to the largest navy of any landlocked country.',
+        'In the country Home to the second largest hydroelectric-power plant called Itaipu Dam on the Parana River.',
         'In the capital city called Asuncion, referring to the ascension of mary.',
         'Where its Name means crowned river after the Guarani words for water and palm crown.',
-        'In the coutnry Home to South Americas second largest river after Amazon.',
+        'In the country Home to South Americas second largest river after Amazon.',
         'Where The national drink is mahtay often served hot.'
     ],
     m_names: ['Daveed', 'Alba', 'Alin', 'Carlos', 'Elian', 'Enrique'],
@@ -785,13 +785,13 @@ var Paraguay = {
 }
 var Bolivia = {
     countryName: 'Bolivia',
-    intro: 'Welcome to Bolivia named after independance fighter Simon Bolivar. He helped them gain independence from spain in 1825',
+    intro: 'Welcome to Bolivia named after independence fighter Simon Bolivar. He helped them gain independence from spain in 1825',
     facts: ['In a country Known as One of two landlocked South American Countries.',
         'Where it is named after the Venezuelan military and political leader who led 4 south american countries to independence from Spain.',
         'In La Paz, the highest capital city in the world.',
-        'In the coutnry Home to worlds most dangerous road the camino de las yungas.',
+        'In the country Home to worlds most dangerous road the camino de las yungas.',
         'Where you offer dried llama to Pachamama or mother nature in return for blessings.',
-        'In the coutnry Home to the largest mirror on Earth called Salar de Uyuni which is a large salt flat.',
+        'In the country Home to the largest mirror on Earth called Salar de Uyuni which is a large salt flat.',
         'Where the main languages spoken are Spanish, Quechua, Aymara and Guarani with an additional 33 other recognized languages.',
         'Where you can find the largest butterfly sanctuary.',
         'In the country that used to be called upper peru before gaining independence in 1825 from spain.',
@@ -805,14 +805,14 @@ var Chile = {
     countryName: 'Chile',
     intro: 'Welcome to Chile known for Easter Island. Easter Island is home to the large statues of heads called moai.',
     facts: ['In the world’s largest swimming pool filled with seawater from the pacific.',
-        'Where you can find the driest place on earth called the Atacama Desert runnning between the Andes Mountains and the Pacific.',
+        'Where you can find the driest place on earth called the Atacama Desert running between the Andes Mountains and the Pacific.',
         'Heading to the statues on Easter island called Moai.',
-        'Where the capital is Sanitago founded by a spanish explorer in 1541.',
+        'Where the capital is Santiago founded by a spanish explorer in 1541.',
         'Where the country derives its name meaning where the land ends.',
         'Where the national flag is similar to the state flag of texas.',
         'In the longest country in the world from north to south.',
         'Where Pisco is the national drink which is a clear liquid similar to brandy.',
-        'In the coutnry thats Famous for the Alerce tree with some older than 4,000 years.',
+        'In the country thats Famous for the Alerce tree with some older than 4,000 years.',
         'In the Home to the largest reserve of cooper.'
     ],
     m_names: ['Agustin', 'Vicente', 'Matias', 'Mateo', 'Tomas', 'Alonzo'],
@@ -847,7 +847,7 @@ var crimeBackground = ['Man, I saw all of it on snapchat. Crazyness at its fines
  'Wish I was there to do something about it. Just disgusting what people are doing today in our society.', 
  'I was there that night. I saw everything and let authorities know what the criminal looked like and where I thought they went.', 
  'Whatsapp is becoming the go to choice for communication between these criminals. I saw a couple messages shared on my group and I was flabbergasted', 
- 'Dude is out of control and must be stopped. I hope authorties do something soon to bring the criminal responsible to justice.'];
+ 'Dude is out of control and must be stopped. I hope authorities do something soon to bring the criminal responsible to justice.'];
 
 
 function name(country, gender)
@@ -896,6 +896,7 @@ function PopulateResponsePerson() {
     //may not need all these attributes, can pick what we want to output
     this.seenValue = rand(0, 3);
     this.gender =  gender[rand(0, gender.length -1)];
+    this.height = height[rand(0, height.length -1)];
     this.hairLength = hairLength[rand(0, hairLength.length -1)];
     this.hairColor = hairColor[rand(0, hairColor.length -1)];
     this.eyeSize = eyeSize[rand(0, eyeSize.length -1)];
@@ -915,7 +916,7 @@ var talkedToCount = 0;
 var stage = 0;
 var countryVisited = 0; //count of times try
 var crimCountryVisitedArr = []; //array of countries criminal has been to, used to match against
-var countryOutputList = []; //TODO Need to fill with 1 correct country and rest random. Splice the wrong country chosen when picked in checkCountry
+var countryOutputList = []; //Need to fill with 1 correct country and rest random. Splice the wrong country chosen when picked in checkCountry
 var countryChoice = null;
 var criminalArr = [0, 1, 2];
 var talkingFlag = 0;
@@ -1600,7 +1601,7 @@ function Countries(number){
  this.emit(':ask', speechOutput , speechOutput);
  */
 
-
+var seenMix =['I heard %s was last seen %s', 'Word is %s was seen %s, Not sure', 'but someone said %s is %s', 'All I know is %s is %s, Gosh, what did they say, oh ya, %s is' ];
 var languageString = {
     "en": {
         "translation": {
@@ -1631,7 +1632,7 @@ var languageString = {
             "LAST_ARRIVAL_MESSAGE": "%s. %s is near. Pay close attention to the features of people around you, any of them could be %s. ",
             "PERSON_APPROACHING": "A %s, %s, %s, is %s %s",
 			"PERSON_RESPONSE": "%s kept on walking by. ",
-            "CORRECT_PERSON_RESPONSE": " %s %s, try to get some clues on the criminal. ",
+            "CORRECT_PERSON_RESPONSE": " %s %s.",
 			"ASK_REPROMT": "Ask questions like, did you hear anything about the criminal, or what does the criminal look like. ",
 			"PLEASE_GREET": "Get bystanders attention by saying something like hello or excuse me. ",
 			"PASSEDBY_PROMPT": "Say Continue to look for others. ", 
@@ -1645,7 +1646,7 @@ var languageString = {
             "WRONG_COUNTRY": "This doesn't seem to be the correct Country, try a different one. ",
             "LAST_PERSON": "Looks like we've talked to everyone, it's time to pick the next country. ",
             "DONE_QUESTIONING": "Alright, let's look for someone else. A %s, %s, %s, is %s %s",
-            "COUNTRY_FACTS": "I heard %s is going to %s. ",
+            "COUNTRY_FACTS": seenMix[(rand(0, seenMix.length - 1))],
             "NOT_LAST_STAGE": "We aren't ready to capture the criminal yet, to finish talking, say I'm done questioning. ",
             "LAST_STAGE": "The Criminal is close, we should try to capture the criminal. ",
             "NOT_COUNTRY_PICK": "We aren't done talking to people yet. To finish talking, say I'm done questioning. ",
