@@ -137,7 +137,7 @@ var Algeria = {
         'Where the Sahara Desert covers 80% of the country.',
         'Where they gained independance from France in 1962.',
         'Home to St Augusting of Hippo, an early christian theologian.',
-        "In The largest country in Africa.',
+        'In The largest country in Africa.',
         'Where they love to eat couscous.',
         'Where singer Cheb Mami joined Sting on his song Desert Rose.',
         'In the country where the national animal is a fennec fox, native to North Africa.',
@@ -1035,8 +1035,8 @@ function checkCountry()
                     //you lose.
                     console.log("you lose");
                     //TODO ask if they want to play again
-                    var speechOutput = this.t("LOSE");
-                    this.emit(":ask", speechOutput);
+                    var speechOutput = this.t("LOSE_GOT_AWAY") + "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>";
+                    this.emit(":tell", speechOutput);
                 }
                 else {
                     //picked wrong country but only on first try
@@ -1277,7 +1277,7 @@ function innocentFunction()
 {
 	if(criminalFlag == 2)
 	{
-		this.emit(":tell", this.t("LOSE_GOT_AWAY"));
+		this.emit(":tell", this.t("LOSE_GOT_AWAY") + "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>");
 	}
 	else
 	{
@@ -1289,11 +1289,11 @@ function nabThiefFunction()
 {
 	if(criminalFlag != 2)
 	{
-		this.emit(":tell", this.t("LOSE_WRONG"));
+		this.emit(":tell", this.t("LOSE_WRONG") + "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>");
 	}
 	else
 	{
-		this.emit(":tell", this.t("WIN"));
+		this.emit(":tell", this.t("WIN") + "<audio src='https://s3.amazonaws.com/sleuthhound/Applause.mp3'/>" + "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>");
 	}
 }
 
@@ -1607,9 +1607,9 @@ var languageString = {
             //"QUESTIONS" : questions["QUESTIONS"],
 
             "GAME_NAME" : "Seuth Hound", 
-            "HELP_MESSAGE": "Please ask questions like how do I play, what is the concept of the game, what am I supposed to do? ",
+            "HELP_MESSAGE": "Please ask questions like, how do I play, what is the concept of the game, what am I supposed to do? ",
 			"REPEAT_MESSAGE": "Sorry I could not hear you. What did you say?. ",
-			"HELP_RESPONSE": "You, with the guidance of Chief Alexa, track down criminals as they try to elude you. Collect clues from bystanders by asking them if they heard about the crime, where the criminal went, and what the criminal looked like. ",
+			"HELP_RESPONSE": "You, with the guidance of Chief Alexa, track down criminals as they try to elude you. Collect clues from bystanders by asking them if they heard about the crime, where the criminal went, and what the criminal looked like. Say yes if you would like to keep playing the game. ",
             "HELP_REPROMPT": "Are you listening to me? ", 
             "STOP_MESSAGE": "Would you like to continue our search? Please say no if you'd like to quit",
             "CANCEL_MESSAGE": "Ok, see you next time Sleuth.", // if needed
@@ -1707,6 +1707,11 @@ var startStateHandlers = Alexa.CreateStateHandler(GAME_STATES.START, {
         // Set the current state to play mode. The skill will now use handlers defined in gameStateHandlers
         this.handler.state = GAME_STATES.PLAY;
         this.emit(":askWithCard", speechOutput, repromptOutput);
+    },
+	"AMAZON.HelpIntent": function () {
+        this.handler.state = GAME_STATES.HELP;
+        this.emitWithState("helpTheUser", false);
+		//this.emitWithState("HELP_RESPONSE", false);
     }
 });
 
@@ -1730,7 +1735,7 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
         // introduces criminal and crime, asks which country the user would like to visit, TODO prompt with country choices
         //Grab country name like this: countryOutputList[i].countryName, where i = 0 to 3.
         //countryOutputList is already shuffled so you can use any order of index you like.
-        var speechOutput = this.t("INTRO_MESSAGE", criminal.name, pronoun(criminal.gender), criminal.crime, rand(50, 800), criminal.name, criminal.name, pronounOwnership(criminal.gender), criminal.name, criminal.country.facts[0]) +
+        var speechOutput = "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>" + this.t("INTRO_MESSAGE", criminal.name, pronoun(criminal.gender), criminal.crime, rand(50, 800), criminal.name, criminal.name, pronounOwnership(criminal.gender), criminal.name, criminal.country.facts[0]) +
             this.t("CHOOSE_COUNTRY") +
             this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
         var repromptOutput = this.t("REPEAT_MESSAGE") + this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
@@ -1802,6 +1807,7 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
     "AMAZON.HelpIntent": function () {
         this.handler.state = GAME_STATES.HELP;
         this.emitWithState("helpTheUser", false);
+		//this.emitWithState("HELP_RESPONSE", false);
     },
     "AMAZON.StopIntent": function () {
         this.handler.state = GAME_STATES.HELP;
@@ -1818,15 +1824,16 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
 
 // TODO, these copied from example. Still need to be adapted
 var helpStateHandlers = Alexa.CreateStateHandler(GAME_STATES.HELP, {
-    "helpTheUser": function (newGame) {
+   /* "helpTheUser": function (newGame) {
         //var askMessage = newGame ? this.t("ASK_MESSAGE_START") : this.t("REPEAT_MESSAGE") + this.t("STOP_MESSAGE");
         var speechOutput = this.t("HELP_RESPONSE");
+		this.handler.state = GAME_STATES.START;
 
-		this.emitWithState("StartGame", true);
+		//this.emitWithState("StartGame", true);
 
         //var repromptText = this.t("HELP_RESPONSE");
         this.emit(":ask", speechOutput);
-    },
+    }, */
     "AMAZON.StartOverIntent": function () {
         this.handler.state = GAME_STATES.START;
         this.emitWithState("StartGame", false);
@@ -1836,8 +1843,12 @@ var helpStateHandlers = Alexa.CreateStateHandler(GAME_STATES.HELP, {
         this.emitWithState("helpTheUser", newGame);
     },
     "AMAZON.HelpIntent": function() {
-        var newGame = (this.attributes["speechOutput"] && this.attributes["repromptText"]) ? false : true;
-        this.emitWithState("helpTheUser", newGame);
+        //var newGame = (this.attributes["speechOutput"] && this.attributes["repromptText"]) ? false : true;
+        //this.emitWithState("helpTheUser", newGame);
+		this.handler.state = GAME_STATES.START;
+		var speechOutput = this.t("HELP_RESPONSE");
+        var repromptText = this.t("HELP_RESPONSE");
+        this.emitWithState(":ask", speechOutput, repromptOutput);
     },
     "AMAZON.YesIntent": function() {
         if (this.attributes["speechOutput"] && this.attributes["repromptText"]) {
@@ -1860,8 +1871,10 @@ var helpStateHandlers = Alexa.CreateStateHandler(GAME_STATES.HELP, {
         this.emit(":tell", this.t("CANCEL_MESSAGE"));
     },
     "Unhandled": function () {
-        var speechOutput = this.t("HELP_UNHANDLED");
-        this.emit(":ask", speechOutput, speechOutput);
+        //var speechOutput = this.t("HELP_UNHANDLED");
+        //this.emit(":ask", speechOutput, speechOutput);
+		var newGame = (this.attributes["speechOutput"] && this.attributes["repromptText"]) ? false : true;
+        this.emitWithState("helpTheUser", newGame);
     },
     "SessionEndedRequest": function () {
         console.log("Session ended in help state: " + this.event.request.reason);
