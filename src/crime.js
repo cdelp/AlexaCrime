@@ -1708,10 +1708,15 @@ var startStateHandlers = Alexa.CreateStateHandler(GAME_STATES.START, {
         this.handler.state = GAME_STATES.PLAY;
         this.emit(":askWithCard", speechOutput, repromptOutput);
     },
+	"RulesIntent": function () {
+        //this.handler.state = GAME_STATES.HELP;
+        //this.emitWithState("helpTheUser", false);
+		this.emit(":ask", this.t("HELP_RESPONSE"));
+    },
 	"AMAZON.HelpIntent": function () {
-        this.handler.state = GAME_STATES.HELP;
-        this.emitWithState("helpTheUser", false);
-		//this.emitWithState("HELP_RESPONSE", false);
+        //this.handler.state = GAME_STATES.HELP;
+        //this.emitWithState("helpTheUser", false);
+		this.emit(":ask", this.t("HELP_RESPONSE"));
     }
 });
 
@@ -1789,6 +1794,11 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
     "innocentIntent": function () {
 		innocentFunction.call(this);
     },
+	"RulesIntent": function () {
+        //this.handler.state = GAME_STATES.HELP;
+        //this.emitWithState("helpTheUser", false);
+		this.emit(":ask", this.t("HELP_RESPONSE"));
+    },
     "Unhandled": function () {
         var speechOutput = this.t("QUESTION_UNHANDLED");
         this.emit(":ask", speechOutput, speechOutput);
@@ -1805,9 +1815,9 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
         this.emit(":ask", this.attributes["speechOutput"], this.attributes["repromptText"]);
     },
     "AMAZON.HelpIntent": function () {
-        this.handler.state = GAME_STATES.HELP;
-        this.emitWithState("helpTheUser", false);
-		//this.emitWithState("HELP_RESPONSE", false);
+        //this.handler.state = GAME_STATES.HELP;
+        //this.emitWithState("helpTheUser", false);
+		this.emit(":ask", this.t("HELP_RESPONSE"));
     },
     "AMAZON.StopIntent": function () {
         this.handler.state = GAME_STATES.HELP;
@@ -1824,7 +1834,7 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
 
 // TODO, these copied from example. Still need to be adapted
 var helpStateHandlers = Alexa.CreateStateHandler(GAME_STATES.HELP, {
-   /* "helpTheUser": function (newGame) {
+    "helpTheUser": function (newGame) {
         //var askMessage = newGame ? this.t("ASK_MESSAGE_START") : this.t("REPEAT_MESSAGE") + this.t("STOP_MESSAGE");
         var speechOutput = this.t("HELP_RESPONSE");
 		this.handler.state = GAME_STATES.START;
@@ -1833,7 +1843,7 @@ var helpStateHandlers = Alexa.CreateStateHandler(GAME_STATES.HELP, {
 
         //var repromptText = this.t("HELP_RESPONSE");
         this.emit(":ask", speechOutput);
-    }, */
+    }, 
     "AMAZON.StartOverIntent": function () {
         this.handler.state = GAME_STATES.START;
         this.emitWithState("StartGame", false);

@@ -30,6 +30,18 @@ RulesIntent Are there rules to the game
 RulesIntent How do I win
 RulesIntent What's the rules
 RulesIntent What is the end game
+RulesIntent How do I play
+RulesIntent How do I win
+RulesIntent What is the concept of the game
+RulesIntent What am I supposed to do
+RulesIntent What do I do
+RulesIntent What is the point
+RulesIntent How do you win
+RulesIntent What should I do
+RulesIntent Help me.
+RulesIntent I dont get it.
+RulesIntent Please help.
+RulesIntent What is the point of the game
 
 WhoIntent who am I playing as
 WhoIntent who am I
