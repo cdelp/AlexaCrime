@@ -205,7 +205,7 @@ var Morocco = {
 var Syria = {
     countryName: 'Syria',
     intro: 'Welcome to Syria, whose largest lake is man made, created in 1968. New Years is traditionally celebrate on April first in Syria. ',
-    facts: ['Formerly known as Ash-Sham and synonymous with the Levant.',
+    facts: ['In a country Formerly known as Ash-Sham and synonymous with the Levant.',
         'Where the capital is Damascus known as Jasmine City.',
         'Where the national flag has two green stars that represent the previous union with Egypt.',
         'In a country Suffering the worst humanitarian crisis since World War 2 impacting 13 million people.',
@@ -223,7 +223,7 @@ var Syria = {
 var Iraq = {
     countryName: 'Iraq',
     intro: 'Welcome to Iraq, origin of the oldest known writing system, dating from 3200 B.C. ',
-    facts: ['The land of the two rivers.',
+    facts: ['In a place known as the The land of the two rivers.',
 'Where civilization began in Mesopotamia.',
 'In a country Known for its rich oil reserves.',
 'In The country, which name translates to deeply rooted and fertile.',
@@ -262,7 +262,7 @@ var SaudiArabia = {
 var Lebanon = {
     countryName: 'Lebanon',
     intro: 'Welcome to Lebanon, home to 4.5 million Lebanese. Compared to 20-30 million who live outside of Lebanon. ',
-    facts: ['Known as the paris of the middle east due to its renaissance after world war II',
+    facts: ['Headed to a place Known as the paris of the middle east due to its renaissance after world war 2',
 
 'Headed to the besutiful Capital City of Beirut.',
 'In the only Arab country without a desert.',
@@ -286,7 +286,7 @@ var Japan = {
 
 	intro: 'Welcome to Japan, with its 108 active volcanoes, as part of the Pacific Oceans ring of fire. Japan consists of 47 prefectures, each lead by an elected governor. ',
 
-    facts: ['Nihon or Nippon which means the land of the rising sun.',
+    facts: ['Headed to Nihon or Nippon, which means the land of the rising sun.',
         'In a country that Consists of over 6,800 islands.',
         'Where you can find the largest populated metropolitan region in the world.',
         'In a country that is the largest importers of seafood in the world.',
@@ -343,7 +343,7 @@ var Mongolia = {
 var Nepal = {
     countryName: 'Nepal',
     intro: 'Welcome to Nepal, with a calendar 57.7 years ahead of the Gregorian calendar. It is currently 2075 based on the Nepalese calendar. ',
-    facts: ['Home to the birthplace of buddha.',
+    facts: ['Where you can find the birthplace of buddha.',
         'Where you find Mt. Everest the highest mountain in the world.',
         'In a country where The cow is the national animal preventing them from eating any beef products.',
         'In The only country that doesnt have a square or rectangle flag.',
@@ -422,7 +422,7 @@ var Vietnam = {
 
 	intro: 'Welcome to Vietnam, home of the worlds largest cave, and the regions highest mountain, known as the roof of indochina. ',
 
-    facts: ['The country with flag is red with a large yellow star in the middle.',
+    facts: ['Where the country national flag is red with a large yellow star in the middle.',
         'Headed to The capital city of Hanoi.',
         'In a country that looks like an S shape on the map.',
         'Where Gongs are used to call children to school.',
@@ -551,7 +551,7 @@ var Somalia = {
 var Sudan = {
     countryName: 'Sudan',
     intro: 'Welcome to Sudan, the biggest country in Africa, but it receives the least number of international visitors among African countries due to the ongoing conflict in several parts of Sudan.',
-    facts: ['The capital is Khartoum.',
+    facts: ['Headed to The capital city of Khartoum, where the White Nile Meets.',
         'Where The official language is Arabic and english with the country name meaning The land of the Blacks.',
         'Headed to the previous largest country in Africa before being split into north and south in 2011.',
         'Where you can see the red sea to the east.',
@@ -569,7 +569,7 @@ var Sudan = {
 var Nigeria = {
     countryName: 'Nigeria',
     intro: 'Welcome to Nigeria. When you think oil, you think Nigeria. Nigeria remains Africas largest oil producer ',
-    facts: ['Located near the ivory coast.',
+    facts: ['In a country Located near the ivory coast.',
         'Where you can find the infamous prince that can make you rich over email if you use your account to transfer the funds.',
         'Headed to the Giant of Africa due to its large population and economy.',
         'Headed to The capital city of Abuja.',
@@ -696,7 +696,7 @@ var Venezuela = {
 var Colombia = {
     countryName: 'Colombia',
     intro: 'Welcome to Colombia known for its emeralds, the myth of El dorado, and its tropical landscapes nettled in the Andean peaks',
-    facts: ['The only country in South America that has a coastline on both the pacific ocean and the Caribbean Sea',
+    facts: ['Headed to the only country in South America that has a coastline on both the pacific ocean and the Caribbean Sea',
         'In the beautiful capital city of Bogota',
         'Where drug lord Pablo Escobar offered to pay the country’s debt to improve his reputation and escape justice',
         'In the country that is part of the ring of fire making it vulnerable to earthquakes and volcanic eruptions',
@@ -714,7 +714,7 @@ var Colombia = {
 var Peru = {
     countryName: 'Peru',
     intro: 'Welcome to Peru most famous for Machu Picchu and the Incan Trail. Amongst certain people it is famous for its Ayahuasca ceremonies and Shamans in the Amazon',
-    facts: ['Home to Machu Picchu and the Incan Trail.',
+    facts: ['Where you can find the incan citadale, Machu Picchu, and the Incan Trail.',
         'In the coutnry Home to the traditional dish of Cuy or Guinea Pig.',
         'Where the potato originated from here and corn is grown in almost any color you can think of.',
         'Where you can find the oldest university in the Western Hemisphere.',
@@ -768,7 +768,7 @@ var Uruguay = {
 var Paraguay = {
     countryName: 'Paraguay',
     intro: 'Welcome to Paraguay. Paraguay is famous for being the first south american country to gain independance from Spain rule in 1811.',
-    facts: ['One of the few countries in south america that still speak their native language called Guarani with Spanish as second.',
+    facts: ['Headed to One of the few countries in south america that still speak their native language called Guarani with Spanish as second.',
         'In a place often referred to as the heart of south America.',
         'In the coutnry Home to the first railway line in South America.',
         'Known as One of two landlocked countries in South America.',
@@ -786,7 +786,7 @@ var Paraguay = {
 var Bolivia = {
     countryName: 'Bolivia',
     intro: 'Welcome to Bolivia named after independance fighter Simon Bolivar. He helped them gain independence from spain in 1825',
-    facts: ['Known as One of two landlocked South American Countries.',
+    facts: ['In a country Known as One of two landlocked South American Countries.',
         'Where it is named after the Venezuelan military and political leader who led 4 south american countries to independence from Spain.',
         'In La Paz, the highest capital city in the world.',
         'In the coutnry Home to worlds most dangerous road the camino de las yungas.',
