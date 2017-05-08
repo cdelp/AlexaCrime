@@ -64,13 +64,13 @@ function pronounThird( gender )
 }
 
 //People attributes
-var gender = ['male', 'female', 'drag queen', 'transgender'];
-var hairLength = ['long', 'short', 'medium', 'bald', 'curly'];
-var hairColor = ['black', 'brown', 'blond', 'red', 'silver', 'gray', 'dark', 'light'];
-var eyeSize = ['small', 'large'];
-var eyeColor = ['black', 'brown', 'blue', 'green', 'hazel'];
-var body = ['heavy-set', 'thin', 'average'];
-var height = ['petite', 'average', 'tall'];
+var gender = ['male', 'female', 'male', 'female', 'male', 'female', 'transgender'];
+var hairLength = ['long', 'short', 'medium', 'bald', 'curly', 'wavy', 'silky', 'frizzy', 'straight',];
+var hairColor = ['black', 'brown', 'blond', 'red', 'silver', 'gray', 'dark', 'white', 'auburn', 'jet black', 'light brown', 'platinum blond', 'medium brown', 'ash brown', 'dark brown'];
+var eyeSize = ['small', 'large', 'round', 'almond', 'hooded', 'droopy', 'beady', 'downturned', 'upturned', 'monolid'];
+var eyeColor = ['black', 'dark brown', 'blue', 'green', 'hazel', 'amber', 'grey', 'red and violet', 'light blue', 'light brown', 'light green'];
+var body = ['heavy-set', 'thin', 'average', 'slender', 'big', 'pear shaped', 'banana shaped','apple shaped', 'spoon shaped', 'oval shaped', 'hourglass shaped', 'slim', 'athletic', 'cornet shaped',];
+var height = ['petite', 'average', 'tall', 'short', 'gigantic', 'dwarf', 'midget', 'average', 'tall', 'short', 'average', 'tall', 'short'];
 var special = ['missing hand', 'cane', 'eye patch', 'glasses', 'shades', 'beanie'];
 var p_special = ['headphones', 'bathing suit', 'bag', 'satchel'];
 var greetings = ['hey', "what's up'", 'hi'];
@@ -824,10 +824,10 @@ var SouthAmerica = [Brazil, Argentina, Venezuela, Colombia, Peru, Ecuador, Urugu
 var Region = [MiddleEast, Africa, EastAsia, SouthAmerica];
 //criminal and people methods
 
-var crimes = ["arson", "property", "human trafficking", "burglary", "drug-related", "robbery", "embezzlement", "grand-larceny", "forgery", "fraud", "white-collar"];
+var crimes = ["arson", "property", "human trafficking", "burglary", "drug-related", "robbery", "embezzlement", "grand-larceny", "forgery", "fraud", "white-collar", "kidnapping", "conspiracy"];
 
 
-var crimeBackground = ['Man I saw all of it on snapchat. Crazyness at its finest.', 
+var crimeBackground = ['Man, I saw all of it on snapchat. Crazyness at its finest.', 
 'I heard about it on social media, but didnt see it personally.', 
 'Ya dude. They went live on facebook but the recording was taken down shortly after.', 
 'I saw some photos on whatsapp, forwarded from mutual friends.', 
