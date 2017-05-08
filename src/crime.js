@@ -74,6 +74,9 @@ var height = ['petite', 'average', 'tall', 'short', 'gigantic', 'dwarf', 'midget
 var special = ['missing hand', 'cane', 'eye patch', 'glasses', 'shades', 'beanie'];
 var p_special = ['headphones', 'bathing suit', 'bag', 'satchel'];
 var greetings = ['hey', "what's up'", 'hi'];
+var bystanderAction = ['running', 'walking', 'standing', 'heading', 'slowly walking', 'walking fast', 'walking slow', 'briskly walking', 'pacing'];
+var bystanderApproachingDirection = ['behind us', 'to our front', 'to the right', 'to the left', 'towards us'];
+var bystanderAlerted = ['stopped for us', 'said yes', 'said how can I help you', 'said ya', 'asked what they can do', 'said hi', 'said whats up', 'asked whats wrong', 'said hey'];
 
 //temp vars that can be spliced in case game gets restarted
 //temp vars that can be spliced in case game gets restarted
@@ -862,7 +865,7 @@ function name(country, gender)
 //randomly picks 3 attributes that for the response person to describe
 function seenAttributes ()
 {
-    var crimAttArr = ["body", "height", "eye", "hair", "special", "nextCountry"];
+    var crimAttArr = ["body", "height", "eye", "hair", "nextCountry"];
     var crimSeenArr = [];
 
     for( var s = 0; s < 3; s++)
@@ -900,6 +903,9 @@ function PopulateResponsePerson() {
     this.body = body[rand(0, body.length -1)];
     this.p_special = p_special[rand(0, p_special.length -1)];
     this.seenArr = seenAttributes();
+    this.bystanderAction = bystanderAction[(rand(0, bystanderAction.length - 1))];
+    this.bystanderApproachingDirection = bystanderApproachingDirection[(rand(0, bystanderApproachingDirection.length - 1))];
+    this.bystanderAlerted = bystanderAlerted[(rand(0, bystanderAlerted.length - 1))];
 }
 
 //flags and methods to handle number of people talked to and countries visited
@@ -1016,7 +1022,7 @@ function checkCountry()
 						// audio clips must be 48kbps 16000hz mpeg 2
 						var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName)
 							+ "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-							+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.gender, r_person.body, r_person.hair);
+							+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.body, r_person.height, r_person.gender, r_person.bystanderAction, r_person.bystanderApproachingDirection);
 						var repromptOutput = this.t("PLEASE_GREET");
 
 						//var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
@@ -1036,7 +1042,7 @@ function checkCountry()
                     //picked wrong country but only on first try
 
                     var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-                        + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.gender, r_person.body, r_person.hair);
+                        + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.body, r_person.height, r_person.gender, r_person.bystanderAction, r_person.bystanderApproachingDirection);
                     var repromptOutput = this.t("PLEASE_GREET");
                     this.emit(":ask", speechOutput, repromptOutput);
                 }
@@ -1074,7 +1080,7 @@ function checkCountry()
 						// audio clips must be 48kbps 16000hz mpeg 2
 						var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName)
 							+ "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-							+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.gender, r_person.body, r_person.hair);
+							+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.body, r_person.height, r_person.gender, r_person.bystanderAction, r_person.bystanderApproachingDirection);
 						var repromptOutput = this.t("PLEASE_GREET");
 
 						//var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
@@ -1086,8 +1092,7 @@ function checkCountry()
 						
 						speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName)
 							+ "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-							+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name)
-							+ this.t("LAST_STAGE_READY");
+							+ this.t("LAST_ARRIVAL_MESSAGE", countryChoice.intro, criminal.name, criminal.name);
 							repromptOutput = this.t("LAST_STAGE_READY_REPROMPT");
 							this.emit(":ask", speechOutput, repromptOutput);
 						
@@ -1106,7 +1111,7 @@ function checkCountry()
                     //picked wrong country
 
                     var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-                        + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.gender, r_person.body, r_person.hair);
+                        + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.body, r_person.height, r_person.gender, r_person.bystanderAction, r_person.bystanderApproachingDirection);
                     var repromptOutput = this.t("PLEASE_GREET");
                     this.emit(":ask", speechOutput, repromptOutput);
                 }
@@ -1210,13 +1215,12 @@ function lastStage()
         if (crimVar == 2) {
             console.log("A " + criminal.height + " " + criminal.body + " " + pronounThird(criminal.gender) + " with "
                 + criminal.eyeSize + " " + criminal.eyeColor + " eyes, "
-                + criminal.hairLength + " " + criminal.hairColor + " hair, and a"
-                + criminal.special + " walks by. This is the Criminal.");
+                + criminal.hairLength + " " + criminal.hairColor + " hair walks by. This is the Criminal.");
 
             //this.emit(":tell", speechOutput);
 
             speechOutput = this.t("ACCUSE", criminal.height, criminal.body, pronounThird(criminal.gender), criminal.eyeSize,
-                criminal.eyeColor, criminal.hairLength, criminal.hairColor, criminal.special);
+                criminal.eyeColor, criminal.hairLength, criminal.hairColor, bystanderAction[rand(0, bystanderAction.length - 1)], bystanderApproachingDirection[rand(0, bystanderApproachingDirection.length - 1)]);
 			repromptOutput = this.t("ACCUSE_REPROMPT");
             this.emit(":ask", speechOutput, repromptOutput);
 
@@ -1225,8 +1229,8 @@ function lastStage()
         else {
             //randomly picks 1 or 2 attributes to change
             var criminalAtt = [criminal.height, criminal.body, criminal.eyeSize, criminal.eyeColor, criminal.hairLength,
-                criminal.hairColor, criminal.special];
-            var attributeInd = [0, 1, 2, 3, 4, 5, 6];
+                criminal.hairColor];
+            var attributeInd = [0, 1, 2, 3, 4, 5];
             var randNum = rand(1, 2);
             shuffleArray(attributeInd);
 
@@ -1250,10 +1254,6 @@ function lastStage()
                     case 5:
                         criminalAtt[attributeInd[r]] = l_hairColor[rand(0, l_hairColor.length - 1)];
                         break;
-                    case 6:
-                        //might remove case 6 as specials might be too easy
-                        criminalAtt[attributeInd[r]] = l_special[rand(0, l_special.length) - 1];
-                        break;
                     default:
                         console.log("error populating final stage random person");
                         break;
@@ -1261,12 +1261,11 @@ function lastStage()
             }
             console.log("A " + criminalAtt[0] + " " + criminalAtt[1] + " " + pronounThird(criminal.gender) + " with "
                 + criminalAtt[2] + " " + criminalAtt[3] + " eyes, "
-                + criminalAtt[4] + " " + criminalAtt[5] + " hair, and a"
-                + criminalAtt[6] + " walks by. This is not the Criminal.");
+                + criminalAtt[4] + " " + criminalAtt[5] + " hair, walks by. This is not the Criminal.");
 
 						
             speechOutput = this.t("ACCUSE", criminalAtt[0], criminalAtt[1], pronounThird(criminal.gender), criminalAtt[2], criminalAtt[3],
-                criminalAtt[4], criminalAtt[5], criminalAtt[6]);
+                criminalAtt[4], criminalAtt[5], bystanderAction[rand(0, bystanderAction.length - 1)], bystanderApproachingDirection[rand(0, bystanderApproachingDirection.length - 1)]);
 			repromptOutput = this.t("ACCUSE_REPROMPT");
             this.emit(":ask", speechOutput, repromptOutput);
 
@@ -1366,7 +1365,7 @@ function talkedTo()
                     console.log("r_person seen value NOT 0 responses");
                     //TODO questioning responses here, just putting obvious country facts as clues here for testing
                     //0.00032 chance you won't see clues after talking to 5 people lol. Might need to fix that.
-                    speechOutput = this.t("CORRECT_PERSON_RESPONSE", contPronoun(criminal.gender), pronoun(criminal.gender));
+                    speechOutput = this.t("CORRECT_PERSON_RESPONSE", pronoun(r_person.gender), r_person.bystanderAlerted);
 					repromptOutput = this.t("ASK_REPROMT");
                     this.emit(":ask", speechOutput, repromptOutput);
                 }
@@ -1404,7 +1403,7 @@ function doneQuestioning()
         console.log("populating new r_person from doneQuestioning");
         r_person = new PopulateResponsePerson();
         //build response for next person walking by.
-        speechOutput = this.t("DONE_QUESTIONING", pronoun(r_person.gender), r_person.body, r_person.hairColor, r_person.gender);
+        speechOutput = this.t("DONE_QUESTIONING", r_person.body, r_person.height, r_person.gender, r_person.bystanderAction, r_person.bystanderApproachingDirection);
 		repromptOutput = this.t("PLEASE_GREET");
 
         this.emit(":ask", speechOutput, repromptOutput);
@@ -1629,9 +1628,10 @@ var languageString = {
 			"COUNTRY_LIST": "%s, %s, %s, or %s? ",
 			"DEPARTURE_MESSAGE": "%s it is. Talk to you when you land. Get going sleuth! ",
 			"ARRIVAL_MESSAGE": "%s. Time to find info on %s. Get the attention of bystanders so you can ask them for clues on what happened, what the criminal looks like, and where the criminal went. ",
-			"PERSON_APPROACHING": "%s with %s build and %s hair is approaching us. ",
+            "LAST_ARRIVAL_MESSAGE": "%s. %s is near. Pay close attention to the features of people around you, any of them could be %s. ",
+            "PERSON_APPROACHING": "A %s, %s, %s, is %s %s",
 			"PERSON_RESPONSE": "%s kept on walking by. ",
-            "CORRECT_PERSON_RESPONSE": "You got the persons attention, try to get some clues on the criminal. ",
+            "CORRECT_PERSON_RESPONSE": " %s %s, try to get some clues on the criminal. ",
 			"ASK_REPROMT": "Ask questions like, did you hear anything about the criminal, or what does the criminal look like. ",
 			"PLEASE_GREET": "Get bystanders attention by saying something like hello or excuse me. ",
 			"PASSEDBY_PROMPT": "Say Continue to look for others. ", 
@@ -1644,7 +1644,7 @@ var languageString = {
             "WIN": "Great work Sleuth. You caught the criminal!",
             "WRONG_COUNTRY": "This doesn't seem to be the correct Country, try a different one. ",
             "LAST_PERSON": "Looks like we've talked to everyone, it's time to pick the next country. ",
-            "DONE_QUESTIONING": "Alright, let's look for someone else. %s with %s build and %s hair is approaching us. ",
+            "DONE_QUESTIONING": "Alright, let's look for someone else. A %s, %s, %s, is %s %s",
             "COUNTRY_FACTS": "I heard %s is going to %s. ",
             "NOT_LAST_STAGE": "We aren't ready to capture the criminal yet, to finish talking, say I'm done questioning. ",
             "LAST_STAGE": "The Criminal is close, we should try to capture the criminal. ",
@@ -1653,7 +1653,7 @@ var languageString = {
             "NOT_DONE_QUESTIONING": "If you're finished questioning and ready to move on , say I'm done questioning. ",
 			"LAST_STAGE_READY": "Say Ready to be a Sleuth when youre ready to catch the criminal. ",
 			"LAST_STAGE_READY_REPROMPT": "Please say ready to be a sleuth. ",
-            "ACCUSE": "A %s %s %s with %s %s eyes, %s %s hair, and a %s walks by. Is this the criminal? If so, say stop criminal or say innocent to keep looking. ",
+            "ACCUSE": "A %s %s %s with %s %s eyes, %s %s hair is %s %s. Is this the criminal? If so, say stop criminal or say innocent to keep looking. ",
 			"ACCUSE_REPROMPT": "Please say something like stop thief, or gotcha, if this is the criminal. Otherwise say innocent to keep looking. "
         }
     },
