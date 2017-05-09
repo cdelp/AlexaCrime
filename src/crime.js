@@ -1720,18 +1720,18 @@ var newSessionHandlers = {
 
 var startStateHandlers = Alexa.CreateStateHandler(GAME_STATES.START, {
     "StartGame": function (newGame) {
-        // welcomes play and asks if they want to play
+        // welcomes play and asks if they want to play	
         var speechOutput = newGame ? this.t("NEW_GAME_MESSAGE", this.t("GAME_NAME")) + this.t("GAME_START_MESSAGE") : "";
         var repromptOutput = this.t("REPEAT_MESSAGE");
         // Set the current state to play mode. The skill will now use handlers defined in gameStateHandlers
         this.handler.state = GAME_STATES.PLAY;
         this.emit(":askWithCard", speechOutput, repromptOutput);
     },
-	"RulesIntent": function () {
+/*	"RulesIntent": function () {
         //this.handler.state = GAME_STATES.HELP;
         //this.emitWithState("helpTheUser", false);
 		this.emit(":ask", this.t("HELP_RESPONSE"));
-    },
+    }, */
 	"AMAZON.HelpIntent": function () {
         //this.handler.state = GAME_STATES.HELP;
         //this.emitWithState("helpTheUser", false);
@@ -1825,11 +1825,11 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
 		var speechOutput = this.t("PERSONAL_END");
 		this.emit(":tell", speechOutput);
 	},
-	"RulesIntent": function () {
+	/*"RulesIntent": function () {
         //this.handler.state = GAME_STATES.HELP;
         //this.emitWithState("helpTheUser", false);
 		this.emit(":ask", this.t("HELP_RESPONSE"));
-    },
+    }, */
     "Unhandled": function () {
         var speechOutput = this.t("QUESTION_UNHANDLED");
         this.emit(":ask", speechOutput, speechOutput);
