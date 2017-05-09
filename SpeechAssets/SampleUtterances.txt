@@ -121,12 +121,13 @@ GameStart Start it up
 GameStart Crank us up
 GameStart Brief me baby
 GameStart Brief me girl
-GameStart Cantt wait
+GameStart Cant wait
 GameStart lets get it
 GameStart Get it on
 GameStart Its go time
 GameStart Game time
 GameStart Yea buddy
+GameStart Play Again
 
 CountryIntent lets go to {country_item}
 CountryIntent {country_item}

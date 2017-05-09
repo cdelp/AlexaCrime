@@ -1036,8 +1036,8 @@ function checkCountry()
                     //you lose.
                     console.log("you lose");
                     //TODO ask if they want to play again
-                    var speechOutput = this.t("LOSE_GOT_AWAY") + "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>";
-                    this.emit(":tell", speechOutput);
+                    var speechOutput = this.t("LOSE_GOT_AWAY") + "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>" + this.t("PLAY_AGAIN");
+                    this.emit(":ask", speechOutput);
                 }
                 else {
                     //picked wrong country but only on first try
@@ -1116,7 +1116,7 @@ function checkCountry()
                         //you lose.
                         console.log("you lose");
                         //TODO ask if they want to play again
-                        var speechOutput = this.t("LOSE");
+                        var speechOutput = this.t("LOSE_CHOICE") + this.t("PLAY_AGAIN");
                         this.emit(":ask", speechOutput);
                     }
                     else {
@@ -1291,7 +1291,7 @@ function innocentFunction()
 {
 	if(criminalFlag == 2)
 	{
-		this.emit(":tell", this.t("LOSE_GOT_AWAY") + "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>");
+		this.emit(":ask", this.t("LOSE_GOT_AWAY") + "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>" + this.t("PLAY_AGAIN"));
 	}
 	else
 	{
@@ -1303,11 +1303,11 @@ function nabThiefFunction()
 {
 	if(criminalFlag != 2)
 	{
-		this.emit(":tell", this.t("LOSE_WRONG") + "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>");
+		this.emit(":tell", this.t("LOSE_WRONG") + "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>" + this.t("PLAY_AGAIN"));
 	}
 	else
 	{
-		this.emit(":tell", this.t("WIN") + "<audio src='https://s3.amazonaws.com/sleuthhound/Applause.mp3'/>" + "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>");
+		this.emit(":tell", this.t("WIN") + "<audio src='https://s3.amazonaws.com/sleuthhound/Applause.mp3'/>" + "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>" + this.t("PLAY_AGAIN"));
 	}
 }
 
@@ -1628,7 +1628,7 @@ var languageString = {
             "GAME_NAME" : "Sleuth Hound", 
             "HELP_MESSAGE": "Please ask questions like, how do I play, what is the concept of the game, what am I supposed to do? ",
 			"REPEAT_MESSAGE": "Sorry I could not hear you. What did you say?. ",
-			"HELP_RESPONSE": "You, with the guidance of Chief Alexa, track down criminals as they try to elude you. Collect clues from bystanders by asking them if they heard about the crime, where the criminal went, and what the criminal looked like. Say yes if you would like to keep playing the game. ",
+			"HELP_RESPONSE": "You, with the guidance of Chief Alexa, track down criminals as they try to elude you. Collect clues from bystanders by asking them if they heard about the crime, where the criminal went, and what the criminal looked like. Would like to keep playing the game. ",
             "HELP_REPROMPT": "Are you listening to me? ", 
             "STOP_MESSAGE": "Would you like to continue our search? Please say no if you'd like to quit",
             "CANCEL_MESSAGE": "Ok, see you next time Sleuth.", // if needed
@@ -1657,10 +1657,12 @@ var languageString = {
 			"PASSEDBY_REPROMPT": "Please say move on to keep looking for clues. ",
 			"CONTINUE_PROMPT": ". Get more clues, or say bye to talk to someone else. ", // can't figure out how to keep "yes" from triggering wrong intents
             "CONTINUE_REPROMPT": ". Please keep asking questions to find more clues, or say bye to talk to someone else. ",
-			"LOSE_WRONG": "Oh no! this is not the criminal. We have to step up our game.",
+			"LOSE_WRONG": falseCriminal[rand(0, falseCriminal.length - 1)],
 			"CRIME_FACTS": "%s .",
-            "LOSE_GOT_AWAY": "Oh no! we were so close but the criminal has slipped into hiding.",
-            "WIN": "Great work Sleuth. You caught the criminal!",
+            "LOSE_CHOICE": maxWrongLocation[rand(0, maxWrongLocation.length - 1)],
+            "LOSE_GOT_AWAY": missedCriminal[rand(0, missedCriminal.length - 1)],
+            "WIN": winGame[rand(0, winGame.length - 1)],
+            "PLAY_AGAIN": playAgain[rand(0, playAgain.length - 1)],
             "WRONG_COUNTRY": "This doesn't seem to be the correct Country, try a different one. ",
             "WRONG_COUNTRY_ERROR": "Looks like we've already been to this country, try a different one. ",
             "LAST_PERSON": "Looks like we've talked to everyone, it's time to pick the next country. ",
