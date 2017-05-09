@@ -1,3 +1,6 @@
+var APP_ID = 'amzn1.ask.skill.aabba284-213a-4040-9219-3f70163c4ec2';
+var Alexa = require("alexa-sdk"); 
+
 function rand(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -1104,7 +1107,7 @@ function checkCountry()
 
                             speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName)
                                 + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-                                + this.t("LAST_ARRIVAL_MESSAGE", countryChoice.intro, criminal.name, criminal.name);
+                                + this.t("LAST_ARRIVAL_MESSAGE", countryChoice.intro, criminal.name, criminal.name) + this.t("LAST_STAGE_READY");
                             repromptOutput = this.t("LAST_STAGE_READY_REPROMPT");
                             this.emit(":ask", speechOutput, repromptOutput);
 
@@ -1594,9 +1597,6 @@ function generateQuestionResponse(questionType)
     }
 }
 
-
-var Alexa = require("alexa-sdk");
-var APP_ID = "amzn1.ask.skill.aabba284-213a-4040-9219-3f70163c4ec2"; 
 var countryString = undefined;
 
 function Countries(number){
