@@ -4,12 +4,12 @@ AMAZON.HelpIntent What is the concept of the game
 AMAZON.HelpIntent What am I supposed to do
 AMAZON.HelpIntent What do I do
 AMAZON.HelpIntent What is the point
-AMAZON.HelpIntent How do you win?
-AMAZON.HelpIntent What should I do?
+AMAZON.HelpIntent How do you win
+AMAZON.HelpIntent What should I do
 AMAZON.HelpIntent Help me.
 AMAZON.HelpIntent I dont get it.
 AMAZON.HelpIntent Please help.
-AMAZON.HelpIntent What is the point of the game?
+AMAZON.HelpIntent What is the point of the game
 
 AMAZON.StopIntent I don't want to play anymore.
 AMAZON.StopIntent Quit the game.
@@ -25,25 +25,25 @@ AMAZON.StopIntent Leave game.
 AMAZON.StopIntent Leave.
 AMAZON.StopIntent I'm done.
 
-RulesIntent What are the rules?
-RulesIntent Are there rules to the game?
-RulesIntent How do I win?
-RulesIntent What's the rules?
-RulesIntent What is the end game?
+RulesIntent What are the rules
+RulesIntent Are there rules to the game
+RulesIntent How do I win
+RulesIntent What's the rules
+RulesIntent What is the end game
 
-WhoIntent who am I playing as?
-WhoIntent who am I?
-WhoIntent what is my title?
-WhoIntent what character am I?
-WhoIntent who is my character?
+WhoIntent who am I playing as
+WhoIntent who am I
+WhoIntent what is my title
+WhoIntent what character am I
+WhoIntent who is my character
 
-SleuthIntent What is a sleuth-hound?
-SleuthIntent What is a sleuth?
-SleuthIntent Why am I a sleuth?
-SleuthIntent Who is a sleuth?
-SleuthIntent Why am I called a sleuth?
-SleuthIntent Why sleuth-hound?
-SleuthIntent Why sleuth?
+SleuthIntent What is a sleuth-hound
+SleuthIntent What is a sleuth
+SleuthIntent Why am I a sleuth
+SleuthIntent Who is a sleuth
+SleuthIntent Why am I called a sleuth
+SleuthIntent Why sleuth-hound
+SleuthIntent Why sleuth
 
 JokeIntent Tell me a joke.
 JokeIntent Say a joke.
@@ -55,15 +55,15 @@ JokeIntent Are you funny
 JokeIntent Do you have any jokes
 
 SassyIntent I hate this game.
-SassyIntent Why should I play this game?
+SassyIntent Why should I play this game
 SassyIntent This game is terrible.
 SassyIntent Why do people play this game.
 SassyIntent I don't like this game.
 SassyIntent I do not like this game.
 SassyIntent This game sucks.
-SassyIntent What is wrong with this game?
-SassyIntent Why play sleuth-hound?
-SassyIntent Why play this game?
+SassyIntent What is wrong with this game
+SassyIntent Why play sleuth-hound
+SassyIntent Why play this game
 SassyIntent This game is lame.
 SassyIntent This game is wack.
 SassyIntent This game is stupid.
@@ -191,7 +191,7 @@ TarryStopIntent I need your help
 TarryStopIntent I need help
 TarryStopIntent I need you
 TarryStopIntent I need ya
-TarryStopIntent Can you help me?
+TarryStopIntent Can you help me
 TarryStopIntent I have a question
 TarryStopIntent Question him
 TarryStopIntent Say I have a question
@@ -206,12 +206,13 @@ ContinueSearchIntent I'm done questioning
 ContinueSearchIntent that's all
 ContinueSearchIntent I'm done talking
 ContinueSearchIntent Thanks
+ContinueSearchIntent Thank you
 ContinueSearchIntent Thanks for your help
 ContinueSearchIntent Have a nice day
 ContinueSearchIntent Good day
 ContinueSearchIntent I appreciate your help
 ContinueSearchIntent No more questions
-ContinueSearchIntent continue
+ContinueSearchIntent Keep going
 ContinueSearchIntent move on
 ContinueSearchIntent no more questions
 
