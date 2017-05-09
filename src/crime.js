@@ -1036,8 +1036,8 @@ function checkCountry()
                     //you lose.
                     console.log("you lose");
                     //TODO ask if they want to play again
-                    var speechOutput = this.t("LOSE_GOT_AWAY") + "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>";
-                    this.emit(":tell", speechOutput);
+                    var speechOutput = this.t("LOSE_GOT_AWAY") + "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>" + this.t("PLAY_AGAIN");
+                    this.emit(":ask", speechOutput);
                 }
                 else {
                     //picked wrong country but only on first try
@@ -1116,7 +1116,7 @@ function checkCountry()
                         //you lose.
                         console.log("you lose");
                         //TODO ask if they want to play again
-                        var speechOutput = this.t("LOSE");
+                        var speechOutput = this.t("LOSE_CHOICE") + this.t("PLAY_AGAIN");
                         this.emit(":ask", speechOutput);
                     }
                     else {
@@ -1291,7 +1291,7 @@ function innocentFunction()
 {
 	if(criminalFlag == 2)
 	{
-		this.emit(":tell", this.t("LOSE_GOT_AWAY") + "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>");
+		this.emit(":ask", this.t("LOSE_GOT_AWAY") + "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>" + this.t("PLAY_AGAIN"));
 	}
 	else
 	{
@@ -1303,11 +1303,11 @@ function nabThiefFunction()
 {
 	if(criminalFlag != 2)
 	{
-		this.emit(":tell", this.t("LOSE_WRONG") + "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>");
+		this.emit(":tell", this.t("LOSE_WRONG") + "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>" + this.t("PLAY_AGAIN"));
 	}
 	else
 	{
-		this.emit(":tell", this.t("WIN") + "<audio src='https://s3.amazonaws.com/sleuthhound/Applause.mp3'/>" + "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>");
+		this.emit(":tell", this.t("WIN") + "<audio src='https://s3.amazonaws.com/sleuthhound/Applause.mp3'/>" + "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>" + this.t("PLAY_AGAIN"));
 	}
 }
 
@@ -1596,7 +1596,7 @@ function generateQuestionResponse(questionType)
 
 
 var Alexa = require("alexa-sdk");
-var APP_ID = undefined;  // TODO replace with your app ID (OPTIONAL).
+var APP_ID = "amzn1.ask.skill.aabba284-213a-4040-9219-3f70163c4ec2"; 
 var countryString = undefined;
 
 function Countries(number){
@@ -1613,6 +1613,11 @@ function Countries(number){
  var speechOutput = speech.ssml(true);
  this.emit(':ask', speechOutput , speechOutput);
  */
+var winGame =['Great job Sleuth! The criminal now must face justice for what they did. The community is grateful for what you did and the world is that much more peaceful.', 'Woo hoo Sleuth!! You never cease to amaze me. We are unbeatable as a team.', 'You killed it! Great job catching the criminal before going into hiding.', 'Congrats on capturing the criminal! Without your hard work and dedication, the criminal wouldve slipped us.','Aww man, you got the criminal! Great stuff.', '']
+var missedCriminal =['Oh no the criminal mustve slipped us. We need to step our game up Sleuth!', 'The criminal got away. We were so close!', 'Better luck next time Sleuth. The criminal has dropped off the radar for now.', 'Shoot, Weeve seen better days than today.', 'Dang-it Sleuth! We made it so far, but the trail has gone cold. Better luck next time.', 'Ooh maan! We lost the criminal. We were not vigilant enough.', 'We cant win them all Sleuth. Some criminals slip away but we will get them next time!', 'What a luck we have! The criminal mustve slipped into hiding when we arrived. The trail is cold']
+var falseCriminal =['So close, but that is not the criminal. We cant go around falsely accusing people. We spooked the criminal and they slipped us.', 'You nabbed the wrong bad guy! We didnt pay close enough attention to our clues. Make sure to keep better notes next time so we can catch the right person.', 'Step your game up Sleuth. We cant make it this far and lose! We arrested the wrong person. The criminal is long gone by now.', 'And there goes the criminals trail. We were so close but we accused the wrong person, alerting the criminal that we were on to them.', 'Good job! Not! We screwed up big Sleuth. The criminal is long gone and the trail is cold.']
+var maxWrongLocation =['We need to pay attention to clues from the crowd. We lost the criminals trail Sleuth.', 'Oh shoot. The criminal slipped us.', 'We went to the wrong location too many times. The criminal is long gone.', 'Wow, we need to step our game up Sleuth. Please brush up on your sleuth skills before accepting the next mission', 'Use the clues from bystanders to pick the right country that the criminal went. Sorry, but the criminal has outsmarted us.', 'Come on bra! We lost the trail on our criminal. Keep track of our clues and follow the right trail.', 'Looks like we followed the wrong trail this time Sleuth. Maybe you should take some time off if necessary. The trail is lost.']
+var playAgain=['Are you ready for your next mission?', 'I know we just finished a tough case, but, do you want to start the next mission?', 'Want to catch the next criminal in our file?', 'Although we just finished a mission, there are more bad guys out there. Are you ready to accept the next mission?', 'Lets start the next mission! if you arent scared. Say yes to accept the challenge bra', 'I understand if you are tired, but where are you now that we need ya justin beeber. Ready to show out on the next mission?', 'Ready for more action?']
 
 var seenMix =['I heard %s was last seen %s', 'Word is, %s was seen %s', 'Not sure, but someone said %s is %s', 'All I know is %s is %s', 'Gosh, what did they say, oh ya, %s is %s', 'People are talking, %s is %s', '%s is %s, but you didnt hear that from me', 'Beats me, but I did hear %s was seen %s', 'Im following the updates on twitter, the last post says %s is %s', '%s was last seen %s', 'Checkout there new account on twitter, %s is %s'];
 var languageString = {
@@ -1620,11 +1625,10 @@ var languageString = {
         "translation": {
             //"QUESTIONS" : questions["QUESTIONS"],
 
-            "GAME_NAME" : "Seuth Hound", 
+            "GAME_NAME" : "Sleuth Hound", 
             "HELP_MESSAGE": "Please ask questions like, how do I play, what is the concept of the game, what am I supposed to do? ",
 			"REPEAT_MESSAGE": "Sorry I could not hear you. What did you say?. ",
-			"HELP_RESPONSE": "You, with the guidance of Chief Alexa, track down criminals as they try to elude you. Collect clues from bystanders by asking them if they heard about the crime, where the criminal went, and what the criminal looked like. Say yes if you would like to keep playing the game. ",
-			"PAUSE_HELP": "You, with the guidance of Chief Alexa, track down criminals as they try to elude you. Collect clues from bystanders by asking them if they heard about the crime, where the criminal went, and what the criminal looked like. Say continue to keep playing. ",
+			"HELP_RESPONSE": "You, with the guidance of Chief Alexa, track down criminals as they try to elude you. Collect clues from bystanders by asking them if they heard about the crime, where the criminal went, and what the criminal looked like. Would like to keep playing the game. ",
             "HELP_REPROMPT": "Are you listening to me? ", 
             "STOP_MESSAGE": "Would you like to continue our search? Please say no if you'd like to quit",
             "CANCEL_MESSAGE": "Ok, see you next time Sleuth.", // if needed
@@ -1656,10 +1660,12 @@ var languageString = {
 			"PASSEDBY_REPROMPT": "Please say keep going to keep looking for clues. ",
 			"CONTINUE_PROMPT": ". Get more clues, or say bye to talk to someone else. ", // can't figure out how to keep "yes" from triggering wrong intents
             "CONTINUE_REPROMPT": ". Please keep asking questions to find more clues, or say bye to talk to someone else. ",
-			"LOSE_WRONG": "Oh no! this is not the criminal. We have to step up our game.",
+			"LOSE_WRONG": falseCriminal[rand(0, falseCriminal.length - 1)],
 			"CRIME_FACTS": "%s .",
-            "LOSE_GOT_AWAY": "Oh no! we were so close but the criminal has slipped into hiding.",
-            "WIN": "Great work Sleuth. You caught the criminal!",
+            "LOSE_CHOICE": maxWrongLocation[rand(0, maxWrongLocation.length - 1)],
+            "LOSE_GOT_AWAY": missedCriminal[rand(0, missedCriminal.length - 1)],
+            "WIN": winGame[rand(0, winGame.length - 1)],
+            "PLAY_AGAIN": playAgain[rand(0, playAgain.length - 1)],
             "WRONG_COUNTRY": "This doesn't seem to be the correct Country, try a different one. ",
             "WRONG_COUNTRY_ERROR": "Looks like we've already been to this country, try a different one. ",
             "LAST_PERSON": "Looks like we've talked to everyone, it's time to pick the next country. ",
@@ -1713,8 +1719,9 @@ var newSessionHandlers = {
         this.emitWithState("helpTheUser", true);
     },
     "Unhandled": function () {
-        var speechOutput = this.t("START_UNHANDLED");
-        this.emit(":ask", speechOutput, speechOutput);
+        this.handler.state = GAME_STATES.START;
+		var speechOutput = this.t("START_UNHANDLED");
+        this.emitWithState(":ask", speechOutput, speechOutput, true);
     }
 };
 
