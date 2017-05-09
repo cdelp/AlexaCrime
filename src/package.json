@@ -1,0 +1,31 @@
+{
+  "name": "Sleuth Hound",
+  "version": "1.0.0",
+  "description": "Development version of Alexa adventure game.",
+  "main": "crime.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "response": {
+    "outputSpeech": {"type":"PlainText","text":"Play Sleuth Hound!"},
+    "card": {
+      "type": "Standard",
+      "title": "Sleuth Hound",
+      "text": "Be on your toes to catch the criminal!",
+      "image": {
+        "smallImageUrl": "https://drive.google.com/file/d/0B2J2a3Q2wjwIRXdOTWF2ckpLOEU/view",
+        "largeImageUrl": "https://drive.google.com/file/d/0B2J2a3Q2wjwIMS1nNm40WlpGdFE/view"
+      }
+    }
+  },
+  "keywords": [
+    "alexa",
+    "skill",
+    "game"
+  ],
+  "author": "AneesAlanChad",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "alexa-sdk": "^1.0.7"
+  }
+}
