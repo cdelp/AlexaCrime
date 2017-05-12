@@ -1743,6 +1743,11 @@ var startStateHandlers = Alexa.CreateStateHandler(GAME_STATES.START, {
         //this.handler.state = GAME_STATES.HELP;
         //this.emitWithState("helpTheUser", false);
 		this.emit(":ask", this.t("HELP_RESPONSE"), this.t("START_UNHANDLED"));
+    },
+	"AMAZON.StopIntent": function () {
+        this.handler.state = GAME_STATES.HELP;
+        var speechOutput = this.t("STOP_MESSAGE");
+        this.emit(":ask", speechOutput, speechOutput);
     }
 });
 

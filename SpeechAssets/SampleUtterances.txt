@@ -25,35 +25,6 @@ AMAZON.StopIntent Leave game.
 AMAZON.StopIntent Leave.
 AMAZON.StopIntent I'm done.
 
-RulesIntent What are the rules
-RulesIntent Are there rules to the game
-RulesIntent How do I win
-RulesIntent What's the rules
-RulesIntent What is the end game
-
-WhoIntent who am I playing as
-WhoIntent who am I
-WhoIntent what is my title
-WhoIntent what character am I
-WhoIntent who is my character
-
-SleuthIntent What is a sleuth-hound
-SleuthIntent What is a sleuth
-SleuthIntent Why am I a sleuth
-SleuthIntent Who is a sleuth
-SleuthIntent Why am I called a sleuth
-SleuthIntent Why sleuth-hound
-SleuthIntent Why sleuth
-
-JokeIntent Tell me a joke.
-JokeIntent Say a joke.
-JokeIntent Give me a joke.
-JokeIntent Lighten the mood with a joke.
-JokeIntent Make me laugh.
-JokeIntent Make us laugh.
-JokeIntent Are you funny
-JokeIntent Do you have any jokes
-
 SassyIntent I hate this game.
 SassyIntent Why should I play this game
 SassyIntent This game is terrible.
@@ -128,6 +99,8 @@ GameStart Its go time
 GameStart Game time
 GameStart Yea buddy
 GameStart Play Again
+GameStart Ready
+GameStart Im ready
 
 CountryIntent lets go to {country_item}
 CountryIntent {country_item}
@@ -244,6 +217,7 @@ CrimeBackgroundQuestionIntent Do you know more details
 CriminalLooksQuestionIntent Do you know what {criminal_name} looks like
 CriminalLooksQuestionIntent Do you know what he looks like
 CriminalLooksQuestionIntent Do you know what she looks like
+CriminalLooksQuestionIntent Do you know what the criminal looks like
 CriminalLooksQuestionIntent Do you know what it looks like
 CriminalLooksQuestionIntent Did you get a glimpse on what the criminal looks like
 CriminalLooksQuestionIntent Did you see what the criminal looks like
@@ -343,8 +317,6 @@ innocentIntent not right
 innocentIntent no match
 
 LastStageIntent ready to be a Sleuth
-LastStageIntent ready
-LastStageIntent Im ready
 LastStageIntent locked and loaded
 LastStageIntent i was born for this
 LastStageIntent Sleuth is my middle name
