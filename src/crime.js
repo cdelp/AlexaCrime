@@ -1739,10 +1739,21 @@ var startStateHandlers = Alexa.CreateStateHandler(GAME_STATES.START, {
         //this.emitWithState("helpTheUser", false);
 		this.emit(":ask", this.t("HELP_RESPONSE"));
     }, */
+	"Unhandled": function () {
+        var speechOutput = this.t("QUESTION_UNHANDLED");
+        this.emit(":ask", speechOutput, speechOutput);
+    },
 	"AMAZON.HelpIntent": function () {
         //this.handler.state = GAME_STATES.HELP;
         //this.emitWithState("helpTheUser", false);
 		this.emit(":ask", this.t("HELP_RESPONSE"), this.t("START_UNHANDLED"));
+    },
+	"AMAZON.NoIntent": function() {
+        var speechOutput = this.t("NO_MESSAGE");
+        this.emit(":tell", speechOutput);
+    },
+    "AMAZON.RepeatIntent": function () {
+        this.emit(":ask", this.attributes["speechOutput"], this.attributes["repromptText"]);
     },
 	"AMAZON.StopIntent": function () {
         this.handler.state = GAME_STATES.HELP;
