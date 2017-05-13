@@ -1512,11 +1512,20 @@ function generateQuestionResponse(questionType)
             }
         }
 
-        //These emits confirmed to work when .call is used, and "this" is explicitly passed
-        var crimeF = crimeBackground[rand(0, crimeBackground.length -1)];
-        speechOutput = this.t("CRIME_FACTS", crimeF) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
-		repromptOutput = this.t("CONTINUE_REPROMPT");
-        this.emit(":ask", speechOutput, repromptOutput);
+        if(stage == 0) {
+            //These emits confirmed to work when .call is used, and "this" is explicitly passed
+            var crimeF = crimeBackground[rand(0, crimeBackground.length - 1)];
+            speechOutput = this.t("CRIME_FACTS", crimeF) + this.t("CONTINUE_PROMPT_STAGE0", pronoun(criminal.gender)); // need prompt for user input to trigger next intent
+            repromptOutput = this.t("CONTINUE_REPROMPT");
+            this.emit(":ask", speechOutput, repromptOutput);
+        }
+        else
+        {
+            var crimeF = crimeBackground[rand(0, crimeBackground.length - 1)];
+            speechOutput = this.t("CRIME_FACTS", crimeF) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
+            repromptOutput = this.t("CONTINUE_REPROMPT");
+            this.emit(":ask", speechOutput, repromptOutput);
+        }
     }
     else if(questionType == 2)
     {
@@ -1582,19 +1591,55 @@ function generateQuestionResponse(questionType)
             }
         }
 
-        speechOutput = this.t(responseString) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
-		repromptOutput = this.t("CONTINUE_REPROMPT");
-        this.emit(":ask", speechOutput, repromptOutput);
+        if(stage == 0)
+        {
+            speechOutput = this.t(responseString) + this.t("CONTINUE_PROMPT_STAGE0", pronoun(criminal.gender)); // need prompt for user input to trigger next intent
+            repromptOutput = this.t("CONTINUE_REPROMPT");
+            this.emit(":ask", speechOutput, repromptOutput);
+        }
+        else {
+            speechOutput = this.t(responseString) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
+            repromptOutput = this.t("CONTINUE_REPROMPT");
+            this.emit(":ask", speechOutput, repromptOutput);
+        }
     }
     else if(questionType == 3)
     {
         //TODO can change this to >= 0 if you want to always have person give clues on next country.
-        if(r_person.seenValue > 0)
+        if(r_person.seenValue >= 0)
         {
-            shuffleArray(seenMix);
-            speechOutput = this.t("COUNTRY_FACTS", pronoun(criminal.gender), r_person.randCountryFact) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
-            repromptOutput = this.t("CONTINUE_REPROMPT");
-			this.emit(":ask", speechOutput, repromptOutput);
+            if(stage == 0)
+            {
+                shuffleArray(seenMix);
+                speechOutput = this.t("COUNTRY_FACTS", pronoun(criminal.gender), r_person.randCountryFact) + this.t("CONTINUE_PROMPT_STAGE0", pronoun(criminal.gender)); // need prompt for user input to trigger next intent
+                repromptOutput = this.t("CONTINUE_REPROMPT");
+                this.emit(":ask", speechOutput, repromptOutput);
+            }
+            else
+            {
+                shuffleArray(seenMix);
+                speechOutput = this.t("COUNTRY_FACTS", pronoun(criminal.gender), r_person.randCountryFact) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
+                repromptOutput = this.t("CONTINUE_REPROMPT");
+                this.emit(":ask", speechOutput, repromptOutput);
+            }
+
+        }
+        else
+        {
+            if(stage == 0)
+            {
+                shuffleArray(notSeen);
+                speechOutput = this.t("NOT_SEEN") + this.t("CONTINUE_PROMPT_STAGE0", pronoun(criminal.gender)); // need prompt for user input to trigger next intent
+                repromptOutput = this.t("CONTINUE_REPROMPT");
+                this.emit(":ask", speechOutput, repromptOutput);
+            }
+            else
+            {
+                shuffleArray(notSeen);
+                speechOutput = this.t("NOT_SEEN" + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
+                repromptOutput = this.t("CONTINUE_REPROMPT");
+                this.emit(":ask", speechOutput, repromptOutput);
+            }
         }
     }
     else
@@ -1619,12 +1664,13 @@ function Countries(number){
  var speechOutput = speech.ssml(true);
  this.emit(':ask', speechOutput , speechOutput);
  */
+
 var winGame =['Great job Sleuth! The criminal now must face justice for what they did. The community is grateful for what you did and the world is that much more peaceful.', 'Woo hoo Sleuth!! You never cease to amaze me. We are unbeatable as a team.', 'You killed it! Great job catching the criminal before going into hiding.', 'Congrats on capturing the criminal! Without your hard work and dedication, the criminal wouldve slipped us.','Aww man, you got the criminal! Great stuff.', '']
 var missedCriminal =['Oh no the criminal mustve slipped us. We need to step our game up Sleuth!', 'The criminal got away. We were so close!', 'Better luck next time Sleuth. The criminal has dropped off the radar for now.', 'Shoot, Weeve seen better days than today.', 'Dang-it Sleuth! We made it so far, but the trail has gone cold. Better luck next time.', 'Ooh maan! We lost the criminal. We were not vigilant enough.', 'We cant win them all Sleuth. Some criminals slip away but we will get them next time!', 'What a luck we have! The criminal mustve slipped into hiding when we arrived. The trail is cold']
 var falseCriminal =['So close, but that is not the criminal. We cant go around falsely accusing people. We spooked the criminal and they slipped us.', 'You nabbed the wrong bad guy! We didnt pay close enough attention to our clues. Make sure to keep better notes next time so we can catch the right person.', 'Step your game up Sleuth. We cant make it this far and lose! We arrested the wrong person. The criminal is long gone by now.', 'And there goes the criminals trail. We were so close but we accused the wrong person, alerting the criminal that we were on to them.', 'Good job! Not! We screwed up big Sleuth. The criminal is long gone and the trail is cold.']
 var maxWrongLocation =['We need to pay attention to clues from the crowd. We lost the criminals trail Sleuth.', 'Oh shoot. The criminal slipped us.', 'We went to the wrong location too many times. The criminal is long gone.', 'Wow, we need to step our game up Sleuth. Please brush up on your sleuth skills before accepting the next mission', 'Use the clues from bystanders to pick the right country that the criminal went. Sorry, but the criminal has outsmarted us.', 'Come on bra! We lost the trail on our criminal. Keep track of our clues and follow the right trail.', 'Looks like we followed the wrong trail this time Sleuth. Maybe you should take some time off if necessary. The trail is lost.']
 var playAgain=['Are you ready for your next mission?', 'I know we just finished a tough case, but, do you want to start the next mission?', 'Want to catch the next criminal in our file?', 'Although we just finished a mission, there are more bad guys out there. Are you ready to accept the next mission?', 'Lets start the next mission! if you arent scared. Say yes to accept the challenge bra', 'I understand if you are tired, but where are you now that we need ya justin beeber. Ready to show out on the next mission?', 'Ready for more action?']
-
+var notSeen = ['Sorry I have no idea where they went', 'not a clue, sorry', 'Wish I could tell you but I dont know'];
 var seenMix =['I heard %s was last seen %s', 'Word is, %s was seen %s', 'Not sure, but someone said %s is %s', 'All I know is %s is %s', 'Gosh, what did they say, oh ya, %s is %s', 'People are talking, %s is %s', '%s is %s, but you didnt hear that from me', 'Beats me, but I did hear %s was seen %s', 'Im following the updates on twitter, the last post says %s is %s', '%s was last seen %s', 'Checkout there new account on twitter, %s is %s'];
 var languageString = {
     "en": {
@@ -1664,8 +1710,9 @@ var languageString = {
 			"PLEASE_GREET": "Get bystanders attention by saying something like hello or excuse me. ",
 			"PASSEDBY_PROMPT": "Say keep going to look for others. ", 
 			"PASSEDBY_REPROMPT": "Please say keep going to keep looking for clues. ",
-			"CONTINUE_PROMPT": ". Get more clues, or say bye to talk to someone else. ", // can't figure out how to keep "yes" from triggering wrong intents
-            "CONTINUE_REPROMPT": ". Please keep asking questions to find more clues, or say bye to talk to someone else. ",
+			"CONTINUE_PROMPT": ". Get more clues or say bye to talk to someone else. ", // can't figure out how to keep "yes" from triggering wrong intents
+            "CONTINUE_PROMPT_STAGE0": ". Get more clues by asking if they heard about the crime, what the criminal looked like or even where %s is going. To talk to someone else, say bye. ",
+            "CONTINUE_REPROMPT": ". Please keep asking questions about the criminals looks and where abouts. To find more clues, or say bye to talk to someone else. ",
 			"LOSE_WRONG": falseCriminal[rand(0, falseCriminal.length - 1)],
 			"CRIME_FACTS": "%s .",
             "LOSE_CHOICE": maxWrongLocation[rand(0, maxWrongLocation.length - 1)],
@@ -1675,8 +1722,9 @@ var languageString = {
             "WRONG_COUNTRY": "This doesn't seem to be the correct Country, try a different one. ",
             "WRONG_COUNTRY_ERROR": "Looks like we've already been to this country, try a different one. ",
             "LAST_PERSON": "Looks like we've talked to everyone, it's time to pick the next country. ",
-            "DONE_QUESTIONING": "Alright, let's look for someone else. A %s, %s, %s, is %s %s",
+            "DONE_QUESTIONING": "Alright, let's look for someone else. A %s, %s, %s, is %s %s. Try to get their attention by greeting them.",
             "COUNTRY_FACTS": seenMix[(rand(0, seenMix.length - 1))],
+            "NOT_SEEN": notSeen[rand(0, notSeen.length - 1)],
             "NOT_LAST_STAGE": "We aren't ready to capture the criminal yet, to finish talking, say I'm done questioning. ",
             "LAST_STAGE": "The Criminal is close, we should try to capture the criminal. ",
             "NOT_COUNTRY_PICK": "We aren't done talking to people yet. To finish talking, say I'm done questioning. ",

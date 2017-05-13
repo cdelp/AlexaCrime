@@ -293,6 +293,7 @@ CriminalLocationQuestionIntent You know where he went
 CriminalLocationQuestionIntent You know where she went
 CriminalLocationQuestionIntent You know where {criminal_name} went
 CriminalLocationQuestionIntent You know where the criminal went
+CriminalLocationQuestionIntent Get more clues
 
 NabThiefIntent Gotcha {criminal_name}
 NabThiefIntent Gotcha
