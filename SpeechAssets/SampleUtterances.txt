@@ -248,6 +248,9 @@ CriminalLocationQuestionIntent Where did the criminal go
 CriminalLocationQuestionIntent Do you know where {criminal_name} was headed
 CriminalLocationQuestionIntent Do you know where {criminal_name} went next
 CriminalLocationQuestionIntent Do you know where {criminal_name} went
+CriminalLocationQuestionIntent Do you know where the criminal was headed
+CriminalLocationQuestionIntent Do you know where the criminal went next
+CriminalLocationQuestionIntent Do you know where the criminal went
 CriminalLocationQuestionIntent Do you know where he was headed
 CriminalLocationQuestionIntent Do you know where he went next
 CriminalLocationQuestionIntent Do you know where he went
