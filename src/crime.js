@@ -1512,7 +1512,7 @@ function generateQuestionResponse(questionType)
             }
         }
 
-        if(stage == 0) {
+        if(stage <= 1) {
             //These emits confirmed to work when .call is used, and "this" is explicitly passed
             var crimeF = crimeBackground[rand(0, crimeBackground.length - 1)];
             speechOutput = this.t("CRIME_FACTS", crimeF) + this.t("CONTINUE_PROMPT_STAGE0", pronoun(criminal.gender)); // need prompt for user input to trigger next intent
@@ -1591,7 +1591,7 @@ function generateQuestionResponse(questionType)
             }
         }
 
-        if(stage == 0)
+        if(stage <= 1)
         {
             speechOutput = this.t(responseString) + this.t("CONTINUE_PROMPT_STAGE0", pronoun(criminal.gender)); // need prompt for user input to trigger next intent
             repromptOutput = this.t("CONTINUE_REPROMPT");
@@ -1605,10 +1605,10 @@ function generateQuestionResponse(questionType)
     }
     else if(questionType == 3)
     {
-        //TODO can change this to >= 0 if you want to always have person give clues on next country.
-        if(r_person.seenValue >= 0)
+        //TODO can change this to >= 1 if you want to always have person give clues on next country.
+        if(r_person.seenValue >= 1)
         {
-            if(stage == 0)
+            if(stage <= 1)
             {
                 shuffleArray(seenMix);
                 speechOutput = this.t("COUNTRY_FACTS", pronoun(criminal.gender), r_person.randCountryFact) + this.t("CONTINUE_PROMPT_STAGE0", pronoun(criminal.gender)); // need prompt for user input to trigger next intent
@@ -1626,7 +1626,7 @@ function generateQuestionResponse(questionType)
         }
         else
         {
-            if(stage == 0)
+            if(stage <= 1)
             {
                 shuffleArray(notSeen);
                 speechOutput = this.t("NOT_SEEN") + this.t("CONTINUE_PROMPT_STAGE0", pronoun(criminal.gender)); // need prompt for user input to trigger next intent
