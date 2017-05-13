@@ -910,6 +910,7 @@ function PopulateResponsePerson() {
     this.bystanderAction = bystanderAction[(rand(0, bystanderAction.length - 1))];
     this.bystanderApproachingDirection = bystanderApproachingDirection[(rand(0, bystanderApproachingDirection.length - 1))];
     this.bystanderAlerted = bystanderAlerted[(rand(0, bystanderAlerted.length - 1))];
+    this.randCountryFact = criminal.nextCountry.facts[rand(0, criminal.nextCountry.facts.length -1)];
 }
 
 //flags and methods to handle number of people talked to and countries visited
@@ -1039,7 +1040,8 @@ function checkCountry()
                     //you lose.
                     console.log("you lose");
                     //TODO ask if they want to play again
-                    var speechOutput = this.t("LOSE_GOT_AWAY") + "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>" + this.t("PLAY_AGAIN");
+                    shuffleArray(missedCriminal);
+                    var speechOutput = this.t("LOSE_GOT_AWAY") +  this.t("PLAY_AGAIN");
                     this.emit(":ask", speechOutput);
                 }
                 else {
@@ -1119,6 +1121,7 @@ function checkCountry()
                         //you lose.
                         console.log("you lose");
                         //TODO ask if they want to play again
+                        shuffleArray(maxWrongLocation);
                         var speechOutput = this.t("LOSE_CHOICE") + this.t("PLAY_AGAIN");
                         this.emit(":ask", speechOutput);
                     }
@@ -1294,7 +1297,8 @@ function innocentFunction()
 {
 	if(criminalFlag == 2)
 	{
-		this.emit(":ask", this.t("LOSE_GOT_AWAY") + "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>" + this.t("PLAY_AGAIN"));
+	    shuffleArray(missedCriminal);
+		this.emit(":ask", this.t("LOSE_GOT_AWAY") + this.t("PLAY_AGAIN"));
 	}
 	else
 	{
@@ -1306,11 +1310,13 @@ function nabThiefFunction()
 {
 	if(criminalFlag != 2)
 	{
-		this.emit(":tell", this.t("LOSE_WRONG") + "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>" + this.t("PLAY_AGAIN"));
+	    shuffleArray(falseCriminal);
+		this.emit(":ask", this.t("LOSE_WRONG") +  this.t("PLAY_AGAIN"));
 	}
 	else
 	{
-		this.emit(":tell", this.t("WIN") + "<audio src='https://s3.amazonaws.com/sleuthhound/Applause.mp3'/>" + "<audio src='https://s3.amazonaws.com/sleuthhound/CoolBreezeIntro.mp3'/>" + this.t("PLAY_AGAIN"));
+	    shuffleArray(winGame);
+		this.emit(":ask", this.t("WIN") + "<audio src='https://s3.amazonaws.com/sleuthhound/Applause.mp3'/>" + this.t("PLAY_AGAIN"));
 	}
 }
 
@@ -1585,8 +1591,8 @@ function generateQuestionResponse(questionType)
         //TODO can change this to >= 0 if you want to always have person give clues on next country.
         if(r_person.seenValue > 0)
         {
-
-            speechOutput = this.t("COUNTRY_FACTS", pronoun(criminal.gender), criminal.nextCountry.facts[rand(0, criminal.nextCountry.facts.length -1)] ) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
+            shuffleArray(seenMix);
+            speechOutput = this.t("COUNTRY_FACTS", pronoun(criminal.gender), r_person.randCountryFact) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
             repromptOutput = this.t("CONTINUE_REPROMPT");
 			this.emit(":ask", speechOutput, repromptOutput);
         }
@@ -1771,11 +1777,11 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
         questionedCount = 0;
 
         criminal = new PopulateCriminal();
+        assignNextCountry();
         r_person = new PopulateResponsePerson();
         //criminal name already populated with above code.
         //criminal.name = name(criminal.country, criminal.gender);
         //assigns the country the criminal will be headed to next so we can give clues regarding that.
-        assignNextCountry();
         //reassigns array since this is spliced in last stage.
         criminalArr = [0, 1, 2];
 
