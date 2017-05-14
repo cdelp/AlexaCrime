@@ -1005,7 +1005,7 @@ function checkCountry()
         else if (stage >= 3)
         {
             //in last stage
-            speechOutput = this.t("LAST_STAGE");
+            speechOutput = this.t("LAST_STAGE") + this.t("ACCUSE_REPROMPT");
             repromptOutput = this.t("ACCUSE_REPROMPT");
             this.emit(":ask", speechOutput, repromptOutput);
         }
@@ -1469,8 +1469,10 @@ function talkedTo()
     }
     else if (stage >= 3)
     {
-        //shouldn't ever happen, maybe print error
-        console.log("Some crasy ish went down, talkedTo got triggered in stage 3+");
+        //in last stage
+        speechOutput = this.t("LAST_STAGE") + this.t("ACCUSE_REPROPT");
+        repromptOutput = this.t("ACCUSE_REPROMPT");
+        this.emit(":ask", speechOutput, repromptOutput);
     }
     else
     {
@@ -1605,212 +1607,239 @@ function doneQuestioning()
 //3 = location
 function generateQuestionResponse(questionType)
 {
-    questionedCount++;
-    var responseString = pronoun(criminal.gender) + " ";
     var speechOutput;
-	var repromptOutput;
-    if(questionedCount > 3)
+    var repromptOutput;
+    if(countryPickFlag == 1 && stage == 0)
     {
-        doneQuestioning.call(this);
+        //hasn't started game yet
+        speechOutput = this.t("GAME_START_MESSGE");
+        repromptOutput = this.t("GAME_START_REPROMPT");
+        this.emit(":ask", speechOutput, repromptOutput);
+
     }
-    else if(questionType == 1)
+    else if (countryPickFlag == 1 && stage > 0)
     {
-
-        if(r_person.seenArr.indexOf("height") != -1)
-        {
-
-            if (responseString.length < 5)
-            {
-                responseString += "has a " + criminal.height + " figure ";
-            }
-            else
-            {
-                responseString += "a " + criminal.height + " figure ";
-            }
-        }
-        if(r_person.seenArr.indexOf("body") != -1)
-        {
-
-            if (responseString.length < 5)
-            {
-                responseString += "has a " + criminal.body + " build ";
-            }
-            else
-            {
-                responseString += "a " + criminal.body + " build ";
-            }
-
-        }
-        if(r_person.seenArr.indexOf("eye") != -1)
-        {
-
-            if (responseString.length < 5)
-            {
-                responseString += "has " + criminal.eyeColor +", " +criminal.eyeSize+ " eyes ";
-            }
-            else
-            {
-                responseString += "and, " + criminal.eyeColor +", " +criminal.eyeSize+ " eyes ";
-            }
-        }
-        if(r_person.seenArr.indexOf("hair") != -1)
-        {
-
-            if (responseString.length < 5)
-            {
-                responseString += "has " + criminal.hairLength +", " +criminal.hairColor+ " hair ";
-            }
-            else
-            {
-                responseString += "and, " + criminal.hairLength +", " +criminal.hairColor+ " hair";
-            }
-        }
-        if(r_person.seenArr.indexOf("special") != -1)
-        {
-
-            if (responseString.length < 5)
-            {
-                responseString += "has " + criminal.special +" ";
-            }
-            else
-            {
-                responseString += "and, " + criminal.special +" ";
-            }
-        }
-
-        if(stage <= 1) {
-            //These emits confirmed to work when .call is used, and "this" is explicitly passed
-            var crimeF = crimeBackground[rand(0, crimeBackground.length - 1)];
-            speechOutput = this.t("CRIME_FACTS", crimeF) + this.t("CONTINUE_PROMPT_STAGE0", pronoun(criminal.gender)); // need prompt for user input to trigger next intent
-            repromptOutput = this.t("CONTINUE_REPROMPT");
-            this.emit(":ask", speechOutput, repromptOutput);
-        }
-        else
-        {
-            var crimeF = crimeBackground[rand(0, crimeBackground.length - 1)];
-            speechOutput = this.t("CRIME_FACTS", crimeF) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
-            repromptOutput = this.t("CONTINUE_REPROMPT");
-            this.emit(":ask", speechOutput, repromptOutput);
-        }
+        //in country pick mode
+        speechOutput = this.t("ERROR_CHOOSE_COUNTRY") + this.t("CHOOSE_AGAIN") +
+            this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName); ;
+        repromptOutput = this.t("GAME_START_REPROMPT") + this.t("CHOOSE_AGAIN") +
+            this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);;
+        this.emit(":ask", speechOutput, repromptOutput);
     }
-    else if(questionType == 2)
+    else if (stage >= 3)
     {
-        if(r_person.seenArr.indexOf("height") != -1)
-        {
-
-            if (responseString.length < 5)
-            {
-                responseString += "has a " + criminal.height + " figure ";
-            }
-            else
-            {
-                responseString += "a " + criminal.height + " figure ";
-            }
-        }
-        if(r_person.seenArr.indexOf("body") != -1)
-        {
-
-            if (responseString.length < 5)
-            {
-                responseString += "has a " + criminal.body + " build ";
-            }
-            else
-            {
-                responseString += "a " + criminal.body + " build ";
-            }
-
-        }
-        if(r_person.seenArr.indexOf("eye") != -1)
-        {
-
-            if (responseString.length < 5)
-            {
-                responseString += "has " + criminal.eyeColor +", " +criminal.eyeSize+ " eyes ";
-            }
-            else
-            {
-                responseString += "and, " + criminal.eyeColor +", " +criminal.eyeSize+ " eyes ";
-            }
-        }
-        if(r_person.seenArr.indexOf("hair") != -1)
-        {
-
-            if (responseString.length < 5)
-            {
-                responseString += "has " + criminal.hairLength +", " +criminal.hairColor+ " hair ";
-            }
-            else
-            {
-                responseString += "and, " + criminal.hairLength +", " +criminal.hairColor+ " hair";
-            }
-        }
-        if(r_person.seenArr.indexOf("special") != -1)
-        {
-
-            if (responseString.length < 5)
-            {
-                responseString += "has " + criminal.special +" ";
-            }
-            else
-            {
-                responseString += "and, " + criminal.special +" ";
-            }
-        }
-
-        if(stage <= 1)
-        {
-            speechOutput = this.t(responseString) + this.t("CONTINUE_PROMPT_STAGE0", pronoun(criminal.gender)); // need prompt for user input to trigger next intent
-            repromptOutput = this.t("CONTINUE_REPROMPT");
-            this.emit(":ask", speechOutput, repromptOutput);
-        }
-        else {
-            speechOutput = this.t(responseString) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
-            repromptOutput = this.t("CONTINUE_REPROMPT");
-            this.emit(":ask", speechOutput, repromptOutput);
-        }
-    }
-    else if(questionType == 3)
-    {
-        //TODO can change this to >= 1 if you want to always have person give clues on next country.
-        if(r_person.seenValue >= 1)
-        {
-            if(stage <= 1)
-            {
-                shuffleArray(seenMix);
-                speechOutput = this.t("COUNTRY_FACTS", pronoun(criminal.gender), r_person.randCountryFact) + this.t("CONTINUE_PROMPT_STAGE0", pronoun(criminal.gender)); // need prompt for user input to trigger next intent
-                repromptOutput = this.t("CONTINUE_REPROMPT");
-                this.emit(":ask", speechOutput, repromptOutput);
-            }
-            else
-            {
-                shuffleArray(seenMix);
-                speechOutput = this.t("COUNTRY_FACTS", pronoun(criminal.gender), r_person.randCountryFact) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
-                repromptOutput = this.t("CONTINUE_REPROMPT");
-                this.emit(":ask", speechOutput, repromptOutput);
-            }
-
-        }
-        else
-        {
-            if(stage <= 1)
-            {
-                shuffleArray(notSeen);
-                speechOutput = this.t("NOT_SEEN") + this.t("CONTINUE_PROMPT_STAGE0", pronoun(criminal.gender)); // need prompt for user input to trigger next intent
-                repromptOutput = this.t("CONTINUE_REPROMPT");
-                this.emit(":ask", speechOutput, repromptOutput);
-            }
-            else
-            {
-                shuffleArray(notSeen);
-                speechOutput = this.t("NOT_SEEN" + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
-                repromptOutput = this.t("CONTINUE_REPROMPT");
-                this.emit(":ask", speechOutput, repromptOutput);
-            }
-        }
+        //in last stage
+        speechOutput = this.t("LAST_STAGE") + this.t("ACCUSE_REPROPT");
+        repromptOutput = this.t("ACCUSE_REPROMPT");
+        this.emit(":ask", speechOutput, repromptOutput);
     }
     else
     {
-        console.log("error question type was incorrect, expecting 1, 2, or 3");
+        questionedCount++;
+        var responseString = pronoun(criminal.gender) + " ";
+        if(questionedCount > 3)
+        {
+            doneQuestioning.call(this);
+        }
+        else if(questionType == 1)
+        {
+
+            if(r_person.seenArr.indexOf("height") != -1)
+            {
+
+                if (responseString.length < 5)
+                {
+                    responseString += "has a " + criminal.height + " figure ";
+                }
+                else
+                {
+                    responseString += "a " + criminal.height + " figure ";
+                }
+            }
+            if(r_person.seenArr.indexOf("body") != -1)
+            {
+
+                if (responseString.length < 5)
+                {
+                    responseString += "has a " + criminal.body + " build ";
+                }
+                else
+                {
+                    responseString += "a " + criminal.body + " build ";
+                }
+
+            }
+            if(r_person.seenArr.indexOf("eye") != -1)
+            {
+
+                if (responseString.length < 5)
+                {
+                    responseString += "has " + criminal.eyeColor +", " +criminal.eyeSize+ " eyes ";
+                }
+                else
+                {
+                    responseString += "and, " + criminal.eyeColor +", " +criminal.eyeSize+ " eyes ";
+                }
+            }
+            if(r_person.seenArr.indexOf("hair") != -1)
+            {
+
+                if (responseString.length < 5)
+                {
+                    responseString += "has " + criminal.hairLength +", " +criminal.hairColor+ " hair ";
+                }
+                else
+                {
+                    responseString += "and, " + criminal.hairLength +", " +criminal.hairColor+ " hair";
+                }
+            }
+            if(r_person.seenArr.indexOf("special") != -1)
+            {
+
+                if (responseString.length < 5)
+                {
+                    responseString += "has " + criminal.special +" ";
+                }
+                else
+                {
+                    responseString += "and, " + criminal.special +" ";
+                }
+            }
+
+            if(stage <= 1) {
+                //These emits confirmed to work when .call is used, and "this" is explicitly passed
+                var crimeF = crimeBackground[rand(0, crimeBackground.length - 1)];
+                speechOutput = this.t("CRIME_FACTS", crimeF) + this.t("CONTINUE_PROMPT_STAGE0", pronoun(criminal.gender)); // need prompt for user input to trigger next intent
+                repromptOutput = this.t("CONTINUE_REPROMPT");
+                this.emit(":ask", speechOutput, repromptOutput);
+            }
+            else
+            {
+                var crimeF = crimeBackground[rand(0, crimeBackground.length - 1)];
+                speechOutput = this.t("CRIME_FACTS", crimeF) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
+                repromptOutput = this.t("CONTINUE_REPROMPT");
+                this.emit(":ask", speechOutput, repromptOutput);
+            }
+        }
+        else if(questionType == 2)
+        {
+            if(r_person.seenArr.indexOf("height") != -1)
+            {
+
+                if (responseString.length < 5)
+                {
+                    responseString += "has a " + criminal.height + " figure ";
+                }
+                else
+                {
+                    responseString += "a " + criminal.height + " figure ";
+                }
+            }
+            if(r_person.seenArr.indexOf("body") != -1)
+            {
+
+                if (responseString.length < 5)
+                {
+                    responseString += "has a " + criminal.body + " build ";
+                }
+                else
+                {
+                    responseString += "a " + criminal.body + " build ";
+                }
+
+            }
+            if(r_person.seenArr.indexOf("eye") != -1)
+            {
+
+                if (responseString.length < 5)
+                {
+                    responseString += "has " + criminal.eyeColor +", " +criminal.eyeSize+ " eyes ";
+                }
+                else
+                {
+                    responseString += "and, " + criminal.eyeColor +", " +criminal.eyeSize+ " eyes ";
+                }
+            }
+            if(r_person.seenArr.indexOf("hair") != -1)
+            {
+
+                if (responseString.length < 5)
+                {
+                    responseString += "has " + criminal.hairLength +", " +criminal.hairColor+ " hair ";
+                }
+                else
+                {
+                    responseString += "and, " + criminal.hairLength +", " +criminal.hairColor+ " hair";
+                }
+            }
+            if(r_person.seenArr.indexOf("special") != -1)
+            {
+
+                if (responseString.length < 5)
+                {
+                    responseString += "has " + criminal.special +" ";
+                }
+                else
+                {
+                    responseString += "and, " + criminal.special +" ";
+                }
+            }
+
+            if(stage <= 1)
+            {
+                speechOutput = this.t(responseString) + this.t("CONTINUE_PROMPT_STAGE0", pronoun(criminal.gender)); // need prompt for user input to trigger next intent
+                repromptOutput = this.t("CONTINUE_REPROMPT");
+                this.emit(":ask", speechOutput, repromptOutput);
+            }
+            else {
+                speechOutput = this.t(responseString) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
+                repromptOutput = this.t("CONTINUE_REPROMPT");
+                this.emit(":ask", speechOutput, repromptOutput);
+            }
+        }
+        else if(questionType == 3)
+        {
+            //TODO can change this to >= 1 if you want to always have person give clues on next country.
+            if(r_person.seenValue >= 1)
+            {
+                if(stage <= 1)
+                {
+                    shuffleArray(seenMix);
+                    speechOutput = this.t("COUNTRY_FACTS", pronoun(criminal.gender), r_person.randCountryFact) + this.t("CONTINUE_PROMPT_STAGE0", pronoun(criminal.gender)); // need prompt for user input to trigger next intent
+                    repromptOutput = this.t("CONTINUE_REPROMPT");
+                    this.emit(":ask", speechOutput, repromptOutput);
+                }
+                else
+                {
+                    shuffleArray(seenMix);
+                    speechOutput = this.t("COUNTRY_FACTS", pronoun(criminal.gender), r_person.randCountryFact) + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
+                    repromptOutput = this.t("CONTINUE_REPROMPT");
+                    this.emit(":ask", speechOutput, repromptOutput);
+                }
+
+            }
+            else
+            {
+                if(stage <= 1)
+                {
+                    shuffleArray(notSeen);
+                    speechOutput = this.t("NOT_SEEN") + this.t("CONTINUE_PROMPT_STAGE0", pronoun(criminal.gender)); // need prompt for user input to trigger next intent
+                    repromptOutput = this.t("CONTINUE_REPROMPT");
+                    this.emit(":ask", speechOutput, repromptOutput);
+                }
+                else
+                {
+                    shuffleArray(notSeen);
+                    speechOutput = this.t("NOT_SEEN") + this.t("CONTINUE_PROMPT"); // need prompt for user input to trigger next intent
+                    repromptOutput = this.t("CONTINUE_REPROMPT");
+                    this.emit(":ask", speechOutput, repromptOutput);
+                }
+            }
+        }
+        else
+        {
+            console.log("error question type was incorrect, expecting 1, 2, or 3");
+        }
     }
 }
 
@@ -1831,11 +1860,11 @@ function Countries(number){
  this.emit(':ask', speechOutput , speechOutput);
  */
 
-var winGame =['Great job Sleuth! The criminal now must face justice for what they did. The community is grateful for what you did and the world is that much more peaceful.', 'Woo hoo Sleuth!! You never cease to amaze me. We are unbeatable as a team.', 'You killed it! Great job catching the criminal before going into hiding.', 'Congrats on capturing the criminal! Without your hard work and dedication, the criminal wouldve slipped us.','Aww man, you got the criminal! Great stuff.', '']
-var missedCriminal =['Oh no the criminal mustve slipped us. We need to step our game up Sleuth!', 'The criminal got away. We were so close!', 'Better luck next time Sleuth. The criminal has dropped off the radar for now.', 'Shoot, Weeve seen better days than today.', 'Dang-it Sleuth! We made it so far, but the trail has gone cold. Better luck next time.', 'Ooh maan! We lost the criminal. We were not vigilant enough.', 'We cant win them all Sleuth. Some criminals slip away but we will get them next time!', 'What a luck we have! The criminal mustve slipped into hiding when we arrived. The trail is cold']
-var falseCriminal =['So close, but that is not the criminal. We cant go around falsely accusing people. We spooked the criminal and they slipped us.', 'You nabbed the wrong bad guy! We didnt pay close enough attention to our clues. Make sure to keep better notes next time so we can catch the right person.', 'Step your game up Sleuth. We cant make it this far and lose! We arrested the wrong person. The criminal is long gone by now.', 'And there goes the criminals trail. We were so close but we accused the wrong person, alerting the criminal that we were on to them.', 'Good job! Not! We screwed up big Sleuth. The criminal is long gone and the trail is cold.']
-var maxWrongLocation =['We need to pay attention to clues from the crowd. We lost the criminals trail Sleuth.', 'Oh shoot. The criminal slipped us.', 'We went to the wrong location too many times. The criminal is long gone.', 'Wow, we need to step our game up Sleuth. Please brush up on your sleuth skills before accepting the next mission', 'Use the clues from bystanders to pick the right country that the criminal went. Sorry, but the criminal has outsmarted us.', 'Come on bra! We lost the trail on our criminal. Keep track of our clues and follow the right trail.', 'Looks like we followed the wrong trail this time Sleuth. Maybe you should take some time off if necessary. The trail is lost.']
-var playAgain=['Are you ready for your next mission?', 'I know we just finished a tough case, but, do you want to start the next mission?', 'Want to catch the next criminal in our file?', 'Although we just finished a mission, there are more bad guys out there. Are you ready to accept the next mission?', 'Lets start the next mission! if you arent scared. Say yes to accept the challenge bra', 'I understand if you are tired, but where are you now that we need ya justin beeber. Ready to show out on the next mission?', 'Ready for more action?']
+var winGame =['Great job Sleuth! The criminal now must face justice for what they did. The community is grateful for what you did and the world is that much more peaceful.', 'Woo hoo Sleuth!! You never cease to amaze me. We are unbeatable as a team.', 'You killed it! Great job catching the criminal before going into hiding.', 'Congrats on capturing the criminal! Without your hard work and dedication, the criminal wouldve slipped us.','Aww man, you got the criminal! Great stuff.', ''];
+var missedCriminal =['Oh no the criminal mustve slipped us. We need to step our game up Sleuth!', 'The criminal got away. We were so close!', 'Better luck next time Sleuth. The criminal has dropped off the radar for now.', 'Shoot, Weeve seen better days than today.', 'Dang-it Sleuth! We made it so far, but the trail has gone cold. Better luck next time.', 'Ooh maan! We lost the criminal. We were not vigilant enough.', 'We cant win them all Sleuth. Some criminals slip away but we will get them next time!', 'What a luck we have! The criminal mustve slipped into hiding when we arrived. The trail is cold'];
+var falseCriminal =['So close, but that is not the criminal. We cant go around falsely accusing people. We spooked the criminal and they slipped us.', 'You nabbed the wrong bad guy! We didnt pay close enough attention to our clues. Make sure to keep better notes next time so we can catch the right person.', 'Step your game up Sleuth. We cant make it this far and lose! We arrested the wrong person. The criminal is long gone by now.', 'And there goes the criminals trail. We were so close but we accused the wrong person, alerting the criminal that we were on to them.', 'Good job! Not! We screwed up big Sleuth. The criminal is long gone and the trail is cold.'];
+var maxWrongLocation =['We need to pay attention to clues from the crowd. We lost the criminals trail Sleuth.', 'Oh shoot. The criminal slipped us.', 'We went to the wrong location too many times. The criminal is long gone.', 'Wow, we need to step our game up Sleuth. Please brush up on your sleuth skills before accepting the next mission', 'Use the clues from bystanders to pick the right country that the criminal went. Sorry, but the criminal has outsmarted us.', 'Come on bra! We lost the trail on our criminal. Keep track of our clues and follow the right trail.', 'Looks like we followed the wrong trail this time Sleuth. Maybe you should take some time off if necessary. The trail is lost.'];
+var playAgain=['Are you ready for your next mission?', 'I know we just finished a tough case, but, do you want to start the next mission?', 'Want to catch the next criminal in our file?', 'Although we just finished a mission, there are more bad guys out there. Are you ready to accept the next mission?', 'Lets start the next mission! if you arent scared. Say yes to accept the challenge bra', 'I understand if you are tired, but where are you now that we need ya justin beeber. Ready to show out on the next mission?', 'Ready for more action?'];
 var notSeen = ['Sorry I have no idea where they went', 'not a clue, sorry', 'Wish I could tell you but I dont know'];
 var seenMix =['I heard %s was last seen %s', 'Word is, %s was seen %s', 'Not sure, but someone said %s is %s', 'All I know is %s is %s', 'Gosh, what did they say, oh ya, %s is %s', 'People are talking, %s is %s', '%s is %s, but you didnt hear that from me', 'Beats me, but I did hear %s was seen %s', 'Im following the updates on twitter, the last post says %s is %s', '%s was last seen %s', 'Checkout there new account on twitter, %s is %s'];
 var languageString = {
