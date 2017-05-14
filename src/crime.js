@@ -924,6 +924,7 @@ var countryOutputList = []; //Need to fill with 1 correct country and rest rando
 var countryChoice = null;
 var criminalArr = [0, 1, 2];
 var talkingFlag = 0;
+var countryPickFlag = 1;
 var criminalFlag = 0;
 var questionedCount = 0;
 
@@ -983,102 +984,52 @@ var country; // trying this as global since it keeps repeating the intitial coun
 //function checkCountry(country)
 function checkCountry()
 {
-    country = this.event.request.intent.slots.country_item.value;
-
-    console.log(country);
-    if(talkedToCount != 0 || questionedCount != 0 || stage >= 3)
+    var speechOutput;
+    var repromptOutput;
+    if(countryPickFlag == 0)
     {
-        var speechOutput = this.t("NOT_COUNTRY_PICK");
-		var repromptOutput = this.t("NOT_COUNTRY_REPROMPT");
-        this.emit(":ask", speechOutput, representing);
+        if(talkedToCount > 0)
+        {
+            //not done talking yet
+            speechOutput = this.t("NOT_COUNTRY_PICK");
+            repromptOutput = this.t("NOT_COUNTRY_REPROMPT");
+            this.emit(":ask", speechOutput, repromptOutput);
+        }
+        else if (talkedToCount == 0)
+        {
+            //hasn't waved anyone down yet
+            speechOutput = this.t("ERROR_GET_ATTENTION");
+            this.emit(":ask", speechOutput, speechOutput);
+
+        }
+        else if (stage >= 3)
+        {
+            //in last stage
+            speechOutput = this.t("LAST_STAGE");
+            repromptOutput = this.t("ACCUSE_REPROMPT");
+            this.emit(":ask", speechOutput, repromptOutput);
+        }
     }
+    else
     {
+        country = this.event.request.intent.slots.country_item.value;
 
-        //assign choice of country and count for validation checking in other methods
-        countryVisited++;
+            //assign choice of country and count for validation checking in other methods
+            countryVisited++;
 
-        if (stage == 0) {
-            console.log("in stage 0 for checkCountry");
-            for (i = 0; i < Region.length; i++) {
-                for (j = 0; j < Region[i].length; j++) {
-                    if (Region[i][j].countryName == country) {
-                        //assign countryChoice if said country is a valid choice
-                        countryChoice = Region[i][j];
+            if (stage == 0) {
+                console.log("in stage 0 for checkCountry");
+                for (i = 0; i < Region.length; i++) {
+                    for (j = 0; j < Region[i].length; j++) {
+                        if (Region[i][j].countryName == country) {
+                            //assign countryChoice if said country is a valid choice
+                            countryChoice = Region[i][j];
+                        }
                     }
                 }
-            }
-
-            try {
-                //if country doesn't register then they gave a country name we don't have, error output
-                if (countryChoice.countryName != country) {
-                    //error response, prompt for a valid country choice.
-                    console.log("given country string did not match");
-                    //fix counter
-                    countryVisited--;
-                }
-
-                //if correct country chosen then reset count, go to next stage, assign next country
-                if (criminal.country.countryName == country) {
-                    console.log("correct country given");
-                    countryVisited = 0;
-                    stage++;
-					if(stage < 3)
-					{
-						// audio clips must be 48kbps 16000hz mpeg 2
-						var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName)
-							+ "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-							+ this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.body, r_person.height, r_person.gender, r_person.bystanderAction, r_person.bystanderApproachingDirection);
-						var repromptOutput = this.t("PLEASE_GREET");
-
-						//var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-						this.emit(":ask", speechOutput, repromptOutput);
-					}
-
-
-                }
-                else if ((criminal.country.countryName != country) && countryVisited >= 2) {
-                    //you lose.
-                    console.log("you lose");
-                    //TODO ask if they want to play again
-                    shuffleArray(missedCriminal);
-                    var speechOutput = this.t("LOSE_GOT_AWAY") +  this.t("PLAY_AGAIN");
-                    this.emit(":ask", speechOutput);
-                }
-                else {
-                    //picked wrong country but only on first try
-
-                    var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-                        + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.body, r_person.height, r_person.gender, r_person.bystanderAction, r_person.bystanderApproachingDirection);
-                    var repromptOutput = this.t("PLEASE_GREET");
-                    this.emit(":ask", speechOutput, repromptOutput);
-                }
-            } catch (error) {
-                console.log("CountryChoice incorrect handling");
-            }
-        }
-        else {
-
-            console.log("in else stage for checkCountry");
-            //assign valid country
-            for (i = 0; i < criminal.region.length; i++) {
-                if (criminal.region[i].countryName == country) {
-                    countryChoice = criminal.region[i];
-                }
-            }
-
-            if(crimCountryVisitedArr.indexOf(countryChoice) != -1)
-            {
-                //gave a country that's already been used so we should return a reprompt
-                speechOutput = this.t("WRONG_COUNTRY_ERROR") + this.t("CHOOSE_AGAIN") +
-                    this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
-                repromptOutput = this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
-                this.emit(":ask", speechOutput, repromptOutput);
-
-            }
-            else {
 
                 try {
-                    //if country chosen doesn't exist
+                    //if country doesn't register then they gave a country name we don't have, error output
                     if (countryChoice.countryName != country) {
                         //error response, prompt for a valid country choice.
                         console.log("given country string did not match");
@@ -1091,54 +1042,125 @@ function checkCountry()
                         console.log("correct country given");
                         countryVisited = 0;
                         stage++;
-                        crimCountryVisitedArr.push(criminal.country.countryName);
-                        //assignNextCountry();
+                        countryPickFlag = 0;
 
-                        if (stage < 3) {
-                            // audio clips must be 48kbps 16000hz mpeg 2
-                            var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName)
-                                + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-                                + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.body, r_person.height, r_person.gender, r_person.bystanderAction, r_person.bystanderApproachingDirection);
-                            var repromptOutput = this.t("PLEASE_GREET");
+                        // audio clips must be 48kbps 16000hz mpeg 2
+                        speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName)
+                            + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+                            + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.body, r_person.height, r_person.gender, r_person.bystanderAction, r_person.bystanderApproachingDirection);
+                        repromptOutput = this.t("PLEASE_GREET");
 
-                            //var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
-                            this.emit(":ask", speechOutput, repromptOutput);
-                        }
-                        else {
-                            // audio clips must be 48kbps 16000hz mpeg 2
-
-                            speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName)
-                                + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
-                                + this.t("LAST_ARRIVAL_MESSAGE", countryChoice.intro, criminal.name, criminal.name) + this.t("LAST_STAGE_READY");
-                            repromptOutput = this.t("LAST_STAGE_READY_REPROMPT");
-                            this.emit(":ask", speechOutput, repromptOutput);
+                        //var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+                        this.emit(":ask", speechOutput, repromptOutput);
 
 
-                            //lastStage();
-                        }
                     }
-                    else if (criminal.country.countryName != country && countryVisited >= 2) {
+                    else if ((criminal.country.countryName != country) && countryVisited >= 2) {
                         //you lose.
                         console.log("you lose");
                         //TODO ask if they want to play again
-                        shuffleArray(maxWrongLocation);
-                        var speechOutput = this.t("LOSE_CHOICE") + this.t("PLAY_AGAIN");
+                        shuffleArray(missedCriminal);
+                        speechOutput = this.t("LOSE_GOT_AWAY") + this.t("PLAY_AGAIN");
                         this.emit(":ask", speechOutput);
                     }
                     else {
-                        //picked wrong country
-
-                        var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+                        //picked wrong country but only on first try
+                        countryPickFlag = 0;
+                        speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
                             + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.body, r_person.height, r_person.gender, r_person.bystanderAction, r_person.bystanderApproachingDirection);
-                        var repromptOutput = this.t("PLEASE_GREET");
+                        repromptOutput = this.t("PLEASE_GREET");
                         this.emit(":ask", speechOutput, repromptOutput);
                     }
                 } catch (error) {
-                    console.log("error in countryChecked()");
+                    console.log("CountryChoice incorrect handling");
                 }
             }
+            else {
 
-        }
+                console.log("in else stage for checkCountry");
+                //assign valid country
+                for (i = 0; i < criminal.region.length; i++) {
+                    if (criminal.region[i].countryName == country) {
+                        countryChoice = criminal.region[i];
+                    }
+                }
+
+                if (crimCountryVisitedArr.indexOf(countryChoice) != -1) {
+                    //gave a country that's already been used so we should return a reprompt
+                    countryPickFlag = 1;
+                    speechOutput = this.t("WRONG_COUNTRY_ERROR") + this.t("CHOOSE_AGAIN") +
+                        this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
+                    repromptOutput = this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
+                    this.emit(":ask", speechOutput, repromptOutput);
+
+                }
+                else {
+
+                    try {
+                        //if country chosen doesn't exist
+                        if (countryChoice.countryName != country) {
+                            //error response, prompt for a valid country choice.
+                            console.log("given country string did not match");
+                            //fix counter
+                            countryVisited--;
+                        }
+
+                        //if correct country chosen then reset count, go to next stage, assign next country
+                        if (criminal.country.countryName == country) {
+                            console.log("correct country given");
+                            countryVisited = 0;
+                            stage++;
+                            countryPickFlag = 0;
+                            //pushing actual country object, not just string name
+                            crimCountryVisitedArr.push(criminal.country);
+                            //assignNextCountry();
+
+                            if (stage < 3) {
+                                // audio clips must be 48kbps 16000hz mpeg 2
+                                speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName)
+                                    + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+                                    + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.body, r_person.height, r_person.gender, r_person.bystanderAction, r_person.bystanderApproachingDirection);
+                                repromptOutput = this.t("PLEASE_GREET");
+
+                                //var speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.hairColor, r_person.body, r_person.gender);
+                                this.emit(":ask", speechOutput, repromptOutput);
+                            }
+                            else {
+                                // audio clips must be 48kbps 16000hz mpeg 2
+
+                                speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName)
+                                    + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+                                    + this.t("LAST_ARRIVAL_MESSAGE", countryChoice.intro, criminal.name, criminal.name) + this.t("LAST_STAGE_READY");
+                                repromptOutput = this.t("LAST_STAGE_READY_REPROMPT");
+                                this.emit(":ask", speechOutput, repromptOutput);
+
+
+                                //lastStage();
+                            }
+                        }
+                        else if (criminal.country.countryName != country && countryVisited >= 2) {
+                            //you lose.
+                            console.log("you lose");
+                            //TODO ask if they want to play again
+                            shuffleArray(maxWrongLocation);
+                            speechOutput = this.t("LOSE_CHOICE") + this.t("PLAY_AGAIN");
+                            this.emit(":ask", speechOutput);
+                        }
+                        else {
+                            //picked wrong country
+                            countryPickFlag = 0;
+                            speechOutput = this.t("DEPARTURE_MESSAGE", countryChoice.countryName) + "<audio src='https://s3.amazonaws.com/sleuthhound/Airplane.mp3'/>"
+                                + this.t("ARRIVAL_MESSAGE", countryChoice.intro, criminal.name) + this.t("PERSON_APPROACHING", r_person.body, r_person.height, r_person.gender, r_person.bystanderAction, r_person.bystanderApproachingDirection);
+                            repromptOutput = this.t("PLEASE_GREET");
+                            this.emit(":ask", speechOutput, repromptOutput);
+                        }
+                    } catch (error) {
+                        console.log("error in countryChecked()");
+                    }
+                }
+
+            }
+
 
     }
 }
@@ -1197,15 +1219,42 @@ function assignNextCountry()
 
 function lastStage()
 {
-    if(stage < 3 )
+    var speechOutput;
+    var repromptOutput;
+    if(countryPickFlag == 1 && stage == 0)
     {
-        var speechOutput = this.t("NOT_LAST_STAGE");
-		var repromptOutput = this.t("NOT_COUNTRY_REPROMPT");
+        //hasn't started game yet
+        speechOutput = this.t("GAME_START_MESSGE");
+        repromptOutput = this.t("GAME_START_REPROMPT");
         this.emit(":ask", speechOutput, repromptOutput);
 
     }
+    else if (countryPickFlag == 1 && stage > 0)
+    {
+        //in country pick mode
+        speechOutput = this.t("ERROR_CHOOSE_COUNTRY") + this.t("CHOOSE_AGAIN") +
+            this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName); ;
+        repromptOutput = this.t("GAME_START_REPROMPT") + this.t("CHOOSE_AGAIN") +
+            this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);;
+        this.emit(":ask", speechOutput, repromptOutput);
+    }
+    else if (stage < 3)
+    {
+        if(talkedToCount == 0)
+        {
+
+            //picked a country but hasn't waved anyone down yet
+            speechOutput = this.t("ERROR_GET_ATTENTION");
+            this.emit(":ask", speechOutput, speechOutput);
+        }
+        else {
+            //picked a country, currently talking to someone
+            speechOutput = this.t("NOT_LAST_STAGE");
+            repromptOutput = this.t("NOT_COUNTRY_REPROMPT");
+            this.emit(":ask", speechOutput, repromptOutput);
+        }
+    }
     else {
-        var speechOutput;
         shuffleArray(criminalArr);
         //removes index 0 from criminalArr
         var crimVar = criminalArr.splice(0, 1);
@@ -1295,38 +1344,127 @@ function lastStage()
 
 function innocentFunction()
 {
-	if(criminalFlag == 2)
-	{
-	    shuffleArray(missedCriminal);
-		this.emit(":ask", this.t("LOSE_GOT_AWAY") + this.t("PLAY_AGAIN"));
-	}
-	else
-	{
-		lastStage();
-	}
+    var speechOutput;
+    var repromptOutput;
+    if(countryPickFlag == 1 && stage == 0)
+    {
+        //hasn't started game yet
+        speechOutput = this.t("GAME_START_MESSGE");
+        repromptOutput = this.t("GAME_START_REPROMPT");
+        this.emit(":ask", speechOutput, repromptOutput);
+
+    }
+    else if (countryPickFlag == 1 && stage > 0)
+    {
+        //in country pick mode
+        speechOutput = this.t("ERROR_CHOOSE_COUNTRY") + this.t("CHOOSE_AGAIN") +
+            this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName); ;
+        repromptOutput = this.t("GAME_START_REPROMPT") + this.t("CHOOSE_AGAIN") +
+            this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);;
+        this.emit(":ask", speechOutput, repromptOutput);
+    }
+    else if (stage < 3)
+    {
+        if(talkedToCount == 0)
+        {
+
+            //picked a country but hasn't waved anyone down yet
+            speechOutput = this.t("ERROR_GET_ATTENTION");
+            this.emit(":ask", speechOutput, speechOutput);
+        }
+        else {
+            speechOutput = this.t("NOT_LAST_STAGE");
+            repromptOutput = this.t("NOT_COUNTRY_REPROMPT");
+            this.emit(":ask", speechOutput, repromptOutput);
+        }
+    }
+    else
+    {
+        if (criminalFlag == 2) {
+            shuffleArray(missedCriminal);
+            this.emit(":ask", this.t("LOSE_GOT_AWAY") + this.t("PLAY_AGAIN"));
+        }
+        else {
+            lastStage();
+        }
+    }
 }
 
 function nabThiefFunction()
 {
-	if(criminalFlag != 2)
-	{
-	    shuffleArray(falseCriminal);
-		this.emit(":ask", this.t("LOSE_WRONG") +  this.t("PLAY_AGAIN"));
-	}
-	else
-	{
-	    shuffleArray(winGame);
-		this.emit(":ask", this.t("WIN") + "<audio src='https://s3.amazonaws.com/sleuthhound/Applause.mp3'/>" + this.t("PLAY_AGAIN"));
-	}
+    var speechOutput;
+    var repromptOutput;
+    if(countryPickFlag == 1 && stage == 0)
+    {
+        //hasn't started game yet
+        speechOutput = this.t("GAME_START_MESSGE");
+        repromptOutput = this.t("GAME_START_REPROMPT");
+        this.emit(":ask", speechOutput, repromptOutput);
+
+    }
+    else if (countryPickFlag == 1 && stage > 0)
+    {
+        //in country pick mode
+        speechOutput = this.t("ERROR_CHOOSE_COUNTRY") + this.t("CHOOSE_AGAIN") +
+            this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName); ;
+        repromptOutput = this.t("GAME_START_REPROMPT") + this.t("CHOOSE_AGAIN") +
+            this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);;
+        this.emit(":ask", speechOutput, repromptOutput);
+    }
+    else if (stage < 3)
+    {
+        if(talkedToCount == 0)
+        {
+
+            //picked a country but hasn't waved anyone down yet
+            speechOutput = this.t("ERROR_GET_ATTENTION");
+            this.emit(":ask", speechOutput, speechOutput);
+        }
+        else {
+            speechOutput = this.t("NOT_LAST_STAGE");
+            repromptOutput = this.t("NOT_COUNTRY_REPROMPT");
+            this.emit(":ask", speechOutput, repromptOutput);
+        }
+    }
+    else {
+        if (criminalFlag != 2) {
+            shuffleArray(falseCriminal);
+            this.emit(":ask", this.t("LOSE_WRONG") + this.t("PLAY_AGAIN"));
+        }
+        else {
+            shuffleArray(winGame);
+            this.emit(":ask", this.t("WIN") + "<audio src='https://s3.amazonaws.com/sleuthhound/Applause.mp3'/>" + this.t("PLAY_AGAIN"));
+        }
+    }
 }
 
 //called when 'TarryStopIntent is called. checks for number of people talked to is <= 5. If less,  then generates next person to talk to.
 function talkedTo()
 {
-    if(questionedCount != 0)
+    var speechOutput;
+    var repromptOutput;
+
+    if(countryPickFlag == 1 && stage == 0)
     {
-        var speechOutput = this.t("NOT_DONE_QUESTIONING");
-		var repromptOutput = this.t("NOT_COUNTRY_REPROMPT");
+        //hasn't started game yet
+        speechOutput = this.t("GAME_START_MESSGE");
+        repromptOutput = this.t("GAME_START_REPROMPT");
+        this.emit(":ask", speechOutput, repromptOutput);
+
+    }
+    else if (countryPickFlag == 1 && stage > 0)
+    {
+        //in country pick mode
+        speechOutput = this.t("ERROR_CHOOSE_COUNTRY") + this.t("CHOOSE_AGAIN") +
+            this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName); ;
+        repromptOutput = this.t("GAME_START_REPROMPT") + this.t("CHOOSE_AGAIN") +
+            this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);;
+        this.emit(":ask", speechOutput, repromptOutput);
+    }
+    else if(questionedCount != 0)
+    {
+        speechOutput = this.t("NOT_DONE_QUESTIONING");
+        repromptOutput = this.t("NOT_COUNTRY_REPROMPT");
         this.emit(":ask", speechOutput, repromptOutput);
     }
     else if (stage >= 3)
@@ -1356,7 +1494,7 @@ function talkedTo()
                 //exit from country on 2nd talk in wrong country
                 if (talkedToCount >= 6) {
                     talkedToCount = 0;
-
+                    countryPickFlag = 1;
                     //talked to 2 people in the wrong country
                     console.log("wrong country response");
                     //TODO will need to relist the countries here
@@ -1402,15 +1540,43 @@ function talkedTo()
 function doneQuestioning()
 {
     var speechOutput;
+    var repromptOutput;
     questionedCount = 0;
-    if (talkedToCount >= 5) {
+    if(talkedToCount == 0)
+    {
+        //TODO ALAN
+        if(countryPickFlag == 1 && stage == 0)
+        {
+            //hasn't started game yet
+            speechOutput = this.t("GAME_START_MESSGE");
+            repromptOutput = this.t("GAME_START_REPROMPT");
+            this.emit(":ask", speechOutput, repromptOutput);
+
+        }
+        else if (countryPickFlag == 1 && stage > 0)
+        {
+            //in country pick mode
+            speechOutput = this.t("ERROR_CHOOSE_COUNTRY") + this.t("CHOOSE_AGAIN") +
+                this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName); ;
+            repromptOutput = this.t("GAME_START_REPROMPT") + this.t("CHOOSE_AGAIN") +
+                this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);;
+            this.emit(":ask", speechOutput, repromptOutput);
+        }
+        else
+        {
+            //picked a country but hasn't waved anyone down yet
+            speechOutput = this.t("ERROR_GET_ATTENTION");
+            this.emit(":ask", speechOutput, speechOutput);
+        }
+    }
+    else if (talkedToCount >= 5) {
         console.log("resetting counter, 5 people talked to, time to choose a country");
         talkedToCount = 0;
         //if they were in the correct country and finished talking to 5 people
         if (countryChoice == criminal.country) {
             assignNextCountry();
             console.log("reached final person to talk to in 0 response");
-
+            countryPickFlag = 1;
             speechOutput = this.t("LAST_PERSON") + this.t("CHOOSE_AGAIN") +
                 this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);
             repromptOutput = this.t("CHOOSE_AGAIN") +
@@ -1694,7 +1860,8 @@ var languageString = {
 			"QUESTION_UNHANDLED": "I'm sorry. I didn't understand your choice. Please say it again. ",
 			"TEST_OUTPUT": "Testing output only. ", // testing only
             "NEW_GAME_MESSAGE": "Welcome to %s. ",
-			"GAME_START_MESSAGE": "Ask, how do I play, if you have questions. Otherwise, are you ready for a mission? ",
+			"GAME_START_MESSAGE": "Ask, how do I play, if you have questions. Otherwise, saw game time if you're ready for a mission ",
+            "GAME_START_REPROMPT": "Say Game Time to start.",
             "INTRO_MESSAGE": "Let's do it Sleuth! We are on the hunt for %s.  %s is wanted in connection with a recent string of %s crimes resulting in %s million in damages. We must help bring the criminal responsible for these crimes to justice before %s goes into hiding. It will not be an easy task to catch %s , so pay close attention to clues that we get from bystanders on %s looks and whereabouts. %s was last seen %s. Enough talking, let's do it! ",
 			"LOCATION_TEST": "%s is in %s, %s. ", // testing only
 			"CHOOSE_COUNTRY": "  Where do you think the crime happened? ",
@@ -1733,7 +1900,10 @@ var languageString = {
 			"LAST_STAGE_READY": "Say Ready to be a Sleuth when youre ready to catch the criminal. ",
 			"LAST_STAGE_READY_REPROMPT": "Please say ready to be a sleuth. ",
             "ACCUSE": "A %s %s %s with %s %s eyes, %s %s hair is %s %s. Is this the criminal? If so, say stop criminal or say innocent to keep looking. ",
-			"ACCUSE_REPROMPT": "Please say something like stop thief, or gotcha, if this is the criminal. Otherwise say innocent to keep looking. "
+			"ACCUSE_REPROMPT": "Please say something like stop thief, or gotcha, if this is the criminal. Otherwise say innocent to keep looking. ",
+            "ERROR_GET_ATTENTION": "We need to wave people down first to question, say Hi to get their attention",
+            "ERROR_CHOOSE_COUNTRY": "We need to pick a country before proceeding",
+            "ERROR_START_GAME": "Looks like we haven't "
         }
     },
     "en-US": {
@@ -1823,7 +1993,7 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
         countryVisited = 0;
         criminalFlag = 0;
         questionedCount = 0;
-
+        countryPickFlag = 1;
         criminal = new PopulateCriminal();
         assignNextCountry();
         r_person = new PopulateResponsePerson();
