@@ -25,6 +25,43 @@ AMAZON.StopIntent Leave game.
 AMAZON.StopIntent Leave.
 AMAZON.StopIntent I'm done.
 
+RulesIntent What are the rules
+RulesIntent Are there rules
+RulesIntent Rules
+RulesIntent Any rules
+RulesIntent Any guidelines 
+RulesIntent What can I do
+RulesIntent What cant I do
+
+SleuthIntent What am I 
+SleuthIntent Who am I playing as
+SleuthIntent Why is a player called
+SleuthIntent What is my role
+SleuthIntent Who is my role
+SleuthIntent Whats my role
+SleuthIntent Whats my name
+
+JokeItent Tell me a joke
+JokeItent Make me laugh
+JokeItent Lighten the mood
+JokeItent Give me a joke
+JokeItent Make me chuckle
+JokeItent Try to make me laugh
+JokeItent You cant make me laugh
+JokeItent Say a joke
+JokeItent Give me a joke
+
+WhoIntent What is a sleuth
+WhoIntent What is a sleuth-hound
+WhoIntent Why sleuth
+WhoIntent Define sleuth
+WhoIntent Define sleuth-hound
+WhoIntent Why sleuth hound
+WhoIntent Whats a sleuth hound
+WhoIntent Why sleuth hound
+WhoIntent You called me a sleuth hound
+WhoIntent sleuth hound is what
+
 SassyIntent I hate this game.
 SassyIntent Why should I play this game
 SassyIntent This game is terrible.
@@ -33,7 +70,7 @@ SassyIntent I don't like this game.
 SassyIntent I do not like this game.
 SassyIntent This game sucks.
 SassyIntent What is wrong with this game
-SassyIntent Why play sleuth-hound
+SassyIntent Why play
 SassyIntent Why play this game
 SassyIntent This game is lame.
 SassyIntent This game is wack.
@@ -98,9 +135,13 @@ GameStart Get it on
 GameStart Its go time
 GameStart Game time
 GameStart Yea buddy
-GameStart Play Again
-GameStart Ready
+GameStart Play
 GameStart Im ready
+GameStart lego
+GameStart Laygo
+GameStart Cash me outside
+GameStart Deal me in
+
 
 CountryIntent lets go to {country_item}
 CountryIntent {country_item}
@@ -239,6 +280,23 @@ CriminalLooksQuestionIntent Did you hear anything about the criminal
 CriminalLooksQuestionIntent Ask what he looks like
 CriminalLooksQuestionIntent Ask what she looks like
 CriminalLooksQuestionIntent Ask what it looks like
+CriminalLooksQuestionIntent What was the criminal wearing
+CriminalLooksQuestionIntent Is the criminal tall
+CriminalLooksQuestionIntent Is he tall
+CriminalLooksQuestionIntent How tall is he
+CriminalLooksQuestionIntent How tall is she
+CriminalLooksQuestionIntent Describe the criminal
+CriminalLooksQuestionIntent Describe his looks
+CriminalLooksQuestionIntent Describe what he looks like
+CriminalLooksQuestionIntent Did he have a hat
+CriminalLooksQuestionIntent What does he wear
+CriminalLooksQuestionIntent What was he wearing
+CriminalLooksQuestionIntent Can you tell me what he looked like?
+CriminalLooksQuestionIntent How did he look like
+CriminalLooksQuestionIntent Can you describe what he looks like
+CriminalLooksQuestionIntent Did you see what he looks like
+CriminalLooksQuestionIntent Did you hear what he looks like
+CriminalLooksQuestionIntent Describe the criminal
 
 CriminalLocationQuestionIntent Where did he go
 CriminalLocationQuestionIntent Where did she go
@@ -294,16 +352,24 @@ CriminalLocationQuestionIntent You know where she went
 CriminalLocationQuestionIntent You know where {criminal_name} went
 CriminalLocationQuestionIntent You know where the criminal went
 CriminalLocationQuestionIntent Get more clues
+CriminalLocationQuestionIntent More clues
 
 NabThiefIntent Gotcha {criminal_name}
 NabThiefIntent Gotcha
-NabThiefIntent Stop there {criminal_name}
-NabThiefIntent Stop thief under arrest
-NabThiefIntent Stop thief
+NabThiefIntent That's {criminal_name}
+NabThiefIntent Under arrest
+NabThiefIntent The thief
 NabThiefIntent I got ya {criminal_name}
 NabThiefIntent I got ya criminal
 NabThiefIntent Freeze sucker
-NabThiefIntent Stop youre under arrest
+NabThiefIntent Hands up
+NabThiefIntent Holdem where I can see them
+NabThiefIntent Hold them where I can see them
+NabThiefIntent I see him 
+NabThiefIntent I see her
+NabThiefIntent I see it
+NabThiefIntent end of the line
+NabThiefIntent end of the road
 
 innocentIntent innocent
 innocentIntent this isnt the criminal
@@ -314,14 +380,20 @@ innocentIntent next
 innocentIntent next person
 innocentIntent keep looking
 innocentIntent thats not the criminal
-innocentIntent nope
+innocentIntent not the criminal
+innocentIntent aint it
+innocentIntent aint her
+innocentIntent aint him
+innocentIntent aint the criminal
 innocentIntent innocence
 innocentIntent not the criminal
 innocentIntent not right
 innocentIntent no match
 
-LastStageIntent ready to be a Sleuth
+LastStageIntent time
 LastStageIntent locked and loaded
 LastStageIntent i was born for this
-LastStageIntent Sleuth is my middle name
-
+LastStageIntent Cocked and locked
+LastStageIntent Eyes peeled
+LastStageIntent locked
+LastStageIntent loaded
