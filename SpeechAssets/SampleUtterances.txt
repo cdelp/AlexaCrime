@@ -25,43 +25,6 @@ AMAZON.StopIntent Leave game.
 AMAZON.StopIntent Leave.
 AMAZON.StopIntent I'm done.
 
-RulesIntent What are the rules
-RulesIntent Are there rules
-RulesIntent Rules
-RulesIntent Any rules
-RulesIntent Any guidelines 
-RulesIntent What can I do
-RulesIntent What cant I do
-
-SleuthIntent What am I 
-SleuthIntent Who am I playing as
-SleuthIntent Why is a player called
-SleuthIntent What is my role
-SleuthIntent Who is my role
-SleuthIntent Whats my role
-SleuthIntent Whats my name
-
-JokeItent Tell me a joke
-JokeItent Make me laugh
-JokeItent Lighten the mood
-JokeItent Give me a joke
-JokeItent Make me chuckle
-JokeItent Try to make me laugh
-JokeItent You cant make me laugh
-JokeItent Say a joke
-JokeItent Give me a joke
-
-WhoIntent What is a sleuth
-WhoIntent What is a sleuth-hound
-WhoIntent Why sleuth
-WhoIntent Define sleuth
-WhoIntent Define sleuth-hound
-WhoIntent Why sleuth hound
-WhoIntent Whats a sleuth hound
-WhoIntent Why sleuth hound
-WhoIntent You called me a sleuth hound
-WhoIntent sleuth hound is what
-
 SassyIntent I hate this game.
 SassyIntent Why should I play this game
 SassyIntent This game is terrible.
@@ -141,7 +104,6 @@ GameStart lego
 GameStart Laygo
 GameStart Cash me outside
 GameStart Deal me in
-
 
 CountryIntent lets go to {country_item}
 CountryIntent {country_item}
