@@ -1,4 +1,4 @@
-var APP_ID = 'amzn1.ask.skill.aabba284-213a-4040-9219-3f70163c4ec2';
+
 var Alexa = require("alexa-sdk"); 
 
 function rand(min, max) {
@@ -1841,12 +1841,6 @@ function generateQuestionResponse(questionType)
             console.log("error question type was incorrect, expecting 1, 2, or 3");
         }
     }
-}
-
-var countryString = undefined;
-
-function Countries(number){
-    return "Test Country Name";
 }
 
 // example of pause, TODO add where needed
