@@ -5,16 +5,16 @@ Enter type:
 Enter values:
 
 LIST_OF_COUNTRIES
-Egypt 
-Iran 
+Egypt
+Iran
 Algeria
-Tunisia 
-Morocco 
-Syria 
+Tunisia
+Oman
+Morocco
+Syria
 Iraq
 Saudi Arabia
 Lebanon
-Jordan
 Japan
 China
 Mongolia
@@ -32,9 +32,8 @@ Somalia
 Sudan
 Nigeria
 Cameroon
-Sénégal
+Senegal
 Ghana
-Côte d'ivoire 
 Brazil
 Argentina
 Venezuela
@@ -43,6 +42,7 @@ Peru
 Ecuador
 Uruguay
 Paraguay
+Bolivia
 Chile
 Columbia
 

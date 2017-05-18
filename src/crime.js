@@ -72,8 +72,8 @@ var hairLength = ['long', 'short', 'medium', 'balding', 'curly', 'wavy', 'silky'
 var hairColor = ['black', 'brown', 'blond', 'red', 'silver', 'gray', 'dark', 'white', 'auburn', 'jet black', 'light brown', 'platinum blond', 'medium brown', 'ash brown', 'dark brown'];
 var eyeSize = ['small', 'large', 'round', 'almond', 'hooded', 'droopy', 'beady', 'downturned', 'upturned', 'monolid'];
 var eyeColor = ['black', 'dark brown', 'blue', 'green', 'hazel', 'amber', 'grey', 'red and violet', 'light blue', 'light brown', 'light green'];
-var body = ['heavy-set', 'thin', 'average', 'slender', 'big', 'pear shaped', 'banana shaped','apple shaped', 'spoon shaped', 'oval shaped', 'hourglass shaped', 'slim', 'athletic', 'cornet shaped',];
-var height = ['petite', 'average', 'tall', 'short', 'gigantic', 'dwarf', 'midget', 'average', 'tall', 'short', 'average', 'tall', 'short'];
+var body = ['heavy-set', 'thin', 'slender', 'big', 'pear shaped', 'banana shaped','apple shaped', 'spoon shaped', 'oval shaped', 'hourglass shaped', 'slim', 'athletic', 'cornet shaped',];
+var height = ['petite', 'tall', 'short', 'gigantic', 'dwarf', 'midget', 'tall', 'short', 'tall', 'short'];
 var special = ['missing hand', 'cane', 'eye patch', 'glasses', 'shades', 'beanie'];
 var p_special = ['headphones', 'bathing suit', 'bag', 'satchel'];
 var greetings = ['hey', "what's up'", 'hi'];
@@ -1631,6 +1631,12 @@ function generateQuestionResponse(questionType)
         repromptOutput = this.t("ACCUSE_REPROMPT");
         this.emit(":ask", speechOutput, repromptOutput);
     }
+    else if (talkingFlag == 0)
+    {
+        //hasn't waved anyone down yet
+        speechOutput = this.t("ERROR_GET_ATTENTION");
+        this.emit(":ask", speechOutput, speechOutput);
+    }
     else
     {
         questionedCount++;
@@ -1891,9 +1897,9 @@ var languageString = {
 			"DEPARTURE_MESSAGE": "%s it is. Talk to you when you land. Get going sleuth! ",
 			"ARRIVAL_MESSAGE": "%s. Time to find info on %s. Get the attention of bystanders so you can ask them for clues on what happened, what the criminal looks like, and where the criminal went. ",
             "LAST_ARRIVAL_MESSAGE": "%s. %s is near. Pay close attention to the features of people around you, any of them could be %s. ",
-            "PERSON_APPROACHING": "A %s, %s, %s, is %s %s",
+            "PERSON_APPROACHING": "A %s, %s, %s, is %s %s. let's get their attention.",
 			"PERSON_RESPONSE": "%s kept on walking by. ",
-            "CORRECT_PERSON_RESPONSE": " %s %s.",
+            "CORRECT_PERSON_RESPONSE": " %s %s. Lets ask about the criminal.",
 			"ASK_REPROMT": "Ask questions like, did you hear anything about the criminal, or what does the criminal look like. ",
 			"PLEASE_GREET": "Get bystanders attention by saying something like hello or excuse me. ",
 			"PASSEDBY_PROMPT": "Say keep going to look for others. ", 
@@ -1917,7 +1923,7 @@ var languageString = {
             "LAST_STAGE": "The Criminal is close, we should try to capture the criminal. ",
             "NOT_COUNTRY_PICK": "We aren't done talking to people yet. To finish talking, say thanks or bye. ",
 			"NOT_COUNTRY_REPROMPT": "Please say, bye. ",
-            "NOT_DONE_QUESTIONING": "If you're finished questioning and ready to move on , say I'm thanks or bye. ",
+            "NOT_DONE_QUESTIONING": "If you're finished questioning and ready to move on , say thanks or bye. ",
 			"LAST_STAGE_READY": "Say Ready to be a Sleuth when youre ready to catch the criminal. ",
 			"LAST_STAGE_READY_REPROMPT": "Please say ready to be a sleuth. ",
             "ACCUSE": "A %s %s %s with %s %s eyes, %s %s hair is %s %s. Is this the criminal? If so, say stop criminal or say innocent to keep looking. ",
