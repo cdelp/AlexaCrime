@@ -1,4 +1,4 @@
-
+var APP_ID = 'amzn1.ask.skill.aabba284-213a-4040-9219-3f70163c4ec2';
 var Alexa = require("alexa-sdk"); 
 
 function rand(min, max) {
@@ -988,25 +988,24 @@ function checkCountry()
     var repromptOutput;
     if(countryPickFlag == 0)
     {
-        if(talkedToCount > 0)
-        {
-            //not done talking yet
-            speechOutput = this.t("NOT_COUNTRY_PICK");
-            repromptOutput = this.t("NOT_COUNTRY_REPROMPT");
-            this.emit(":ask", speechOutput, repromptOutput);
-        }
-        else if (talkedToCount == 0)
-        {
-            //hasn't waved anyone down yet
-            speechOutput = this.t("ERROR_GET_ATTENTION");
-            this.emit(":ask", speechOutput, speechOutput);
-
-        }
-        else if (stage >= 3)
+        if (stage >= 3)
         {
             //in last stage
             speechOutput = this.t("LAST_STAGE") + this.t("ACCUSE_REPROMPT");
             repromptOutput = this.t("ACCUSE_REPROMPT");
+            this.emit(":ask", speechOutput, repromptOutput);
+        }
+        else if (talkingFlag == 0)
+        {
+            //hasn't waved anyone down yet
+            speechOutput = this.t("ERROR_GET_ATTENTION");
+            this.emit(":ask", speechOutput, speechOutput);
+        }
+        else if(talkedToCount > 0)
+        {
+            //not done talking yet
+            speechOutput = this.t("NOT_COUNTRY_PICK");
+            repromptOutput = this.t("NOT_COUNTRY_REPROMPT");
             this.emit(":ask", speechOutput, repromptOutput);
         }
     }
@@ -1224,7 +1223,7 @@ function lastStage()
     if(countryPickFlag == 1 && stage == 0)
     {
         //hasn't started game yet
-        speechOutput = this.t("GAME_START_MESSGE");
+        speechOutput = this.t("GAME_START_MESSAGE");
         repromptOutput = this.t("GAME_START_REPROMPT");
         this.emit(":ask", speechOutput, repromptOutput);
 
@@ -1240,7 +1239,7 @@ function lastStage()
     }
     else if (stage < 3)
     {
-        if(talkedToCount == 0)
+        if(talkingFlag == 0)
         {
 
             //picked a country but hasn't waved anyone down yet
@@ -1349,7 +1348,7 @@ function innocentFunction()
     if(countryPickFlag == 1 && stage == 0)
     {
         //hasn't started game yet
-        speechOutput = this.t("GAME_START_MESSGE");
+        speechOutput = this.t("GAME_START_MESSAGE");
         repromptOutput = this.t("GAME_START_REPROMPT");
         this.emit(":ask", speechOutput, repromptOutput);
 
@@ -1365,7 +1364,7 @@ function innocentFunction()
     }
     else if (stage < 3)
     {
-        if(talkedToCount == 0)
+        if(talkingFlag == 0)
         {
 
             //picked a country but hasn't waved anyone down yet
@@ -1397,7 +1396,7 @@ function nabThiefFunction()
     if(countryPickFlag == 1 && stage == 0)
     {
         //hasn't started game yet
-        speechOutput = this.t("GAME_START_MESSGE");
+        speechOutput = this.t("GAME_START_MESSAGE");
         repromptOutput = this.t("GAME_START_REPROMPT");
         this.emit(":ask", speechOutput, repromptOutput);
 
@@ -1413,7 +1412,7 @@ function nabThiefFunction()
     }
     else if (stage < 3)
     {
-        if(talkedToCount == 0)
+        if(talkingFlag == 0)
         {
 
             //picked a country but hasn't waved anyone down yet
@@ -1447,7 +1446,7 @@ function talkedTo()
     if(countryPickFlag == 1 && stage == 0)
     {
         //hasn't started game yet
-        speechOutput = this.t("GAME_START_MESSGE");
+        speechOutput = this.t("GAME_START_MESSAGE");
         repromptOutput = this.t("GAME_START_REPROMPT");
         this.emit(":ask", speechOutput, repromptOutput);
 
@@ -1478,8 +1477,7 @@ function talkedTo()
     {
         // line below seemed to be needed to clear user spoken country for next round. Otherwise kept repeating first country choice regardless of what they said.
         country = null;
-
-        var speechOutput;
+        talkingFlag = 1;
         //final stage prompt.
         if (stage >= 3) {
             //stuff for populating possible criminals for player to stop.
@@ -1543,35 +1541,33 @@ function doneQuestioning()
 {
     var speechOutput;
     var repromptOutput;
-    questionedCount = 0;
-    if(talkedToCount == 0)
+    //TODO ALAN
+    if(countryPickFlag == 1 && stage == 0)
     {
-        //TODO ALAN
-        if(countryPickFlag == 1 && stage == 0)
-        {
-            //hasn't started game yet
-            speechOutput = this.t("GAME_START_MESSGE");
-            repromptOutput = this.t("GAME_START_REPROMPT");
-            this.emit(":ask", speechOutput, repromptOutput);
+        //hasn't started game yet
+        speechOutput = this.t("GAME_START_MESSAGE");
+        repromptOutput = this.t("GAME_START_REPROMPT");
+        this.emit(":ask", speechOutput, repromptOutput);
 
-        }
-        else if (countryPickFlag == 1 && stage > 0)
-        {
-            //in country pick mode
-            speechOutput = this.t("ERROR_CHOOSE_COUNTRY") + this.t("CHOOSE_AGAIN") +
-                this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName); ;
-            repromptOutput = this.t("GAME_START_REPROMPT") + this.t("CHOOSE_AGAIN") +
-                this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);;
-            this.emit(":ask", speechOutput, repromptOutput);
-        }
-        else
-        {
-            //picked a country but hasn't waved anyone down yet
-            speechOutput = this.t("ERROR_GET_ATTENTION");
-            this.emit(":ask", speechOutput, speechOutput);
-        }
+    }
+    else if (countryPickFlag == 1 && stage > 0)
+    {
+        //in country pick mode
+        speechOutput = this.t("ERROR_CHOOSE_COUNTRY") + this.t("CHOOSE_AGAIN") +
+            this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName); ;
+        repromptOutput = this.t("GAME_START_REPROMPT") + this.t("CHOOSE_AGAIN") +
+            this.t("COUNTRY_LIST", countryOutputList[0].countryName, countryOutputList[1].countryName, countryOutputList[2].countryName, countryOutputList[3].countryName);;
+        this.emit(":ask", speechOutput, repromptOutput);
+    }
+    else if (talkingFlag == 0)
+    {
+        //picked a country but hasn't waved anyone down yet
+        speechOutput = this.t("ERROR_GET_ATTENTION");
+        this.emit(":ask", speechOutput, speechOutput);
     }
     else if (talkedToCount >= 5) {
+        questionedCount = 0;
+        talkingFlag = 0;
         console.log("resetting counter, 5 people talked to, time to choose a country");
         talkedToCount = 0;
         //if they were in the correct country and finished talking to 5 people
@@ -1591,6 +1587,8 @@ function doneQuestioning()
 
     }
     else {
+        questionedCount = 0;
+        talkingFlag = 0;
         console.log("populating new r_person from doneQuestioning");
         r_person = new PopulateResponsePerson();
         //build response for next person walking by.
@@ -1612,7 +1610,7 @@ function generateQuestionResponse(questionType)
     if(countryPickFlag == 1 && stage == 0)
     {
         //hasn't started game yet
-        speechOutput = this.t("GAME_START_MESSGE");
+        speechOutput = this.t("GAME_START_MESSAGE");
         repromptOutput = this.t("GAME_START_REPROMPT");
         this.emit(":ask", speechOutput, repromptOutput);
 
@@ -1883,7 +1881,7 @@ var languageString = {
 			"QUESTION_UNHANDLED": "I'm sorry. I didn't understand your choice. Please say it again. ",
 			"TEST_OUTPUT": "Testing output only. ", // testing only
             "NEW_GAME_MESSAGE": "Welcome to %s. ",
-			"GAME_START_MESSAGE": "Ask, how do I play, if you have questions. Otherwise, saw game time if you're ready for a mission ",
+			"GAME_START_MESSAGE": "Ask, how do I play, if you have questions. Otherwise, say game time if you're ready for a mission ",
             "GAME_START_REPROMPT": "Say Game Time to start.",
             "INTRO_MESSAGE": "Let's do it Sleuth! We are on the hunt for %s.  %s is wanted in connection with a recent string of %s crimes resulting in %s million in damages. We must help bring the criminal responsible for these crimes to justice before %s goes into hiding. It will not be an easy task to catch %s , so pay close attention to clues that we get from bystanders on %s looks and whereabouts. %s was last seen %s. Enough talking, let's do it! ",
 			"LOCATION_TEST": "%s is in %s, %s. ", // testing only
@@ -1915,11 +1913,11 @@ var languageString = {
             "DONE_QUESTIONING": "Alright, let's look for someone else. A %s, %s, %s, is %s %s. Try to get their attention by greeting them.",
             "COUNTRY_FACTS": seenMix[(rand(0, seenMix.length - 1))],
             "NOT_SEEN": notSeen[rand(0, notSeen.length - 1)],
-            "NOT_LAST_STAGE": "We aren't ready to capture the criminal yet, to finish talking, say I'm done questioning. ",
+            "NOT_LAST_STAGE": "We aren't ready to capture the criminal yet, to finish talking, say thanks or bye. ",
             "LAST_STAGE": "The Criminal is close, we should try to capture the criminal. ",
-            "NOT_COUNTRY_PICK": "We aren't done talking to people yet. To finish talking, say I'm done questioning. ",
-			"NOT_COUNTRY_REPROMPT": "Please say, I'm done questioning. ",
-            "NOT_DONE_QUESTIONING": "If you're finished questioning and ready to move on , say I'm done questioning. ",
+            "NOT_COUNTRY_PICK": "We aren't done talking to people yet. To finish talking, say thanks or bye. ",
+			"NOT_COUNTRY_REPROMPT": "Please say, bye. ",
+            "NOT_DONE_QUESTIONING": "If you're finished questioning and ready to move on , say I'm thanks or bye. ",
 			"LAST_STAGE_READY": "Say Ready to be a Sleuth when youre ready to catch the criminal. ",
 			"LAST_STAGE_READY_REPROMPT": "Please say ready to be a sleuth. ",
             "ACCUSE": "A %s %s %s with %s %s eyes, %s %s hair is %s %s. Is this the criminal? If so, say stop criminal or say innocent to keep looking. ",
@@ -1945,7 +1943,7 @@ var GAME_STATES = {
 
 exports.handler = function(event, context, callback) {
     var alexa = Alexa.handler(event, context);
-    alexa.appId = APP_ID;
+    alexa.APP_ID = APP_ID;
     // To enable string internationalization (i18n) features, set a resources object.
     alexa.resources = languageString;
     alexa.registerHandlers(newSessionHandlers, startStateHandlers, gameStateHandlers, helpStateHandlers);
@@ -2012,11 +2010,19 @@ var startStateHandlers = Alexa.CreateStateHandler(GAME_STATES.START, {
 var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
     "GameStart": function () {
         shuffleArray(Region);
+
+        //set every flag to default
+        crimCountryVisitedArr = []; //array of countries criminal has been to, used to match against
+        countryOutputList = []; //Need to fill with 1 correct country and rest random. Splice the wrong country chosen when picked in checkCountry
+        countryChoice = null;
+        talkingFlag = 0;
         talkedToCount = 0;
         countryVisited = 0;
         criminalFlag = 0;
+        stage = 0;
         questionedCount = 0;
         countryPickFlag = 1;
+
         criminal = new PopulateCriminal();
         assignNextCountry();
         r_person = new PopulateResponsePerson();
@@ -2083,6 +2089,7 @@ var gameStateHandlers = Alexa.CreateStateHandler(GAME_STATES.PLAY, {
     "innocentIntent": function () {
 		innocentFunction.call(this);
     },
+    /**
 	"SassyIntent": function (){
 		var speechOutput = this.t("SASSY_END");
 		this.emit(":tell", speechOutput);
@@ -2175,6 +2182,7 @@ var helpStateHandlers = Alexa.CreateStateHandler(GAME_STATES.HELP, {
             this.emitWithState("StartGame", false);
         }
     },
+    /**
     "SassyIntent": function (){
 		var speechOutput = this.t("SASSY_END");
 		this.emit(":tell", speechOutput);
@@ -2186,7 +2194,7 @@ var helpStateHandlers = Alexa.CreateStateHandler(GAME_STATES.HELP, {
     "PersonalIntent": function () {
 		var speechOutput = this.t("PERSONAL_END");
 		this.emit(":tell", speechOutput);
-	},
+	},**/
 	"AMAZON.NoIntent": function() {
         var speechOutput = this.t("NO_MESSAGE");
         this.emit(":tell", speechOutput);
@@ -2217,13 +2225,3 @@ var helpStateHandlers = Alexa.CreateStateHandler(GAME_STATES.HELP, {
     }
 });
 
-function printStuff()
-{
-    console.log(criminal)
-    console.log(r_person)
-    console.log(talkedToCount);
-    console.log(stage);
-    console.log(countryVisited);//count of times tried
-    console.log(crimCountryVisitedArr);//array of countries criminal has been to, used to match against
-    console.log(countryChoice);
-}
