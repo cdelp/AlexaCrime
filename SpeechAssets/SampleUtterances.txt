@@ -397,3 +397,4 @@ LastStageIntent Cocked and locked
 LastStageIntent Eyes peeled
 LastStageIntent locked
 LastStageIntent loaded
+LastStageIntent ready to be a sleuth

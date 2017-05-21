@@ -237,7 +237,6 @@ var Iraq = {
 'Where poetry and literature thrived with tales such as A thousand and One Nights.',
 'Headed to enjoy the famous Tigris fish roasted over an open fire.'
 ],
-
     m_names: ['Zamanlabib', 'Mustafa', 'Barhoomee', 'Baravan', 'Jahmir', 'Fadhil'],
     f_names: ['Zainab', 'Noora', 'Sham', 'Telenaz', 'Rukia', 'Kayoosh'],
     region: 'Middle East'
@@ -288,7 +287,6 @@ var Japan = {
     countryName: 'Japan',
 
 	intro: 'Konichi Wa Welcome to Japan, with its 108 active volcanoes, as part of the Pacific Oceans ring of fire. Japan consists of 47 prefectures, each lead by an elected governor. ',
-
     facts: ['Headed to Nihon or Nippon, which means the land of the rising sun.',
         'In a country that Consists of over 6,800 islands.',
         'Where you can find the largest populated metropolitan region in the world.',
@@ -1224,7 +1222,7 @@ function lastStage()
     if(countryPickFlag == 1 && stage == 0)
     {
         //hasn't started game yet
-        speechOutput = this.t("GAME_START_MESSGE");
+        speechOutput = this.t("GAME_START_MESSAGE");
         repromptOutput = this.t("GAME_START_REPROMPT");
         this.emit(":ask", speechOutput, repromptOutput);
 
@@ -1349,7 +1347,7 @@ function innocentFunction()
     if(countryPickFlag == 1 && stage == 0)
     {
         //hasn't started game yet
-        speechOutput = this.t("GAME_START_MESSGE");
+        speechOutput = this.t("GAME_START_MESSAGE");
         repromptOutput = this.t("GAME_START_REPROMPT");
         this.emit(":ask", speechOutput, repromptOutput);
 
@@ -1397,7 +1395,7 @@ function nabThiefFunction()
     if(countryPickFlag == 1 && stage == 0)
     {
         //hasn't started game yet
-        speechOutput = this.t("GAME_START_MESSGE");
+        speechOutput = this.t("GAME_START_MESSAGE");
         repromptOutput = this.t("GAME_START_REPROMPT");
         this.emit(":ask", speechOutput, repromptOutput);
 
@@ -1447,7 +1445,7 @@ function talkedTo()
     if(countryPickFlag == 1 && stage == 0)
     {
         //hasn't started game yet
-        speechOutput = this.t("GAME_START_MESSGE");
+        speechOutput = this.t("GAME_START_MESSAGE");
         repromptOutput = this.t("GAME_START_REPROMPT");
         this.emit(":ask", speechOutput, repromptOutput);
 
@@ -1550,7 +1548,7 @@ function doneQuestioning()
         if(countryPickFlag == 1 && stage == 0)
         {
             //hasn't started game yet
-            speechOutput = this.t("GAME_START_MESSGE");
+            speechOutput = this.t("GAME_START_MESSAGE");
             repromptOutput = this.t("GAME_START_REPROMPT");
             this.emit(":ask", speechOutput, repromptOutput);
 
@@ -1612,7 +1610,7 @@ function generateQuestionResponse(questionType)
     if(countryPickFlag == 1 && stage == 0)
     {
         //hasn't started game yet
-        speechOutput = this.t("GAME_START_MESSGE");
+        speechOutput = this.t("GAME_START_MESSAGE");
         repromptOutput = this.t("GAME_START_REPROMPT");
         this.emit(":ask", speechOutput, repromptOutput);
 
@@ -1875,7 +1873,7 @@ var languageString = {
             "GAME_NAME" : "Sleuth Hound", 
             "HELP_MESSAGE": "Please ask questions like, how do I play, what is the concept of the game, what am I supposed to do? ",
 			"REPEAT_MESSAGE": "Sorry I could not hear you. What did you say?. ",
-			"HELP_RESPONSE": "You, with the guidance of Chief Alexa, track down criminals as they try to elude you. Collect clues from bystanders by asking them if they heard about the crime, where the criminal went, and what the criminal looked like. Would like to keep playing the game. ",
+			"HELP_RESPONSE": "You, with the guidance of Chief Alexa, track down criminals as they try to elude you. Collect clues from bystanders by asking them if they heard about the crime, where the criminal went, and what the criminal looked like. Would you like to keep playing the game. ",
             "HELP_REPROMPT": "Are you listening to me? ", 
             "STOP_MESSAGE": "Would you like to continue our search? Please say no if you'd like to quit",
             "CANCEL_MESSAGE": "Ok, see you next time Sleuth.", // if needed
@@ -1889,7 +1887,7 @@ var languageString = {
 			"QUESTION_UNHANDLED": "I'm sorry. I didn't understand your choice. Please say it again. ",
 			"TEST_OUTPUT": "Testing output only. ", // testing only
             "NEW_GAME_MESSAGE": "Welcome to %s. ",
-			"GAME_START_MESSAGE": "Ask, how do I play, if you have questions. Otherwise, saw game time if you're ready for a mission ",
+			"GAME_START_MESSAGE": "Ask, how do I play, if you have questions. Otherwise, say game time if you're ready for a mission ",
             "GAME_START_REPROMPT": "Say Game Time to start.",
             "INTRO_MESSAGE": "Let's do it Sleuth! We are on the hunt for %s.  %s is wanted in connection with a recent string of %s crimes resulting in %s million in damages. We must help bring the criminal responsible for these crimes to justice before %s goes into hiding. It will not be an easy task to catch %s , so pay close attention to clues that we get from bystanders on %s looks and whereabouts. %s was last seen %s. Enough talking, let's do it! ",
 			"LOCATION_TEST": "%s is in %s, %s. ", // testing only
