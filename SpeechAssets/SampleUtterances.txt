@@ -25,92 +25,6 @@ AMAZON.StopIntent Leave game.
 AMAZON.StopIntent Leave.
 AMAZON.StopIntent I'm done.
 
-RulesIntent What are the rules
-RulesIntent Are there rules
-RulesIntent Rules
-RulesIntent Any rules
-RulesIntent Any guidelines 
-RulesIntent What can I do
-RulesIntent What cant I do
-
-SleuthIntent What am I 
-SleuthIntent Who am I playing as
-SleuthIntent Why is a player called
-SleuthIntent What is my role
-SleuthIntent Who is my role
-SleuthIntent Whats my role
-SleuthIntent Whats my name
-
-JokeItent Tell me a joke
-JokeItent Make me laugh
-JokeItent Lighten the mood
-JokeItent Give me a joke
-JokeItent Make me chuckle
-JokeItent Try to make me laugh
-JokeItent You cant make me laugh
-JokeItent Say a joke
-JokeItent Give me a joke
-
-WhoIntent What is a sleuth
-WhoIntent What is a sleuth-hound
-WhoIntent Why sleuth
-WhoIntent Define sleuth
-WhoIntent Define sleuth-hound
-WhoIntent Why sleuth hound
-WhoIntent Whats a sleuth hound
-WhoIntent Why sleuth hound
-WhoIntent You called me a sleuth hound
-WhoIntent sleuth hound is what
-
-SassyIntent I hate this game.
-SassyIntent Why should I play this game
-SassyIntent This game is terrible.
-SassyIntent Why do people play this game.
-SassyIntent I don't like this game.
-SassyIntent I do not like this game.
-SassyIntent This game sucks.
-SassyIntent What is wrong with this game
-SassyIntent Why play
-SassyIntent Why play this game
-SassyIntent This game is lame.
-SassyIntent This game is wack.
-SassyIntent This game is stupid.
-
-CussIntent Fuck
-CussIntent Shit
-CussIntent Cunt
-CussIntent Bitch
-CussIntent Mother Fucker
-CussIntent As Fuck
-CussIntent Fucker
-CussIntent Cum guzzler
-CussIntent Skank
-CussIntent Nigger
-CussIntent Nigga
-CussIntent Cracker
-CussIntent Ass
-CussIntent Asshole
-CussIntent Asswipe
-CussIntent Bastard
-CussIntent Trick
-CussIntent Wench
-CussIntent Cock block
-CussIntent Dumpster
-
-PersonalIntent You suck.
-PersonalIntent I hate you.
-PersonalIntent Go fuck yourself
-PersonalIntent I wish I could kill you
-PersonalIntent I want to kill you
-PersonalIntent I want to beat you up
-PersonalIntent You are lucky that you aren't real
-PersonalIntent you are worthless.
-PersonalIntent you are a dirty whore.
-PersonalIntent you are nothing
-PersonalIntent you are lower that a show salesman
-PersonalIntent kill yourself
-PersonalIntent I hope you die
-
 GameStart Yes
 GameStart Yes Sir
 GameStart Yes Ma'am
@@ -120,28 +34,17 @@ GameStart Yep
 GameStart OK
 GameStart Alright
 GameStart lets do this
-GameStart Aight
 GameStart Yea
-GameStart Cool
-GameStart lets get it
 GameStart Start
 GameStart Start it up
 GameStart Crank us up
-GameStart Brief me baby
-GameStart Brief me girl
 GameStart Cant wait
 GameStart lets get it
 GameStart Get it on
 GameStart Its go time
 GameStart Game time
-GameStart Yea buddy
 GameStart Play
 GameStart Im ready
-GameStart lego
-GameStart Laygo
-GameStart Cash me outside
-GameStart Deal me in
-
 
 CountryIntent lets go to {country_item}
 CountryIntent {country_item}
@@ -164,7 +67,6 @@ TarryStopIntent Excuse me
 TarryStopIntent Hi
 TarryStopIntent hello
 TarryStopIntent Hey you
-TarryStopIntent Um hi
 TarryStopIntent hey
 TarryStopIntent Sir
 TarryStopIntent Ma'am
@@ -175,7 +77,6 @@ TarryStopIntent hello madam
 TarryStopIntent Hi boss
 TarryStopIntent Hey chief
 TarryStopIntent Hi guys
-TarryStopIntent Excuse me ladies
 TarryStopIntent Yo
 TarryStopIntent Hey girl
 TarryStopIntent Hey brother
@@ -186,37 +87,14 @@ TarryStopIntent Sup
 TarryStopIntent What up
 TarryStopIntent Whats up
 TarryStopIntent Hi Miss
-TarryStopIntent Miss
-TarryStopIntent Bro
-TarryStopIntent Dude
-TarryStopIntent Bra
-TarryStopIntent Whats happening
-TarryStopIntent Word up
-TarryStopIntent Hey Brada
-TarryStopIntent Please
-TarryStopIntent Assistance please
-TarryStopIntent I need your help
 TarryStopIntent A word please
-TarryStopIntent A word
-TarryStopIntent Hi a word
 TarryStopIntent Can I have a word
 TarryStopIntent I have some questions
-TarryStopIntent I need your help
-TarryStopIntent I need help
-TarryStopIntent I need you
-TarryStopIntent I need ya
-TarryStopIntent Can you help me
 TarryStopIntent I have a question
 TarryStopIntent Question him
-TarryStopIntent Say I have a question
-TarryStopIntent Say I for me
-TarryStopIntent Say excuse me
-TarryStopIntent Say hello
-TarryStopIntent Say Hi
 
 ContinueSearchIntent bye
 ContinueSearchIntent buh bye
-ContinueSearchIntent I'm done questioning
 ContinueSearchIntent that's all
 ContinueSearchIntent I'm done talking
 ContinueSearchIntent Thanks
@@ -225,10 +103,8 @@ ContinueSearchIntent Thanks for your help
 ContinueSearchIntent Have a nice day
 ContinueSearchIntent Good day
 ContinueSearchIntent I appreciate your help
-ContinueSearchIntent No more questions
 ContinueSearchIntent Keep going
 ContinueSearchIntent move on
-ContinueSearchIntent no more questions
 
 CrimeBackgroundQuestionIntent Did you hear about {criminal_name}
 CrimeBackgroundQuestionIntent Have you heard about {criminal_name}
@@ -291,7 +167,7 @@ CriminalLooksQuestionIntent Describe what he looks like
 CriminalLooksQuestionIntent Did he have a hat
 CriminalLooksQuestionIntent What does he wear
 CriminalLooksQuestionIntent What was he wearing
-CriminalLooksQuestionIntent Can you tell me what he looked like?
+CriminalLooksQuestionIntent Can you tell me what he looked like
 CriminalLooksQuestionIntent How did he look like
 CriminalLooksQuestionIntent Can you describe what he looks like
 CriminalLooksQuestionIntent Did you see what he looks like
@@ -390,7 +266,6 @@ innocentIntent not the criminal
 innocentIntent not right
 innocentIntent no match
 
-LastStageIntent time
 LastStageIntent locked and loaded
 LastStageIntent i was born for this
 LastStageIntent Cocked and locked
