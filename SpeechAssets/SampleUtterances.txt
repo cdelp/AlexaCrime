@@ -6,38 +6,30 @@ AMAZON.HelpIntent What do I do
 AMAZON.HelpIntent What is the point
 AMAZON.HelpIntent How do you win
 AMAZON.HelpIntent What should I do
-AMAZON.HelpIntent Help me.
-AMAZON.HelpIntent I dont get it.
-AMAZON.HelpIntent Please help.
+AMAZON.HelpIntent Help me
+AMAZON.HelpIntent Please help
 AMAZON.HelpIntent What is the point of the game
 
-AMAZON.StopIntent I don't want to play anymore.
-AMAZON.StopIntent Quit the game.
-AMAZON.StopIntent Exit the game.
-AMAZON.StopIntent Please exit the game.
-AMAZON.StopIntent Quit.
-AMAZON.StopIntent Im done playing.
-AMAZON.StopIntent Exit the mission.
-AMAZON.StopIntent Quit the mission.
-AMAZON.StopIntent Tired of playing.
-AMAZON.StopIntent Exit.
-AMAZON.StopIntent Leave game.
-AMAZON.StopIntent Leave.
-AMAZON.StopIntent I'm done.
+AMAZON.StopIntent I don't want to play anymore
+AMAZON.StopIntent Quit the game
+AMAZON.StopIntent Exit the game
+AMAZON.StopIntent Quit
+AMAZON.StopIntent Exit the mission
+AMAZON.StopIntent Quit the mission
+AMAZON.StopIntent Tired of playing
+AMAZON.StopIntent Exit
+AMAZON.StopIntent Leave game
+AMAZON.StopIntent Leave
 
-SassyIntent I hate this game.
-SassyIntent Why should I play this game
-SassyIntent This game is terrible.
-SassyIntent Why do people play this game.
-SassyIntent I don't like this game.
-SassyIntent I do not like this game.
-SassyIntent This game sucks.
-SassyIntent What is wrong with this game
-SassyIntent Why play
-SassyIntent Why play this game
-SassyIntent This game is lame.
-SassyIntent This game is wack.
-SassyIntent This game is stupid.
+SassyIntent I hate this
+SassyIntent Why should I play this
+SassyIntent This game is terrible
+SassyIntent Why do people play this
+SassyIntent This sucks
+SassyIntent What is wrong with this
+SassyIntent This is lame.
+SassyIntent This is wack.
+SassyIntent This is stupid.
 
 CussIntent Fuck
 CussIntent Shit
@@ -60,15 +52,13 @@ CussIntent Wench
 CussIntent Cock block
 CussIntent Dumpster
 
-PersonalIntent You suck.
-PersonalIntent I hate you.
-PersonalIntent Go fuck yourself
+PersonalIntent You suck
+PersonalIntent I hate you
 PersonalIntent I wish I could kill you
 PersonalIntent I want to kill you
 PersonalIntent I want to beat you up
 PersonalIntent You are lucky that you aren't real
-PersonalIntent you are worthless.
-PersonalIntent you are a dirty whore.
+PersonalIntent you are worthless
 PersonalIntent you are nothing
 PersonalIntent you are lower that a show salesman
 PersonalIntent kill yourself
@@ -86,7 +76,6 @@ GameStart lets do this
 GameStart Aight
 GameStart Yea
 GameStart Cool
-GameStart lets get it
 GameStart Start
 GameStart Start it up
 GameStart Crank us up
@@ -94,8 +83,7 @@ GameStart Brief me baby
 GameStart Brief me girl
 GameStart Cant wait
 GameStart lets get it
-GameStart Get it on
-GameStart Its go time
+GameStart go time
 GameStart Game time
 GameStart Yea buddy
 GameStart Play
@@ -110,7 +98,6 @@ CountryIntent {country_item}
 CountryIntent Go to {country_item}
 CountryIntent Try {country_item} next
 CountryIntent take me to {country_item}
-CountryIntent Id like to start in {country_item}
 CountryIntent I choose {country_item}
 CountryIntent {country_item} it is
 CountryIntent {country_item} please
@@ -126,13 +113,10 @@ TarryStopIntent Excuse me
 TarryStopIntent Hi
 TarryStopIntent hello
 TarryStopIntent Hey you
-TarryStopIntent Um hi
 TarryStopIntent hey
 TarryStopIntent Sir
 TarryStopIntent Ma'am
-TarryStopIntent Excuse me Sir
-TarryStopIntent Excuse me miss
-TarryStopIntent excuse me ma'am
+TarryStopIntent Excuse me 
 TarryStopIntent hello madam
 TarryStopIntent Hi boss
 TarryStopIntent Hey chief
@@ -142,7 +126,6 @@ TarryStopIntent Yo
 TarryStopIntent Hey girl
 TarryStopIntent Hey brother
 TarryStopIntent Heyo
-TarryStopIntent Hey ho
 TarryStopIntent Sup man
 TarryStopIntent Sup
 TarryStopIntent What up
@@ -152,25 +135,16 @@ TarryStopIntent Miss
 TarryStopIntent Bro
 TarryStopIntent Dude
 TarryStopIntent Bra
-TarryStopIntent Whats happening
 TarryStopIntent Word up
 TarryStopIntent Hey Brada
 TarryStopIntent Please
 TarryStopIntent Assistance please
-TarryStopIntent I need your help
-TarryStopIntent A word please
-TarryStopIntent A word
-TarryStopIntent Hi a word
 TarryStopIntent Can I have a word
-TarryStopIntent I have some questions
 TarryStopIntent I need your help
 TarryStopIntent I need help
 TarryStopIntent I need you
 TarryStopIntent I need ya
 TarryStopIntent Can you help me
-TarryStopIntent I have a question
-TarryStopIntent Question him
-TarryStopIntent Say I have a question
 TarryStopIntent Say I for me
 TarryStopIntent Say excuse me
 TarryStopIntent Say hello
@@ -178,19 +152,17 @@ TarryStopIntent Say Hi
 
 ContinueSearchIntent bye
 ContinueSearchIntent buh bye
-ContinueSearchIntent I'm done questioning
 ContinueSearchIntent that's all
 ContinueSearchIntent I'm done talking
 ContinueSearchIntent Thanks
 ContinueSearchIntent Thank you
-ContinueSearchIntent Thanks for your help
 ContinueSearchIntent Have a nice day
 ContinueSearchIntent Good day
 ContinueSearchIntent I appreciate your help
-ContinueSearchIntent No more questions
 ContinueSearchIntent Keep going
 ContinueSearchIntent move on
-ContinueSearchIntent no more questions
+ContinueSearchIntent see you later
+ContinueSearchIntent later
 
 CrimeBackgroundQuestionIntent Did you hear about {criminal_name}
 CrimeBackgroundQuestionIntent Have you heard about {criminal_name}
@@ -203,7 +175,6 @@ CrimeBackgroundQuestionIntent Have you heard about the crime that took place
 CrimeBackgroundQuestionIntent Do you know about the crime that took place
 CrimeBackgroundQuestionIntent Do you know any information about the crime
 CrimeBackgroundQuestionIntent Do you know any information about {criminal_name}
-CrimeBackgroundQuestionIntent I'm looking for {criminal_name}
 CrimeBackgroundQuestionIntent Have you seen {criminal_name}
 CrimeBackgroundQuestionIntent Do you know anything about {criminal_name}
 CrimeBackgroundQuestionIntent Do you know anything about the criminal
@@ -221,7 +192,6 @@ CriminalLooksQuestionIntent Do you know what {criminal_name} looks like
 CriminalLooksQuestionIntent Do you know what he looks like
 CriminalLooksQuestionIntent Do you know what she looks like
 CriminalLooksQuestionIntent Do you know what the criminal looks like
-CriminalLooksQuestionIntent Do you know what it looks like
 CriminalLooksQuestionIntent Did you get a glimpse on what the criminal looks like
 CriminalLooksQuestionIntent Did you see what the criminal looks like
 CriminalLooksQuestionIntent Did you see what {criminal_name} looks like
@@ -235,13 +205,11 @@ CriminalLooksQuestionIntent What does she look like
 CriminalLooksQuestionIntent What does {criminal_name} look like
 CriminalLooksQuestionIntent What does the criminal look like
 CriminalLooksQuestionIntent How does he look
-CriminalLooksQuestionIntent How does it look
 CriminalLooksQuestionIntent How does {criminal_name} look
 CriminalLooksQuestionIntent How does she look
 CriminalLooksQuestionIntent Did you hear anything about the criminal
 CriminalLooksQuestionIntent Ask what he looks like
 CriminalLooksQuestionIntent Ask what she looks like
-CriminalLooksQuestionIntent Ask what it looks like
 CriminalLooksQuestionIntent What was the criminal wearing
 CriminalLooksQuestionIntent Is the criminal tall
 CriminalLooksQuestionIntent Is he tall
@@ -262,7 +230,6 @@ CriminalLooksQuestionIntent Describe the criminal
 
 CriminalLocationQuestionIntent Where did he go
 CriminalLocationQuestionIntent Where did she go
-CriminalLocationQuestionIntent Where did it go
 CriminalLocationQuestionIntent Where did {criminal_name} go
 CriminalLocationQuestionIntent Where did the criminal go
 CriminalLocationQuestionIntent Do you know where {criminal_name} was headed
@@ -277,9 +244,6 @@ CriminalLocationQuestionIntent Do you know where he went
 CriminalLocationQuestionIntent Do you know where she was headed
 CriminalLocationQuestionIntent Do you know where she went next
 CriminalLocationQuestionIntent Do you know where she went
-CriminalLocationQuestionIntent Do you know where it was headed
-CriminalLocationQuestionIntent Do you know where it went next
-CriminalLocationQuestionIntent Do you know where it went
 CriminalLocationQuestionIntent Have you heard where {criminal_name} went
 CriminalLocationQuestionIntent Do you know where the criminal is at
 CriminalLocationQuestionIntent Do you know where {criminal_name} is at
@@ -290,7 +254,6 @@ CriminalLocationQuestionIntent Did you hear where the criminal is at
 CriminalLocationQuestionIntent Did you hear where the criminal went
 CriminalLocationQuestionIntent Where is he now
 CriminalLocationQuestionIntent Where is she now
-CriminalLocationQuestionIntent Where is it now
 CriminalLocationQuestionIntent Where is {criminal_name} now
 CriminalLocationQuestionIntent Where is {criminal_name} at
 CriminalLocationQuestionIntent Anyone mention where {criminal_name} went to
@@ -307,7 +270,6 @@ CriminalLocationQuestionIntent Do you know where the criminal went next
 CriminalLocationQuestionIntent Do you know where the criminal is hiding
 CriminalLocationQuestionIntent Do you know where he is hiding
 CriminalLocationQuestionIntent Do you know where she is hiding
-CriminalLocationQuestionIntent Do you know where it is hiding
 CriminalLocationQuestionIntent Do you know where {criminal_name} fled to
 CriminalLocationQuestionIntent You know where he went
 CriminalLocationQuestionIntent You know where she went
@@ -316,39 +278,26 @@ CriminalLocationQuestionIntent You know where the criminal went
 CriminalLocationQuestionIntent Get more clues
 CriminalLocationQuestionIntent More clues
 
-NabThiefIntent Gotcha {criminal_name}
 NabThiefIntent Gotcha
-NabThiefIntent That's {criminal_name}
+NabThiefIntent Thats him
+NabThiefIntent Thats her
 NabThiefIntent Under arrest
 NabThiefIntent The thief
-NabThiefIntent I got ya {criminal_name}
-NabThiefIntent I got ya criminal
-NabThiefIntent Freeze sucker
+NabThiefIntent I got ya
 NabThiefIntent Hands up
 NabThiefIntent Holdem where I can see them
 NabThiefIntent Hold them where I can see them
 NabThiefIntent I see him 
 NabThiefIntent I see her
-NabThiefIntent I see it
-NabThiefIntent end of the line
-NabThiefIntent end of the road
 
 innocentIntent innocent
-innocentIntent this isnt the criminal
 innocentIntent not him
 innocentIntent not her
-innocentIntent not it
 innocentIntent next
-innocentIntent next person
 innocentIntent keep looking
-innocentIntent thats not the criminal
-innocentIntent not the criminal
-innocentIntent aint it
 innocentIntent aint her
 innocentIntent aint him
-innocentIntent aint the criminal
 innocentIntent innocence
-innocentIntent not the criminal
 innocentIntent not right
 innocentIntent no match
 
@@ -356,5 +305,3 @@ LastStageIntent locked and loaded
 LastStageIntent i was born for this
 LastStageIntent Cocked and locked
 LastStageIntent Eyes peeled
-LastStageIntent locked
-LastStageIntent loaded
