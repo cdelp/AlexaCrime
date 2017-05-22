@@ -76,7 +76,7 @@ var body = ['heavy-set', 'thin', 'slender', 'big', 'pear shaped', 'banana shaped
 var height = ['petite', 'tall', 'short', 'gigantic', 'dwarf', 'midget', 'tall', 'short', 'tall', 'short'];
 var special = ['missing hand', 'cane', 'eye patch', 'glasses', 'shades', 'beanie'];
 var p_special = ['headphones', 'bathing suit', 'bag', 'satchel'];
-var greetings = ['hey', "what's up'", 'hi'];
+var greetings = ['hey', 'whats up', 'hi'];
 var bystanderAction = ['running', 'walking', 'standing', 'heading', 'slowly walking', 'walking fast', 'walking slow', 'briskly walking', 'pacing'];
 var bystanderApproachingDirection = ['behind us', 'to our front', 'to the right', 'to the left', 'towards us'];
 var bystanderAlerted = ['stopped for us', 'said yes', 'said how can I help you', 'said ya', 'asked what they can do', 'said hi', 'said whats up', 'asked whats wrong', 'said hey'];
@@ -95,7 +95,7 @@ var bystanderAlerted = ['stopped for us', 'said yes', 'said how can I help you',
 var Egypt  = {
     countryName: 'Egypt',
 
-	intro: 'Marhaba and Welcome to Egypt, an ancient civilization dating back to 3200 BC. Egypt is part of the fertile crescent because of the Nile River. ',
+	intro: 'Marhaba and Welcome to Egypt, an ancient civilization dating back to 3200 BC. Egypt is part of the fertile crescent because of the Nile River.',
     facts:  ['Where the worlds oldest dress was found over 5,000 years ago.', 
 'Where they are known as the nation of the steppe eagle.', 
 'Where the statue of liberty was originally intended at the suez canal lighting the way to asia.', 
@@ -103,8 +103,8 @@ var Egypt  = {
 'Where the tradition of exchanging wedding rings started.',
 'Near the Great Pyramid of Giza.',
 'In the country with the worlds largest arab population.',
-'Where Beer was once considered a national currency,',
-'Where the circumference of the Earth was calculated 2200 years ago,',
+'Where Beer was once considered a national currency',
+'Where the circumference of the Earth was calculated 2200 years ago',
 'Headed to the land of Pharaohs.'
 ],
     m_names: ['Aaheru', 'Abuskhau', 'Acheri', 'Aches', 'Am', 'Akhekh', 'Amenamen'],
@@ -113,9 +113,8 @@ var Egypt  = {
 }
 var Iran = {
     countryName: 'Iran',
-    intro: 'As salaamu aleykum and Welcome to Iran, known as the Islamic Republic of Iran since 1979. Iran has the largest natural gas supply in the world. ',
+    intro: 'As salaamu aleykum and Welcome to Iran, known as the Islamic Republic of Iran since 1979. Iran has the largest natural gas supply in the world.',
     facts: ['Where the capital is Tehran, which means warm slope',
-
 'Where their flag has three equal horizontal bands of green, white, and red.',
 'Headed towards Persia.',
 'Where the worlds oldest continuous civilizations dating back 4000 BC.',
@@ -265,7 +264,6 @@ var Lebanon = {
     countryName: 'Lebanon',
     intro: 'Marhaba wa Bon jouer and Welcome to Lebanon, home to 4.5 million Lebanese. Compared to 20-30 million who live outside of Lebanon. ',
     facts: ['Headed to a place Known as the paris of the middle east due to its renaissance after world war 2',
-
 'Headed to the besutiful Capital City of Beirut.',
 'In the only Arab country without a desert.',
 'In a country Home to the first ever law school in the world.',
@@ -442,7 +440,7 @@ var NorthKorea = {
     countryName: 'North Korea',
 
 	intro: 'hwan yeong and Welcome to North Korea, founded in 1948 and officially name Democratic Peoples Republic of Korea. Despite its name, it is considered the most authoritarian regime in the world, with all elections having only one candidate. ',
-    facts: ['Where the calendar is based on Kim II-Sungs date of birth.',
+    facts: ['Where the calendar is based on Kim Sungs date of birth.',
 'In a country Home to the worlds largest stadium.',
 'Where The national instrument is the accordion.',
 'Where godzilla is known as Pulgasari.',
@@ -673,7 +671,7 @@ var Argentina = {
 ],
 
     m_names: ['Marcos', 'Juan', 'Agustine', 'Pablo', 'Fernando', 'Armando'],
-    f_names: ['Agustina', 'Camila', 'Paula', 'Sara', 'Julia', ''],
+    f_names: ['Agustina', 'Camila', 'Paula', 'Sara', 'Julia'],
     region: 'South America'
 }
 var Venezuela = {
@@ -830,26 +828,7 @@ var Region = [MiddleEast, Africa, EastAsia, SouthAmerica];
 
 var crimes = ["arson", "property", "human trafficking", "burglary", "drug-related", "robbery", "embezzlement", "grand-larceny", "forgery", "fraud", "white-collar", "kidnapping", "conspiracy"];
 
-
-var crimeBackground = ['Man, I saw all of it on snapchat. Crazyness at its finest.', 
-'I heard about it on social media, but didnt see it personally.', 
-'Ya dude. They went live on facebook but the recording was taken down shortly after.', 
-'I saw some photos on whatsapp, forwarded from mutual friends.', 
-'I wouldnt mess with them. They are wild.',
-' They went wild on twitter before there account was taken down.', 
- 'Good luck stopping them. I saw it on the news last night. What is wrong with them.', 
- 'My friend was there and saw the criminal in action.', 
- 'Social media is ruining our world. theyre all over instagram.',
- 'Did you see the photos on Instagram? They were taken down but are replicated all over the internet.', 
- 'Heard there were millions in damages. What is wrong with people?', 
- 'What is this world coming to? Please bring that criminal to justice.', 
- 'Read about this on my newsfeed. Great thing I wasnt there and no one got hurt.', 
- 'Checkout twitter. The criminal is trending with multiple people tweeting screenshots of taken down posts.', 
- 'Wish I was there to do something about it. Just disgusting what people are doing today in our society.', 
- 'I was there that night. I saw everything and let authorities know what the criminal looked like and where I thought they went.', 
- 'Whatsapp is becoming the go to choice for communication between these criminals. I saw a couple messages shared on my group and I was flabbergasted', 
- 'Dude is out of control and must be stopped. I hope authorities do something soon to bring the criminal responsible to justice.', 'I am disgusted with what happened. People just need to stop taking advantage of eachother.', 'We will never have world peace with idiots like this. I hope they are brought to justice along with all the idiots they work with.', 'Gee wiz are they out of control! What happened to the world that we all call home?', 'I heard like everyone else. Crime is not new but criminals are becoming a larger segment of the population and it makes me sick that we let this happen'];
-
+var crimeBackground = ['Man, I saw all of it on snapchat. Crazyness at its finest.', 'I heard about it on social media, but didnt see it personally.', 'Ya dude. They went live on facebook but the recording was taken down shortly after.', 'I saw some photos on whatsapp, forwarded from mutual friends.', 'I wouldnt mess with them. They are wild.', 'They went wild on twitter before there account was taken down.', 'Good luck stopping them. I saw it on the news last night. What is wrong with them.', 'My friend was there and saw the criminal in action.', 'Social media is ruining our world. theyre all over instagram.', 'Did you see the photos on Instagram? They were taken down but are replicated all over the internet.', 'Heard there were millions in damages. What is wrong with people?', 'What is this world coming to? Please bring that criminal to justice.', 'Read about this on my newsfeed. Great thing I wasnt there and no one got hurt.', 'Checkout twitter. The criminal is trending with multiple people tweeting screenshots of taken down posts.', 'Wish I was there to do something about it. Just disgusting what people are doing today in our society.', 'I was there that night. I saw everything and let authorities know what the criminal looked like and where I thought they went.', 'Whatsapp is becoming the go to choice for communication between these criminals. I saw a couple messages shared on my group and I was flabbergasted', 'Dude is out of control and must be stopped. I hope authorities do something soon to bring the criminal responsible to justice.', 'I am disgusted with what happened. People just need to stop taking advantage of eachother.', 'We will never have world peace with idiots like this. I hope they are brought to justice along with all the idiots they work with.', 'Gee wiz are they out of control! What happened to the world that we all call home?', 'I heard like everyone else. Crime is not new but criminals are becoming a larger segment of the population and it makes me sick that we let this happen'];
 
 function name(country, gender)
 {
@@ -1863,7 +1842,7 @@ function generateQuestionResponse(questionType)
  this.emit(':ask', speechOutput , speechOutput);
  */
 
-var winGame =['Great job Sleuth! The criminal now must face justice for what they did. The community is grateful for what you did and the world is that much more peaceful.', 'Woo hoo Sleuth!! You never cease to amaze me. We are unbeatable as a team.', 'You killed it! Great job catching the criminal before going into hiding.', 'Congrats on capturing the criminal! Without your hard work and dedication, the criminal wouldve slipped us.','Aww man, you got the criminal! Great stuff.', ''];
+var winGame =['Great job Sleuth! The criminal now must face justice for what they did. The community is grateful for what you did and the world is that much more peaceful.', 'Woo hoo Sleuth!! You never cease to amaze me. We are unbeatable as a team.', 'You killed it! Great job catching the criminal before going into hiding.', 'Congrats on capturing the criminal! Without your hard work and dedication, the criminal wouldve slipped us.','Aww man, you got the criminal! Great stuff.'];
 var missedCriminal =['Oh no the criminal mustve slipped us. We need to step our game up Sleuth!', 'The criminal got away. We were so close!', 'Better luck next time Sleuth. The criminal has dropped off the radar for now.', 'Shoot, Weeve seen better days than today.', 'Dang-it Sleuth! We made it so far, but the trail has gone cold. Better luck next time.', 'Ooh maan! We lost the criminal. We were not vigilant enough.', 'We cant win them all Sleuth. Some criminals slip away but we will get them next time!', 'What a luck we have! The criminal mustve slipped into hiding when we arrived. The trail is cold'];
 var falseCriminal =['So close, but that is not the criminal. We cant go around falsely accusing people. We spooked the criminal and they slipped us.', 'You nabbed the wrong bad guy! We didnt pay close enough attention to our clues. Make sure to keep better notes next time so we can catch the right person.', 'Step your game up Sleuth. We cant make it this far and lose! We arrested the wrong person. The criminal is long gone by now.', 'And there goes the criminals trail. We were so close but we accused the wrong person, alerting the criminal that we were on to them.', 'Good job! Not! We screwed up big Sleuth. The criminal is long gone and the trail is cold.'];
 var maxWrongLocation =['We need to pay attention to clues from the crowd. We lost the criminals trail Sleuth.', 'Oh shoot. The criminal slipped us.', 'We went to the wrong location too many times. The criminal is long gone.', 'Wow, we need to step our game up Sleuth. Please brush up on your sleuth skills before accepting the next mission', 'Use the clues from bystanders to pick the right country that the criminal went. Sorry, but the criminal has outsmarted us.', 'Come on bra! We lost the trail on our criminal. Keep track of our clues and follow the right trail.', 'Looks like we followed the wrong trail this time Sleuth. Maybe you should take some time off if necessary. The trail is lost.'];
@@ -1876,8 +1855,9 @@ var languageString = {
             //"QUESTIONS" : questions["QUESTIONS"],
 
             "GAME_NAME" : "Sleuth Hound", 
+
             "HELP_MESSAGE": "Please ask questions like, how do I play, what is the concept of the game, what am I supposed to do? ",
-			"REPEAT_MESSAGE": "Sorry I could not hear you. What did you say?. ",
+			"REPEAT_MESSAGE": "Sorry I could not hear you. What did you say? ",
 			"HELP_RESPONSE": "You, with the guidance of Chief Alexa, track down criminals as they try to elude you. Collect clues from bystanders by asking them if they heard about the crime, where the criminal went, and what the criminal looked like. Would you like to keep playing the game. ",
             "HELP_REPROMPT": "Are you listening to me? ", 
             "STOP_MESSAGE": "Would you like to continue our search? Please say no if you'd like to quit",
@@ -1911,31 +1891,31 @@ var languageString = {
 			"PASSEDBY_REPROMPT": "Please say keep going to keep looking for clues. ",
 			"CONTINUE_PROMPT": ". Get more clues or say bye to talk to someone else. ", // can't figure out how to keep "yes" from triggering wrong intents
             "CONTINUE_PROMPT_STAGE0": ". Get more clues by asking if they heard about the crime, what the criminal looked like or even where %s is going. To talk to someone else, say bye. ",
-            "CONTINUE_REPROMPT": ". Please keep asking questions about the criminals looks and where abouts. To find more clues, or say bye to talk to someone else. ",
+            "CONTINUE_REPROMPT": ". Please keep asking questions about the criminals looks and where abouts. Say bye to talk to someone else. ",
 			"LOSE_WRONG": falseCriminal[rand(0, falseCriminal.length - 1)],
 			"CRIME_FACTS": "%s .",
             "LOSE_CHOICE": maxWrongLocation[rand(0, maxWrongLocation.length - 1)],
             "LOSE_GOT_AWAY": missedCriminal[rand(0, missedCriminal.length - 1)],
             "WIN": winGame[rand(0, winGame.length - 1)],
             "PLAY_AGAIN": playAgain[rand(0, playAgain.length - 1)],
-            "WRONG_COUNTRY": "This doesn't seem to be the correct Country, try a different one. ",
+            "WRONG_COUNTRY": "Looks like we're in the wrong country, lets try somewhere else. ",
             "WRONG_COUNTRY_ERROR": "I don't think %s went here, try a country from the list. ",
-            "LAST_PERSON": "Looks like we've talked to everyone, it's time to pick the next country. ",
+            "LAST_PERSON": "Looks like the streets are empty, lets review our clues to pick the next country. ",
             "DONE_QUESTIONING": "Alright, let's look for someone else. A %s, %s, %s, is %s %s. Try to get their attention by greeting them.",
             "COUNTRY_FACTS": seenMix[(rand(0, seenMix.length - 1))],
             "NOT_SEEN": notSeen[rand(0, notSeen.length - 1)],
-            "NOT_LAST_STAGE": "We aren't ready to capture the criminal yet, to finish talking, say thanks or bye. ",
+            "NOT_LAST_STAGE": "We aren't ready to capture the criminal yet, to finish talking, say I'm done questioning or bye. ",
             "LAST_STAGE": "The Criminal is close, we should try to capture the criminal. ",
             "NOT_COUNTRY_PICK": "We aren't done talking to people yet. To finish talking, say thanks or bye. ",
 			"NOT_COUNTRY_REPROMPT": "Please say, bye. ",
-            "NOT_DONE_QUESTIONING": "If you're finished questioning and ready to move on , say thanks or bye. ",
+            "NOT_DONE_QUESTIONING": "If you're finished questioning and ready to move on , say I'm done questioning or bye. ",
 			"LAST_STAGE_READY": "Say locked and loaded when youre ready to catch the criminal. ",
-			"LAST_STAGE_READY_REPROMPT": "Please say locked and loaded a sleuth. ",
-            "ACCUSE": "A %s %s %s with %s %s eyes, %s %s hair is %s %s. Is this the criminal? If so, say under arrest or say innocent to keep looking. ",
-			"ACCUSE_REPROMPT": "Please say something like stop thief, or gotcha, if this is the criminal. Otherwise say innocent to keep looking. ",
-            "ERROR_GET_ATTENTION": "We need to wave people down first to question, say Hi to get their attention",
-            "ERROR_CHOOSE_COUNTRY": "We need to pick a country before proceeding",
-            "ERROR_START_GAME": "Looks like we haven't "
+			"LAST_STAGE_READY_REPROMPT": "Please say locked and loaded. ",
+            "ACCUSE": "A %s %s %s with %s %s eyes, %s %s hair is %s %s. Say hands up or say innocent to keep looking. ",
+			"ACCUSE_REPROMPT": "Please say hands up if you believe this is the criminal. Otherwise, say innocent to keep looking ",
+            "ERROR_GET_ATTENTION": "Say Excuse me to get their attention ",
+            "ERROR_CHOOSE_COUNTRY": "We need to pick a country before continuing our search "
+
         }
     },
     "en-US": {
