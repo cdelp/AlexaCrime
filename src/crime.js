@@ -1,4 +1,4 @@
-var APP_ID = 'amzn1.ask.skill.aabba284-213a-4040-9219-3f70163c4ec2';
+var APP_ID = '';
 var Alexa = require("alexa-sdk"); 
 
 function rand(min, max) {
